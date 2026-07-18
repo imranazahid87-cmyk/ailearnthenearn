@@ -77,3 +77,44 @@ text-align:center;
 padding:20px;
 margin-top:40px;
 }
+.about{
+padding:60px 20px;
+text-align:center;
+background:#ffffff;
+}
+
+.about h2{
+color:#0f172a;
+font-size:32px;
+margin-bottom:20px;
+}
+
+.about p{
+max-width:800px;
+margin:auto;
+font-size:18px;
+line-height:1.8;
+color:#555;
+}
+
+.stats{
+display:flex;
+justify-content:center;
+gap:40px;
+margin-top:40px;
+flex-wrap:wrap;
+}
+
+.stats div{
+background:#f5f7fb;
+padding:20px;
+border-radius:12px;
+min-width:140px;
+box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+
+.stats h3{
+font-size:32px;
+color:#2563eb;
+margin:0;
+}
