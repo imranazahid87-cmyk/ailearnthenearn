@@ -210,3 +210,9 @@ transition:0.3s;
 .btn:hover{
 background:#1d4ed8;
 }
+.features{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+padding:40px 20px;
+}
