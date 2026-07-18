@@ -172,3 +172,41 @@ font-size:32px;
 .hero .btn{
 margin:10px;
 }
+.card{
+background:#ffffff;
+border-radius:15px;
+padding:25px;
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
+transition:0.3s;
+cursor:pointer;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 15px 30px rgba(37,99,235,0.2);
+}
+
+.card h3{
+color:#2563eb;
+margin-bottom:10px;
+}
+
+.card p{
+color:#555;
+line-height:1.6;
+}
+
+.btn{
+display:inline-block;
+padding:12px 24px;
+background:#2563eb;
+color:white;
+text-decoration:none;
+border-radius:8px;
+margin-top:15px;
+transition:0.3s;
+}
+
+.btn:hover{
+background:#1d4ed8;
+}
