@@ -352,3 +352,9 @@ text-align:center;
 padding:15px;
 font-size:14px;
 }
+.hero-image{
+width:100%;
+max-width:500px;
+margin-top:30px;
+border-radius:20px;
+}
