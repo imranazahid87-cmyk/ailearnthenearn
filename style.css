@@ -130,3 +130,42 @@ margin:0;
 display:inline-block;
 margin-top:15px;
 }
+nav{
+display:flex;
+flex-wrap:wrap;
+gap:15px;
+}
+
+nav a{
+padding:10px 16px;
+border-radius:8px;
+transition:0.3s;
+}
+
+nav a:hover{
+background:#2563eb;
+color:#fff;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+color:#fff;
+}
+
+@media(max-width:768px){
+
+header{
+flex-direction:column;
+gap:15px;
+}
+
+nav{
+justify-content:center;
+}
+
+.hero h1{
+font-size:32px;
+}
+
+}
