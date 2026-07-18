@@ -358,3 +358,8 @@ max-width:500px;
 margin-top:30px;
 border-radius:20px;
 }
+.stats-section{
+padding:60px 20px;
+text-align:center;
+background:#eef6ff;
+}
