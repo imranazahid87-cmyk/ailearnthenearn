@@ -216,3 +216,27 @@ grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:20px;
 padding:40px 20px;
 }
+.search-box{
+display:flex;
+justify-content:center;
+padding:20px;
+gap:10px;
+}
+
+.search-box input{
+width:300px;
+max-width:80%;
+padding:12px;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:16px;
+}
+
+.search-box button{
+padding:12px 18px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
