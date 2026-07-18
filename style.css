@@ -240,3 +240,32 @@ border:none;
 border-radius:8px;
 cursor:pointer;
 }
+.courses{
+padding:60px 20px;
+text-align:center;
+background:#ffffff;
+}
+
+.course-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+margin-top:30px;
+}
+
+.course-card{
+background:#f8fafc;
+padding:25px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+transition:0.3s;
+}
+
+.course-card:hover{
+transform:translateY(-8px);
+}
+
+.course-card h3{
+color:#2563eb;
+margin-bottom:10px;
+}
