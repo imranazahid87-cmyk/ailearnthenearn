@@ -608,3 +608,391 @@ transform:translateY(-3px);
     color:#fff;
     cursor:pointer;
 }
+/*========== HERO UPGRADE ==========*/
+
+.hero{
+    background:linear-gradient(135deg,#0b1736,#0d4fd8);
+    padding:90px 0;
+    overflow:hidden;
+}
+
+.hero-container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:60px;
+    flex-wrap:wrap;
+}
+
+.hero-left{
+    flex:1;
+    min-width:320px;
+}
+
+.hero-left h1{
+    font-size:58px;
+    line-height:1.15;
+    color:#fff;
+    margin-bottom:25px;
+    font-weight:700;
+}
+
+.hero-left p{
+    font-size:20px;
+    color:#dbe7ff;
+    line-height:1.8;
+    margin-bottom:35px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+    margin-bottom:40px;
+}
+
+.hero-right{
+    flex:1;
+    text-align:center;
+}
+
+.hero-right img{
+    width:100%;
+    max-width:520px;
+    border-radius:20px;
+    box-shadow:0 20px 50px rgba(0,0,0,.35);
+    transition:.4s;
+}
+
+.hero-right img:hover{
+    transform:translateY(-8px);
+}
+
+.hero-stats{
+    display:flex;
+    gap:50px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+
+.hero-stats div{
+    color:#fff;
+}
+
+.hero-stats h3{
+    font-size:36px;
+    margin-bottom:5px;
+}
+
+.hero-stats p{
+    margin:0;
+    color:#d8e5ff;
+}/*==========================
+  FEATURE CARDS UPGRADE
+==========================*/
+
+.features{
+    padding:80px 0;
+    background:#f7f9fc;
+}
+
+.section-title{
+    max-width:700px;
+    margin:15px auto 50px;
+    text-align:center;
+    color:#666;
+    font-size:18px;
+    line-height:1.8;
+}
+
+.feature-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+}
+
+.feature-card{
+    background:#fff;
+    border-radius:18px;
+    padding:35px 25px;
+    text-align:center;
+    transition:.35s;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.feature-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 18px 40px rgba(47,128,255,.18);
+}
+
+.feature-card .icon{
+    width:70px;
+    height:70px;
+    margin:0 auto 20px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+    background:#2f80ff;
+    color:#fff;
+}
+
+.feature-card h3{
+    font-size:22px;
+    margin-bottom:15px;
+    color:#111827;
+}
+
+.feature-card p{
+    color:#666;
+    line-height:1.7;
+    font-size:16px;
+}/*==========================
+  COURSES & TOOLS UPGRADE
+==========================*/
+
+.course-grid,
+.tool-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+    margin-top:50px;
+}
+
+.course-card,
+.tool-card{
+    background:#ffffff;
+    border-radius:20px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 12px 35px rgba(0,0,0,.08);
+    transition:.35s;
+    border:1px solid #eef2f7;
+}
+
+.course-card:hover,
+.tool-card:hover{
+    transform:translateY(-12px);
+    box-shadow:0 22px 45px rgba(47,128,255,.18);
+}
+
+.course-card h3,
+.tool-card h3{
+    font-size:24px;
+    color:#111827;
+    margin-bottom:15px;
+}
+
+.course-card p,
+.tool-card p{
+    color:#666;
+    line-height:1.8;
+    margin-bottom:22px;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 28px;
+    background:#2f80ff;
+    color:#fff;
+    text-decoration:none;
+    border-radius:10px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#0d6efd;
+    transform:translateY(-3px);
+}
+
+@media(max-width:768px){
+
+.hero-container,
+.header .container{
+    flex-direction:column;
+    text-align:center;
+}
+
+#navbar{
+    flex-direction:column;
+    width:100%;
+    gap:15px;
+}
+
+.search-box{
+    width:100%;
+}
+
+.search-box input{
+    width:100%;
+}
+
+.hero-left h1{
+    font-size:40px;
+}
+
+.hero-left p{
+    font-size:18px;
+}
+
+.hero-right img{
+    max-width:350px;
+}
+
+.course-grid,
+.tool-grid,
+.feature-grid{
+    grid-template-columns:1fr;
+}
+
+}/*==========================
+ PREMIUM FOOTER
+==========================*/
+
+footer{
+    background:#0b1220;
+    color:#fff;
+    padding:70px 0 20px;
+    margin-top:80px;
+}
+
+.footer-content{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:40px;
+}
+
+.footer-content h3,
+.footer-content h4{
+    margin-bottom:20px;
+    color:#fff;
+}
+
+.footer-content p{
+    color:#cbd5e1;
+    line-height:1.8;
+}
+
+.footer-content a{
+    display:block;
+    color:#cbd5e1;
+    text-decoration:none;
+    margin-bottom:10px;
+    transition:.3s;
+}
+
+.footer-content a:hover{
+    color:#2f80ff;
+    padding-left:8px;
+}
+
+footer hr{
+    border:none;
+    height:1px;
+    background:rgba(255,255,255,.1);
+    margin:40px 0 20px;
+}
+
+.copyright{
+    text-align:center;
+    color:#94a3b8;
+    font-size:15px;
+}
+
+/*==========================
+ FADE ANIMATION
+==========================*/
+
+.feature-card,
+.course-card,
+.tool-card{
+    animation:fadeUp .8s ease both;
+}
+
+@keyframes fadeUp{
+
+0%{
+opacity:0;
+transform:translateY(40px);
+}
+
+100%{
+opacity:1;
+transform:translateY(0);
+}
+
+}/*==========================
+  DARK MODE
+==========================*/
+
+body.dark-mode{
+    background:#0f172a;
+    color:#ffffff;
+}
+
+body.dark-mode .features,
+body.dark-mode .courses,
+body.dark-mode .ai-tools,
+body.dark-mode .newsletter,
+body.dark-mode .contact-page{
+    background:#111827;
+}
+
+body.dark-mode .feature-card,
+body.dark-mode .course-card,
+body.dark-mode .tool-card{
+    background:#1e293b;
+    color:#ffffff;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4{
+    color:#ffffff;
+}
+
+body.dark-mode p{
+    color:#d1d5db;
+}
+
+/*==========================
+  PREMIUM BUTTON
+==========================*/
+
+.btn{
+    position:relative;
+    overflow:hidden;
+}
+
+.btn::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:rgba(255,255,255,.25);
+    transition:.5s;
+}
+
+.btn:hover::after{
+    left:100%;
+}
+
+/*==========================
+  COUNTER BOX
+==========================*/
+
+.hero-stats h3{
+    font-size:42px;
+    font-weight:700;
+}
+
+.hero-stats p{
+    font-size:16px;
+    color:#dbe7ff;
+}
