@@ -49,3 +49,8 @@ themeBtn.innerHTML="🌙 Dark Mode";
 
 });
 }
+function toggleMenu(){
+
+document.querySelector("nav").classList.toggle("show");
+
+}
