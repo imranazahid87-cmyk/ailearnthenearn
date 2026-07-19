@@ -435,3 +435,31 @@ font-size:38px;
 margin-bottom:40px;
 color:#0b1d3a;
 }
+.blog-page{
+padding:70px 8%;
+background:#f8fafc;
+text-align:center;
+}
+
+.blog-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
+
+.blog-card{
+background:#fff;
+padding:25px;
+border-radius:15px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+transition:.3s;
+}
+
+.blog-card:hover{
+transform:translateY(-8px);
+}
+
+.blog-card h3{
+color:#2563eb;
+margin-bottom:15px;
+}
