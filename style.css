@@ -369,3 +369,58 @@ padding:60px 20px;
 text-align:center;
 background:#eef6ff;
 }
+.tools-page{
+padding:70px 8%;
+background:#f5f7fb;
+text-align:center;
+}
+
+.tools-page h2{
+font-size:38px;
+margin-bottom:40px;
+color:#0b1d3a;
+}
+
+.tool-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+}
+
+.tool-card{
+background:#fff;
+padding:30px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+transition:.3s;
+}
+
+.tool-card:hover{
+transform:translateY(-10px);
+box-shadow:0 15px 35px rgba(0,0,0,.15);
+}
+
+.tool-card h3{
+margin-bottom:15px;
+color:#0d6efd;
+}
+
+.tool-card p{
+margin-bottom:20px;
+line-height:1.7;
+color:#555;
+}
+
+.tool-card .btn{
+display:inline-block;
+padding:12px 25px;
+background:#0d6efd;
+color:#fff;
+text-decoration:none;
+border-radius:8px;
+transition:.3s;
+}
+
+.tool-card .btn:hover{
+background:#084fc7;
+}
