@@ -488,3 +488,22 @@ font-size:16px;
 .contact-form button{
 cursor:pointer;
 }
+.login-page{
+padding:80px 20px;
+text-align:center;
+}
+
+.login-form{
+max-width:400px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.login-form input{
+padding:15px;
+border:1px solid #ccc;
+border-radius:10px;
+font-size:16px;
+}
