@@ -1,63 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Tools - AI Learn Then Earn</title>
+
+<title>AI Tools | AI Learn Then Earn</title>
+
 <link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
 
-<header>
-  <section class="tools-page">
+<header class="header">
 
-<h2>Top AI Tools 2026</h2>
+<div class="container">
 
-<div class="tool-grid">
+<a href="index.html" class="logo">
+<img src="images/logo.webp" alt="Logo">
+<span>AI Learn Then Earn</span>
+</a>
 
-<div class="tool-card">
-<h3>🤖 ChatGPT</h3>
-<p>Create articles, coding, SEO, emails, business ideas and much more.</p>
-<a href="#" class="btn">Learn ChatGPT</a>
-</div>
-
-<div class="tool-card">
-<h3>💎 Google Gemini</h3>
-<p>Google's AI assistant for research, study and productivity.</p>
-<a href="#" class="btn">Learn Gemini</a>
-</div>
-
-<div class="tool-card">
-<h3>🧠 Claude AI</h3>
-<p>Excellent for long writing, summaries and document analysis.</p>
-<a href="#" class="btn">Learn Claude</a>
-</div>
-
-<div class="tool-card">
-<h3>🔍 Perplexity AI</h3>
-<p>AI-powered search engine with trusted answers.</p>
-<a href="#" class="btn">Learn Perplexity</a>
-</div>
-
-<div class="tool-card">
-<h3>🎨 Midjourney</h3>
-<p>Create amazing AI images from text prompts.</p>
-<a href="#" class="btn">Learn Midjourney</a>
-</div>
-
-<div class="tool-card">
-<h3>🎬 Runway ML</h3>
-<p>Create AI videos and edit videos using artificial intelligence.</p>
-<a href="#" class="btn">Learn Runway</a>
-</div>
-
-</div>
-
-</section>
-<div class="logo">🤖 AI Learn Then Earn</div>
-
-<nav>
+<nav id="navbar">
 <a href="index.html">Home</a>
 <a href="tools.html">AI Tools</a>
 <a href="courses.html">Courses</a>
@@ -65,60 +36,164 @@
 <a href="blog.html">Blog</a>
 <a href="contact.html">Contact</a>
 </nav>
+
+<div class="header-right">
+
+<div class="search-box">
+<input type="text" placeholder="Search AI Tools...">
+<button onclick="searchWebsite()">🔍</button>
+</div>
+
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+</div>
+
+</div>
+
 </header>
 
-<section class="hero">
-<h1>Best AI Tools</h1>
-<p>Explore the world's most powerful AI tools.</p>
-</section>
+<section class="ai-tools">
 
-<section class="features">
+<div class="container">
 
-<div class="card">
+<h2>Popular AI Tools</h2>
+
+<p class="section-title">
+Explore the world's most popular AI tools and learn how to use them.
+</p>
+
+<div class="tool-grid"><div class="tool-card">
+
 <h3>🤖 ChatGPT</h3>
-<p>Generate content, code, ideas and solve problems with AI.</p>
 
-<a href="https://chatgpt.com" class="btn" target="_blank">
-Open ChatGPT
-</a>
+<p>
+Learn ChatGPT for content writing, coding, SEO,
+marketing and business automation.
+</p>
+
+<a href="#" class="btn">Learn More</a>
 
 </div>
 
-<div class="card">
+<div class="tool-card">
+
 <h3>💎 Google Gemini</h3>
-<p>Google's advanced AI assistant.</p>
 
-<a href="https://gemini.google.com" class="btn" target="_blank">
-Open Gemini
-</a>
+<p>
+Master Google Gemini for research,
+study, productivity and AI content.
+</p>
+
+<a href="#" class="btn">Learn More</a>
 
 </div>
 
-<div class="card">
+<div class="tool-card">
+
 <h3>🧠 Claude AI</h3>
-<p>Write, analyze and summarize documents easily.</p>
 
-<a href="https://claude.ai" class="btn" target="_blank">
-Open Claude
-</a>
+<p>
+Create professional articles,
+summaries and long-form documents.
+</p>
+
+<a href="#" class="btn">Learn More</a>
 
 </div>
 
-<div class="card">
+<div class="tool-card">
+
 <h3>🔍 Perplexity AI</h3>
-<p>AI powered search engine with accurate answers.</p>
 
-<a href="https://www.perplexity.ai" class="btn" target="_blank">
-Open Perplexity
-</a>
+<p>
+Search the web with AI and
+get referenced answers instantly.
+</p>
+
+<a href="#" class="btn">Learn More</a>
 
 </div>
 
-</section>
+<div class="tool-card">
+
+<h3>🎨 Midjourney</h3>
+
+<p>
+Generate stunning AI images,
+artwork and creative designs.
+</p>
+
+<a href="#" class="btn">Learn More</a>
+
+</div>
+
+<div class="tool-card">
+
+<h3>🖌️ Canva AI</h3>
+
+<p>
+Create social media graphics,
+presentations and AI designs.
+</p>
+
+<a href="#" class="btn">Learn More</a>
+
+</div>
+
+</div>
+
+</div>
+<!-- FOOTER -->
 
 <footer>
-<p>© 2026 AI Learn Then Earn</p>
+
+<div class="container footer-content">
+
+<div>
+
+<h3>AI Learn Then Earn</h3>
+
+<p>
+Learn AI, Build Skills & Earn Online with free courses,
+AI tools and practical guides.
+</p>
+
+</div>
+
+<div>
+
+<h4>Quick Links</h4>
+
+<a href="index.html">Home</a>
+<a href="tools.html">AI Tools</a>
+<a href="courses.html">Courses</a>
+<a href="blog.html">Blog</a>
+<a href="earn.html">Earn</a>
+<a href="contact.html">Contact</a>
+
+</div>
+
+<div>
+
+<h4>Contact</h4>
+
+<p>📧 info@ailearnthenearn.com</p>
+<p>📍 Pakistan</p>
+
+</div>
+
+</div>
+
+<hr>
+
+<p class="copyright">
+© 2026 AI Learn Then Earn. All Rights Reserved.
+</p>
+
 </footer>
+
+<script src="script.js"></script>
 
 </body>
 </html>
+</section>
