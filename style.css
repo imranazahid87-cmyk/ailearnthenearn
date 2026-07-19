@@ -1,1 +1,186 @@
+/* =====================================
+   AI Learn Then Earn - Professional CSS
+===================================== */
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f5f7fb;
+    color:#333;
+    line-height:1.6;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+/* ================= HEADER ================= */
+
+.header{
+    background:#0f172a;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.header .container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 0;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    text-decoration:none;
+    color:#fff;
+    font-weight:bold;
+    font-size:22px;
+}
+
+.logo img{
+    width:55px;
+    height:55px;
+    object-fit:contain;
+}
+
+#navbar{
+    display:flex;
+    gap:25px;
+}
+
+#navbar a{
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+}
+
+#navbar a:hover{
+    color:#60a5fa;
+}
+
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.search-box{
+    display:flex;
+}
+
+.search-box input{
+    padding:10px 14px;
+    border:none;
+    border-radius:8px 0 0 8px;
+    outline:none;
+    width:220px;
+}
+
+.search-box button{
+    border:none;
+    background:#2563eb;
+    color:#fff;
+    padding:10px 16px;
+    border-radius:0 8px 8px 0;
+    cursor:pointer;
+}
+
+.menu-btn{
+    display:none;
+    color:#fff;
+    font-size:30px;
+    cursor:pointer;
+}
+/* ================= HERO SECTION ================= */
+
+.hero{
+    padding:80px 0;
+    background:linear-gradient(135deg,#0f172a,#2563eb);
+    color:#fff;
+}
+
+.hero-content{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:50px;
+    flex-wrap:wrap;
+}
+
+.hero-text{
+    flex:1;
+    min-width:300px;
+}
+
+.hero-text h1{
+    font-size:52px;
+    line-height:1.2;
+    margin-bottom:20px;
+}
+
+.hero-text p{
+    font-size:19px;
+    margin-bottom:30px;
+    color:#e5e7eb;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-bottom:40px;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 28px;
+    background:#2563eb;
+    color:#fff;
+    text-decoration:none;
+    border-radius:10px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#1d4ed8;
+    transform:translateY(-3px);
+}
+
+.btn-outline{
+    background:transparent;
+    border:2px solid #fff;
+}
+
+.btn-outline:hover{
+    background:#fff;
+    color:#2563eb;
+}
+
+.hero-image{
+    flex:1;
+    text-align:center;
+    min-width:300px;
+}
+
+.hero-image img{
+    width:100%;
+    max-width:500px;
+    border-radius:20px;
+    box-shadow:0 20px 40px rgba
