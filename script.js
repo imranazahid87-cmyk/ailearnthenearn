@@ -34,3 +34,18 @@ alert("No result found.");
 }
 
 }
+const themeBtn = document.getElementById("theme-btn");
+
+if(themeBtn){
+themeBtn.addEventListener("click",function(){
+
+document.body.classList.toggle("dark-mode");
+
+if(document.body.classList.contains("dark-mode")){
+themeBtn.innerHTML="☀️ Light Mode";
+}else{
+themeBtn.innerHTML="🌙 Dark Mode";
+}
+
+});
+}
