@@ -136,24 +136,15 @@ update();
 // Loading Screen
 // ===========================
 
-window.addEventListener("load",function(){
+window.addEventListener("load", function () {
 
-const loader=document.querySelector(".loader");
+    const loader = document.querySelector(".loader");
 
-if(loader){
-
-loader.style.opacity="0";
-
-setTimeout(function(){
-
-loader.style.display="none";
-
-},500);
-
-}
+    if (loader) {
+        loader.classList.add("hide");
+    }
 
 });
-
 // ===========================
 // Scroll Reveal Animation
 // ===========================
