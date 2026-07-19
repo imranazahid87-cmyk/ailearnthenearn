@@ -1,67 +1,92 @@
-// ================= Mobile Menu =================
+// ===========================
+// AI Learn Then Earn
+// script.js
+// ===========================
 
+// Mobile Menu Toggle
 function toggleMenu() {
-    const navbar = document.getElementById("navbar");
-    navbar.classList.toggle("show");
+    const nav = document.getElementById("navbar");
+    nav.classList.toggle("show");
 }
 
-// ================= Back To Top =================
+// Search Button
+function searchWebsite() {
 
-const topBtn = document.getElementById("topBtn");
+    const input = document.querySelector(".search-box input");
+
+    if (!input) return;
+
+    const keyword = input.value.trim();
+
+    if (keyword === "") {
+        alert("Please enter something to search.");
+        return;
+    }
+
+    alert("Search feature coming soon!\n\nYou searched for: " + keyword);
+}
+
+// Enter key search
+const searchInput = document.querySelector(".search-box input");
+
+if (searchInput) {
+    searchInput.addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+            searchWebsite();
+        }
+    });
+}
+
+// Sticky Header Shadow
+window.addEventListener("scroll", function () {
+
+    const header = document.querySelector(".header");
+
+    if (!header) return;
+
+    if (window.scrollY > 30) {
+        header.style.boxShadow = "0 10px 30px rgba(0,0,0,.15)";
+    } else {
+        header.style.boxShadow = "0 5px 20px rgba(0,0,0,.10)";
+    }
+
+});
+
+// Scroll To Top Button
+const topBtn = document.createElement("button");
+
+topBtn.innerHTML = "↑";
+topBtn.id = "topBtn";
+
+document.body.appendChild(topBtn);
 
 window.addEventListener("scroll", function () {
-    if (!topBtn) return;
 
     if (window.scrollY > 300) {
         topBtn.style.display = "block";
     } else {
         topBtn.style.display = "none";
     }
+
 });
 
-function topFunction() {
+topBtn.addEventListener("click", function () {
+
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     });
-}
 
-// ================= Search =================
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    const searchInput = document.querySelector(".search-box input");
-    const searchButton = document.querySelector(".search-box button");
-
-    if (!searchInput || !searchButton) return;
-
-    searchButton.addEventListener("click", function () {
-
-        const value = searchInput.value.trim().toLowerCase();
-
-        if (value.includes("chatgpt") || value.includes("gemini") || value.includes("claude") || value.includes("perplexity")) {
-            window.location.href = "tools.html";
-        }
-        else if (value.includes("course") || value.includes("seo")) {
-            window.location.href = "courses.html";
-        }
-        else if (value.includes("earn") || value.includes("freelance")) {
-            window.location.href = "earn.html";
-        }
-        else if (value.includes("blog")) {
-            window.location.href = "blog.html";
-        }
-        else if (value.includes("contact")) {
-            window.location.href = "contact.html";
-        }
-        else if (value !== "") {
-            alert("No matching page found.");
-        }
-    });
 });
 
-// ================= Dark Mode =================
+// Footer Year
+const year = new Date().getFullYear();
 
-function toggleDarkMode() {
-    document.body.classList.toggle("dark-mode");
+const copyright = document.querySelector(".copyright");
+
+if (copyright) {
+    copyright.innerHTML =
+        "© " + year + " AI Learn Then Earn. All Rights Reserved.";
 }
+
+console.log("AI Learn Then Earn Loaded Successfully.");
