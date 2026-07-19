@@ -424,3 +424,14 @@ transition:.3s;
 .tool-card .btn:hover{
 background:#084fc7;
 }
+.courses-page{
+padding:70px 8%;
+background:#ffffff;
+text-align:center;
+}
+
+.courses-page h2{
+font-size:38px;
+margin-bottom:40px;
+color:#0b1d3a;
+}
