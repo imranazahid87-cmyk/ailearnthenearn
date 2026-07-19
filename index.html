@@ -9,38 +9,33 @@
 
 <body>
 
-<header>
+<header class="header">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <img src="images/logo.png" alt="AI Learn Then Earn Logo">
+      <span>AI Learn Then Earn</span>
+    </a>
 
-<div class="logo">🤖 AI Learn Then Earn</div>
+    <nav id="navMenu">
+      <a href="index.html" class="active">Home</a>
+      <a href="tools.html">AI Tools</a>
+      <a href="courses.html">Courses</a>
+      <a href="earn.html">Earn</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
 
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <div class="header-right">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search...">
+        <button onclick="searchWebsite()">🔍</button>
+      </div>
 
-<nav id="navMenu">
+      <button id="theme-btn">🌙</button>
 
-<a href="index.html">Home</a>
-
-<a href="tools.html">AI Tools</a>
-
-<a href="courses.html">Courses</a>
-
-<a href="earn.html">Earn</a>
-
-<a href="blog.html">Blog</a>
-
-<a href="contact.html">Contact</a>
-
-</nav>
-
-<div class="search-box">
-
-<input type="text" id="searchInput" placeholder="Search AI Courses...">
-
-<button onclick="searchWebsite()">🔍</button>
-
-</div>
-
-<button id="theme-btn">🌙</button>
-
+      <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    </div>
+  </div>
 </header>
 
 <section class="hero">
