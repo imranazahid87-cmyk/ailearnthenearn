@@ -1,4 +1,4 @@
-7html{
+i87html{
 scroll-behavior:smooth;
 }
 body{
@@ -599,4 +599,23 @@ padding:12px;
 text-align:center;
 }
 
+}
+#topBtn{
+display:none;
+position:fixed;
+bottom:20px;
+right:20px;
+z-index:99;
+background:#2563eb;
+color:white;
+border:none;
+padding:15px;
+border-radius:50%;
+cursor:pointer;
+font-size:18px;
+box-shadow:0 4px 10px rgba(0,0,0,.3);
+}
+
+#topBtn:hover{
+background:#1d4ed8;
 }
