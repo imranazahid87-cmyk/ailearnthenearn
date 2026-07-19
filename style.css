@@ -672,3 +672,66 @@ font-size:17px;
 }
 
 }
+.hero-image{
+    display:block;
+    max-width:700px;
+    width:100%;
+    margin:40px auto 0;
+}
+
+.search-box{
+    display:flex;
+    gap:8px;
+}
+
+.search-box input{
+    padding:10px;
+    border:none;
+    border-radius:6px;
+}
+
+.search-box button{
+    padding:10px 15px;
+    border:none;
+    border-radius:6px;
+    background:#2563eb;
+    color:white;
+    cursor:pointer;
+}
+
+.menu-btn{
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+}
+
+@media(max-width:768px){
+
+header{
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+nav{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+}
+
+.search-box{
+    width:100%;
+}
+
+.search-box input{
+    flex:1;
+}
+
+.hero h1{
+    font-size:34px;
+}
+
+.hero-image{
+    max-width:100%;
+}
+
+}
