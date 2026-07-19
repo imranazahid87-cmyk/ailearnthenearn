@@ -89,4 +89,113 @@ if (copyright) {
         "© " + year + " AI Learn Then Earn. All Rights Reserved.";
 }
 
-console.log("AI Learn Then Earn Loaded Successfully.");
+console.log("AI Learn Then Earn Loaded Successfully.");// ===========================
+// Dark Mode Toggle
+// ===========================
+
+function toggleDarkMode(){
+    document.body.classList.toggle("dark-mode");
+}
+
+// ===========================
+// Counter Animation
+// ===========================
+
+const counters=document.querySelectorAll(".counter");
+
+counters.forEach(counter=>{
+
+const update=()=>{
+
+const target=+counter.getAttribute("data-target");
+
+const count=+counter.innerText;
+
+const speed=80;
+
+const inc=Math.ceil(target/speed);
+
+if(count<target){
+
+counter.innerText=count+inc;
+
+setTimeout(update,20);
+
+}else{
+
+counter.innerText=target+"+";
+
+}
+
+};
+
+update();
+
+});
+// ===========================
+// Loading Screen
+// ===========================
+
+window.addEventListener("load",function(){
+
+const loader=document.querySelector(".loader");
+
+if(loader){
+
+loader.style.opacity="0";
+
+setTimeout(function(){
+
+loader.style.display="none";
+
+},500);
+
+}
+
+});
+
+// ===========================
+// Scroll Reveal Animation
+// ===========================
+
+const reveals=document.querySelectorAll(
+".feature-card,.course-card,.tool-card,.hero-left,.hero-right"
+);
+
+function revealOnScroll(){
+
+reveals.forEach(function(item){
+
+const top=item.getBoundingClientRect().top;
+
+const screen=window.innerHeight;
+
+if(top<screen-100){
+
+item.classList.add("active");
+
+}
+
+});
+
+}
+
+window.addEventListener("scroll",revealOnScroll);
+
+revealOnScroll();
+
+// ===========================
+// Active Navigation
+// ===========================
+
+const current=window.location.pathname.split("/").pop();
+
+document.querySelectorAll("#navbar a").forEach(function(link){
+
+if(link.getAttribute("href")===current){
+
+link.classList.add("active");
+
+}
+
+});
