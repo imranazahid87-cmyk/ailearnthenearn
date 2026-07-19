@@ -533,3 +533,39 @@ grid-template-columns:1fr;
 }
 
 }
+#theme-btn{
+padding:10px 15px;
+background:#111827;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+margin-left:10px;
+}
+
+.dark-mode{
+background:#111827;
+color:white;
+}
+
+.dark-mode header{
+background:#000;
+}
+
+.dark-mode footer{
+background:#000;
+}
+
+.dark-mode .card,
+.dark-mode .course-card,
+.dark-mode .tool-card,
+.dark-mode .blog-card{
+background:#1f2937;
+color:white;
+}
+
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode p{
+color:white;
+}
