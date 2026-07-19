@@ -1,167 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Courses - AI Learn Then Earn</title>
+
+<title>AI Courses | AI Learn Then Earn</title>
+
 <link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
 
-<header>
-<div class="logo">🤖 AI Learn Then Earn</div>
+<header class="header">
 
-<nav>
-<a href="index.html">Home</a>
-<a href="tools.html">AI Tools</a>
-<a href="courses.html">Courses</a>
-<a href="blog.html">Blog</a>
-<a href="contact.html">Contact</a>
-</nav>
-</header>
+<div class="container">
 
-<section class="hero">
-<h1>AI Courses</h1>
+<a href="index.html" class="logo">
 
-<p>Start learning AI from beginner to advanced level.</p>
-<p>Explore the world's most powerful AI tools.</p>
-</section>
+<img src="images/logo.webp" alt="Logo">
 
-<section class="features">
+<span>AI Learn Then Earn</span>
 
-<div class="card">
-<h3>🤖 ChatGPT</h3>
-<p>Generate content, code, ideas and solve problems.</p>
-</div>
+</a>
 
-<div class="card">
-<h3>💎 Google Gemini</h3>
-<p>Google's advanced AI assistant for learning and productivity.</p>
-</div>
+<nav id="navbar">
 
-<div class="card">
-<h3>🧠 Claude AI</h3>
-<p>Write, analyze and summarize documents easily.</p>
-</div>
-
-<div class="card">
-<h3>🔍 Perplexity AI</h3>
-<p>AI powered search engine with accurate answers.</p>
-</div>
-
-</section>
-
-<footer>
-<p>© 2026 AI Learn Then Earn</p>
-</footer>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Courses - AI Learn Then Earn</title>
-<link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<header>
-<div class="logo">🤖 AI Learn Then Earn</div>
-
-<nav>
 <a href="index.html">Home</a>
 <a href="tools.html">AI Tools</a>
 <a href="courses.html">Courses</a>
 <a href="earn.html">Earn</a>
 <a href="blog.html">Blog</a>
 <a href="contact.html">Contact</a>
+
 </nav>
+
+<div class="header-right">
+
+<div class="search-box">
+
+<input type="text" placeholder="Search Courses...">
+
+<button onclick="searchWebsite()">🔍</button>
+
+</div>
+
+<div class="menu-btn" onclick="toggleMenu()">
+
+☰
+
+</div>
+
+</div>
+
+</div>
+
 </header>
 
-<section class="hero">
-<h1>AI Courses</h1>
-<p>Learn AI step by step from beginner to advanced.</p>
-</section>
-<section class="courses-page">
+<section class="courses">
 
-<h2>Our AI Courses</h2>
+<div class="container">
 
-<div class="course-grid">
+<h2>Featured AI Courses</h2>
 
-<div class="course-card">
+<p class="section-title">
+Learn AI from beginner to advanced with practical step-by-step courses.
+</p>
+
+<div class="course-grid"><div class="course-card">
+
 <h3>🤖 ChatGPT Mastery</h3>
-<p>Learn ChatGPT from beginner to advanced with real examples.</p>
-<a href="#" class="btn">Start Learning</a>
+
+<p>
+Learn ChatGPT for content writing, coding, SEO,
+marketing and AI automation.
+</p>
+
+<a href="#" class="btn">Start Course</a>
+
 </div>
 
 <div class="course-card">
+
 <h3>💎 Google Gemini</h3>
-<p>Master Gemini for study, work and productivity.</p>
-<a href="#" class="btn">Start Learning</a>
+
+<p>
+Master Google Gemini for research,
+learning and productivity.
+</p>
+
+<a href="#" class="btn">Start Course</a>
+
 </div>
 
 <div class="course-card">
-<h3>📈 Complete SEO Course</h3>
-<p>Learn On-Page, Off-Page and Technical SEO step by step.</p>
-<a href="#" class="btn">Start Learning</a>
+
+<h3>🧠 Prompt Engineering</h3>
+
+<p>
+Write powerful AI prompts for ChatGPT,
+Gemini and Claude.
+</p>
+
+<a href="#" class="btn">Start Course</a>
+
 </div>
 
 <div class="course-card">
-<h3>💰 AI Freelancing</h3>
-<p>Earn online using Fiverr, Upwork and AI tools.</p>
-<a href="#" class="btn">Start Learning</a>
+
+<h3>📈 SEO Mastery</h3>
+
+<p>
+Learn On-Page, Off-Page and Technical SEO
+step by step.
+</p>
+
+<a href="#" class="btn">Start Course</a>
+
 </div>
 
 <div class="course-card">
-<h3>🎨 Prompt Engineering</h3>
-<p>Write professional prompts for ChatGPT and Gemini.</p>
-<a href="#" class="btn">Start Learning</a>
+
+<h3>💼 Freelancing</h3>
+
+<p>
+Start earning from Fiverr, Upwork and AI skills.
+</p>
+
+<a href="#" class="btn">Start Course</a>
+
 </div>
 
 <div class="course-card">
-<h3>🎥 AI Video Creation</h3>
-<p>Create videos using AI tools like Runway and Flow.</p>
-<a href="#" class="btn">Start Learning</a>
+
+<h3>🎨 AI Image Generation</h3>
+
+<p>
+Create professional AI images using modern tools.
+</p>
+
+<a href="#" class="btn">Start Course</a>
+
+</div>
+
+<div class="course-card">
+
+<h3>🎬 AI Video Creation</h3>
+
+<p>
+Learn AI video creation for YouTube and social media.
+</p>
+
+<a href="#" class="btn">Start Course</a>
+
+</div>
+
+<div class="course-card">
+
+<h3>💰 Earn with AI</h3>
+
+<p>
+Discover practical ways to build income using AI.
+</p>
+
+<a href="#" class="btn">Start Course</a>
+
 </div>
 
 </div>
 
-</section>
-<section class="features">
-
-<div class="card">
-<h3>🤖 ChatGPT Mastery</h3>
-<p>Learn ChatGPT from basic to advanced level.</p>
-<a href="#" class="btn">Coming Soon</a>
 </div>
-
-<div class="card">
-<h3>✍️ Prompt Engineering</h3>
-<p>Write powerful AI prompts like a professional.</p>
-<a href="#" class="btn">Coming Soon</a>
-</div>
-
-<div class="card">
-<h3>🔍 SEO with AI</h3>
-<p>Rank websites using AI-powered SEO techniques.</p>
-<a href="#" class="btn">Coming Soon</a>
-</div>
-
-<div class="card">
-<h3>💰 Freelancing with AI</h3>
-<p>Earn online using AI tools and freelancing skills.</p>
-<a href="#" class="btn">Coming Soon</a>
-</div>
-
-</section>
+<!-- FOOTER -->
 
 <footer>
-<p>© 2026 AI Learn Then Earn</p>
+
+<div class="container footer-content">
+
+<div>
+
+<h3>AI Learn Then Earn</h3>
+
+<p>
+Learn AI, Build Skills and Earn Online through practical courses and modern AI tools.
+</p>
+
+</div>
+
+<div>
+
+<h4>Quick Links</h4>
+
+<a href="index.html">Home</a>
+<a href="tools.html">AI Tools</a>
+<a href="courses.html">Courses</a>
+<a href="blog.html">Blog</a>
+<a href="earn.html">Earn</a>
+<a href="contact.html">Contact</a>
+
+</div>
+
+<div>
+
+<h4>Contact</h4>
+
+<p>📧 info@ailearnthenearn.com</p>
+<p>📍 Pakistan</p>
+
+</div>
+
+</div>
+
+<hr>
+
+<p class="copyright">
+© 2026 AI Learn Then Earn. All Rights Reserved.
+</p>
+
 </footer>
+
+<script src="script.js"></script>
 
 </body>
 </html>
+</section>
