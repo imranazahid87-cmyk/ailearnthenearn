@@ -1,0 +1,335 @@
+/* ==========================================
+   AI Learn Then Earn
+   SEO Course Style
+========================================== */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:#f5f7fb;
+color:#222;
+line-height:1.6;
+}
+
+/* HEADER */
+
+.header{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:18px 8%;
+
+background:#ffffff;
+
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+position:sticky;
+
+top:0;
+
+z-index:999;
+
+}
+
+.logo{
+
+font-size:26px;
+
+font-weight:bold;
+
+color:#2563eb;
+
+}
+
+.logo i{
+
+margin-right:10px;
+
+}
+
+nav{
+
+display:flex;
+
+gap:30px;
+
+}
+
+nav a{
+
+text-decoration:none;
+
+font-weight:600;
+
+color:#333;
+
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:#2563eb;
+
+}
+
+.theme-btn{
+
+width:45px;
+
+height:45px;
+
+border:none;
+
+border-radius:50%;
+
+background:#2563eb;
+
+color:#fff;
+
+cursor:pointer;
+
+font-size:18px;
+
+}
+
+/* HERO */
+
+.hero{
+
+padding:90px 8%;
+
+text-align:center;
+
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+
+color:#fff;
+
+}
+
+.hero h1{
+
+font-size:55px;
+
+margin-bottom:20px;
+
+}
+
+.hero p{
+
+font-size:20px;
+
+max-width:700px;
+
+margin:auto;
+
+margin-bottom:35px;
+
+}
+
+.btn{
+
+display:inline-block;
+
+padding:16px 35px;
+
+background:#fff;
+
+color:#2563eb;
+
+text-decoration:none;
+
+border-radius:50px;
+
+font-weight:bold;
+
+transition:.3s;
+
+}
+
+.btn:hover{
+
+transform:translateY(-4px);
+
+}
+
+/* SECTION */
+
+.section-title{
+
+text-align:center;
+
+font-size:40px;
+
+margin-top:70px;
+
+margin-bottom:50px;
+
+}
+
+/* MODULE GRID */
+
+.module-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+gap:30px;
+
+padding:0 8% 80px;
+
+}
+
+/* CARD */
+
+.card{
+
+background:#fff;
+
+padding:30px;
+
+border-radius:18px;
+
+box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+transition:.4s;
+
+border-top:6px solid #2563eb;
+
+}
+
+.card:hover{
+
+transform:translateY(-10px);
+
+box-shadow:0 20px 45px rgba(0,0,0,.15);
+
+}
+
+.card span{
+
+display:inline-block;
+
+padding:8px 18px;
+
+background:#2563eb;
+
+color:#fff;
+
+border-radius:30px;
+
+font-size:14px;
+
+margin-bottom:18px;
+
+}
+
+.card h3{
+
+font-size:28px;
+
+margin-bottom:15px;
+
+color:#111827;
+
+}
+
+.card p{
+
+color:#555;
+
+margin-bottom:25px;
+
+}
+
+.card a{
+
+display:inline-block;
+
+text-decoration:none;
+
+padding:13px 25px;
+
+background:#2563eb;
+
+color:#fff;
+
+border-radius:40px;
+
+font-weight:bold;
+
+transition:.3s;
+
+}
+
+.card a:hover{
+
+background:#1d4ed8;
+
+}
+
+/* FOOTER */
+
+footer{
+
+background:#111827;
+
+color:#fff;
+
+text-align:center;
+
+padding:30px;
+
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.header{
+
+flex-direction:column;
+
+gap:20px;
+
+}
+
+nav{
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+}
+
+.hero h1{
+
+font-size:38px;
+
+}
+
+.hero p{
+
+font-size:17px;
+
+}
+
+.section-title{
+
+font-size:30px;
+
+}
+
+}
