@@ -333,3 +333,52 @@ font-size:30px;
 }
 
 }
+/* =========================
+   DARK MODE
+========================= */
+
+.dark{
+
+background:#0f172a;
+
+color:#ffffff;
+
+}
+
+.dark .header{
+
+background:#111827;
+
+}
+
+.dark .card{
+
+background:#1e293b;
+
+color:#ffffff;
+
+}
+
+.dark .card h3{
+
+color:#ffffff;
+
+}
+
+.dark .card p{
+
+color:#d1d5db;
+
+}
+
+.dark nav a{
+
+color:#ffffff;
+
+}
+
+.dark footer{
+
+background:#020617;
+
+}
