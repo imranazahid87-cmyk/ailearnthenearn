@@ -170,3 +170,166 @@ font-size:28px;
 }
 
 }
+/* ===========================
+   Premium Top Navigation
+=========================== */
+
+.navbar{
+    background:#ffffff;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 30px;
+    margin-top:20px;
+    border-radius:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.logo{
+    font-size:26px;
+    font-weight:bold;
+    color:#2563eb;
+}
+
+.menu{
+    display:flex;
+    gap:20px;
+}
+
+.menu a{
+    color:#333;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+}
+
+.menu a:hover{
+    color:#2563eb;
+}
+
+/* ===========================
+   Statistics Cards
+=========================== */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    margin:60px 0;
+}
+
+.stat-box{
+    background:white;
+    border-radius:20px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.stat-box:hover{
+    transform:translateY(-8px);
+}
+
+.stat-box h2{
+    color:#2563eb;
+    font-size:36px;
+}
+
+.stat-box p{
+    margin-top:10px;
+}
+
+/* ===========================
+   Learning Outcomes
+=========================== */
+
+.outcomes{
+
+background:white;
+
+padding:40px;
+
+margin-top:60px;
+
+border-radius:20px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.outcomes ul{
+
+margin-top:20px;
+
+padding-left:20px;
+
+}
+
+.outcomes li{
+
+margin-bottom:15px;
+
+}
+
+/* ===========================
+   CTA Section
+=========================== */
+
+.cta{
+
+margin:70px 0;
+
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+
+color:white;
+
+padding:60px 20px;
+
+text-align:center;
+
+border-radius:20px;
+
+}
+
+.cta h2{
+
+font-size:38px;
+
+margin-bottom:20px;
+
+}
+
+.cta p{
+
+font-size:18px;
+
+margin-bottom:25px;
+
+}
+
+.cta a{
+
+background:white;
+
+color:#2563eb;
+
+padding:14px 30px;
+
+border-radius:40px;
+
+font-weight:bold;
+
+text-decoration:none;
+
+transition:.3s;
+
+display:inline-block;
+
+}
+
+.cta a:hover{
+
+transform:scale(1.05);
+
+}
