@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Chapter 1 | Real-World AI Projects</title>
+
+<link rel="stylesheet" href="../style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="chapter-container">
+
+<span class="chapter-badge">
+
+📖 Module 10 • Chapter 01
+
+</span>
+
+<h1>Real-World AI Projects</h1>
+
+<p class="chapter-intro">
+
+This chapter brings together everything you have learned throughout the course. Instead of learning new concepts, you will build practical AI projects that can be added to your portfolio and used to impress clients or employers.
+
+</p>
+
+<hr>
+
+<h2>Why Build Real Projects?</h2>
+
+<p>
+
+Employers and freelance clients care more about what you can build than what you know. Practical projects demonstrate your skills and increase your credibility.
+
+</p>
+
+<ul>
+
+<li>Improve practical experience.</li>
+
+<li>Create a professional portfolio.</li>
+
+<li>Prepare for freelance projects.</li>
+
+<li>Build confidence.</li>
+
+<li>Demonstrate AI problem-solving skills.</li>
+
+</ul>
+
+<hr>
+
+<h2>Project 1 – AI Business Assistant</h2>
+
+<div class="chapter-card">
+
+<p>
+
+Create an AI assistant that writes emails, summarizes meetings, creates reports and answers customer questions using professional prompts.
+
+</p>
+
+</div>
+
+<hr>
+
+<h2>Project 2 – SEO Content System</h2>
+
+<div class="chapter-card">
+
+<p>
+
+Build a workflow that researches keywords, creates SEO articles, generates meta descriptions and produces optimized blog posts.
+
+</p>
+
+</div>
+
+<hr>
+
+<h2>Project 3 – AI Image Creation</h2>
+
+<div class="chapter-card">
+
+<p>
+
+Design product advertisements, logos, social media graphics and website hero images using advanced image prompts.
+
+</p>
+
+</div>
+
+<hr>
+
+<h2>Project 4 – Freelance Client Project</h2>
+
+<div class="chapter-card">
+
+<p>
+
+Simulate a real client project from receiving requirements to delivering the final work professionally.
+
+</p>
+
+</div>
+
+<hr>
+
+<h2>Project 5 – AI Website Project</h2>
+
+<div class="chapter-card">
+
+<p>
+
+Develop a complete AI course website using HTML, CSS, JavaScript and AI-generated content.
+
+</p>
+
+</div>
+
+<hr>
+
+<h2>Professional Project Prompt</h2>
+
+<div class="success-box">
+
+You are a Senior AI Consultant.
+
+Create a complete project plan for an AI-powered education website.
+
+Include project goals, required AI tools, workflow, deliverables, timeline and expected outcomes.
+
+</div>
+
+<hr>
+
+<h2>Project Submission Checklist</h2>
+
+<ul>
+
+<li>Project Title</li>
+
+<li>Objective</li>
+
+<li>Tools Used</li>
+
+<li>Prompt Examples</li>
+
+<li>Screenshots</li>
+
+<li>Final Results</li>
+
+<li>Lessons Learned</li>
+
+</ul>
+
+<hr>
+
+<h2>Best Practices</h2>
+
+<ul>
+
+<li>Work on real-world problems.</li>
+
+<li>Document your workflow.</li>
+
+<li>Test every prompt before submission.</li>
+
+<li>Organize files professionally.</li>
+
+<li>Continuously improve your projects.</li>
+
+</ul>
+
+<hr>
+
+<h2>Practice Exercise</h2>
+
+<p>
+
+Choose one project from this chapter and prepare a complete project plan including objectives, AI tools, prompts, expected results and timeline.
+
+</p>
+
+<hr>
+
+<h2>Key Takeaways</h2>
+
+<ul>
+
+<li>Projects demonstrate real skills.</li>
+
+<li>Strong portfolios attract better clients.</li>
+
+<li>Professional documentation adds value.</li>
+
+<li>Testing improves project quality.</li>
+
+<li>Keep improving your projects over time.</li>
+
+</ul>
+
+<div class="chapter-navigation">
+
+<a href="index.html" class="secondary-btn">
+
+← Module Home
+
+</a>
+
+<a href="chapter2.html" class="primary-btn">
+
+Next Chapter →
+
+</a>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
