@@ -362,3 +362,175 @@ display:none;
 }
 
 }
+/* ==========================
+   MODULE SECTION
+========================== */
+
+.modules{
+
+    width:90%;
+    margin:100px auto;
+
+}
+
+.section-title{
+
+    text-align:center;
+    margin-bottom:60px;
+
+}
+
+.section-title span{
+
+    color:#8b5cf6;
+    font-weight:600;
+
+}
+
+.section-title h2{
+
+    font-size:42px;
+    margin:15px 0;
+
+}
+
+.section-title p{
+
+    color:#94a3b8;
+    max-width:700px;
+    margin:auto;
+
+}
+
+.module-grid{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+
+}
+
+.module-card{
+
+    background:#1e293b;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:22px;
+    padding:30px;
+    transition:.4s;
+
+}
+
+.module-card:hover{
+
+    transform:translateY(-12px);
+    border-color:#8b5cf6;
+    box-shadow:0 15px 40px rgba(124,58,237,.30);
+
+}
+
+.module-icon{
+
+    width:70px;
+    height:70px;
+    border-radius:18px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#7c3aed;
+
+    font-size:32px;
+
+    margin-bottom:20px;
+
+}
+
+.level{
+
+    background:#334155;
+    padding:6px 15px;
+    border-radius:20px;
+    font-size:13px;
+
+}
+
+.beginner{
+
+    background:#16a34a;
+
+}
+
+.intermediate{
+
+    background:#ea580c;
+
+}
+
+.module-card h3{
+
+    margin-top:25px;
+    color:#8b5cf6;
+
+}
+
+.module-card h4{
+
+    margin:15px 0;
+    font-size:24px;
+
+}
+
+.module-card p{
+
+    color:#cbd5e1;
+    line-height:1.8;
+
+}
+
+.module-info{
+
+    display:flex;
+    justify-content:space-between;
+
+    margin:25px 0;
+
+    color:#94a3b8;
+
+}
+
+.start-btn{
+
+    display:block;
+    text-align:center;
+
+    background:linear-gradient(135deg,#7c3aed,#3b82f6);
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+}
+
+.locked{
+
+    width:100%;
+    padding:15px;
+
+    background:#334155;
+
+    color:white;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:not-allowed;
+
+}
