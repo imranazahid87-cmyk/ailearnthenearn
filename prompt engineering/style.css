@@ -671,9 +671,20 @@ gap:15px;
 
 .module-header{
 background:linear-gradient(135deg,#6C63FF,#8A7DFF);
+padding:70px 20px;
 color:#fff;
-padding:80px 20px;
 text-align:center;
+}
+
+.module-header h1{
+font-size:40px;
+margin:20px 0;
+}
+
+.module-header p{
+max-width:700px;
+margin:auto;
+font-size:18px;
 }
 
 .back-btn{
@@ -685,29 +696,29 @@ font-weight:600;
 
 .module-number{
 display:inline-block;
+background:#ffffff30;
 padding:8px 18px;
-background:rgba(255,255,255,.2);
-border-radius:50px;
-margin-bottom:20px;
-font-weight:700;
-}
-
-.module-header h1{
-font-size:42px;
-margin-bottom:20px;
+border-radius:30px;
+font-weight:600;
+margin-bottom:15px;
 }
 
 .module-content{
-padding:80px 0;
-background:#f8f9fc;
+padding:70px 0;
+background:#f5f7ff;
 }
 
 .chapter-card{
 background:#fff;
 padding:30px;
-margin-bottom:25px;
-border-radius:18px;
-box-shadow:0 10px 30px rgba(0,0,0,.08);
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+margin-bottom:30px;
+transition:.3s;
+}
+
+.chapter-card:hover{
+transform:translateY(-8px);
 }
 
 .chapter-card h2{
@@ -717,18 +728,38 @@ margin-bottom:10px;
 
 .chapter-card h3{
 margin-bottom:15px;
+font-size:28px;
 }
 
 .chapter-card p{
-margin-bottom:25px;
 color:#666;
+margin-bottom:25px;
 }
 
 .module-navigation{
 display:flex;
 justify-content:space-between;
 margin-top:50px;
-flex-wrap:wrap;
 gap:20px;
 }
+
+@media(max-width:768px){
+
+.module-navigation{
+flex-direction:column;
+}
+
+.module-navigation a{
+width:100%;
+text-align:center;
+}
+
+.module-header h1{
+font-size:30px;
+}
+
+.chapter-card h3{
+font-size:22px;
+}
+
 }
