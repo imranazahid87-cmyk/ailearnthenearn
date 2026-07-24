@@ -657,14 +657,13 @@ margin-bottom:15px;
 display:block;
 
 }
-
 .footer-links{
-
 flex-direction:column;
-
 gap:15px;
+}
 
 }
+
 /* ==========================
    MODULE PAGE
 ========================== */
@@ -757,6 +756,7 @@ text-align:center;
 .module-header h1{
 font-size:30px;
 }
+   }
 
 .chapter-card h3{
 font-size:22px;
