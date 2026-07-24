@@ -534,3 +534,161 @@ display:none;
     cursor:not-allowed;
 
 }
+/*=========================================
+      MODULE PAGE
+=========================================*/
+
+.module-header{
+
+    width:90%;
+    margin:80px auto 50px;
+    text-align:center;
+
+}
+
+.module-badge{
+
+    display:inline-block;
+    background:linear-gradient(135deg,#7c3aed,#3b82f6);
+    color:#fff;
+    padding:8px 18px;
+    border-radius:30px;
+    font-size:14px;
+    font-weight:600;
+    margin-bottom:20px;
+
+}
+
+.module-header h1{
+
+    font-size:48px;
+    margin-bottom:20px;
+
+}
+
+.module-header p{
+
+    max-width:700px;
+    margin:auto;
+    color:#94a3b8;
+    line-height:1.8;
+
+}
+
+.progress{
+
+    width:100%;
+    max-width:700px;
+    height:12px;
+    background:#1e293b;
+    border-radius:20px;
+    margin:40px auto 20px;
+    overflow:hidden;
+
+}
+
+.progress-bar{
+
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,#7c3aed,#3b82f6);
+    border-radius:20px;
+
+}
+
+/*=========================================
+      LESSON CARDS
+=========================================*/
+
+.lesson-grid{
+
+    width:90%;
+    margin:70px auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+
+}
+
+.lesson-card{
+
+    background:#1e293b;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:20px;
+    padding:30px;
+    transition:.35s;
+
+}
+
+.lesson-card:hover{
+
+    transform:translateY(-10px);
+    border-color:#7c3aed;
+    box-shadow:0 15px 35px rgba(124,58,237,.25);
+
+}
+
+.lesson-card span{
+
+    display:inline-block;
+    background:#312e81;
+    color:#c4b5fd;
+    padding:6px 14px;
+    border-radius:30px;
+    font-size:13px;
+    margin-bottom:18px;
+
+}
+
+.lesson-card h3{
+
+    font-size:24px;
+    margin-bottom:15px;
+
+}
+
+.lesson-card p{
+
+    color:#cbd5e1;
+    line-height:1.8;
+    margin-bottom:25px;
+
+}
+
+.lesson-card a{
+
+    display:inline-block;
+    text-decoration:none;
+    color:#fff;
+    background:linear-gradient(135deg,#7c3aed,#3b82f6);
+    padding:12px 22px;
+    border-radius:10px;
+    transition:.3s;
+
+}
+
+.lesson-card a:hover{
+
+    transform:scale(1.05);
+
+}
+
+/*=========================================
+      MOBILE
+=========================================*/
+
+@media(max-width:768px){
+
+.module-header h1{
+
+    font-size:34px;
+
+}
+
+.lesson-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+}
