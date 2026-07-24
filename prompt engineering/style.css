@@ -692,3 +692,145 @@ display:none;
 }
 
 }
+/* ===================================================
+   LESSON PAGE
+=================================================== */
+
+.lesson-container{
+    width:90%;
+    max-width:1100px;
+    margin:60px auto;
+}
+
+.back-btn{
+    display:inline-block;
+    text-decoration:none;
+    color:#94a3b8;
+    margin-bottom:25px;
+    transition:.3s;
+}
+
+.back-btn:hover{
+    color:#8b5cf6;
+}
+
+.lesson-header{
+    background:linear-gradient(135deg,#7c3aed,#3b82f6);
+    padding:60px;
+    border-radius:25px;
+    margin-bottom:40px;
+}
+
+.lesson-tag{
+    display:inline-block;
+    background:rgba(255,255,255,.15);
+    padding:8px 18px;
+    border-radius:30px;
+    font-size:14px;
+    margin-bottom:18px;
+}
+
+.lesson-header h1{
+    font-size:46px;
+    margin-bottom:15px;
+}
+
+.lesson-duration{
+    color:#f8fafc;
+}
+
+.lesson-box{
+    background:#1e293b;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:20px;
+    padding:35px;
+    margin-bottom:30px;
+    transition:.3s;
+}
+
+.lesson-box:hover{
+    border-color:#7c3aed;
+    transform:translateY(-4px);
+}
+
+.lesson-box h2{
+    margin-bottom:20px;
+    color:#8b5cf6;
+}
+
+.lesson-box p,
+.lesson-box li{
+    color:#cbd5e1;
+    line-height:1.9;
+}
+
+.lesson-box ul,
+.lesson-box ol{
+    margin-left:25px;
+}
+
+blockquote{
+    margin:20px 0;
+    padding:18px;
+    border-left:5px solid #8b5cf6;
+    background:#0f172a;
+    border-radius:10px;
+    font-style:italic;
+}
+
+.tip{
+    background:#172554;
+}
+
+.summary{
+    background:#052e16;
+}
+
+.lesson-navigation{
+    display:flex;
+    justify-content:flex-end;
+    margin-top:40px;
+}
+
+.next-btn{
+    text-decoration:none;
+    background:linear-gradient(135deg,#7c3aed,#3b82f6);
+    color:#fff;
+    padding:15px 35px;
+    border-radius:12px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.next-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 30px rgba(124,58,237,.30);
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media(max-width:768px){
+
+.lesson-header{
+    padding:35px 25px;
+}
+
+.lesson-header h1{
+    font-size:32px;
+}
+
+.lesson-box{
+    padding:25px;
+}
+
+.lesson-navigation{
+    justify-content:center;
+}
+
+.next-btn{
+    width:100%;
+    text-align:center;
+}
+}
