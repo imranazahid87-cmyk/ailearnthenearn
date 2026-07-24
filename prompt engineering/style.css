@@ -906,3 +906,57 @@ width:100%;
 height:auto;
 
 }
+/* ==========================
+PREMIUM MODULE CARD
+========================== */
+
+.module-card{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.module-number{
+
+position:absolute;
+
+top:15px;
+right:20px;
+
+font-size:40px;
+
+font-weight:700;
+
+opacity:.08;
+
+color:#6C63FF;
+
+}
+
+.progress-bar{
+
+width:100%;
+
+height:8px;
+
+background:#ececec;
+
+border-radius:20px;
+
+margin:20px 0;
+
+overflow:hidden;
+
+}
+
+.progress{
+
+height:100%;
+
+background:linear-gradient(90deg,#6C63FF,#9B8CFF);
+
+border-radius:20px;
+
+}
