@@ -1,0 +1,95 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#f4f7ff;
+    color:#333;
+    line-height:1.7;
+}
+
+.hero{
+    background:linear-gradient(135deg,#6C63FF,#8B5CF6);
+    color:white;
+    text-align:center;
+    padding:80px 20px;
+}
+
+.hero h1{
+    font-size:48px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    max-width:800px;
+    margin:auto;
+    font-size:20px;
+}
+
+.course-modules{
+    max-width:1200px;
+    margin:60px auto;
+    padding:20px;
+}
+
+.course-modules h2{
+    text-align:center;
+    margin-bottom:40px;
+    font-size:36px;
+    color:#4F46E5;
+}
+
+.module-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.module-card{
+    background:#fff;
+    padding:30px;
+    border-radius:18px;
+    text-decoration:none;
+    color:#333;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.module-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 20px 40px rgba(79,70,229,.25);
+}
+
+.module-card h3{
+    color:#4F46E5;
+    margin-bottom:15px;
+    font-size:24px;
+}
+
+.module-card p{
+    color:#666;
+    font-size:16px;
+}
+
+@media(max-width:768px){
+
+.hero{
+    padding:60px 20px;
+}
+
+.hero h1{
+    font-size:34px;
+}
+
+.hero p{
+    font-size:17px;
+}
+
+.course-modules h2{
+    font-size:28px;
+}
+
+}
