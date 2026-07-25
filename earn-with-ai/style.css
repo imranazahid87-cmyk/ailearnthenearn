@@ -1,0 +1,110 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#f6f8fc;
+    color:#222;
+}
+
+.hero{
+    background:linear-gradient(135deg,#6C63FF,#8B7DFF);
+    color:#fff;
+    text-align:center;
+    padding:80px 20px;
+}
+
+.hero h1{
+    font-size:48px;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.hero p{
+    max-width:750px;
+    margin:auto;
+    line-height:1.8;
+    font-size:18px;
+}
+
+.modules{
+    width:90%;
+    max-width:1200px;
+    margin:60px auto;
+}
+
+.modules h2{
+    text-align:center;
+    font-size:36px;
+    margin-bottom:45px;
+}
+
+.course-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:#fff;
+    padding:30px;
+    border-radius:18px;
+    text-decoration:none;
+    color:#222;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    transition:.35s;
+    border:2px solid transparent;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    border-color:#6C63FF;
+    box-shadow:0 18px 40px rgba(0,0,0,.15);
+}
+
+.card span{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#6C63FF;
+    color:#fff;
+    font-size:24px;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.card h3{
+    font-size:24px;
+    margin-bottom:15px;
+}
+
+.card p{
+    line-height:1.8;
+    color:#666;
+}
+
+@media(max-width:768px){
+
+.hero{
+padding:60px 20px;
+}
+
+.hero h1{
+font-size:34px;
+}
+
+.hero p{
+font-size:16px;
+}
+
+.modules h2{
+font-size:28px;
+}
+
+}
