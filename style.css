@@ -1230,3 +1230,28 @@ body{
 .nav-btn:hover{
     transform:translateY(-3px);
 }
+/* ===================================
+POPULAR AI TOOLS FINAL FIX
+=================================== */
+
+.ai-tools .tool-grid{
+    display:grid !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:30px !important;
+}
+
+.ai-tools .tool-card{
+    width:100%;
+    padding:35px 25px;
+    border-radius:20px;
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.ai-tools .tool-grid{
+    grid-template-columns:1fr !important;
+}
+
+}
