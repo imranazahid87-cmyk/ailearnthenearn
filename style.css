@@ -230,54 +230,99 @@ border:2px solid #fff;
 background:#fff;
 color:#2563eb;
 }
-/* ===========================
-   AI TOOLS SECTION
-=========================== */
+/*==========================
+  POPULAR AI TOOLS
+==========================*/
 
 .ai-tools{
-padding:80px 0;
-background:#ffffff;
+    padding:80px 0;
+    background:#ffffff;
 }
 
 .ai-tools h2{
-text-align:center;
-font-size:40px;
-color:#0f172a;
-margin-bottom:50px;
+    text-align:center;
+    font-size:40px;
+    color:#111827;
+    margin-bottom:15px;
+}
+
+.ai-tools .section-title{
+    max-width:700px;
+    margin:0 auto 50px;
+    text-align:center;
+    color:#6b7280;
+    font-size:18px;
+    line-height:1.8;
 }
 
 .tool-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:30px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
 }
 
 .tool-card{
-background:#fff;
-padding:30px;
-border-radius:20px;
-text-align:center;
-border:1px solid #e5e7eb;
-box-shadow:0 10px 30px rgba(15,23,42,.08);
-transition:.35s;
+    background:#fff;
+    border:1px solid #e5e7eb;
+    border-radius:18px;
+    padding:25px 20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    transition:.35s;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    min-height:260px;
 }
 
 .tool-card:hover{
-transform:translateY(-10px);
-box-shadow:0 18px 40px rgba(37,99,235,.18);
+    transform:translateY(-8px);
+    box-shadow:0 18px 40px rgba(37,99,235,.15);
 }
 
 .tool-card h3{
-font-size:24px;
-color:#2563eb;
-margin-bottom:15px;
+    font-size:22px;
+    color:#111827;
+    margin-bottom:15px;
+    line-height:1.4;
 }
 
 .tool-card p{
-color:#64748b;
-margin-bottom:25px;
+    color:#6b7280;
+    font-size:15px;
+    line-height:1.7;
+    margin-bottom:25px;
+    flex:1;
 }
 
+.tool-card .btn{
+    width:100%;
+    text-align:center;
+    margin-top:auto;
+}
+
+/* Tablet */
+
+@media(max-width:992px){
+
+.tool-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+/* Mobile */
+
+@media(max-width:576px){
+
+.tool-grid{
+grid-template-columns:1fr;
+}
+
+.tool-card{
+padding:22px 18px;
+}
+
+}
 /* ===========================
    NEWSLETTER
 =========================== */
