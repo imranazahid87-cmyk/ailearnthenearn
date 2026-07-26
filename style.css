@@ -231,73 +231,81 @@ background:#fff;
 color:#2563eb;
 }
 /*==========================
-  POPULAR AI TOOLS
+POPULAR AI TOOLS
 ==========================*/
 
 .ai-tools{
     padding:80px 0;
-    background:#ffffff;
+    background:#f7f9fc;
 }
 
 .ai-tools h2{
     text-align:center;
-    font-size:40px;
-    color:#111827;
-    margin-bottom:15px;
+    font-size:44px;
+    color:#0f172a;
+    margin-bottom:18px;
 }
 
 .ai-tools .section-title{
+    text-align:center;
     max-width:700px;
     margin:0 auto 50px;
-    text-align:center;
     color:#6b7280;
     font-size:18px;
     line-height:1.8;
 }
 
+/* 2 Cards in One Row */
+
 .tool-grid{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:25px;
+    grid-template-columns:repeat(2,1fr);
+    gap:30px;
 }
 
 .tool-card{
     background:#fff;
-    border:1px solid #e5e7eb;
-    border-radius:18px;
-    padding:25px 20px;
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    border-radius:22px;
+    padding:35px 30px;
+    text-align:center;
+    border:1px solid #edf2f7;
+    box-shadow:0 12px 35px rgba(0,0,0,.08);
     transition:.35s;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    min-height:260px;
 }
 
 .tool-card:hover{
     transform:translateY(-8px);
-    box-shadow:0 18px 40px rgba(37,99,235,.15);
+    box-shadow:0 20px 45px rgba(37,99,235,.18);
 }
 
 .tool-card h3{
-    font-size:22px;
+    font-size:30px;
+    font-weight:700;
     color:#111827;
     margin-bottom:15px;
-    line-height:1.4;
 }
 
 .tool-card p{
     color:#6b7280;
-    font-size:15px;
-    line-height:1.7;
-    margin-bottom:25px;
-    flex:1;
+    font-size:17px;
+    line-height:1.8;
+    margin-bottom:28px;
 }
 
 .tool-card .btn{
-    width:100%;
-    text-align:center;
-    margin-top:auto;
+    display:inline-block;
+    background:#1d7afc;
+    color:#fff;
+    text-decoration:none;
+    padding:13px 34px;
+    border-radius:10px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.tool-card .btn:hover{
+    background:#005eea;
+    transform:translateY(-2px);
 }
 
 /* Tablet */
@@ -306,20 +314,29 @@ color:#2563eb;
 
 .tool-grid{
 grid-template-columns:repeat(2,1fr);
+gap:22px;
 }
 
 }
 
 /* Mobile */
 
-@media(max-width:576px){
+@media(max-width:768px){
 
 .tool-grid{
 grid-template-columns:1fr;
 }
 
 .tool-card{
-padding:22px 18px;
+padding:28px 20px;
+}
+
+.tool-card h3{
+font-size:24px;
+}
+
+.tool-card p{
+font-size:15px;
 }
 
 }
