@@ -520,7 +520,6 @@ font-size:30px;
 
 .feature-grid,
 .course-grid,
-.tool-grid,
 .footer-content{
 grid-template-columns:1fr;
 }
