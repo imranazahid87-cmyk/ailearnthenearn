@@ -1,31 +1,126 @@
-ye<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>AI Chat & Assistants | AI Learn Then Earn</title>
-
 <link rel="stylesheet" href="../../style.css">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* BANNER */
+.cat-banner{
+  background: linear-gradient(135deg, #0b1736, #2563eb);
+  padding: 50px 0 40px;
+  text-align: center;
+  color: #fff;
+}
+.cat-banner h1{
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.cat-banner p{
+  font-size: 17px;
+  color: #dbe7ff;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* GRID */
+.tool-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin: 40px 0 60px;
+}
+
+/* ALL CARDS */
+.tool-card{
+  background: #fff;
+  border-radius: 18px;
+  padding: 30px 24px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  border: 1px solid #e5e7eb;
+  transition: .3s;
+  position: relative;
+}
+
+.tool-card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(37,99,235,0.16);
+}
+
+/* TOP 3 SPECIAL STYLE */
+.tool-card.top{
+  border: 2px solid #2563eb;
+  box-shadow: 0 10px 30px rgba(37,99,235,0.14);
+}
+
+/* RANK BADGE */
+.rank-badge{
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+}
+.rank-1{ background: #f59e0b; }  /* Gold */
+.rank-2{ background: #94a3b8; }  /* Silver */
+.rank-3{ background: #b45309; }  /* Bronze */
+.rank-other{ background: #e5e7eb; color: #6b7280; }
+
+.tool-icon{
+  font-size: 40px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.tool-card h3{
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 10px;
+}
+
+.tool-card p{
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+/* MOBILE */
+@media(max-width: 768px){
+  .tool-grid{ grid-template-columns: 1fr; }
+  .cat-banner h1{ font-size: 28px; }
+}
+
+</style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header class="header">
-
 <div class="container">
-
 <a href="../../index.html" class="logo">
 <img src="../../images/logo.webp" alt="Logo">
 <span>AI Learn Then Earn</span>
 </a>
-
 <nav id="navbar">
 <a href="../../index.html">Home</a>
 <a href="../../tools.html">AI Tools</a>
@@ -34,100 +129,140 @@ ye<!DOCTYPE html>
 <a href="../../blog.html">Blog</a>
 <a href="../../contact.html">Contact</a>
 </nav>
-
 </div>
-
 </header>
 
-<section class="ai-tools">
+<!-- BANNER -->
+<div class="cat-banner">
+  <h1>🤖 AI Chat & Assistants</h1>
+  <p>Discover the world's most popular AI chat assistants for writing, coding, learning and productivity.</p>
+</div>
 
+<!-- TOOLS -->
+<section class="ai-tools">
 <div class="container">
 
-<h2>🤖 AI Chat & Assistants</h2>
+  <div class="tool-grid">
 
-<p class="section-title">
-Discover the world's most popular AI chat assistants for writing, coding, learning and productivity.
-</p>
+    <!-- #1 -->
+    <div class="tool-card top">
+      <div class="rank-badge rank-1">🥇</div>
+      <span class="tool-icon">🤖</span>
+      <h3>ChatGPT</h3>
+      <p>The world's most popular AI assistant for writing, coding and productivity.</p>
+      <a href="chatgpt.html" class="btn">Open Guide</a>
+    </div>
 
-<div class="tool-grid">
+    <!-- #2 -->
+    <div class="tool-card top">
+      <div class="rank-badge rank-2">🥈</div>
+      <span class="tool-icon">💎</span>
+      <h3>Google Gemini</h3>
+      <p>Google's powerful AI assistant for learning, research and writing.</p>
+      <a href="gemini.html" class="btn">Open Guide</a>
+    </div>
 
-<div class="tool-card">
-<h3>🤖 ChatGPT</h3>
-<p>The world's most popular AI assistant for writing, coding and productivity.</p>
-<a href="chatgpt.html" class="btn">Open Guide</a>
+    <!-- #3 -->
+    <div class="tool-card top">
+      <div class="rank-badge rank-3">🥉</div>
+      <span class="tool-icon">🧠</span>
+      <h3>Claude AI</h3>
+      <p>Create long-form content and analyze documents with Claude.</p>
+      <a href="claude.html" class="btn">Open Guide</a>
+    </div>
+
+    <!-- #4 -->
+    <div class="tool-card">
+      <div class="rank-badge rank-other">4</div>
+      <span class="tool-icon">🔍</span>
+      <h3>Perplexity AI</h3>
+      <p>AI search engine with accurate answers and trusted sources.</p>
+      <a href="perplexity.html" class="btn">Open Guide</a>
+    </div>
+
+    <!-- #5 -->
+    <div class="tool-card">
+      <div class="rank-badge rank-other">5</div>
+      <span class="tool-icon">⚡</span>
+      <h3>Grok</h3>
+      <p>xAI assistant for coding, research and real-time information.</p>
+      <a href="grok.html" class="btn">Open Guide</a>
+    </div>
+
+    <!-- #6 -->
+    <div class="tool-card">
+      <div class="rank-badge rank-other">6</div>
+      <span class="tool-icon">🪟</span>
+      <h3>Microsoft Copilot</h3>
+      <p>AI assistant for Windows, Word, Excel and Microsoft 365.</p>
+      <a href="copilot.html" class="btn">Open Guide</a>
+    </div>
+
+    <!-- #7 -->
+    <div class="tool-card">
+      <div class="rank-badge rank-other">7</div>
+      <span class="tool-icon">🧠</span>
+      <h3>DeepSeek</h3>
+      <p>Powerful AI model for coding and technical problem solving.</p>
+      <a href="deepseek.html" class="btn">Open Guide</a>
+    </div>
+
+    <!-- #8 -->
+    <div class="tool-card">
+      <div class="rank-badge rank-other">8</div>
+      <span class="tool-icon">🎭</span>
+      <h3>Poe</h3>
+      <p>Use multiple AI models from one easy platform.</p>
+      <a href="poe.html" class="btn">Open Guide</a>
+    </div>
+
+    <!-- #9 -->
+    <div class="tool-card">
+      <div class="rank-badge rank-other">9</div>
+      <span class="tool-icon">🤖</span>
+      <h3>Meta AI</h3>
+      <p>Meta's AI assistant for chatting, creativity and productivity.</p>
+      <a href="meta-ai.html" class="btn">Open Guide</a>
+    </div>
+
+    <!-- #10 -->
+    <div class="tool-card">
+      <div class="rank-badge rank-other">10</div>
+      <span class="tool-icon">🌐</span>
+      <h3>You.com AI</h3>
+      <p>AI search and assistant for writing, coding and research.</p>
+      <a href="you-ai.html" class="btn">Open Guide</a>
+    </div>
+
+  </div>
+
 </div>
-
-<div class="tool-card">
-<h3>💎 Google Gemini</h3>
-<p>Google's AI assistant for learning, research and writing.</p>
-<a href="gemini.html" class="btn">Open Guide</a>
-</div>
-
-<div class="tool-card">
-<h3>🧠 Claude AI</h3>
-<p>Create long-form content and analyze documents with Claude.</p>
-<a href="claude.html" class="btn">Open Guide</a>
-</div>
-
-<div class="tool-card">
-<h3>🔍 Perplexity AI</h3>
-<p>AI search engine with accurate answers and trusted sources.</p>
-<a href="perplexity.html" class="btn">Open Guide</a>
-</div>
-
-<div class="tool-card">
-<h3>⚡ Grok</h3>
-<p>xAI assistant for coding, research and real-time information.</p>
-<a href="grok.html" class="btn">Open Guide</a>
-</div>
-
-<div class="tool-card">
-<h3>🪟 Microsoft Copilot</h3>
-<p>AI assistant for Windows, Word, Excel and Microsoft 365.</p>
-<a href="copilot.html" class="btn">Open Guide</a>
-</div>
-
-<div class="tool-card">
-<h3>🧠 DeepSeek</h3>
-<p>Powerful AI model for coding and technical problem solving.</p>
-<a href="deepseek.html" class="btn">Open Guide</a>
-</div>
-
-<div class="tool-card">
-<h3>🎭 Poe</h3>
-<p>Use multiple AI models from one easy platform.</p>
-<a href="poe.html" class="btn">Open Guide</a>
-</div>
-
-<div class="tool-card">
-<h3>🤖 Meta AI</h3>
-<p>Meta's AI assistant for chatting, creativity and productivity.</p>
-<a href="meta-ai.html" class="btn">Open Guide</a>
-</div>
-
-<div class="tool-card">
-<h3>🌐 You.com AI</h3>
-<p>AI search and assistant for writing, coding and research.</p>
-<a href="you-ai.html" class="btn">Open Guide</a>
-</div>
-
-</div>
-
-</div>
-
 </section>
 
+<!-- FOOTER -->
 <footer>
-
 <div class="container footer-content">
-
 <div>
 <h3>AI Learn Then Earn</h3>
-<p>Learn AI, Build Skills and Start Earning Online.</p>
+<p>Learn AI, Build Skills and Start Earning Online with step-by-step practical courses.</p>
 </div>
-
+<div>
+<h4>Quick Links</h4>
+<a href="../../index.html">Home</a>
+<a href="../../tools.html">AI Tools</a>
+<a href="../../courses.html">Courses</a>
+<a href="../../earn.html">Earn Online</a>
+<a href="../../blog.html">Blog</a>
+<a href="../../contact.html">Contact</a>
 </div>
-
+<div>
+<h4>Contact</h4>
+<p>📧 info@ailearnthenearn.com</p>
+<p>📍 Pakistan</p>
+</div>
+</div>
+<hr>
+<p class="copyright"></p>
 </footer>
 
 <script src="../../script.js"></script>
