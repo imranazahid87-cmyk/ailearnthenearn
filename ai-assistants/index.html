@@ -2,443 +2,179 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>AI Assistants | AI Learn Then Earn</title>
-
-<meta name="description"
-content="Learn the world's best AI Assistants with AI Learn Then Earn.">
-
-<link rel="stylesheet" href="../css/style.css">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
-
+<meta name="description" content="Learn the world's best AI Assistants with AI Learn Then Earn.">
+<link rel="stylesheet" href="../style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<!-- ===========================
-HEADER
-=========================== -->
-
+<!-- HEADER -->
 <header class="header">
+  <div class="container">
 
-<div class="container">
+    <a href="../index.html" class="logo">
+      <img src="../images/logo.webp" alt="AI Learn Then Earn">
+      <span>AI Learn Then Earn</span>
+    </a>
 
-<a href="../index.html" class="logo">
+    <nav id="navbar">
+      <a href="../index.html">Home</a>
+      <a href="../tools.html">AI Tools</a>
+      <a href="../courses.html">Courses</a>
+      <a href="../earn.html">Earn</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
 
-<img src="../images/logo.png" alt="AI Learn Then Earn">
+    <div class="header-right">
+      <div class="search-box">
+        <input type="text" placeholder="Search AI Assistants...">
+        <button>🔍</button>
+      </div>
+      <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    </div>
 
-<span>AI Learn Then Earn</span>
-
-</a>
-
-<nav id="navbar">
-
-<a href="../index.html">Home</a>
-
-<a href="../courses/index.html">Courses</a>
-
-<a href="../ai-tools/index.html">AI Tools</a>
-
-<a href="../blog/index.html">Blog</a>
-
-<a href="../contact/index.html">Contact</a>
-
-</nav>
-
-<div class="header-right">
-
-<div class="search-box">
-
-<input type="text" placeholder="Search AI Assistants...">
-
-<button>
-
-<i class="fas fa-search"></i>
-
-</button>
-
-</div>
-
-<div class="menu-btn" onclick="toggleMenu()">
-
-<i class="fas fa-bars"></i>
-
-</div>
-
-</div>
-
-</div>
-
+  </div>
 </header>
 
-<!-- ===========================
-PAGE HERO
-=========================== -->
-
-<section class="ai-hero">
-
-<div class="container">
-
-<h1>Top 10 AI Assistants</h1>
-
-<p>
-
-Discover the world's most powerful AI assistants for learning,
-freelancing, business, coding, productivity and content creation.
-
-</p>
-
-</div>
-
+<!-- PAGE HERO -->
+<section class="hero" style="padding:60px 0;">
+  <div class="container" style="text-align:center;">
+    <h1 style="font-size:46px;color:#fff;margin-bottom:15px;">Top 10 AI Assistants</h1>
+    <p style="font-size:18px;color:#dbe7ff;max-width:700px;margin:auto;">
+      Discover the world's most powerful AI assistants for learning,
+      freelancing, business, coding, productivity and content creation.
+    </p>
+  </div>
 </section>
 
-<!-- ===========================
-AI ASSISTANTS
-=========================== -->
-
+<!-- AI ASSISTANTS GRID -->
 <section class="ai-page">
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>Choose Your AI Assistant</h2>
-
-<p>
-
-Select any AI Assistant below and explore its features.
-
-</p>
-
-</div>
-
-<div class="ai-grid"><!-- ===========================
-CARD 1
-=========================== -->
-
-<div class="ai-card">
-
-<img src="../images/ai-tools/chatgpt.png" alt="ChatGPT">
-
-<h3>ChatGPT</h3>
-
-<p>
-
-The world's most popular AI assistant for writing, coding,
-research, freelancing and productivity.
-
-</p>
-
-<a href="../chatgpt/index.html" class="ai-btn">
-
-Learn More
-
-</a>
-
-</div>
-
-<!-- ===========================
-CARD 2
-=========================== -->
-
-<div class="ai-card">
-
-<img src="../images/ai-tools/gemini.png" alt="Google Gemini">
-
-<h3>Google Gemini</h3>
-
-<p>
-
-Google's powerful AI assistant for research, Google Workspace,
-coding and professional productivity.
-
-</p>
-
-<a href="../gemini/index.html" class="ai-btn">
-
-Learn More
-
-</a>
-
-</div>
-
-<!-- ===========================
-CARD 3
-=========================== -->
-
-<div class="ai-card">
-
-<img src="../images/ai-tools/claude.png" alt="Claude">
-
-<h3>Claude</h3>
-
-<p>
-
-Excellent for long-form writing, document analysis,
-PDF understanding and business reports.
-
-</p>
-
-<a href="../claude/index.html" class="ai-btn">
-
-Learn More
-
-</a>
-
-</div>
-
-<!-- ===========================
-CARD 4
-=========================== -->
-
-<div class="ai-card">
-
-<img src="../images/ai-tools/copilot.png" alt="Microsoft Copilot">
-
-<h3>Microsoft Copilot</h3>
-
-<p>
-
-Boost your productivity in Word, Excel,
-PowerPoint and Microsoft 365.
-
-</p>
-
-<a href="../copilot/index.html" class="ai-btn">
-
-Learn More
-
-</a>
-
-</div>
-
-<!-- ===========================
-CARD 5
-=========================== -->
-
-<div class="ai-card">
-
-<img src="../images/ai-tools/perplexity.png" alt="Perplexity AI">
-
-<h3>Perplexity AI</h3>
-
-<p>
-
-AI-powered search engine with accurate answers,
-research support and reliable citations.
-
-</p>
-
-<a href="../perplexity/index.html" class="ai-btn">
-
-Learn More
-
-</a>
-
-</div><!-- ===========================
-CARD 6
-=========================== -->
-
-<div class="ai-card">
-
-<img src="../images/ai-tools/grok.png" alt="Grok">
-
-<h3>Grok</h3>
-
-<p>
-
-Real-time AI assistant designed for fast answers,
-creative thinking and coding support.
-
-</p>
-
-<a href="../grok/index.html" class="ai-btn">
-
-Learn More
-
-</a>
-
-</div>
-
-<!-- ===========================
-CARD 7
-=========================== -->
-
-<div class="ai-card">
-
-<img src="../images/ai-tools/deepseek.png" alt="DeepSeek AI">
-
-<h3>DeepSeek AI</h3>
-
-<p>
-
-Powerful AI for programming, mathematics,
-reasoning and technical problem solving.
-
-</p>
-
-<a href="../deepseek/index.html" class="ai-btn">
-
-Learn More
-
-</a>
-
-</div>
-
-<!-- ===========================
-CARD 8
-=========================== -->
-
-<div class="ai-card">
-
-<img src="../images/ai-tools/meta.png" alt="Meta AI">
-
-<h3>Meta AI</h3>
-
-<p>
-
-Use AI inside WhatsApp, Facebook,
-Instagram and Messenger for daily tasks.
-
-</p>
-
-<a href="../meta-ai/index.html" class="ai-btn">
-
-Learn More
-
-</a>
-
-</div>
-
-<!-- ===========================
-CARD 9
-=========================== -->
-
-<div class="ai-card">
-
-<img src="../images/ai-tools/mistral.png" alt="Mistral AI">
-
-<h3>Mistral AI</h3>
-
-<p>
-
-Fast and efficient AI assistant for writing,
-coding, learning and productivity.
-
-</p>
-
-<a href="../mistral/index.html" class="ai-btn">
-
-Learn More
-
-</a>
-
-</div>
-
-<!-- ===========================
-CARD 10
-=========================== -->
-
-<div class="ai-card">
-
-<img src="../images/ai-tools/pi.png" alt="Pi AI">
-
-<h3>Pi AI</h3>
-
-<p>
-
-A friendly AI companion for conversations,
-brainstorming, learning and everyday support.
-
-</p>
-
-<a href="../pi-ai/index.html" class="ai-btn">
-
-Learn More
-
-</a>
-
-</div>
-
-</div>
-
-</div>
-<!-- ===========================
-FOOTER
-=========================== -->
-
+  <div class="container">
+
+    <h2 style="text-align:center;font-size:36px;color:#0f172a;margin-bottom:10px;">Choose Your AI Assistant</h2>
+    <p class="section-title">Select any AI Assistant below and explore its features.</p>
+
+    <div class="ai-grid">
+
+      <div class="ai-card">
+        <img src="../images/ai-tools/chatgpt.png" alt="ChatGPT">
+        <h3>ChatGPT</h3>
+        <p>The world's most popular AI assistant for writing, coding, research, freelancing and productivity.</p>
+        <a href="../chatgpt/index.html" class="ai-btn">Learn More</a>
+      </div>
+
+      <div class="ai-card">
+        <img src="../images/ai-tools/gemini.png" alt="Google Gemini">
+        <h3>Google Gemini</h3>
+        <p>Google's powerful AI assistant for research, Google Workspace, coding and professional productivity.</p>
+        <a href="../gemini/index.html" class="ai-btn">Learn More</a>
+      </div>
+
+      <div class="ai-card">
+        <img src="../images/ai-tools/claude.png" alt="Claude">
+        <h3>Claude</h3>
+        <p>Excellent for long-form writing, document analysis, PDF understanding and business reports.</p>
+        <a href="../claude/index.html" class="ai-btn">Learn More</a>
+      </div>
+
+      <div class="ai-card">
+        <img src="../images/ai-tools/copilot.png" alt="Microsoft Copilot">
+        <h3>Microsoft Copilot</h3>
+        <p>Boost your productivity in Word, Excel, PowerPoint and Microsoft 365.</p>
+        <a href="../copilot/index.html" class="ai-btn">Learn More</a>
+      </div>
+
+      <div class="ai-card">
+        <img src="../images/ai-tools/perplexity.png" alt="Perplexity AI">
+        <h3>Perplexity AI</h3>
+        <p>AI-powered search engine with accurate answers, research support and reliable citations.</p>
+        <a href="../perplexity/index.html" class="ai-btn">Learn More</a>
+      </div>
+
+      <div class="ai-card">
+        <img src="../images/ai-tools/grok.png" alt="Grok">
+        <h3>Grok</h3>
+        <p>Real-time AI assistant designed for fast answers, creative thinking and coding support.</p>
+        <a href="../grok/index.html" class="ai-btn">Learn More</a>
+      </div>
+
+      <div class="ai-card">
+        <img src="../images/ai-tools/deepseek.png" alt="DeepSeek AI">
+        <h3>DeepSeek AI</h3>
+        <p>Powerful AI for programming, mathematics, reasoning and technical problem solving.</p>
+        <a href="../deepseek/index.html" class="ai-btn">Learn More</a>
+      </div>
+
+      <div class="ai-card">
+        <img src="../images/ai-tools/meta.png" alt="Meta AI">
+        <h3>Meta AI</h3>
+        <p>Use AI inside WhatsApp, Facebook, Instagram and Messenger for daily tasks.</p>
+        <a href="../meta-ai/index.html" class="ai-btn">Learn More</a>
+      </div>
+
+      <div class="ai-card">
+        <img src="../images/ai-tools/mistral.png" alt="Mistral AI">
+        <h3>Mistral AI</h3>
+        <p>Fast and efficient AI assistant for writing, coding, learning and productivity.</p>
+        <a href="../mistral/index.html" class="ai-btn">Learn More</a>
+      </div>
+
+      <div class="ai-card">
+        <img src="../images/ai-tools/pi.png" alt="Pi AI">
+        <h3>Pi AI</h3>
+        <p>A friendly AI companion for conversations, brainstorming, learning and everyday support.</p>
+        <a href="../pi-ai/index.html" class="ai-btn">Learn More</a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
+  <div class="container footer-content">
 
-<div class="container">
+    <div>
+      <h3>AI Learn Then Earn</h3>
+      <p>Master AI Skills and Start Earning Online. Learn ChatGPT, Gemini, Claude, Copilot, SEO, AI Tools and much more.</p>
+    </div>
 
-<div class="footer-content">
+    <div>
+      <h4>Quick Links</h4>
+      <a href="../index.html">Home</a>
+      <a href="../tools.html">AI Tools</a>
+      <a href="../courses.html">Courses</a>
+      <a href="../earn.html">Earn Online</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../contact.html">Contact</a>
+    </div>
 
-<div>
+    <div>
+      <h4>Top AI Assistants</h4>
+      <a href="../chatgpt/index.html">ChatGPT</a>
+      <a href="../gemini/index.html">Google Gemini</a>
+      <a href="../claude/index.html">Claude</a>
+      <a href="../copilot/index.html">Microsoft Copilot</a>
+      <a href="../perplexity/index.html">Perplexity AI</a>
+    </div>
 
-<h3>AI Learn Then Earn</h3>
+  </div>
 
-<p>
-
-Master AI Skills and Start Earning Online.
-Learn ChatGPT, Gemini, Claude, Copilot,
-SEO, AI Tools and much more.
-
-</p>
-
-</div>
-
-<div>
-
-<h4>Quick Links</h4>
-
-<a href="../index.html">Home</a>
-<a href="../courses/index.html">Courses</a>
-<a href="../ai-tools/index.html">AI Tools</a>
-<a href="../blog/index.html">Blog</a>
-<a href="../contact/index.html">Contact</a>
-
-</div>
-
-<div>
-
-<h4>Top AI Assistants</h4>
-
-<a href="../chatgpt/index.html">ChatGPT</a>
-<a href="../gemini/index.html">Google Gemini</a>
-<a href="../claude/index.html">Claude</a>
-<a href="../copilot/index.html">Microsoft Copilot</a>
-<a href="../perplexity/index.html">Perplexity AI</a>
-
-</div>
-
-</div>
-
-<hr>
-
-<p class="copyright">
-
-© 2026 AI Learn Then Earn. All Rights Reserved.
-
-</p>
-
-</div>
-
+  <hr>
+  <p class="copyright">© 2026 AI Learn Then Earn. All Rights Reserved.</p>
 </footer>
 
-<button id="topBtn">
+<button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
-<i class="fas fa-arrow-up"></i>
-
-</button>
-
-<script src="../js/script.js"></script>
+<script src="../script.js"></script>
 
 </body>
-
 </html>
-</section>
