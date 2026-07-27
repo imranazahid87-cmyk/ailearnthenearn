@@ -1254,3 +1254,77 @@ POPULAR AI TOOLS FINAL FIX
 }
 
 }
+/*==========================
+AI ASSISTANT PAGE
+==========================*/
+
+.ai-page{
+padding:80px 0;
+background:#f7f9fc;
+}
+
+.ai-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:30px;
+margin-top:50px;
+}
+
+.ai-card{
+background:#fff;
+padding:30px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 12px 35px rgba(0,0,0,.08);
+transition:.35s;
+border:1px solid #eef2f7;
+}
+
+.ai-card:hover{
+transform:translateY(-10px);
+box-shadow:0 20px 45px rgba(47,128,255,.18);
+}
+
+.ai-card img{
+width:80px;
+height:80px;
+object-fit:contain;
+margin-bottom:20px;
+}
+
+.ai-card h3{
+font-size:26px;
+margin-bottom:15px;
+color:#111827;
+}
+
+.ai-card p{
+font-size:16px;
+color:#666;
+line-height:1.8;
+margin-bottom:25px;
+}
+
+.ai-btn{
+display:inline-block;
+padding:14px 30px;
+background:#2f80ff;
+color:#fff;
+text-decoration:none;
+border-radius:10px;
+font-weight:600;
+transition:.3s;
+}
+
+.ai-btn:hover{
+background:#0d6efd;
+transform:translateY(-3px);
+}
+
+@media(max-width:768px){
+
+.ai-grid{
+grid-template-columns:1fr;
+}
+
+}
