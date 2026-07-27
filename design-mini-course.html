@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Image Tools — Detailed Mini Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg1:#0f0c29; --bg2:#1a1440; --bg3:#241b5e;
+    --card:#191333; --text:#eae7fb; --muted:#a89fd1;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Inter', sans-serif;
+    background: radial-gradient(circle at 10% 0%, var(--bg3), var(--bg2) 45%, var(--bg1) 100%);
+    color:var(--text);
+    min-height:100vh;
+    padding:0 0 60px 0;
+  }
+  h1,h2,h3{ font-family:'Outfit', sans-serif; }
+
+  /* HERO */
+  .hero{ padding:44px 22px 30px; text-align:center; position:relative; overflow:hidden; }
+  .hero::before{
+    content:""; position:absolute; inset:0;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(255,46,147,0.25), transparent 40%),
+      radial-gradient(circle at 80% 10%, rgba(0,212,255,0.25), transparent 40%),
+      radial-gradient(circle at 50% 90%, rgba(255,184,0,0.15), transparent 40%);
+    z-index:0;
+  }
+  .hero-inner{ position:relative; z-index:1; }
+  .eyebrow{
+    display:inline-block; font-size:12.5px; letter-spacing:1.5px; color:#ffb800;
+    background:rgba(255,184,0,0.12); border:1px solid rgba(255,184,0,0.35);
+    padding:5px 14px; border-radius:20px; font-weight:600; margin-bottom:16px;
+  }
+  .hero h1{
+    font-size:30px; font-weight:800; line-height:1.25;
+    background: linear-gradient(90deg,#ff2e93,#00d4ff);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero p{ margin-top:14px; color:var(--muted); font-size:14.5px; line-height:1.7; max-width:520px; margin-left:auto; margin-right:auto; }
+
+  /* CONTENTS JUMP LIST */
+  .toc{
+    margin:26px 20px 0; padding:16px 16px;
+    background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08);
+    border-radius:16px;
+  }
+  .toc h3{ font-size:13px; letter-spacing:1px; color:var(--muted); text-transform:uppercase; margin-bottom:10px; }
+  .toc-grid{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .toc a{
+    display:flex; align-items:center; gap:8px;
+    font-size:13px; color:var(--text); text-decoration:none;
+    background:rgba(255,255,255,0.04); padding:8px 10px; border-radius:10px;
+  }
+  .toc a span.num{
+    width:20px; height:20px; border-radius:6px; font-size:10.5px;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; color:#0f0c29; flex:0 0 auto;
+  }
+
+  /* LESSON SECTIONS */
+  .lessons{ padding:26px 20px 0; display:flex; flex-direction:column; gap:26px; }
+  .lesson{
+    background:var(--card); border-radius:22px; padding:24px 20px;
+    border:1px solid rgba(255,255,255,0.06);
+    box-shadow:0 10px 28px rgba(0,0,0,0.28);
+    position:relative; scroll-margin-top:20px;
+  }
+  .lesson::before{
+    content:""; position:absolute; left:0; top:18px; bottom:18px; width:5px; border-radius:5px;
+  }
+  .l-head{ display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+  .l-num{
+    font-family:'Outfit'; font-weight:800; font-size:14px;
+    width:38px; height:38px; border-radius:12px;
+    display:flex; align-items:center; justify-content:center;
+    color:#0f0c29; flex:0 0 auto;
+  }
+  .l-title{ font-size:21px; font-weight:700; }
+  .l-tag{ font-size:11px; color:var(--muted); font-weight:600; letter-spacing:.5px; text-transform:uppercase; }
+
+  .l-body p{ font-size:14.5px; line-height:1.75; color:#dcd8f7; margin-bottom:12px; }
+  .l-body b{ color:#fff; }
+
+  .block-title{
+    font-size:12.5px; font-weight:700; letter-spacing:.5px; text-transform:uppercase;
+    color:var(--muted); margin:16px 0 8px;
+  }
+  ul.feat{ list-style:none; display:flex; flex-direction:column; gap:8px; margin-bottom:4px; }
+  ul.feat li{
+    font-size:14px; line-height:1.6; padding-right:6px;
+    display:flex; gap:8px; align-items:flex-start;
+  }
+  ul.feat li::before{ content:"✦"; flex:0 0 auto; margin-top:1px; }
+
+  ol.steps{ margin:0 0 4px 0; padding-right:20px; display:flex; flex-direction:column; gap:8px; }
+  ol.steps li{ font-size:14px; line-height:1.65; }
+
+  .pillrow{ display:flex; flex-wrap:wrap; gap:8px; margin:6px 0 4px; }
+  .pill{
+    font-size:12px; padding:6px 12px; border-radius:20px;
+    background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);
+  }
+
+  .prosconstable{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:8px 0 4px; }
+  .pc-box{ border-radius:12px; padding:10px 12px; font-size:13px; line-height:1.55; }
+  .pc-box.pro{ background:rgba(0,230,118,0.08); border:1px solid rgba(0,230,118,0.3); }
+  .pc-box.con{ background:rgba(255,77,109,0.08); border:1px solid rgba(255,77,109,0.3); }
+  .pc-box b{ display:block; margin-bottom:5px; font-size:11.5px; letter-spacing:.5px; text-transform:uppercase; }
+  .pc-box.pro b{ color:#00e676; }
+  .pc-box.con b{ color:#ff4d6d; }
+
+  .tip{
+    margin-top:14px; padding:13px 14px; border-radius:12px;
+    background:rgba(255,184,0,0.08); border:1px dashed rgba(255,184,0,0.4);
+    font-size:13.5px; line-height:1.6;
+  }
+  .tip b{ color:#ffb800; }
+
+  .price-tag{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:12.5px; font-weight:600; padding:6px 12px;
+    border-radius:20px; background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.12); margin-top:10px;
+  }
+
+  /* accent colors */
+  .m1::before,.m1 .l-num,.toc .d1{ background:#00d4ff; }
+  .m2::before,.m2 .l-num,.toc .d2{ background:#ff2e93; }
+  .m3::before,.m3 .l-num,.toc .d3{ background:#ffb800; }
+  .m4::before,.m4 .l-num,.toc .d4{ background:#ff6f3c; }
+  .m5::before,.m5 .l-num,.toc .d5{ background:#7c5cff; }
+  .m6::before,.m6 .l-num,.toc .d6{ background:#00e676; }
+  .m7::before,.m7 .l-num,.toc .d7{ background:#ff4d6d; }
+  .m8::before,.m8 .l-num,.toc .d8{ background:#4dd9ff; }
+  .m9::before,.m9 .l-num,.toc .d9{ background:#ffe14d; }
+  .m10::before,.m10 .l-num,.toc .d10{ background:#c084fc; }
+
+  /* CLOSING */
+  .closing{
+    margin:34px 20px 0; padding:26px 20px; border-radius:20px;
+    background:linear-gradient(135deg, rgba(255,46,147,0.15), rgba(0,212,255,0.15));
+    border:1px solid rgba(255,255,255,0.1); text-align:center;
+  }
+  .closing h2{ font-size:20px; margin-bottom:10px; }
+  .closing p{ font-size:14px; color:var(--muted); line-height:1.7; }
+  .closing .earn{ margin-top:16px; display:flex; flex-direction:column; gap:8px; text-align:right; font-size:13.5px; }
+  .closing .earn div{ background:rgba(255,255,255,0.05); padding:10px 14px; border-radius:10px; }
+
+  @media (max-width:380px){ .prosconstable{ grid-template-columns:1fr; } .toc-grid{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">DETAILED MINI COURSE • 10 FULL LESSONS</span>
+      <h1>AI Image Tools<br>Complete Guide</h1>
+      <p>Har tool ki apni pooری lesson hai — kya hai, features, kaise use karein step-by-step, pricing, pros/cons, aur ek practical tip. Scroll karte jayein ya neeche list se seedha kisi tool par jump karein.</p>
+    </div>
+  </section>
+
+  <div class="toc">
+    <h3>Course Contents</h3>
+    <div class="toc-grid">
+      <a href="#t1"><span class="num d1">1</span>Midjourney</a>
+      <a href="#t2"><span class="num d2">2</span>Canva AI</a>
+      <a href="#t3"><span class="num d3">3</span>DALL-E 3</a>
+      <a href="#t4"><span class="num d4">4</span>Adobe Firefly</a>
+      <a href="#t5"><span class="num d5">5</span>Leonardo AI</a>
+      <a href="#t6"><span class="num d6">6</span>Stable Diffusion</a>
+      <a href="#t7"><span class="num d7">7</span>Ideogram AI</a>
+      <a href="#t8"><span class="num d8">8</span>Playground AI</a>
+      <a href="#t9"><span class="num d9">9</span>Clipdrop</a>
+      <a href="#t10"><span class="num d10">10</span>Krea AI</a>
+    </div>
+  </div>
+
+  <div class="lessons">
+
+    <!-- 1 MIDJOURNEY -->
+    <div class="lesson m1" id="t1">
+      <div class="l-head">
+        <div class="l-num">01</div>
+        <div><div class="l-title">Midjourney</div><div class="l-tag">Art & Illustration</div></div>
+      </div>
+      <div class="l-body">
+        <p>Midjourney duniya ka sab se popular AI image generator hai. Yeh sirf text prompt se stunning, artistic aur kabhi kabhi surreal images bana deta hai. Yeh app Discord server ke zariye chalta hai — koi separate website nahi.</p>
+
+        <div class="block-title">Key Features</div>
+        <ul class="feat">
+          <li>Highly artistic aur detailed image quality, khaas taur par fantasy/concept art mein</li>
+          <li><b>--v</b> parameters se different model versions try kar sakte hain</li>
+          <li>Image ko upscale ya variations create karne ka option</li>
+          <li>"Niji" mode anime-style images ke liye alag se available hai</li>
+        </ul>
+
+        <div class="block-title">Kaise Use Karein (Steps)</div>
+        <ol class="steps">
+          <li>Discord account banayein aur Midjourney server join karein</li>
+          <li>Kisi bhi channel mein <b>/imagine</b> command type karein</li>
+          <li>Apna prompt likhein (jaise: "a lighthouse at sunset, oil painting style")</li>
+          <li>Enter dabayein — 4 image options milengi</li>
+          <li>Pasand ki image select karke Upscale (U1-U4) ya Variation (V1-V4) button dabayein</li>
+        </ol>
+
+        <div class="pillrow">
+          <span class="pill">Best for: Artists & Illustrators</span>
+          <span class="pill">Platform: Discord</span>
+        </div>
+
+        <div class="prosconstable">
+          <div class="pc-box pro"><b>Pros</b>Best-in-class art quality, strong community, frequent updates</div>
+          <div class="pc-box con"><b>Cons</b>No free plan, Discord-only interface confusing for beginners</div>
+        </div>
+
+        <span class="price-tag">💲 Starting ~$10/month (Basic Plan)</span>
+
+        <div class="tip"><b>Tip:</b> Prompt mein lighting, camera angle aur art style add karein — jaise "cinematic lighting, 35mm lens, watercolor style" — result dramatically behtar ho jata hai.</div>
+      </div>
+    </div>
+
+    <!-- 2 CANVA AI -->
+    <div class="lesson m2" id="t2">
+      <div class="l-head">
+        <div class="l-num">02</div>
+        <div><div class="l-title">Canva AI</div><div class="l-tag">Graphic Design</div></div>
+      </div>
+      <div class="l-body">
+        <p>Canva AI un logon ke liye best hai jo bina design skills ke professional graphics, social media posts aur presentations banana chahte hain. Yeh AI features ko drag-and-drop editor ke sath combine karta hai.</p>
+
+        <div class="block-title">Key Features</div>
+        <ul class="feat">
+          <li><b>Magic Design</b> — upload ki gayi photo se khud-ba-khud multiple layouts bana deta hai</li>
+          <li><b>Magic Write</b> — captions aur text content AI se generate karta hai</li>
+          <li><b>Background Remover</b> — one-click background removal</li>
+          <li>Hazaron ready-made templates: Instagram posts, resumes, presentations, waghera</li>
+        </ul>
+
+        <div class="block-title">Kaise Use Karein (Steps)</div>
+        <ol class="steps">
+          <li>Canva.com par free account banayein</li>
+          <li>"Create a design" par click karke apna format choose karein (jaise Instagram Post)</li>
+          <li>Left panel mein "Apps" → "Magic Design" open karein</li>
+          <li>Photo upload karein ya text prompt likhein</li>
+          <li>Generated designs mein se ek choose karke edit/customize karein</li>
+        </ol>
+
+        <div class="pillrow"><span class="pill">Best for: Beginners & Marketers</span><span class="pill">Platform: Web + App</span></div>
+
+        <div class="prosconstable">
+          <div class="pc-box pro"><b>Pros</b>Bohat aasan interface, free plan available, sab kuch ek jagah</div>
+          <div class="pc-box con"><b>Cons</b>Advanced AI image generation mein Midjourney jitni quality nahi</div>
+        </div>
+
+        <span class="price-tag">💲 Free plan available, Pro ~$13/month</span>
+
+        <div class="tip"><b>Tip:</b> Apna brand kit (colors, fonts, logo) ek dafa set kar lein — phir har design automatically usi brand style mein banega.</div>
+      </div>
+    </div>
+
+    <!-- 3 DALL-E 3 -->
+    <div class="lesson m3" id="t3">
+      <div class="l-head">
+        <div class="l-num">03</div>
+        <div><div class="l-title">DALL-E 3</div><div class="l-tag">Realistic Images</div></div>
+      </div>
+      <div class="l-body">
+        <p>OpenAI ka DALL-E 3 text descriptions ko realistic aur accurate images mein convert karta hai. Yeh ChatGPT ke andar directly available hai, is liye use karna sab se aasan hai.</p>
+
+        <div class="block-title">Key Features</div>
+        <ul class="feat">
+          <li>ChatGPT conversation ke andar directly image generate hoti hai</li>
+          <li>Prompt ki tafseel (detail) ko bohat accuracy se follow karta hai</li>
+          <li>Text/words ko image ke andar theek se likh sakta hai</li>
+          <li>Follow-up mein image ko edit karne ki request bhi kar sakte hain</li>
+        </ul>
+
+        <div class="block-title">Kaise Use Karein (Steps)</div>
+        <ol class="steps">
+          <li>ChatGPT (Plus ya free tier jahan available ho) open karein</li>
+          <li>Chat box mein apni image ka description likhein</li>
+          <li>ChatGPT khud image generate kar dega</li>
+          <li>Agar changes chahiye, agli message mein bata dein (e.g. "background blue kar do")</li>
+        </ol>
+
+        <div class="pillrow"><span class="pill">Best for: Quick mockups & ideas</span><span class="pill">Platform: ChatGPT</span></div>
+
+        <div class="prosconstable">
+          <div class="pc-box pro"><b>Pros</b>Bohat easy access, prompt ko achi tarah samajhta hai</div>
+          <div class="pc-box con"><b>Cons</b>Artistic style mein Midjourney jaisi depth nahi</div>
+        </div>
+
+        <span class="price-tag">💲 ChatGPT Plus ~$20/month</span>
+
+        <div class="tip"><b>Tip:</b> Prompt jitna specific hoga utna better — "a red ceramic cup on a wooden table, soft morning light" jaisi clarity dein.</div>
+      </div>
+    </div>
+
+    <!-- 4 ADOBE FIREFLY -->
+    <div class="lesson m4" id="t4">
+      <div class="l-head">
+        <div class="l-num">04</div>
+        <div><div class="l-title">Adobe Firefly</div><div class="l-tag">Professional Editing</div></div>
+      </div>
+      <div class="l-body">
+        <p>Adobe Firefly Adobe ka apna AI tool hai jo professional photo editing, <b>Generative Fill</b> aur creative design ke liye bana hai — Photoshop/Illustrator users ke liye perfect fit.</p>
+
+        <div class="block-title">Key Features</div>
+        <ul class="feat">
+          <li><b>Generative Fill</b> — image ke kisi hisse ko select karke naya content generate karein</li>
+          <li>Photoshop aur Illustrator ke andar directly integrated</li>
+          <li>Text effects aur generative recolor jaisi features</li>
+          <li>Licensed/commercially-safe content par trained</li>
+        </ul>
+
+        <div class="block-title">Kaise Use Karein (Steps)</div>
+        <ol class="steps">
+          <li>Firefly.adobe.com par account banayein ya Photoshop mein login karein</li>
+          <li>Photoshop mein Lasso tool se image ka hissa select karein</li>
+          <li>"Generative Fill" par click karke prompt likhein (ya khali chorein for auto-remove)</li>
+          <li>Adobe 3 variations generate karega, apni pasand choose karein</li>
+        </ol>
+
+        <div class="pillrow"><span class="pill">Best for: Professional Designers</span><span class="pill">Platform: Web + Adobe Suite</span></div>
+
+        <div class="prosconstable">
+          <div class="pc-box pro"><b>Pros</b>Commercially safe, Photoshop ke sath seamless</div>
+          <div class="pc-box con"><b>Cons</b>Full features ke liye Adobe subscription chahiye</div>
+        </div>
+
+        <span class="price-tag">💲 Free credits monthly, Premium plans ~$5-23/month</span>
+
+        <div class="tip"><b>Tip:</b> Client work ke liye Firefly best hai kyunke iske outputs copyright-safe hain — koi legal risk nahi.</div>
+      </div>
+    </div>
+
+    <!-- 5 LEONARDO AI -->
+    <div class="lesson m5" id="t5">
+      <div class="l-head">
+        <div class="l-num">05</div>
+        <div><div class="l-title">Leonardo AI</div><div class="l-tag">Game Assets & Concept Art</div></div>
+      </div>
+      <div class="l-body">
+        <p>Leonardo AI game developers aur illustrators ke liye bana hai — game assets, concept art aur consistent character designs banane mein specialize karta hai.</p>
+
+        <div class="block-title">Key Features</div>
+        <ul class="feat">
+          <li>Apna custom AI model train kar sakte hain (character consistency ke liye)</li>
+          <li>Game-ready textures, icons aur environment art</li>
+          <li>Real-time canvas editing feature</li>
+          <li>Community models ka bara collection available</li>
+        </ul>
+
+        <div class="block-title">Kaise Use Karein (Steps)</div>
+        <ol class="steps">
+          <li>Leonardo.ai par free account banayein</li>
+          <li>"Image Generation" section open karein</li>
+          <li>Prompt likhein aur ek model (jaise "Leonardo Diffusion") select karein</li>
+          <li>Generate karein, phir consistent characters ke liye same seed/model use karein</li>
+        </ol>
+
+        <div class="pillrow"><span class="pill">Best for: Game Developers</span><span class="pill">Platform: Web</span></div>
+
+        <div class="prosconstable">
+          <div class="pc-box pro"><b>Pros</b>Free daily credits, character consistency feature</div>
+          <div class="pc-box con"><b>Cons</b>Learning curve thora zyada hai naye users ke liye</div>
+        </div>
+
+        <span class="price-tag">💲 Free tier available, Paid plans ~$10/month se</span>
+
+        <div class="tip"><b>Tip:</b> Ek character ka custom model train karein taake har image mein wohi character consistent nazar aaye.</div>
+      </div>
+    </div>
+
+    <!-- 6 STABLE DIFFUSION -->
+    <div class="lesson m6" id="t6">
+      <div class="l-head">
+        <div class="l-num">06</div>
+        <div><div class="l-title">Stable Diffusion</div><div class="l-tag">Open Source</div></div>
+      </div>
+      <div class="l-body">
+        <p>Stable Diffusion ek open-source AI image generator hai jo unlimited customization deta hai. Isay apne computer par local install kiya ja sakta hai, is liye developers aur advanced users mein popular hai.</p>
+
+        <div class="block-title">Key Features</div>
+        <ul class="feat">
+          <li>100% free aur open-source, koi subscription ki zarurat nahi</li>
+          <li>Thousands of community-trained custom models (Civitai jaisi sites par)</li>
+          <li>Full control: ControlNet, LoRA aur advanced settings</li>
+          <li>Local install se koi content restriction nahi</li>
+        </ul>
+
+        <div class="block-title">Kaise Use Karein (Steps)</div>
+        <ol class="steps">
+          <li>Achi GPU wala computer chahiye (ya online service jaise RunDiffusion use karein)</li>
+          <li>Automatic1111 ya ComfyUI jaisa interface install karein</li>
+          <li>Model file download karein (base ya custom)</li>
+          <li>Prompt likh kar generate karein, settings (steps, CFG scale) adjust karein</li>
+        </ol>
+
+        <div class="pillrow"><span class="pill">Best for: Developers & Power Users</span><span class="pill">Platform: Local/Cloud</span></div>
+
+        <div class="prosconstable">
+          <div class="pc-box pro"><b>Pros</b>Free, unlimited, fully customizable</div>
+          <div class="pc-box con"><b>Cons</b>Technical setup chahiye, achi GPU ke bina slow hota hai</div>
+        </div>
+
+        <span class="price-tag">💲 Free (self-hosted)</span>
+
+        <div class="tip"><b>Tip:</b> Agar apna GPU nahi hai to Google Colab ya cloud GPU services use karein bina hardware kharche ke.</div>
+      </div>
+    </div>
+
+    <!-- 7 IDEOGRAM AI -->
+    <div class="lesson m7" id="t7">
+      <div class="l-head">
+        <div class="l-num">07</div>
+        <div><div class="l-title">Ideogram AI</div><div class="l-tag">Typography & Text</div></div>
+      </div>
+      <div class="l-body">
+        <p>Ideogram AI un chunindaa tools mein se hai jo image ke andar <b>accurate readable text</b> generate kar sakta hai — logos, posters aur typography-heavy designs ke liye best.</p>
+
+        <div class="block-title">Key Features</div>
+        <ul class="feat">
+          <li>Text ko image ke andar sahi spelling ke sath render karta hai</li>
+          <li>Logo aur poster design ke liye specially strong</li>
+          <li>Different typography styles (bold, script, 3D text) support karta hai</li>
+          <li>Free tier mein bhi daily generations milte hain</li>
+        </ul>
+
+        <div class="block-title">Kaise Use Karein (Steps)</div>
+        <ol class="steps">
+          <li>Ideogram.ai par account banayein</li>
+          <li>Prompt likhein aur quotes mein wo text dein jo image mein chahiye (e.g. "poster with text 'SALE 50% OFF'")</li>
+          <li>Style (realistic, design, 3D) select karein</li>
+          <li>Generate karein aur best result download karein</li>
+        </ol>
+
+        <div class="pillrow"><span class="pill">Best for: Logo & Poster Designers</span><span class="pill">Platform: Web</span></div>
+
+        <div class="prosconstable">
+          <div class="pc-box pro"><b>Pros</b>Sab se accurate text-in-image generation</div>
+          <div class="pc-box con"><b>Cons</b>General artistic images mein utna strong nahi</div>
+        </div>
+
+        <span class="price-tag">💲 Free plan available, Plus ~$8/month</span>
+
+        <div class="tip"><b>Tip:</b> Jab bhi design mein readable text (title, tagline) chahiye ho, sab se pehle Ideogram try karein.</div>
+      </div>
+    </div>
+
+    <!-- 8 PLAYGROUND AI -->
+    <div class="lesson m8" id="t8">
+      <div class="l-head">
+        <div class="l-num">08</div>
+        <div><div class="l-title">Playground AI</div><div class="l-tag">Free & Beginner Friendly</div></div>
+      </div>
+      <div class="l-body">
+        <p>Playground AI ek free image generator aur photo editor hai — beautiful designs aur digital artwork banane ke liye ideal, khaas taur par beginners ke liye jo bina paisa kharch kiye practice karna chahte hain.</p>
+
+        <div class="block-title">Key Features</div>
+        <ul class="feat">
+          <li>Roz free credits milte hain</li>
+          <li>Multiple models ek jagah (Stable Diffusion, Playground v2, etc.)</li>
+          <li>Built-in canvas editor — image ke hisse edit kar sakte hain</li>
+          <li>Filters aur styles ki bari collection</li>
+        </ul>
+
+        <div class="block-title">Kaise Use Karein (Steps)</div>
+        <ol class="steps">
+          <li>Playgroundai.com par free account banayein</li>
+          <li>"Create" par click karke prompt likhein</li>
+          <li>Model aur image size select karein</li>
+          <li>Generate karein, phir canvas editor se fine-tune karein</li>
+        </ol>
+
+        <div class="pillrow"><span class="pill">Best for: Beginners & Practice</span><span class="pill">Platform: Web</span></div>
+
+        <div class="prosconstable">
+          <div class="pc-box pro"><b>Pros</b>Free, easy interface, sab kuch ek jagah</div>
+          <div class="pc-box con"><b>Cons</b>Free plan mein daily generation limit hoti hai</div>
+        </div>
+
+        <span class="price-tag">💲 Free daily credits, Pro ~$12/month</span>
+
+        <div class="tip"><b>Tip:</b> Naye tools seekhne ke liye yahan se shuru karein — cost zero hai to bina risk ke experiment kar sakte hain.</div>
+      </div>
+    </div>
+
+    <!-- 9 CLIPDROP -->
+    <div class="lesson m9" id="t9">
+      <div class="l-head">
+        <div class="l-num">09</div>
+        <div><div class="l-title">Clipdrop</div><div class="l-tag">Quick Photo Editing</div></div>
+      </div>
+      <div class="l-body">
+        <p>Clipdrop background removal, image upscaling aur professional photo enhancement ke liye ek fast, no-fuss AI editing tool hai — e-commerce sellers ke liye kaafi useful.</p>
+
+        <div class="block-title">Key Features</div>
+        <ul class="feat">
+          <li>One-click background removal (seconds mein)</li>
+          <li>Image upscaling — low-res photo ko high quality mein convert</li>
+          <li>Relight tool — photo ki lighting change karna</li>
+          <li>Cleanup tool — image se unwanted objects hatana</li>
+        </ul>
+
+        <div class="block-title">Kaise Use Karein (Steps)</div>
+        <ol class="steps">
+          <li>Clipdrop.co par jayein (account zaruri nahi basic use ke liye)</li>
+          <li>Jo tool chahiye choose karein (e.g. "Remove Background")</li>
+          <li>Apni image upload karein</li>
+          <li>Kuch seconds mein result download karein</li>
+        </ol>
+
+        <div class="pillrow"><span class="pill">Best for: E-commerce Sellers</span><span class="pill">Platform: Web + App</span></div>
+
+        <div class="prosconstable">
+          <div class="pc-box pro"><b>Pros</b>Bohat tez, use karna aasan, single-purpose tools</div>
+          <div class="pc-box con"><b>Cons</b>Bulk/heavy use ke liye paid plan chahiye</div>
+        </div>
+
+        <span class="price-tag">💲 Free limited use, Pro ~$9/month</span>
+
+        <div class="tip"><b>Tip:</b> Product photos ka background instantly saaf karke Amazon/Daraz jaisi listings ke liye ready karein.</div>
+      </div>
+    </div>
+
+    <!-- 10 KREA AI -->
+    <div class="lesson m10" id="t10">
+      <div class="l-head">
+        <div class="l-num">10</div>
+        <div><div class="l-title">Krea AI</div><div class="l-tag">Real-Time Generation</div></div>
+      </div>
+      <div class="l-body">
+        <p>Krea AI real-time image generation aur enhancement tool hai — jaise jaise aap sketch banate ya prompt type karte hain, image live update hoti rehti hai, jo ideas jaldi test karne mein madad karta hai.</p>
+
+        <div class="block-title">Key Features</div>
+        <ul class="feat">
+          <li><b>Real-time canvas</b> — draw karte hi AI image update karti hai</li>
+          <li>Image upscaling aur enhancement tools</li>
+          <li>Style transfer — apni image ko kisi bhi art style mein convert karna</li>
+          <li>Video generation feature bhi shamil hai</li>
+        </ul>
+
+        <div class="block-title">Kaise Use Karein (Steps)</div>
+        <ol class="steps">
+          <li>Krea.ai par account banayein</li>
+          <li>"Real-time" canvas open karein</li>
+          <li>Rough shape draw karein aur prompt likhein</li>
+          <li>AI live result show karega — jese hi drawing change hogi, image bhi update hogi</li>
+        </ol>
+
+        <div class="pillrow"><span class="pill">Best for: Rapid Ideation</span><span class="pill">Platform: Web</span></div>
+
+        <div class="prosconstable">
+          <div class="pc-box pro"><b>Pros</b>Bohat fast iteration, unique real-time experience</div>
+          <div class="pc-box con"><b>Cons</b>Free plan mein limited generations</div>
+        </div>
+
+        <span class="price-tag">💲 Free tier available, Pro ~$18/month</span>
+
+        <div class="tip"><b>Tip:</b> Rough sketch banayein aur Krea ko real-time mein polish karne dein — final art se pehle ideas test karne ka best tareeqa hai.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="closing">
+    <h2>🎓 Course Complete!</h2>
+    <p>Ab aap har tool ki depth mein samajh rakhte hain — kya hai, kaise use hota hai, aur pricing kya hai. Agla step: kisi 2-3 tools par practice karein aur apna portfolio banayein.</p>
+    <div class="earn">
+      <div>💼 Freelancing: Fiverr/Upwork par AI design services offer karein</div>
+      <div>🛍️ Print on Demand: AI art se t-shirts, mugs, posters design karein</div>
+      <div>📱 Social Content: Brands ke liye AI-generated posts banayein</div>
+    </div>
+  </div>
+
+</body>
+</html>
