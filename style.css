@@ -1,592 +1,33 @@
-7u/* ===========================
-   AI Learn Then Earn
-   style.css - Part 1
+/* ===========================
+   AI Learn Then Earn - style.css
+   Clean Version (No Duplicates)
 =========================== */
 
+/* ===== RESET ===== */
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 html{
-scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-font-family:'Poppins',sans-serif;
-background:#f5f7fb;
-color:#222;
-line-height:1.6;
+    font-family:'Poppins',sans-serif;
+    background:#f5f7fb;
+    color:#222;
+    line-height:1.6;
 }
 
 .container{
-width:90%;
-max-width:1200px;
-margin:auto;
+    width:90%;
+    max-width:1200px;
+    margin:auto;
 }
 
-/* HEADER */
-
-.header{
-position:sticky;
-top:0;
-left:0;
-width:100%;
-background:#0f172a;
-padding:18px 0;
-z-index:1000;
-box-shadow:0 5px 20px rgba(0,0,0,.15);
-}
-
-.header .container{
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.logo{
-display:flex;
-align-items:center;
-text-decoration:none;
-color:#fff;
-font-size:24px;
-font-weight:700;
-gap:12px;
-}
-
-.logo img{
-width:48px;
-height:48px;
-object-fit:contain;
-}
-
-nav{
-display:flex;
-align-items:center;
-gap:25px;
-}
-
-nav a{
-color:#fff;
-text-decoration:none;
-font-weight:500;
-transition:.3s;
-}
-
-nav a:hover{
-color:#60a5fa;
-}
-
-.header-right{
-display:flex;
-align-items:center;
-gap:15px;
-}
-
-.search-box{
-display:flex;
-align-items:center;
-background:#fff;
-border-radius:10px;
-overflow:hidden;
-}
-
-.search-box input{
-border:none;
-outline:none;
-padding:12px 15px;
-width:220px;
-font-size:15px;
-}
-
-.search-box button{
-border:none;
-background:#2563eb;
-color:#fff;
-padding:12px 18px;
-cursor:pointer;
-transition:.3s;
-}
-
-.search-box button:hover{
-background:#1d4ed8;
-}
-
-.menu-btn{
-display:none;
-font-size:30px;
-color:#fff;
-cursor:pointer;
-}/* ===========================
-   HERO SECTION
-=========================== */
-
-.hero{
-background:linear-gradient(135deg,#0f172a,#2563eb);
-padding:40px 0;
-color:#fff;
-overflow:hidden;
-}
-
-.hero-container{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:60px;
-}
-
-.hero-left{
-flex:1;
-}
-
-.hero-left h1{
-font-size:46px;
-font-weight:700;
-line-height:1.2;
-margin-bottom:20px;
-}
-
-.hero-left p{
-font-size:18px;
-color:#dbeafe;
-margin-bottom:35px;
-max-width:580px;
-}
-
-.hero-buttons{
-display:flex;
-gap:18px;
-margin-bottom:20px;
-flex-wrap:wrap;
-}
-/* ===========================
-   FEATURES SECTION
-=========================== */
-
-.features{
-padding:80px 0;
-background:#ffffff;
-}
-
-.features h2,
-.courses h2{
-text-align:center;
-font-size:40px;
-color:#0f172a;
-margin-bottom:15px;
-}
-
-.section-title{
-text-align:center;
-max-width:700px;
-margin:0 auto 50px;
-color:#64748b;
-font-size:18px;
-}
-
-.feature-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:30px;
-}
-
-.feature-card{
-background:#fff;
-padding:35px 30px;
-border-radius:20px;
-text-align:center;
-box-shadow:0 10px 30px rgba(15,23,42,.08);
-transition:.35s;
-border:1px solid #e5e7eb;
-}
-
-.feature-card:hover{
-transform:translateY(-10px);
-box-shadow:0 18px 40px rgba(37,99,235,.18);
-}
-.btn{
-display:inline-block;
-padding:14px 28px;
-background:#2563eb;
-color:#fff;
-text-decoration:none;
-border-radius:10px;
-font-weight:600;
-transition:.3s;
-}
-
-.btn:hover{
-background:#1d4ed8;
-transform:translateY(-3px);
-}
-
-.btn-outline{
-background:transparent;
-border:2px solid #fff;
-}
-
-.btn-outline:hover{
-background:#fff;
-color:#2563eb;
-}
-/*==========================
-POPULAR AI TOOLS
-==========================*/
-
-.ai-tools{
-    padding:80px 0;
-    background:#f7f9fc;
-}
-
-.ai-tools h2{
-    text-align:center;
-    font-size:44px;
-    color:#0f172a;
-    margin-bottom:18px;
-}
-
-.ai-tools .section-title{
-    text-align:center;
-    max-width:700px;
-    margin:0 auto 50px;
-    color:#6b7280;
-    font-size:18px;
-    line-height:1.8;
-}
-
-/* 2 Cards in One Row */
-
-.tool-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:30px;
-}
-
-.tool-card{
-    background:#fff;
-    border-radius:22px;
-    padding:35px 30px;
-    text-align:center;
-    border:1px solid #edf2f7;
-    box-shadow:0 12px 35px rgba(0,0,0,.08);
-    transition:.35s;
-}
-
-.tool-card:hover{
-    transform:translateY(-8px);
-    box-shadow:0 20px 45px rgba(37,99,235,.18);
-}
-
-.tool-card h3{
-    font-size:30px;
-    font-weight:700;
-    color:#111827;
-    margin-bottom:15px;
-}
-
-.tool-card p{
-    color:#6b7280;
-    font-size:17px;
-    line-height:1.8;
-    margin-bottom:28px;
-}
-
-.tool-card .btn{
-    display:inline-block;
-    background:#1d7afc;
-    color:#fff;
-    text-decoration:none;
-    padding:13px 34px;
-    border-radius:10px;
-    font-weight:600;
-    transition:.3s;
-}
-
-.tool-card .btn:hover{
-    background:#005eea;
-    transform:translateY(-2px);
-}
-
-/* Tablet */
-
-@media(max-width:992px){
-
-.tool-grid{
-grid-template-columns:repeat(2,1fr);
-gap:22px;
-}
-
-}
-
-/* Mobile */
-
-@media(max-width:768px){
-
-.tool-grid{
-grid-template-columns:1fr;
-}
-
-.tool-card{
-padding:28px 20px;
-}
-
-.tool-card h3{
-font-size:24px;
-}
-
-.tool-card p{
-font-size:15px;
-}
-
-}
-/* ===========================
-   NEWSLETTER
-=========================== */
-
-.newsletter{
-padding:80px 20px;
-background:linear-gradient(135deg,#2563eb,#0f172a);
-text-align:center;
-color:#fff;
-}
-
-.newsletter h2{
-font-size:40px;
-margin-bottom:15px;
-}
-
-.newsletter p{
-font-size:18px;
-margin-bottom:30px;
-color:#e2e8f0;
-}
-
-.newsletter-form{
-display:flex;
-justify-content:center;
-gap:15px;
-flex-wrap:wrap;
-}
-
-.newsletter-form input{
-width:350px;
-max-width:100%;
-padding:15px;
-border:none;
-border-radius:10px;
-font-size:16px;
-outline:none;
-}
-
-/* ===========================
-   FOOTER
-=========================== */
-
-footer{
-background:#0f172a;
-color:#fff;
-padding:60px 0 20px;
-}
-
-.footer-content{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:40px;
-margin-bottom:30px;
-}
-
-.footer-content h3,
-.footer-content h4{
-margin-bottom:15px;
-}
-
-.footer-content p{
-color:#cbd5e1;
-line-height:1.8;
-}
-
-.footer-content a{
-display:block;
-color:#cbd5e1;
-text-decoration:none;
-margin-bottom:10px;
-transition:.3s;
-}
-
-.footer-content a:hover{
-color:#60a5fa;
-padding-left:6px;
-}
-
-footer hr{
-border:none;
-border-top:1px solid rgba(255,255,255,.15);
-margin:25px 0;
-}
-
-.copyright{
-text-align:center;
-font-size:14px;
-color:#94a3b8;
-}/* ===========================
-   RESPONSIVE DESIGN
-=========================== */
-
-@media (max-width:992px){
-
-.hero-container{
-flex-direction:column;
-text-align:center;
-}
-
-.hero-left p{
-margin-left:auto;
-margin-right:auto;
-}
-
-.hero-buttons{
-justify-content:center;
-}
-
-.hero-stats{
-justify-content:center;
-}
-
-.hero-right{
-margin-top:40px;
-}
-
-.hero-right img{
-max-width:420px;
-}
-
-}
-
-@media (max-width:768px){
-
-.header .container{
-flex-wrap:wrap;
-}
-
-.menu-btn{
-display:block;
-}
-
-nav{
-display:none;
-flex-direction:column;
-width:100%;
-background:#0f172a;
-margin-top:15px;
-padding:15px 0;
-}
-
-nav.show{
-display:flex;
-}
-
-nav a{
-padding:12px 20px;
-}
-
-.search-box{
-width:100%;
-margin-top:15px;
-}
-
-.search-box input{
-width:100%;
-}
-
-.hero{
-padding:25px 0;
-}
-
-.hero-left h1{
-font-size:34px;
-}
-
-.hero-left p{
-font-size:16px;
-}
-
-.features h2,
-.courses h2,
-.ai-tools h2,
-.newsletter h2{
-font-size:30px;
-}
-
-.feature-grid,
-.course-grid,
-.footer-content{
-grid-template-columns:1fr;
-}
-
-.newsletter-form{
-flex-direction:column;
-align-items:center;
-}
-
-.newsletter-form input,
-.newsletter-form .btn{
-width:100%;
-max-width:400px;
-}
-
-}
-
-@media (max-width:480px){
-
-.logo span{
-font-size:18px;
-}
-
-.logo img{
-width:40px;
-height:40px;
-}
-
-.hero-left h1{
-font-size:30px;
-}
-
-.hero-stats{
-gap:20px;
-}
-
-.btn{
-width:100%;
-text-align:center;
-}
-
-}#topBtn{
-position:fixed;
-right:20px;
-bottom:20px;
-width:50px;
-height:50px;
-border:none;
-border-radius:50%;
-background:#2563eb;
-color:#fff;
-font-size:22px;
-cursor:pointer;
-display:none;
-box-shadow:0 8px 20px rgba(0,0,0,.25);
-transition:.3s;
-z-index:999;
-}
-
-#topBtn:hover{
-background:#1d4ed8;
-transform:translateY(-3px);
-}
-/*==========================
-  PREMIUM HEADER
-==========================*/
-
+/* ===== HEADER ===== */
 .header{
     position:sticky;
     top:0;
@@ -594,6 +35,7 @@ transform:translateY(-3px);
     background:#0b1220;
     border-bottom:1px solid rgba(255,255,255,.08);
     padding:16px 0;
+    box-shadow:0 5px 20px rgba(0,0,0,.15);
 }
 
 .header .container{
@@ -636,6 +78,21 @@ transform:translateY(-3px);
     color:#2f80ff;
 }
 
+#navbar a.active{
+    color:#2f80ff;
+    font-weight:700;
+}
+
+#navbar a.active::after{
+    content:"";
+    display:block;
+    width:100%;
+    height:3px;
+    background:#2f80ff;
+    margin-top:6px;
+    border-radius:10px;
+}
+
 .header-right{
     display:flex;
     align-items:center;
@@ -653,6 +110,7 @@ transform:translateY(-3px);
     padding:11px 15px;
     border:none;
     outline:none;
+    font-size:15px;
 }
 
 .search-box button{
@@ -661,6 +119,11 @@ transform:translateY(-3px);
     background:#2f80ff;
     color:#fff;
     cursor:pointer;
+    transition:.3s;
+}
+
+.search-box button:hover{
+    background:#1d4ed8;
 }
 
 .menu-btn{
@@ -669,8 +132,8 @@ transform:translateY(-3px);
     color:#fff;
     cursor:pointer;
 }
-/*========== HERO UPGRADE ==========*/
 
+/* ===== HERO ===== */
 .hero{
     background:linear-gradient(135deg,#0b1736,#0d4fd8);
     padding:90px 0;
@@ -688,6 +151,23 @@ transform:translateY(-3px);
 .hero-left{
     flex:1;
     min-width:320px;
+    opacity:0;
+    transform:translateY(40px);
+    transition:.8s;
+}
+
+.hero-right{
+    flex:1;
+    text-align:center;
+    opacity:0;
+    transform:translateY(40px);
+    transition:.8s;
+}
+
+.hero-left.active,
+.hero-right.active{
+    opacity:1;
+    transform:translateY(0);
 }
 
 .hero-left h1{
@@ -703,6 +183,7 @@ transform:translateY(-3px);
     color:#dbe7ff;
     line-height:1.8;
     margin-bottom:35px;
+    max-width:580px;
 }
 
 .hero-buttons{
@@ -712,14 +193,10 @@ transform:translateY(-3px);
     margin-bottom:40px;
 }
 
-.hero-right{
-    flex:1;
-    text-align:center;
-}
-
 .hero-right img{
     width:100%;
-    max-width:520px;
+    max-width:650px;
+    height:auto;
     border-radius:20px;
     box-shadow:0 20px 50px rgba(0,0,0,.35);
     transition:.4s;
@@ -741,20 +218,74 @@ transform:translateY(-3px);
 }
 
 .hero-stats h3{
-    font-size:36px;
+    font-size:42px;
+    font-weight:700;
     margin-bottom:5px;
 }
 
 .hero-stats p{
     margin:0;
+    font-size:16px;
     color:#d8e5ff;
-}/*==========================
-  FEATURE CARDS UPGRADE
-==========================*/
+}
 
+/* ===== BUTTONS ===== */
+.btn{
+    display:inline-block;
+    padding:14px 28px;
+    background:#2f80ff;
+    color:#fff;
+    text-decoration:none;
+    border-radius:10px;
+    font-weight:600;
+    transition:.3s;
+    position:relative;
+    overflow:hidden;
+}
+
+.btn::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:rgba(255,255,255,.25);
+    transition:.5s;
+}
+
+.btn:hover::after{
+    left:100%;
+}
+
+.btn:hover{
+    background:#0d6efd;
+    transform:translateY(-3px);
+}
+
+.btn-outline{
+    background:transparent;
+    border:2px solid #fff;
+}
+
+.btn-outline:hover{
+    background:#fff;
+    color:#2563eb;
+}
+
+/* ===== FEATURES ===== */
 .features{
     padding:80px 0;
     background:#f7f9fc;
+}
+
+.features h2,
+.courses h2,
+.ai-tools h2{
+    text-align:center;
+    font-size:40px;
+    color:#0f172a;
+    margin-bottom:15px;
 }
 
 .section-title{
@@ -779,6 +310,8 @@ transform:translateY(-3px);
     text-align:center;
     transition:.35s;
     box-shadow:0 10px 30px rgba(0,0,0,.08);
+    border:1px solid #e5e7eb;
+    animation:fadeUp .8s ease both;
 }
 
 .feature-card:hover{
@@ -809,20 +342,17 @@ transform:translateY(-3px);
     color:#666;
     line-height:1.7;
     font-size:16px;
-}/*==========================
-  COURSES & TOOLS UPGRADE
-==========================*/
+}
 
-.course-grid,
-.tool-grid{
+/* ===== COURSES ===== */
+.course-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
     gap:30px;
     margin-top:50px;
 }
 
-.course-card,
-.tool-card{
+.course-card{
     background:#ffffff;
     border-radius:20px;
     padding:30px;
@@ -830,31 +360,121 @@ transform:translateY(-3px);
     box-shadow:0 12px 35px rgba(0,0,0,.08);
     transition:.35s;
     border:1px solid #eef2f7;
+    animation:fadeUp .8s ease both;
 }
 
-.course-card:hover,
+.course-card:hover{
+    transform:translateY(-12px);
+    box-shadow:0 22px 45px rgba(47,128,255,.18);
+}
+
+.course-card h3{
+    font-size:24px;
+    color:#111827;
+    margin-bottom:15px;
+}
+
+.course-card p{
+    color:#666;
+    line-height:1.8;
+    margin-bottom:22px;
+}
+
+/* ===== AI TOOLS ===== */
+.ai-tools{
+    padding:80px 0;
+    background:#f7f9fc;
+}
+
+.tool-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:30px;
+    margin-top:50px;
+}
+
+.tool-card{
+    background:#ffffff;
+    border-radius:20px;
+    padding:35px 25px;
+    text-align:center;
+    box-shadow:0 12px 35px rgba(0,0,0,.08);
+    transition:.35s;
+    border:1px solid #eef2f7;
+    width:100%;
+    animation:fadeUp .8s ease both;
+}
+
 .tool-card:hover{
     transform:translateY(-12px);
     box-shadow:0 22px 45px rgba(47,128,255,.18);
 }
 
-.course-card h3,
 .tool-card h3{
     font-size:24px;
     color:#111827;
     margin-bottom:15px;
 }
 
-.course-card p,
 .tool-card p{
     color:#666;
     line-height:1.8;
     margin-bottom:22px;
+    font-size:16px;
 }
 
-.btn{
+/* ===== AI ASSISTANT PAGE ===== */
+.ai-page{
+    padding:80px 0;
+    background:#f7f9fc;
+}
+
+.ai-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:30px;
+    margin-top:50px;
+}
+
+.ai-card{
+    background:#fff;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 12px 35px rgba(0,0,0,.08);
+    transition:.35s;
+    border:1px solid #eef2f7;
+    animation:fadeUp .8s ease both;
+}
+
+.ai-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 20px 45px rgba(47,128,255,.18);
+}
+
+.ai-card img{
+    width:80px;
+    height:80px;
+    object-fit:contain;
+    margin-bottom:20px;
+}
+
+.ai-card h3{
+    font-size:26px;
+    margin-bottom:15px;
+    color:#111827;
+}
+
+.ai-card p{
+    font-size:16px;
+    color:#666;
+    line-height:1.8;
+    margin-bottom:25px;
+}
+
+.ai-btn{
     display:inline-block;
-    padding:14px 28px;
+    padding:14px 30px;
     background:#2f80ff;
     color:#fff;
     text-decoration:none;
@@ -863,55 +483,48 @@ transform:translateY(-3px);
     transition:.3s;
 }
 
-.btn:hover{
+.ai-btn:hover{
     background:#0d6efd;
     transform:translateY(-3px);
 }
 
-@media(max-width:768px){
-
-.hero-container,
-.header .container{
-    flex-direction:column;
+/* ===== NEWSLETTER ===== */
+.newsletter{
+    padding:80px 20px;
+    background:linear-gradient(135deg,#2563eb,#0f172a);
     text-align:center;
+    color:#fff;
 }
 
-#navbar{
-    flex-direction:column;
-    width:100%;
-    gap:15px;
-}
-
-.search-box{
-    width:100%;
-}
-
-.search-box input{
-    width:100%;
-}
-
-.hero-left h1{
+.newsletter h2{
     font-size:40px;
+    margin-bottom:15px;
 }
 
-.hero-left p{
+.newsletter p{
     font-size:18px;
+    margin-bottom:30px;
+    color:#e2e8f0;
 }
 
-.hero-right img{
-    max-width:350px;
+.newsletter-form{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
 }
 
-.course-grid,
-.tool-grid,
-.feature-grid{
-    grid-template-columns:1fr;
+.newsletter-form input{
+    width:350px;
+    max-width:100%;
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    outline:none;
 }
 
-}/*==========================
- PREMIUM FOOTER
-==========================*/
-
+/* ===== FOOTER ===== */
 footer{
     background:#0b1220;
     color:#fff;
@@ -923,6 +536,7 @@ footer{
     display:grid;
     grid-template-columns:2fr 1fr 1fr;
     gap:40px;
+    margin-bottom:30px;
 }
 
 .footer-content h3,
@@ -962,207 +576,7 @@ footer hr{
     font-size:15px;
 }
 
-/*==========================
- FADE ANIMATION
-==========================*/
-
-.feature-card,
-.course-card,
-.tool-card{
-    animation:fadeUp .8s ease both;
-}
-
-@keyframes fadeUp{
-
-0%{
-opacity:0;
-transform:translateY(40px);
-}
-
-100%{
-opacity:1;
-transform:translateY(0);
-}
-
-}/*==========================
-  DARK MODE
-==========================*/
-
-body.dark-mode{
-    background:#0f172a;
-    color:#ffffff;
-}
-
-body.dark-mode .features,
-body.dark-mode .courses,
-body.dark-mode .ai-tools,
-body.dark-mode .newsletter,
-body.dark-mode .contact-page{
-    background:#111827;
-}
-
-body.dark-mode .feature-card,
-body.dark-mode .course-card,
-body.dark-mode .tool-card{
-    background:#1e293b;
-    color:#ffffff;
-    border:1px solid rgba(255,255,255,.08);
-}
-
-body.dark-mode h1,
-body.dark-mode h2,
-body.dark-mode h3,
-body.dark-mode h4{
-    color:#ffffff;
-}
-
-body.dark-mode p{
-    color:#d1d5db;
-}
-
-/*==========================
-  PREMIUM BUTTON
-==========================*/
-
-.btn{
-    position:relative;
-    overflow:hidden;
-}
-
-.btn::after{
-    content:"";
-    position:absolute;
-    top:0;
-    left:-100%;
-    width:100%;
-    height:100%;
-    background:rgba(255,255,255,.25);
-    transition:.5s;
-}
-
-.btn:hover::after{
-    left:100%;
-}
-
-/*==========================
-  COUNTER BOX
-==========================*/
-
-.hero-stats h3{
-    font-size:42px;
-    font-weight:700;
-}
-
-.hero-stats p{
-    font-size:16px;
-    color:#dbe7ff;
-}
-/*==========================
- SCROLL ANIMATION
-==========================*/
-
-.hero-left,
-.hero-right,
-.feature-card,
-.course-card,
-.tool-card{
-
-opacity:0;
-
-transform:translateY(40px);
-
-transition:.8s;
-
-}
-
-.active{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-/*==========================
- ACTIVE MENU
-==========================*/
-
-#navbar a.active{
-
-color:#2f80ff;
-
-font-weight:700;
-
-}
-
-#navbar a.active::after{
-
-content:"";
-
-display:block;
-
-width:100%;
-
-height:3px;
-
-background:#2f80ff;
-
-margin-top:6px;
-
-border-radius:10px;
-
-}
-/*==========================
- LOADER
-==========================*/
-
-.loader{
-position:fixed;
-inset:0;
-background:#0b1220;
-display:flex;
-justify-content:center;
-align-items:center;
-z-index:99999;
-opacity:1;
-visibility:visible;
-transition:opacity .5s ease,visibility .5s ease;
-}
-
-.loader.hide{
-opacity:0;
-visibility:hidden;
-}
-
-.loader::after{
-content:"";
-width:60px;
-height:60px;
-border:6px solid #fff;
-border-top:6px solid #2f80ff;
-border-radius:50%;
-animation:spin 1s linear infinite;
-}
-
-@keyframes spin{
-to{
-transform:rotate(360deg);
-}
-}
-.hero-right img{
-    width:100%;
-    max-width:650px;
-    height:auto;
-}
-/* ===== Google Gemini Course Design ===== */
-
-body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#f5f7fb;
-    color:#333;
-    line-height:1.8;
-}
-
+/* ===== COURSE PAGE ===== */
 .course-title{
     background:linear-gradient(135deg,#2563eb,#7c3aed);
     color:#fff;
@@ -1218,113 +632,260 @@ body{
     transition:.3s;
 }
 
-.prev-btn{
-    background:#6b7280;
-}
+.prev-btn{ background:#6b7280; }
+.next-btn{ background:#2563eb; }
+.nav-btn:hover{ transform:translateY(-3px); }
 
-.next-btn{
+/* ===== SCROLL TO TOP ===== */
+#topBtn{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    width:50px;
+    height:50px;
+    border:none;
+    border-radius:50%;
     background:#2563eb;
+    color:#fff;
+    font-size:22px;
+    cursor:pointer;
+    display:none;
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+    transition:.3s;
+    z-index:999;
 }
 
-.nav-btn:hover{
+#topBtn:hover{
+    background:#1d4ed8;
     transform:translateY(-3px);
 }
-/* ===================================
-POPULAR AI TOOLS FINAL FIX
-=================================== */
 
-.ai-tools .tool-grid{
-    display:grid !important;
-    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
-    gap:30px !important;
+/* ===== LOADER ===== */
+.loader{
+    position:fixed;
+    inset:0;
+    background:#0b1220;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:99999;
+    opacity:1;
+    visibility:visible;
+    transition:opacity .5s ease,visibility .5s ease;
 }
 
-.ai-tools .tool-card{
-    width:100%;
-    padding:35px 25px;
-    border-radius:20px;
+.loader.hide{
+    opacity:0;
+    visibility:hidden;
 }
 
-/* Mobile */
+.loader::after{
+    content:"";
+    width:60px;
+    height:60px;
+    border:6px solid #fff;
+    border-top:6px solid #2f80ff;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+}
 
+/* ===== DARK MODE ===== */
+body.dark-mode{
+    background:#0f172a;
+    color:#ffffff;
+}
+
+body.dark-mode .features,
+body.dark-mode .courses,
+body.dark-mode .ai-tools,
+body.dark-mode .newsletter,
+body.dark-mode .contact-page{
+    background:#111827;
+}
+
+body.dark-mode .feature-card,
+body.dark-mode .course-card,
+body.dark-mode .tool-card,
+body.dark-mode .ai-card{
+    background:#1e293b;
+    color:#ffffff;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4{
+    color:#ffffff;
+}
+
+body.dark-mode p{
+    color:#d1d5db;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp{
+    0%{ opacity:0; transform:translateY(40px); }
+    100%{ opacity:1; transform:translateY(0); }
+}
+
+@keyframes spin{
+    to{ transform:rotate(360deg); }
+}
+
+/* ===========================
+   RESPONSIVE — TABLET 992px
+=========================== */
+@media(max-width:992px){
+
+    .hero-container{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .hero-left p{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .hero-buttons{
+        justify-content:center;
+    }
+
+    .hero-stats{
+        justify-content:center;
+    }
+
+    .hero-right{
+        margin-top:40px;
+    }
+
+    .hero-right img{
+        max-width:420px;
+    }
+
+    .tool-grid,
+    .ai-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:22px;
+    }
+
+    .footer-content{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+/* ===========================
+   RESPONSIVE — MOBILE 768px
+=========================== */
 @media(max-width:768px){
 
-.ai-tools .tool-grid{
-    grid-template-columns:1fr !important;
-}
+    .header .container{
+        flex-wrap:wrap;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    #navbar{
+        display:none;
+        flex-direction:column;
+        width:100%;
+        background:#0b1220;
+        margin-top:15px;
+        padding:15px 0;
+        gap:0;
+    }
+
+    #navbar.show{
+        display:flex;
+    }
+
+    #navbar a{
+        padding:12px 20px;
+        width:100%;
+    }
+
+    .search-box{
+        width:100%;
+        margin-top:15px;
+    }
+
+    .search-box input{
+        width:100%;
+    }
+
+    .hero{
+        padding:40px 0;
+    }
+
+    .hero-left h1{
+        font-size:34px;
+    }
+
+    .hero-left p{
+        font-size:16px;
+    }
+
+    .hero-right img{
+        max-width:100%;
+    }
+
+    .features h2,
+    .courses h2,
+    .ai-tools h2,
+    .newsletter h2{
+        font-size:30px;
+    }
+
+    .feature-grid,
+    .course-grid,
+    .tool-grid,
+    .ai-grid,
+    .footer-content{
+        grid-template-columns:1fr !important;
+    }
+
+    .newsletter-form{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .newsletter-form input,
+    .newsletter-form .btn{
+        width:100%;
+        max-width:400px;
+    }
 
 }
-/*==========================
-AI ASSISTANT PAGE
-==========================*/
 
-.ai-page{
-padding:80px 0;
-background:#f7f9fc;
-}
+/* ===========================
+   RESPONSIVE — SMALL 480px
+=========================== */
+@media(max-width:480px){
 
-.ai-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:30px;
-margin-top:50px;
-}
+    .logo{
+        font-size:18px;
+    }
 
-.ai-card{
-background:#fff;
-padding:30px;
-border-radius:20px;
-text-align:center;
-box-shadow:0 12px 35px rgba(0,0,0,.08);
-transition:.35s;
-border:1px solid #eef2f7;
-}
+    .logo img{
+        width:40px;
+        height:40px;
+    }
 
-.ai-card:hover{
-transform:translateY(-10px);
-box-shadow:0 20px 45px rgba(47,128,255,.18);
-}
+    .hero-left h1{
+        font-size:28px;
+    }
 
-.ai-card img{
-width:80px;
-height:80px;
-object-fit:contain;
-margin-bottom:20px;
-}
+    .hero-stats{
+        gap:20px;
+    }
 
-.ai-card h3{
-font-size:26px;
-margin-bottom:15px;
-color:#111827;
-}
-
-.ai-card p{
-font-size:16px;
-color:#666;
-line-height:1.8;
-margin-bottom:25px;
-}
-
-.ai-btn{
-display:inline-block;
-padding:14px 30px;
-background:#2f80ff;
-color:#fff;
-text-decoration:none;
-border-radius:10px;
-font-weight:600;
-transition:.3s;
-}
-
-.ai-btn:hover{
-background:#0d6efd;
-transform:translateY(-3px);
-}
-
-@media(max-width:768px){
-
-.ai-grid{
-grid-template-columns:1fr;
-}
+    .btn{
+        width:100%;
+        text-align:center;
+    }
 
 }
