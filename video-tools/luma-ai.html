@@ -1,1 +1,280 @@
 
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luma AI — Ek Chhota Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F8FC;
+    --paper-2:#EEF0F8;
+    --ink:#1D1F2B;
+    --ink-soft:#585F72;
+    --violet:#7B61FF;
+    --violet-deep:#5B44D6;
+    --cyan:#35B6E0;
+    --coral:#FF6F61;
+    --line:#E1E4EE;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none !important; transition:none !important;}
+  }
+  .wrap{max-width:840px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- prism ray divider (signature) ---------- */
+  .prism{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:0;
+    height:30px;
+    margin:0 0 8px;
+  }
+  .prism .tri{
+    width:0;height:0;
+    border-left:8px solid transparent;
+    border-right:8px solid transparent;
+    border-bottom:14px solid var(--ink);
+    margin-right:2px;
+  }
+  .prism .rays{
+    flex:1;
+    max-width:340px;
+    height:2px;
+    background:linear-gradient(90deg, var(--violet), var(--cyan) 50%, var(--coral));
+    opacity:0.55;
+  }
+
+  /* ---------- hero ---------- */
+  header.hero{padding:58px 0 30px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--violet-deep);
+    margin-bottom:14px;
+  }
+  h1.title{
+    font-family:'Instrument Serif',serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(36px,7vw,58px);
+    line-height:1.08;
+    margin:0 0 16px;
+  }
+  h1.title .plain{font-style:normal;color:var(--violet-deep);}
+  .hero-sub{
+    max-width:52ch;
+    margin:0 0 30px;
+    color:var(--ink-soft);
+    font-size:17px;
+  }
+
+  /* ---------- module blocks ---------- */
+  .module{padding:44px 0;border-bottom:1px solid var(--line);}
+  .module:last-of-type{border-bottom:none;}
+  .code{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    color:var(--violet-deep);
+    letter-spacing:0.04em;
+  }
+  .module h2{
+    font-family:'Instrument Serif',serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:30px;
+    margin:6px 0 16px;
+  }
+  .module p{margin:0 0 14px;}
+  .module p.lede{color:var(--ink-soft);font-size:17px;}
+
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:14px;
+    margin-top:18px;
+  }
+  .card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:16px 18px;
+  }
+  .card h3{
+    font-family:'Inter',sans-serif;
+    font-size:14.5px;
+    font-weight:700;
+    margin:0 0 6px;
+    color:var(--violet-deep);
+  }
+  .card p{font-size:14px;margin:0;color:var(--ink-soft);}
+
+  .steps{list-style:none;margin:18px 0 0;padding:0;}
+  .steps li{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:14px;
+    padding:12px 0;
+    border-top:1px dashed var(--line);
+  }
+  .steps li:first-child{border-top:none;}
+  .steps .tc{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--cyan);
+    padding-top:2px;
+  }
+  .steps strong{display:block;margin-bottom:2px;}
+
+  table.pricing{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+    font-size:14.5px;
+  }
+  table.pricing th, table.pricing td{
+    text-align:left;
+    padding:10px 12px;
+    border-bottom:1px solid var(--line);
+  }
+  table.pricing th{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--ink-soft);
+  }
+  table.pricing tr:last-child td{border-bottom:none;}
+
+  .callout{
+    background:var(--paper-2);
+    border-left:3px solid var(--violet);
+    border-radius:0 8px 8px 0;
+    padding:14px 18px;
+    margin-top:18px;
+    font-size:14.5px;
+    color:var(--ink-soft);
+  }
+  .callout strong{color:var(--ink);}
+
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+  .tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    padding:5px 10px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    color:var(--ink-soft);
+    background:var(--white);
+  }
+
+  footer{
+    text-align:center;
+    padding:40px 0 60px;
+    color:var(--ink-soft);
+    font-size:13.5px;
+  }
+  footer .final{font-family:'Instrument Serif',serif;font-style:italic;font-size:19px;color:var(--violet-deep);}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">Luma AI · Beginner Course</div>
+    <h1 class="title">Luma se <span class="plain">real duniya jaisi</span> video</h1>
+    <p class="hero-sub">Dream Machine ek "world model" hai — matlab yeh sirf pixels predict nahi karta, scene ki physics aur geometry samajhta hai.</p>
+  </header>
+
+  <div class="prism"><div class="tri"></div><div class="rays"></div></div>
+  <section class="module">
+    <span class="code">01 · Intro</span>
+    <h2>Luma AI hai kya cheez?</h2>
+    <p class="lede">Luma AI ka Dream Machine text, image ya 3D asset se realistic video banata hai — aur iski pehchaan hai physics-compliant motion.</p>
+    <p>Jab dusre AI video tools mein kabhi-kabhi objects ajeeb tarike se merge ya disappear ho jaate hain, Luma gravity, collision aur fluid dynamics ko sahi tarah samajhta hai. Yehi wajah hai ki motion designers aur filmmakers isse pasand karte hain.</p>
+    <div class="cards">
+      <div class="card"><h3>World Model</h3><p>Scene ki geometry aur lighting samajh kar video banata hai, sirf pixels nahi.</p></div>
+      <div class="card"><h3>Physics-Compliant</h3><p>Gravity, collision aur liquid ka motion realistic lagta hai.</p></div>
+      <div class="card"><h3>Fast Generation</h3><p>Chhoti clips minute se bhi kam time mein taiyar ho jaati hain.</p></div>
+    </div>
+  </section>
+
+  <div class="prism"><div class="tri"></div><div class="rays"></div></div>
+  <section class="module">
+    <span class="code">02 · Model</span>
+    <h2>Ray 3 — Luma ka "reasoning" model</h2>
+    <p class="lede">Ray 3 khaas hai kyunki yeh apna khud ka output evaluate karta hai — generate karta hai, check karta hai, aur zarurat pade toh khud retry karta hai.</p>
+    <p>Iska naya version Ray 3.14 native 1080p deta hai, pehle se 4 guna fast hai aur 720p par 3 guna sasta — lekin Character Reference aur HDR/EXR jaise kuch advanced features iske saath abhi available nahi hain, uske liye base Ray 3 use karna padta hai.</p>
+  </section>
+
+  <div class="prism"><div class="tri"></div><div class="rays"></div></div>
+  <section class="module">
+    <span class="code">03 · Features</span>
+    <h2>Sabse kaam ke features</h2>
+    <div class="cards">
+      <div class="card"><h3>Keyframe Control</h3><p>Start aur end frame do, Luma beech ka smooth transition khud banata hai.</p></div>
+      <div class="card"><h3>Character Seed</h3><p>Ek character ki identity multiple clips mein consistent rakh sakte ho.</p></div>
+      <div class="card"><h3>Camera Motion</h3><p>Truck, dolly, pan, tilt, roll — camera movement ko precisely control karo.</p></div>
+      <div class="card"><h3>Multi-Model Access</h3><p>Luma ke apne models ke saath third-party models bhi ek jagah try kar sakte ho.</p></div>
+    </div>
+  </section>
+
+  <div class="prism"><div class="tri"></div><div class="rays"></div></div>
+  <section class="module">
+    <span class="code">04 · Setup</span>
+    <h2>Shuru kaise karein</h2>
+    <ol class="steps">
+      <li><span class="tc">01</span><div><strong>Account banao</strong>Google, Apple ya SSO se sign up karo.</div></li>
+      <li><span class="tc">02</span><div><strong>Text ya image se shuru karo</strong>Prompt likho ya reference image/keyframes upload karo.</div></li>
+      <li><span class="tc">03</span><div><strong>Camera aur style set karo</strong>Zarurat ho toh camera motion aur character seed add karo.</div></li>
+      <li><span class="tc">04</span><div><strong>Generate karo</strong>Ray model apna output khud evaluate karke best version deta hai.</div></li>
+      <li><span class="tc">05</span><div><strong>Extend ya refine karo</strong>Clip ko lamba karna ho toh "extend" use karo.</div></li>
+    </ol>
+  </section>
+
+  <div class="prism"><div class="tri"></div><div class="rays"></div></div>
+  <section class="module">
+    <span class="code">05 · Kharcha</span>
+    <h2>Pricing — thoda confusing hai, samjho aise</h2>
+    <p class="lede">2026 mein "Luma AI" ka matlab do alag products ho sakte hain — dono ke billing alag hain, isliye pehle yeh clear kar lo ki tum kaunsa use kar rahe ho.</p>
+    <table class="pricing">
+      <tr><th>Product</th><th>Kya hai</th><th>Range</th></tr>
+      <tr><td>Dream Machine (classic web)</td><td>Free/Lite/Plus/Unlimited plans</td><td>Free se lekar paid tiers tak</td></tr>
+      <tr><td>Luma Agents (naya, 2026)</td><td>Plus/Pro/Ultra — ek subscription mein saare models</td><td>~$30 / $90 / $300 per month</td></tr>
+    </table>
+    <div class="callout"><strong>Zaroori baat:</strong> Naye Luma Agents plans mein free tier nahi hai. Credits generation type, resolution aur regenerations ke hisaab se kharch hote hain — ek clip ke liye kai baar generate karna pad sakta hai, isliye pricing page par calculator zaroor dekh lena.</div>
+  </section>
+
+  <section class="module">
+    <span class="code">06 · Tips</span>
+    <h2>Common galtiyan</h2>
+    <div class="cards">
+      <div class="card"><h3>Regeneration ignore mat karo</h3><p>Hands ya physics kabhi-kabhi galat aa sakti hai — budget mein extra tries shaamil karo.</p></div>
+      <div class="card"><h3>Sahi surface choose karo</h3><p>Dream Machine web aur Luma Agents ke credits alag hain, mix mat karo.</p></div>
+      <div class="card"><h3>Character Seed use karo</h3><p>Multi-clip stories mein character same rakhne ke liye yeh feature zaroor try karo.</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="final">Ek reference image uthao aur pehla dream banao.</span>
+  </footer>
+</div>
+
+</body>
+</html>
