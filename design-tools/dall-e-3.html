@@ -1,1 +1,349 @@
 
+<!DOCTYPE html>
+<html lang="ur-Latn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DALL·E 3 — Mini Course</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@400;500;600;700&display=swap');
+
+  :root{
+    --sand:#f8ecdd;
+    --sand2:#f2e2cd;
+    --ink:#3c2b40;
+    --ink-dim:#7a6a7d;
+    --rose:#e2907f;
+    --lavender:#9d84c9;
+    --teal:#5fa8a0;
+    --gold:#e0a94a;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(circle at 12% 8%, rgba(226,144,127,0.35) 0%, transparent 45%),
+      radial-gradient(circle at 88% 18%, rgba(157,132,201,0.3) 0%, transparent 50%),
+      radial-gradient(circle at 50% 100%, rgba(95,168,160,0.22) 0%, transparent 55%),
+      var(--sand);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.65;
+    position:relative;
+    overflow-x:hidden;
+  }
+
+  .wrap{max-width:800px;margin:0 auto;padding:0 24px 100px;position:relative;z-index:1;}
+
+  header.hero{
+    padding:86px 0 20px;
+    text-align:center;
+  }
+  .eyebrow{
+    font-size:13px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--teal);
+    font-weight:600;
+    margin-bottom:22px;
+  }
+  h1{
+    font-family:'DM Serif Display', serif;
+    font-style:italic;
+    font-size:54px;
+    line-height:1.12;
+    margin:0 0 22px;
+    color:var(--ink);
+  }
+  h1 .warm{color:var(--rose); font-style:normal;}
+  .sub{
+    font-size:17.5px;
+    color:var(--ink-dim);
+    max-width:520px;
+    margin:0 auto;
+  }
+
+  /* soft wavy divider — a melting-clock nod, kept subtle */
+  .wave{
+    display:block;
+    width:100%;
+    height:34px;
+    margin:34px 0 8px;
+  }
+
+  .module{
+    margin-top:34px;
+    background:rgba(255,255,255,0.55);
+    backdrop-filter:blur(2px);
+    border-radius:28px;
+    padding:34px 36px 30px;
+    box-shadow:0 18px 40px -22px rgba(60,43,64,0.35);
+    border:1px solid rgba(255,255,255,0.6);
+  }
+
+  .mod-label{
+    display:inline-block;
+    font-size:12.5px;
+    font-weight:700;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:#fff;
+    background:linear-gradient(100deg, var(--rose), var(--lavender));
+    padding:5px 15px;
+    border-radius:100px;
+    margin-bottom:18px;
+  }
+
+  h2{
+    font-family:'DM Serif Display', serif;
+    font-size:29px;
+    margin:0 0 14px;
+    color:var(--ink);
+  }
+  h2 span.accent{color:var(--lavender); font-style:italic;}
+
+  p{color:var(--ink-dim); font-size:16px; margin:0 0 14px;}
+  p strong{color:var(--ink); font-weight:600;}
+
+  ul.points{list-style:none; margin:18px 0; padding:0;}
+  ul.points li{
+    position:relative;
+    padding:8px 0 8px 30px;
+    color:var(--ink-dim);
+    font-size:15.5px;
+  }
+  ul.points li::before{
+    content:"◡";
+    position:absolute;
+    left:0; top:6px;
+    color:var(--teal);
+    font-size:16px;
+  }
+  ul.points li strong{color:var(--ink);}
+
+  .prompt-box{
+    margin-top:20px;
+    background:var(--sand2);
+    border-radius:16px;
+    padding:16px 20px;
+    font-size:14.5px;
+    color:#8a4f2f;
+    font-style:italic;
+  }
+  .prompt-box .tag{
+    display:block;
+    font-style:normal;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink-dim);
+    margin-bottom:6px;
+  }
+
+  .grid2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin-top:18px;
+  }
+  .mini-card{
+    background:#fff;
+    border-radius:16px;
+    padding:16px 18px;
+    box-shadow:0 10px 24px -16px rgba(60,43,64,0.3);
+  }
+  .mini-card .num{
+    font-family:'DM Serif Display',serif;
+    font-style:italic;
+    font-size:21px;
+    color:var(--rose);
+  }
+  .mini-card p{margin:6px 0 0; font-size:14px;}
+
+  .chat-row{
+    background:#fff;
+    border-radius:16px;
+    padding:14px 18px;
+    margin-top:12px;
+    font-size:14.5px;
+  }
+  .chat-row .who{
+    font-weight:700;
+    color:var(--lavender);
+    font-size:12.5px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    margin-bottom:4px;
+  }
+  .chat-row.you .who{color:var(--teal);}
+  .chat-row p{margin:0; color:var(--ink);}
+
+  .warn{
+    margin-top:22px;
+    background:rgba(226,144,127,0.15);
+    border-radius:16px;
+    padding:16px 20px;
+  }
+  .warn .tag{
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--rose);
+    font-weight:700;
+    display:block;
+    margin-bottom:6px;
+  }
+  .warn p{color:var(--ink); font-size:14.5px; margin:0;}
+
+  .divider{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin:52px 0 0;
+    color:var(--ink-dim);
+    font-size:13px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+  }
+  .divider::before, .divider::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:rgba(60,43,64,0.15);
+  }
+
+  .final{
+    margin-top:52px;
+    text-align:center;
+    padding:36px 20px 0;
+  }
+  .final h2{font-size:32px;}
+  .final p{max-width:480px; margin:0 auto 24px;}
+  .cta{
+    display:inline-block;
+    background:linear-gradient(100deg, var(--rose), var(--gold));
+    color:#fff;
+    font-weight:700;
+    padding:14px 34px;
+    border-radius:100px;
+    text-decoration:none;
+    font-size:15px;
+    box-shadow:0 14px 30px -16px rgba(224,144,79,0.6);
+  }
+
+  @media (max-width:640px){
+    h1{font-size:38px;}
+    .grid2{grid-template-columns:1fr;}
+    .module{padding:26px 22px;}
+    header.hero{padding:60px 0 16px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">Mini Course · 8 Modules</div>
+    <h1>DALL·E <span class="warm">3</span><br><span style="font-style:italic;">Khwabon Ki Tasveerein</span></h1>
+    <p class="sub">OpenAI ka image-generation model jo baat-cheet karke apni image ko refine karne deta hai. Ye course iske ChatGPT-integrated tareeqe ko asaan lafzon mein samjhata hai.</p>
+  </header>
+
+  <!-- Module 1 -->
+  <div class="module">
+    <span class="mod-label">Module 01</span>
+    <h2>DALL·E 3 <span class="accent">hai kya?</span></h2>
+    <p>DALL·E 3, OpenAI ka <strong>text-to-image model</strong> hai jo ChatGPT ke andar seedha kaam karta hai. Iska naam surrealist painter Salvador Dalí aur Pixar ke robot WALL·E se mila kar rakha gaya hai — art aur technology ka mel.</p>
+    <ul class="points">
+      <li><strong>ChatGPT ke andar</strong> — alag app khulne ki zaroorat nahi</li>
+      <li><strong>Conversational editing</strong> — baat karke image ko badalna</li>
+      <li><strong>Detail-rich results</strong> — complex scenes bhi achi tarah samajhta hai</li>
+    </ul>
+  </div>
+
+  <!-- Module 2 -->
+  <div class="module">
+    <span class="mod-label">Module 02</span>
+    <h2>ChatGPT <span class="accent">se baat-cheet karna</span></h2>
+    <p>DALL·E 3 ka sabse bara farq ye hai ke aap ise seedha <strong>jumlon mein</strong> guide karte hain — jaise kisi insaan se baat kar rahe hon.</p>
+    <div class="chat-row you">
+      <div class="who">Aap</div>
+      <p>Ek quiet library banao jisme sunlight khirkiyon se aa rahi ho</p>
+    </div>
+    <div class="chat-row">
+      <div class="who">DALL·E</div>
+      <p>[image generate hoti hai] — ab isay warm aur autumn feel de do</p>
+    </div>
+  </div>
+
+  <!-- Module 3 -->
+  <div class="module">
+    <span class="mod-label">Module 03</span>
+    <h2>Text-to-Image <span class="accent">basics</span></h2>
+    <div class="prompt-box">
+      <span class="tag">Example Prompt</span>
+      "A desert landscape at dusk, soft purple sky, a single lantern glowing, dreamlike surreal style"
+    </div>
+    <p>DALL·E 3 aksar aapke chhote prompt ko khud expand kar deta hai — lighting, composition aur mood add karke, taake result zyada detailed bane.</p>
+  </div>
+
+  <!-- Module 4 -->
+  <div class="module">
+    <span class="mod-label">Module 04</span>
+    <h2>Iterative <span class="accent">refinement</span></h2>
+    <p>Pehli image kabhi bhi final nahi honi chahiye. DALL·E 3 ki sabse badi taqat ye hai ke aap usi conversation mein chhote-chhote changes maang sakte hain — jaise color badalna, ek cheez hataana, ya mood shift karna.</p>
+  </div>
+
+  <!-- Module 5 -->
+  <div class="module">
+    <span class="mod-label">Module 05</span>
+    <h2>Style <span class="accent">aur detail control</span></h2>
+    <div class="grid2">
+      <div class="mini-card"><div class="num">01</div><p>Photorealistic — camera jaisi tasveerein</p></div>
+      <div class="mini-card"><div class="num">02</div><p>Illustration — hand-drawn ya digital art look</p></div>
+      <div class="mini-card"><div class="num">03</div><p>3D Render — depth aur texture ke saath</p></div>
+      <div class="mini-card"><div class="num">04</div><p>Abstract — surreal, khayali compositions</p></div>
+    </div>
+  </div>
+
+  <!-- Module 6 -->
+  <div class="module">
+    <span class="mod-label">Module 06</span>
+    <h2>Editing <span class="accent">seedha chat mein</span></h2>
+    <p>Kisi image ka hissa select karke bata dein kya badalna hai — jaise "is jagah ek darakht add karo" ya "background thoda halka karo." DALL·E 3 usi jagah ko naturally edit kar deta hai, bina pooori image dobara banaye.</p>
+  </div>
+
+  <!-- Module 7 -->
+  <div class="module">
+    <span class="mod-label">Module 07</span>
+    <h2>Ye kis kaam <span class="accent">aata hai?</span></h2>
+    <ul class="points">
+      <li><strong>Brainstorming aur mood boards</strong> — ideas ko jaldi visual banana</li>
+      <li><strong>Presentation visuals</strong> — custom images bina stock photos ke</li>
+      <li><strong>Children's book illustrations</strong> — kahani ke hisaab se scenes</li>
+      <li><strong>Personal creative projects</strong> — khayali duniyaon ki tasveerein</li>
+    </ul>
+  </div>
+
+  <!-- Module 8 -->
+  <div class="module">
+    <span class="mod-label">Module 08</span>
+    <h2>Zimmedari <span class="accent">se istemal</span></h2>
+    <div class="warn">
+      <span class="tag">Yaad Rahe</span>
+      <p>Real logon ki tasveerein bina ijazat banana, ya kisi ki misinformation phailane wali fake photo banana — dono se bachna zaroori hai. DALL·E 3 ko khayali aur creative kaam ke liye istemal karein, dhoke ke liye nahi.</p>
+    </div>
+  </div>
+
+  <div class="divider">Course Complete</div>
+
+  <div class="final">
+    <h2>Ab baat-cheet shuru karein</h2>
+    <p>ChatGPT khol kar ek simple scene bayan karein, phir usay ek chhota sa refinement dein — jaise mood ya lighting badalna. Yehi DALL·E 3 ka asal tareeqa hai.</p>
+    <a class="cta" href="https://chatgpt.com" target="_blank">chatgpt.com</a>
+  </div>
+
+</div>
+</body>
+</html>
