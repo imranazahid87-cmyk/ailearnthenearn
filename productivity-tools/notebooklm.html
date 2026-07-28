@@ -1,1 +1,240 @@
 
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NotebookLM Course — Sources se Insight Tak</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F1F2F7;
+    --card:#FFFFFF;
+    --ink:#1B1F3B;
+    --ink-soft:#5C6178;
+    --accent:#D8672B;
+    --highlight:#FCE38A;
+    --line:#DCDEE9;
+    --indigo:#3B4380;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--highlight); color:var(--ink);}
+  .wrap{max-width:960px; margin:0 auto; padding:0 26px;}
+
+  /* ---------- Hero ---------- */
+  header.hero{padding:56px 0 34px;}
+  .kicker{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--accent); font-weight:500; margin-bottom:20px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .kicker::before{content:"§"; font-family:'Lora', serif; font-size:15px;}
+  h1{
+    font-family:'Lora', serif; font-weight:600; font-style:normal;
+    font-size:clamp(34px, 6vw, 56px); line-height:1.12; letter-spacing:-0.01em; max-width:800px;
+  }
+  h1 i{color:var(--indigo); font-style:italic; font-weight:500;}
+  .hero-sub{margin-top:20px; font-size:17.5px; color:var(--ink-soft); max-width:600px;}
+  .hero-meta{display:flex; gap:26px; margin-top:30px; flex-wrap:wrap;}
+  .meta-item{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--ink-soft);}
+  .meta-item b{color:var(--ink); font-weight:600;}
+
+  /* ---------- Notebook tabs (signature nav) ---------- */
+  .tabs-section{padding:44px 0 8px;}
+  .tabs-label{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--ink-soft); margin-bottom:12px;
+  }
+  .tabs{display:flex; flex-wrap:wrap; gap:8px 8px;}
+  .tab{
+    text-decoration:none; color:var(--ink);
+    background:var(--card);
+    border:1px solid var(--line);
+    border-bottom:none;
+    border-radius:8px 8px 0 0;
+    padding:10px 14px 8px;
+    font-size:13px; font-weight:600;
+    position:relative;
+    transition:background .15s ease, transform .15s ease;
+  }
+  .tab:hover{background:var(--highlight); transform:translateY(-2px);}
+  .tab .n{
+    font-family:'IBM Plex Mono', monospace; color:var(--accent);
+    font-size:11px; margin-right:5px; font-weight:500;
+  }
+  .tabs-rule{border-bottom:2px solid var(--ink); margin-top:-1px;}
+
+  /* ---------- Modules ---------- */
+  main{padding:34px 0 40px;}
+  .module{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:36px 38px;
+    margin:24px 0;
+    scroll-margin-top:24px;
+    position:relative;
+    border-left:4px solid var(--indigo);
+  }
+  .module-head{display:flex; align-items:baseline; gap:14px; margin-bottom:4px;}
+  .module-index{font-family:'IBM Plex Mono', monospace; color:var(--accent); font-size:13px; font-weight:600;}
+  .module h2{font-family:'Lora', serif; font-weight:600; font-size:26px; color:var(--indigo);}
+  .module .tag{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-soft);
+    background:var(--paper); border:1px solid var(--line); padding:3px 9px; border-radius:3px;
+    margin-bottom:16px; display:inline-block; letter-spacing:0.04em;
+  }
+  .module p{color:#2B3050; font-size:15.5px; margin-bottom:13px; max-width:760px;}
+  .module ul{margin:12px 0 4px 20px;}
+  .module li{margin-bottom:9px; font-size:15px; color:#2B3050;}
+  .module li b{color:var(--ink);}
+  .cite{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--accent);
+    vertical-align:super; font-weight:600;
+  }
+  .sticky{
+    margin-top:18px;
+    background:var(--highlight);
+    padding:14px 18px;
+    border-radius:2px;
+    font-size:14.5px;
+    color:#443307;
+    transform:rotate(-0.4deg);
+    box-shadow:1px 2px 4px rgba(0,0,0,0.08);
+  }
+  .sticky b{color:#2B2004;}
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:34px 0 60px;
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:13.5px;
+    font-family:'IBM Plex Mono', monospace;
+  }
+
+  @media (max-width:640px){
+    .module{padding:26px 20px;}
+    .wrap{padding:0 16px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="kicker">RESEARCH NOTEBOOK · MINI COURSE</div>
+    <h1>Apne notes ko <i>source-grounded</i> AI research assistant banao — NotebookLM ke saath.</h1>
+    <p class="hero-sub">Yeh course aapko sikhayega ki apne documents, PDFs, aur links ko ek smart notebook mein badal kar, unse baat kaise karein — bina hallucination ke, sirf apne hi sources se.</p>
+    <div class="hero-meta">
+      <div class="meta-item"><b>8</b> modules</div>
+      <div class="meta-item"><b>~22</b> min read</div>
+      <div class="meta-item"><b>Free</b> tool hai</div>
+    </div>
+  </header>
+
+  <section class="tabs-section">
+    <div class="tabs-label">▸ Notebook Index</div>
+    <div class="tabs">
+      <a href="#m1" class="tab"><span class="n">01</span>NotebookLM kya hai</a>
+      <a href="#m2" class="tab"><span class="n">02</span>Sources upload karna</a>
+      <a href="#m3" class="tab"><span class="n">03</span>Citations ke saath Q&A</a>
+      <a href="#m4" class="tab"><span class="n">04</span>Audio Overview</a>
+      <a href="#m5" class="tab"><span class="n">05</span>Video Overview</a>
+      <a href="#m6" class="tab"><span class="n">06</span>Mind Map & Reports</a>
+      <a href="#m7" class="tab"><span class="n">07</span>Presentations</a>
+      <a href="#m8" class="tab"><span class="n">08</span>Pro tips</a>
+    </div>
+    <div class="tabs-rule"></div>
+  </section>
+
+  <main>
+
+    <section class="module" id="m1">
+      <div class="module-head"><span class="module-index">01</span><h2>NotebookLM kya hai?</h2></div>
+      <span class="tag">FOUNDATION</span>
+      <p>NotebookLM Google ka AI-powered research aur note-taking tool hai — yeh Gemini se powered hai aur aapke apne documents ko padh kar unhi se jawab deta hai. Matlab jab aap koi sawaal poochte ho, toh yeh apni training data se nahi — sirf aapke upload kiye hue sources se jawab deta hai.</p>
+      <p>Isi wajah se yeh normal chatbots se zyada trustworthy hai — <b>research, study, aur legal review</b> jaise kaamon ke liye, jahan galat jawab mehenga pad sakta hai.</p>
+      <div class="sticky"><b>Yaad rakho:</b> NotebookLM internet se jawab nahi deta — sirf woh sources jo aap khud upload karte ho.</div>
+    </section>
+
+    <section class="module" id="m2">
+      <div class="module-head"><span class="module-index">02</span><h2>Notebook banana aur sources upload karna</h2></div>
+      <span class="tag">GETTING STARTED</span>
+      <p>notebooklm.google par jao, apne Google account se sign in karo, aur "Create" par click karke ek nayi notebook banao. Aapko teen panels dikhenge: left mein <b>sources</b>, center mein <b>chat</b>, aur right mein <b>Studio</b>.</p>
+      <ul>
+        <li>Ek notebook mein <b>50 tak sources</b> upload kar sakte ho — PDFs, Google Docs, Slides, websites, YouTube video transcripts, audio files, aur Google Sheets.</li>
+        <li>Handwritten notes, whiteboard photos, ya screenshots bhi upload karke unhe analyze karwa sakte ho.</li>
+        <li>Notebooks ko teammates ke saath share bhi kar sakte ho — group research projects ke liye.</li>
+      </ul>
+    </section>
+
+    <section class="module" id="m3">
+      <div class="module-head"><span class="module-index">03</span><h2>Citations ke saath sawaal-jawab</h2></div>
+      <span class="tag">CORE SKILL</span>
+      <p>Ek baar sources upload hone ke baad, chat panel mein seedha sawaal poochna shuru karo. Har jawab ke saath ek chhota numbered citation<span class="cite">[1]</span> milta hai — click karte hi woh seedha us original document ki us line par le jaata hai jahan se jawab aaya.</p>
+      <p>Yeh feature khaas taur par tab kaam aata hai jab aapke paas <b>multiple conflicting sources</b> hon — aap seedha pooch sakte ho "yeh sources kahan disagree karte hain?" aur NotebookLM exact lines quote karke dikha dega jahan farq hai.</p>
+    </section>
+
+    <section class="module" id="m4">
+      <div class="module-head"><span class="module-index">04</span><h2>Audio Overview — apne notes ko podcast banao</h2></div>
+      <span class="tag">VIRAL FEATURE</span>
+      <p>Yeh wahi feature hai jisne NotebookLM ko popular banaya. Ek click mein aapke sources se ek podcast-style audio ban jaata hai, aur ab yeh 4 formats mein aata hai:</p>
+      <ul>
+        <li><b>Deep Dive</b> — default two-host conversation.</li>
+        <li><b>Brief</b> — ek hi speaker, 2 minute ke andar key points.</li>
+        <li><b>Critique</b> — do hosts aapke kaam (essay, design doc) ko constructively evaluate karte hain.</li>
+        <li><b>Debate</b> — topic par formal back-and-forth.</li>
+      </ul>
+      <p>80+ languages support hoti hain, aur English mein length (Shorter/Default/Longer) bhi adjust kar sakte ho, saath hi ek prompt de kar hosts ko guide kar sakte ho ki kis cheez par focus karein.</p>
+    </section>
+
+    <section class="module" id="m5">
+      <div class="module-head"><span class="module-index">05</span><h2>Video Overview — 2026 ka naya feature</h2></div>
+      <span class="tag">NEW</span>
+      <p>Sirf audio nahi — ab NotebookLM ek narrated, animated deep-dive <b>video</b> bhi banata hai aapke sources se. Format customize kar sakte ho (explainer ya brief), language choose kar sakte ho, aur visual style bhi — jaise whiteboard, kawaii, watercolor, ya classic.</p>
+      <div class="sticky"><b>Tip:</b> "What should the AI hosts focus on?" wale prompt box mein apna context daalo — NotebookLM khud bhi suggestions deta hai based on aapke sources.</div>
+    </section>
+
+    <section class="module" id="m6">
+      <div class="module-head"><span class="module-index">06</span><h2>Mind Map aur Reports</h2></div>
+      <span class="tag">VISUALIZE</span>
+      <p>Interactive <b>Mind Map</b> feature aapke sources se ek visual diagram banata hai jo high-level ideas ko connect karke dikhata hai. Agar aapke paas 50 documents hain, toh yeh web-jaisa view overarching concepts pakadne mein madad karta hai jo sirf text summary mein miss ho sakte hain.</p>
+      <p>Studio panel se aap alag-alag <b>reports</b> bhi generate kar sakte ho — jaise briefing doc, study guide, aur FAQ.</p>
+    </section>
+
+    <section class="module" id="m7">
+      <div class="module-head"><span class="module-index">07</span><h2>Presentations directly notebook ke andar</h2></div>
+      <span class="tag">2026 UPDATE</span>
+      <p>Ab NotebookLM presentations bhi bana sakta hai aapke sources se — aur naye <b>in-app editing</b> feature ke saath, aap text, images, aur slides ko real-time edit kar sakte ho, bina export ya convert kiye.</p>
+    </section>
+
+    <section class="module" id="m8">
+      <div class="module-head"><span class="module-index">08</span><h2>Beginner ke liye pro tips</h2></div>
+      <span class="tag">SHORTCUTS</span>
+      <ul>
+        <li>Shuruaat mein simple sawaal poocho — pehle samjho NotebookLM aapke sources ko kaise interpret karta hai.</li>
+        <li>Meeting notes ya research papers upload karke Audio Overview banao — commute ya chores ke waqt "padhne" ke bajaye "sunna" easy ho jaata hai.</li>
+        <li>Apne work journals aur project notes upload karke pooch sakte ho: "mere top 3 impact areas kya hain, evidence ke saath" — yeh appraisal likhne mein kaafi help karta hai.</li>
+        <li>Free version kaafi robust hai — paid version zyada notebooks banane aur access badhane ke liye hai.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    ▸ END OF NOTEBOOK — sources upload karo, sawaal poocho, insight nikaalo.
+  </footer>
+</div>
+
+</body>
+</html>
