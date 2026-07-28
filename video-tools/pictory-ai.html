@@ -1,1 +1,291 @@
 
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pictory AI — Ek Chhota Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF6EC;
+    --paper-2:#F1EAD8;
+    --ink:#221D15;
+    --ink-soft:#5E5648;
+    --teal:#1F8A70;
+    --teal-deep:#166A57;
+    --gold:#C99A2E;
+    --rose:#B9524A;
+    --line:#E3D9C2;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none !important; transition:none !important;}
+  }
+  .wrap{max-width:840px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- highlighter swipe divider (signature) ---------- */
+  .swipe{
+    height:14px;
+    margin:0 0 6px;
+    background:linear-gradient(90deg, transparent 0%, var(--gold) 8%, var(--gold) 55%, transparent 62%);
+    opacity:0.55;
+    border-radius:2px;
+  }
+
+  /* ---------- hero ---------- */
+  header.hero{padding:58px 0 26px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--teal-deep);
+    margin-bottom:14px;
+  }
+  h1.title{
+    font-family:'Lora',serif;
+    font-weight:600;
+    font-size:clamp(32px,6.5vw,50px);
+    line-height:1.12;
+    margin:0 0 16px;
+  }
+  h1.title mark{
+    background:none;
+    color:var(--ink);
+    box-shadow:inset 0 -0.42em 0 rgba(201,154,46,0.45);
+  }
+  .hero-sub{
+    max-width:52ch;
+    margin:0 0 26px;
+    color:var(--ink-soft);
+    font-size:17px;
+  }
+
+  /* ---------- manuscript sample (signature block) ---------- */
+  .manuscript{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:20px 22px;
+    font-family:'Lora',serif;
+    font-size:15.5px;
+    color:var(--ink-soft);
+    line-height:1.8;
+  }
+  .manuscript mark{
+    background:none;
+    color:var(--ink);
+    box-shadow:inset 0 -0.4em 0 rgba(31,138,112,0.22);
+  }
+  .manuscript .arrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    color:var(--teal-deep);
+    margin-left:4px;
+  }
+
+  /* ---------- module blocks ---------- */
+  .module{padding:44px 0;border-bottom:1px solid var(--line);}
+  .module:last-of-type{border-bottom:none;}
+  .code{
+    font-family:'Lora',serif;
+    font-style:italic;
+    font-size:14px;
+    color:var(--gold);
+  }
+  .module h2{
+    font-family:'Lora',serif;
+    font-weight:600;
+    font-size:27px;
+    margin:6px 0 16px;
+  }
+  .module p{margin:0 0 14px;}
+  .module p.lede{color:var(--ink-soft);font-size:17px;}
+
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:14px;
+    margin-top:18px;
+  }
+  .card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:16px 18px;
+  }
+  .card h3{
+    font-family:'Inter',sans-serif;
+    font-size:14.5px;
+    font-weight:700;
+    margin:0 0 6px;
+    color:var(--teal-deep);
+  }
+  .card p{font-size:14px;margin:0;color:var(--ink-soft);}
+
+  .steps{list-style:none;margin:18px 0 0;padding:0;}
+  .steps li{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:14px;
+    padding:12px 0;
+    border-top:1px dashed var(--line);
+  }
+  .steps li:first-child{border-top:none;}
+  .steps .tc{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--rose);
+    padding-top:2px;
+  }
+  .steps strong{display:block;margin-bottom:2px;}
+
+  table.pricing{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+    font-size:14.5px;
+  }
+  table.pricing th, table.pricing td{
+    text-align:left;
+    padding:10px 12px;
+    border-bottom:1px solid var(--line);
+  }
+  table.pricing th{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--ink-soft);
+  }
+  table.pricing tr:last-child td{border-bottom:none;}
+
+  .callout{
+    background:var(--paper-2);
+    border-left:3px solid var(--teal);
+    border-radius:0 8px 8px 0;
+    padding:14px 18px;
+    margin-top:18px;
+    font-size:14.5px;
+    color:var(--ink-soft);
+  }
+  .callout strong{color:var(--ink);}
+
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+  .tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    padding:5px 10px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    color:var(--ink-soft);
+    background:var(--white);
+  }
+
+  footer{
+    text-align:center;
+    padding:40px 0 60px;
+    color:var(--ink-soft);
+    font-size:13.5px;
+  }
+  footer .final{font-family:'Lora',serif;font-style:italic;font-size:18px;color:var(--teal-deep);}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">Pictory AI · Beginner Course</div>
+    <h1 class="title">Apni <mark>likhi hui baat</mark> ko video banao</h1>
+    <p class="hero-sub">Blog post, script ya article — Pictory usse seconds mein ek ready video mein badal deta hai, editing seekhe bina.</p>
+    <div class="manuscript">
+      "...AI se banaye gaye videos ne content creation ko badal diya hai. <mark>Ek blog post</mark> ab sirf padhne ki cheez nahi rahi<span class="arrow">→ scene 1</span> — yeh ek video ban sakta hai jisme <mark>AI voice narration</mark><span class="arrow">→ audio</span> aur <mark>stock footage</mark><span class="arrow">→ visuals</span> khud-b-khud jud jaate hain..."
+    </div>
+  </header>
+
+  <div class="swipe"></div>
+  <section class="module">
+    <span class="code">¶ 01 — Shuru se</span>
+    <h2>Pictory AI hai kya cheez?</h2>
+    <p class="lede">Pictory ek platform hai jo text (blog, script, article) se original video banata hai, ya existing video ko text ke through edit karta hai.</p>
+    <p>Isme 3 million+ stock clips aur 15,000+ music tracks ki library hai, saath mein AI voices jo tumhare liye narrate karte hain. Brand colors, fonts aur logo se video ko customize bhi kar sakte ho. Yeh un logo ke liye perfect hai jinke paas already likha hua content hai aur woh usse video mein badalna chahte hain — bina frame-by-frame editing seekhe.</p>
+    <div class="cards">
+      <div class="card"><h3>Text-to-Video</h3><p>Blog post ya script paste karo, video khud ban jaata hai.</p></div>
+      <div class="card"><h3>AI Voices</h3><p>Natural-sounding narration, 29 languages mein.</p></div>
+      <div class="card"><h3>Auto Captions</h3><p>Video ke saath captions bhi automatically add ho jaate hain.</p></div>
+    </div>
+  </section>
+
+  <div class="swipe"></div>
+  <section class="module">
+    <span class="code">¶ 02 — Features</span>
+    <h2>Sabse kaam ki cheezein</h2>
+    <div class="cards">
+      <div class="card"><h3>Highlight-to-Scene</h3><p>Script ke important lines highlight karo, woh visual scene mein badal jaate hain.</p></div>
+      <div class="card"><h3>Brand Kit</h3><p>Apne colors, fonts aur logo ko save karke har video mein reuse karo.</p></div>
+      <div class="card"><h3>AI Avatars</h3><p>Kuch plans mein AI presenter/avatar bhi video mein daal sakte ho.</p></div>
+      <div class="card"><h3>Templates</h3><p>Ready-made layouts se time bachao, khaas kar social clips ke liye.</p></div>
+    </div>
+  </section>
+
+  <div class="swipe"></div>
+  <section class="module">
+    <span class="code">¶ 03 — Workflow</span>
+    <h2>Pehla video kaise banayein</h2>
+    <ol class="steps">
+      <li><span class="tc">01</span><div><strong>Content daalo</strong>Blog URL, script ya article paste karo — ya scratch se likho.</div></li>
+      <li><span class="tc">02</span><div><strong>AI draft dekho</strong>Pictory text ko scenes mein todta hai aur matching stock visuals suggest karta hai.</div></li>
+      <li><span class="tc">03</span><div><strong>Scenes edit karo</strong>Har scene ka visual, text overlay ya timing manually adjust kar sakte ho.</div></li>
+      <li><span class="tc">04</span><div><strong>Voice aur music choose karo</strong>AI voice pick karo aur background music library se music lagao.</div></li>
+      <li><span class="tc">05</span><div><strong>Export karo</strong>Caption check karke apne platform (YouTube, Reels) ke hisaab se export karo.</div></li>
+    </ol>
+    <div class="callout"><strong>Tip:</strong> Ek lambi blog post se ek nahi, kai chhote video variations bana sakte ho — repurposing isi tool ki sabse badi taaqat hai.</div>
+  </section>
+
+  <div class="swipe"></div>
+  <section class="module">
+    <span class="code">¶ 04 — Kharcha</span>
+    <h2>Pricing — kitna kharcha aayega</h2>
+    <table class="pricing">
+      <tr><th>Plan</th><th>Kimat (annual)</th><th>Milta kya hai</th></tr>
+      <tr><td>Free</td><td>₹0</td><td>Watermark ke saath, 720p tak</td></tr>
+      <tr><td>Starter</td><td>~$25/mo</td><td>200 video min, 1 brand kit</td></tr>
+      <tr><td>Professional</td><td>~$35/mo</td><td>600 video min, 5 brand kits, AI credits</td></tr>
+      <tr><td>Team</td><td>~$119/mo</td><td>3+ users, 1800 min, collaboration</td></tr>
+    </table>
+    <div class="callout"><strong>Note:</strong> Pricing video-minutes ke hisaab se hai, video-count par nahi — aur monthly billing annual se kaafi mehngi padti hai. Payment se pehle official pricing page check kar lena.</div>
+  </section>
+
+  <div class="swipe"></div>
+  <section class="module">
+    <span class="code">¶ 05 — Kiske liye</span>
+    <h2>Kab use karein, kab nahi</h2>
+    <p class="lede">Pictory sabse zyada kaam ka hai jab tumhare paas already likha hua content ho — blog, script, ya training material.</p>
+    <div class="tag-row">
+      <span class="tag">blog-to-video</span>
+      <span class="tag">YouTube repurposing</span>
+      <span class="tag">training content</span>
+      <span class="tag">marketing clips</span>
+    </div>
+    <p style="margin-top:14px;">Agar tumhe frame-by-frame precise editing ya cinematic control chahiye, toh yeh sahi tool nahi hai — uske liye traditional editor (jaise CapCut) better rahega. Pictory ki strength speed aur automation hai, manual control nahi.</p>
+  </section>
+
+  <footer>
+    <span class="final">Ek article uthao, aur dekho woh video kaise banta hai.</span>
+  </footer>
+</div>
+
+</body>
+</html>
