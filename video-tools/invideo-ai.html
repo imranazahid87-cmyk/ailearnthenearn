@@ -1,1 +1,281 @@
 
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InVideo AI — Ek Chhota Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5F6F8;
+    --paper-2:#EBEDF2;
+    --ink:#1D2126;
+    --ink-soft:#5A616B;
+    --indigo:#4B4ADE;
+    --indigo-deep:#3532AE;
+    --orange:#F2A93B;
+    --teal:#2FA793;
+    --line:#DFE3E8;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none !important; transition:none !important;}
+  }
+  .wrap{max-width:840px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- assembly-line strip (signature) ---------- */
+  .pipeline{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:6px;
+    margin:0 0 34px;
+  }
+  .pipeline .node{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    font-weight:500;
+    padding:8px 14px;
+    border-radius:8px;
+    background:var(--white);
+    border:1px solid var(--line);
+    color:var(--ink-soft);
+  }
+  .pipeline .node.on{
+    border-color:var(--indigo);
+    color:var(--indigo-deep);
+    background:#EFEEFC;
+  }
+  .pipeline .arrow{color:var(--line);font-size:14px;}
+
+  /* ---------- hero ---------- */
+  header.hero{padding:56px 0 20px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--indigo-deep);
+    margin-bottom:14px;
+  }
+  h1.title{
+    font-family:'Plus Jakarta Sans',sans-serif;
+    font-weight:800;
+    font-size:clamp(32px,6.5vw,52px);
+    line-height:1.06;
+    margin:0 0 16px;
+    letter-spacing:-0.01em;
+  }
+  h1.title .accent{color:var(--indigo);}
+  .hero-sub{
+    max-width:52ch;
+    margin:0 0 30px;
+    color:var(--ink-soft);
+    font-size:17px;
+  }
+
+  /* ---------- module blocks ---------- */
+  .module{padding:44px 0;border-bottom:1px solid var(--line);}
+  .module:last-of-type{border-bottom:none;}
+  .code{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    color:var(--indigo-deep);
+    letter-spacing:0.04em;
+  }
+  .module h2{
+    font-family:'Plus Jakarta Sans',sans-serif;
+    font-weight:700;
+    font-size:27px;
+    margin:6px 0 16px;
+  }
+  .module p{margin:0 0 14px;}
+  .module p.lede{color:var(--ink-soft);font-size:17px;}
+
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:14px;
+    margin-top:18px;
+  }
+  .card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:16px 18px;
+  }
+  .card h3{
+    font-family:'Plus Jakarta Sans',sans-serif;
+    font-size:15px;
+    font-weight:700;
+    margin:0 0 6px;
+    color:var(--indigo-deep);
+  }
+  .card p{font-size:14px;margin:0;color:var(--ink-soft);}
+
+  .steps{list-style:none;margin:18px 0 0;padding:0;}
+  .steps li{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:14px;
+    padding:12px 0;
+    border-top:1px dashed var(--line);
+  }
+  .steps li:first-child{border-top:none;}
+  .steps .tc{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--teal);
+    padding-top:2px;
+  }
+  .steps strong{display:block;margin-bottom:2px;}
+
+  table.pricing{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+    font-size:14.5px;
+  }
+  table.pricing th, table.pricing td{
+    text-align:left;
+    padding:10px 12px;
+    border-bottom:1px solid var(--line);
+  }
+  table.pricing th{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--ink-soft);
+  }
+  table.pricing tr:last-child td{border-bottom:none;}
+
+  .callout{
+    background:var(--paper-2);
+    border-left:3px solid var(--indigo);
+    border-radius:0 8px 8px 0;
+    padding:14px 18px;
+    margin-top:18px;
+    font-size:14.5px;
+    color:var(--ink-soft);
+  }
+  .callout strong{color:var(--ink);}
+
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+  .tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    padding:5px 10px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    color:var(--ink-soft);
+    background:var(--white);
+  }
+
+  footer{
+    text-align:center;
+    padding:40px 0 60px;
+    color:var(--ink-soft);
+    font-size:13.5px;
+  }
+  footer .final{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;color:var(--indigo-deep);}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">InVideo AI · Beginner Course</div>
+    <h1 class="title">Ek prompt se <span class="accent">poori video</span></h1>
+    <p class="hero-sub">Script, voiceover, footage, music — sab kuch ek hi prompt se assemble ho jaata hai. Editing seekhne ki zarurat nahi.</p>
+    <div class="pipeline">
+      <span class="node on">Prompt</span><span class="arrow">→</span>
+      <span class="node">Script</span><span class="arrow">→</span>
+      <span class="node">Voice</span><span class="arrow">→</span>
+      <span class="node">Footage</span><span class="arrow">→</span>
+      <span class="node">Music</span><span class="arrow">→</span>
+      <span class="node on">Export</span>
+    </div>
+  </header>
+
+  <section class="module">
+    <span class="code">01 · Intro</span>
+    <h2>InVideo AI hai kya cheez?</h2>
+    <p class="lede">InVideo AI ek prompt-first video generator hai — tum ek idea likhte ho, aur AI khud script, voiceover, footage, subtitles, music aur transitions daal ke poori video bana deta hai.</p>
+    <p>2026 mein iski sabse badi khaasiyat yeh hai ki yeh apne pipeline ke andar OpenAI ke Sora 2 aur Google ke Veo 3.1 dono ko bundle karta hai — matlab cinematic, physics-accurate clips bhi stock footage ke saath mix ho sakte hain, sab ek hi subscription mein. Note: InVideo do products chalata hai — "InVideo AI" (prompt-first, generative) aur "InVideo Studio" (traditional drag-and-drop timeline editor) — yeh course AI product par focus karta hai.</p>
+    <div class="cards">
+      <div class="card"><h3>Single-Prompt Video</h3><p>Ek description do, poori video draft ban jaati hai.</p></div>
+      <div class="card"><h3>Sora 2 + Veo 3.1</h3><p>Dono frontier models built-in hain, alag se subscribe karne ki zarurat nahi.</p></div>
+      <div class="card"><h3>Auto Everything</h3><p>Script, voice, footage, subtitles — AI 500+ chhote decisions khud leta hai.</p></div>
+    </div>
+  </section>
+
+  <section class="module">
+    <span class="code">02 · Workflow</span>
+    <h2>Video kaise banti hai</h2>
+    <ol class="steps">
+      <li><span class="tc">01</span><div><strong>Prompt likho</strong>Kya video chahiye, kis tone mein, kiske liye — sab ek jagah describe karo.</div></li>
+      <li><span class="tc">02</span><div><strong>AI script banata hai</strong>Tumhare prompt se ek structured script generate hoti hai.</div></li>
+      <li><span class="tc">03</span><div><strong>Voice aur visuals jud jaate hain</strong>AI voiceover aur matching stock ya generative footage khud select karta hai.</div></li>
+      <li><span class="tc">04</span><div><strong>Draft milta hai</strong>Ek edit-ready video seconds/minutes mein taiyar.</div></li>
+      <li><span class="tc">05</span><div><strong>Fine-tune karo</strong>Scenes, text, voice ya music manually adjust karke final export lo.</div></li>
+    </ol>
+  </section>
+
+  <section class="module">
+    <span class="code">03 · Kharcha</span>
+    <h2>Pricing — kitna kharcha aayega</h2>
+    <p class="lede">Plans aur kimat alag-alag sources mein thoda vary karte hain, isliye yeh ek general snapshot hai — official pricing page hi final source maano.</p>
+    <table class="pricing">
+      <tr><th>Plan</th><th>Range (annual)</th><th>Kiske liye</th></tr>
+      <tr><td>Free</td><td>₹0</td><td>Watermark ke saath, testing ke liye</td></tr>
+      <tr><td>Plus</td><td>~$17–28/mo</td><td>Solo creators, kam videos/mahina</td></tr>
+      <tr><td>Max</td><td>~$48–60/mo</td><td>Regular creators, zyada credits</td></tr>
+      <tr><td>Generative / Team</td><td>~$100/mo se upar</td><td>Heavy AI-generation ya teams</td></tr>
+    </table>
+    <div class="callout"><strong>Zaroori baat:</strong> Credits alag-alag "pools" mein bante hain (AI minutes, stock downloads, voiceover minutes) — yeh roll over nahi hote aur ek pool khatam hone par doosra full hone ke bawajood ruk sakte ho. Free plan se pehle output quality test kar lo, kyunki free plan se export nahi hota.</div>
+  </section>
+
+  <section class="module">
+    <span class="code">04 · Tips</span>
+    <h2>Credits bachane ke tips</h2>
+    <div class="cards">
+      <div class="card"><h3>Draft pehle, generate baad mein</h3><p>Script aur structure pehle finalize karo, phir hi generative credits use karo.</p></div>
+      <div class="card"><h3>Generative clips sparingly</h3><p>Sora 2/Veo clips ko premium accent ki tarah use karo, poori video generative mat banao.</p></div>
+      <div class="card"><h3>Monthly limits track karo</h3><p>AI minutes, iStock downloads aur voice minutes alag pools hain — sabka usage dekhte raho.</p></div>
+    </div>
+  </section>
+
+  <section class="module">
+    <span class="code">05 · Kiske liye</span>
+    <h2>Kab use karein</h2>
+    <p class="lede">InVideo AI un logo ke liye best hai jinhe fast, prompt-first video chahiye bina script writer, editor, voice artist alag se hire kiye.</p>
+    <div class="tag-row">
+      <span class="tag">marketing videos</span>
+      <span class="tag">explainer content</span>
+      <span class="tag">social ads</span>
+      <span class="tag">solo creators</span>
+    </div>
+    <p style="margin-top:14px;">Agar tumhe purely original, cinematic generative video chahiye toh Runway jaisa dedicated tool better ho sakta hai. Agar frame-by-frame manual control chahiye toh InVideo Studio (traditional editor) ya CapCut dekho.</p>
+  </section>
+
+  <footer>
+    <span class="final">Apna pehla prompt likho — "Generate" dabao.</span>
+  </footer>
+</div>
+
+</body>
+</html>
