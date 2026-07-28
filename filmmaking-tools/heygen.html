@@ -1,1 +1,286 @@
 
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HeyGen AI Course — Script se Studio Video Tak</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EEF3F1;
+    --card:#FFFFFF;
+    --ink:#122420;
+    --ink-soft:#4C615B;
+    --rec:#E4483C;
+    --teal:#1F6F6A;
+    --teal-deep:#12433F;
+    --line:#D6E0DC;
+    --gold:#C99A3E;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--rec); color:#fff;}
+
+  .wrap{max-width:980px; margin:0 auto; padding:0 28px;}
+
+  /* ---------- Header / Hero ---------- */
+  header.hero{
+    padding:64px 0 40px;
+    border-bottom:1px solid var(--line);
+  }
+  .kicker{
+    display:flex; align-items:center; gap:10px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--rec); font-weight:500; margin-bottom:22px;
+  }
+  .dot{
+    width:8px; height:8px; border-radius:50%; background:var(--rec);
+    animation:blink 1.6s infinite;
+    box-shadow:0 0 0 3px rgba(228,72,60,0.15);
+  }
+  @keyframes blink{ 0%,100%{opacity:1;} 50%{opacity:0.25;} }
+
+  h1{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:clamp(38px, 6vw, 64px);
+    line-height:1.05;
+    letter-spacing:-0.01em;
+    max-width:820px;
+  }
+  h1 em{
+    font-style:italic; color:var(--teal);
+    font-weight:500;
+  }
+  .hero-sub{
+    margin-top:22px;
+    font-size:18px;
+    color:var(--ink-soft);
+    max-width:600px;
+  }
+  .hero-meta{
+    display:flex; gap:28px; margin-top:34px; flex-wrap:wrap;
+  }
+  .meta-item{font-family:'JetBrains Mono', monospace; font-size:13px; color:var(--ink-soft);}
+  .meta-item b{color:var(--ink); font-weight:600;}
+
+  /* ---------- Timeline (signature element) ---------- */
+  .timeline-section{padding:52px 0 20px;}
+  .timeline-label{
+    font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--ink-soft); margin-bottom:14px;
+  }
+  .timeline{
+    position:relative;
+    display:flex;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:6px;
+    gap:6px;
+    overflow-x:auto;
+    scrollbar-width:none;
+  }
+  .timeline::-webkit-scrollbar{display:none;}
+  .clip{
+    flex:1 0 118px;
+    min-width:118px;
+    text-decoration:none;
+    color:var(--ink);
+    background:var(--paper);
+    border-radius:9px;
+    padding:12px 12px 10px;
+    transition:transform .18s ease, background .18s ease;
+    cursor:pointer;
+    position:relative;
+  }
+  .clip:hover{background:#E3ECE8; transform:translateY(-3px);}
+  .clip .num{
+    font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--teal); font-weight:600;
+  }
+  .clip .name{
+    font-size:13px; font-weight:600; margin-top:4px; line-height:1.25;
+  }
+  .clip .bar{
+    height:3px; background:var(--line); border-radius:2px; margin-top:10px; overflow:hidden;
+  }
+  .clip .bar i{display:block; height:100%; width:0%; background:var(--rec);}
+
+  /* ---------- Modules ---------- */
+  main{padding:30px 0 40px;}
+  .module{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:38px 40px;
+    margin:26px 0;
+    scroll-margin-top:26px;
+  }
+  .module-head{
+    display:flex; align-items:baseline; gap:16px; margin-bottom:6px;
+  }
+  .module-index{
+    font-family:'JetBrains Mono', monospace;
+    color:var(--rec); font-size:14px; font-weight:600;
+  }
+  .module h2{
+    font-family:'Fraunces', serif; font-weight:600; font-size:28px; color:var(--teal-deep);
+  }
+  .module .tag{
+    font-family:'JetBrains Mono', monospace; font-size:11.5px; color:var(--ink-soft);
+    background:var(--paper); border:1px solid var(--line); padding:3px 9px; border-radius:20px;
+    margin-bottom:18px; display:inline-block;
+  }
+  .module p{color:#2C3B37; font-size:15.5px; margin-bottom:14px; max-width:760px;}
+  .module ul{margin:14px 0 6px 20px;}
+  .module li{margin-bottom:9px; font-size:15px; color:#2C3B37;}
+  .module li b{color:var(--ink);}
+  .callout{
+    margin-top:18px;
+    border-left:3px solid var(--gold);
+    background:#FBF6EA;
+    padding:14px 18px;
+    border-radius:0 8px 8px 0;
+    font-size:14.5px;
+    color:#5B4A22;
+  }
+  .callout b{color:#3E3115;}
+
+  /* ---------- Footer ---------- */
+  footer{
+    border-top:1px solid var(--line);
+    padding:36px 0 60px;
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:13.5px;
+    font-family:'JetBrains Mono', monospace;
+  }
+
+  @media (max-width:640px){
+    .module{padding:28px 22px;}
+    .wrap{padding:0 18px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="kicker"><span class="dot"></span> REC · MINI COURSE</div>
+    <h1>HeyGen se apna <em>digital avatar</em> banao, aur script ko seedha video mein badlo.</h1>
+    <p class="hero-sub">Yeh ek chhota, practical course hai — koi camera nahi, koi editor nahi. Sirf ek script, ek avatar, aur HeyGen ka AI engine. 8 modules mein poora workflow cover karenge.</p>
+    <div class="hero-meta">
+      <div class="meta-item"><b>8</b> modules</div>
+      <div class="meta-item"><b>~25</b> min read</div>
+      <div class="meta-item"><b>Beginner</b> friendly</div>
+    </div>
+  </header>
+
+  <section class="timeline-section">
+    <div class="timeline-label">▸ Course Timeline</div>
+    <div class="timeline">
+      <a href="#m1" class="clip"><div class="num">01</div><div class="name">HeyGen kya hai</div><div class="bar"><i style="width:100%"></i></div></a>
+      <a href="#m2" class="clip"><div class="num">02</div><div class="name">Setup & interface</div><div class="bar"><i style="width:0%"></i></div></a>
+      <a href="#m3" class="clip"><div class="num">03</div><div class="name">Avatar banana</div><div class="bar"><i style="width:0%"></i></div></a>
+      <a href="#m4" class="clip"><div class="num">04</div><div class="name">Script → Video Agent</div><div class="bar"><i style="width:0%"></i></div></a>
+      <a href="#m5" class="clip"><div class="num">05</div><div class="name">Voice & Translate</div><div class="bar"><i style="width:0%"></i></div></a>
+      <a href="#m6" class="clip"><div class="num">06</div><div class="name">AI Studio editing</div><div class="bar"><i style="width:0%"></i></div></a>
+      <a href="#m7" class="clip"><div class="num">07</div><div class="name">Pro tips</div><div class="bar"><i style="width:0%"></i></div></a>
+      <a href="#m8" class="clip"><div class="num">08</div><div class="name">Pricing samjho</div><div class="bar"><i style="width:0%"></i></div></a>
+    </div>
+  </section>
+
+  <main>
+
+    <section class="module" id="m1">
+      <div class="module-head"><span class="module-index">01</span><h2>HeyGen kya hai?</h2></div>
+      <span class="tag">FOUNDATION</span>
+      <p>HeyGen ek AI video platform hai jo script ko ek realistic "talking avatar" video mein badal deta hai. Aap ek script paste karte ho, ek avatar chunte ho (ready-made, apni photo se banaya hua, ya apna khud ka digital twin), voice select karte ho — aur HeyGen baaki sab kar deta hai: lip-sync, expressions, hand gestures, sab kuch.</p>
+      <p>Iska sabse bada use case hai — <b>bina camera ke professional video banana.</b> Teachers, marketers, aur content creators isse training videos, ads, aur explainers bina shoot kiye bana rahe hain.</p>
+      <div class="callout"><b>Samajh lo:</b> HeyGen editing tool nahi hai — yeh "video generation" tool hai. Aap script likhte ho, woh video render karta hai.</div>
+    </section>
+
+    <section class="module" id="m2">
+      <div class="module-head"><span class="module-index">02</span><h2>Account setup aur interface tour</h2></div>
+      <span class="tag">GETTING STARTED</span>
+      <p>Sign up karne ke baad aapko dashboard milega jahan HeyGen ke saare tools ek jagah dikhte hain:</p>
+      <ul>
+        <li><b>Video Avatar</b> — apna avatar ek baar record karo, phir baar-baar reuse karo.</li>
+        <li><b>Photo Avatar / Avatar IV</b> — ek still photo ko bolne wale video mein badlo.</li>
+        <li><b>Video Agent</b> — sirf ek prompt se poora structured video generate karo.</li>
+        <li><b>Video Translator</b> — existing video ko dusri language mein lip-sync ke saath translate karo.</li>
+        <li><b>AI Studio</b> — scene-by-scene editor, jahan final touches diye jaate hain.</li>
+      </ul>
+      <p>Shuru mein free plan try karo — usme limited credits milte hain jisse aap workflow samajh sako bina paisa laga.</p>
+    </section>
+
+    <section class="module" id="m3">
+      <div class="module-head"><span class="module-index">03</span><h2>Apna avatar banana</h2></div>
+      <span class="tag">CORE SKILL</span>
+      <p>Do tarike hain avatar banane ke:</p>
+      <ul>
+        <li><b>Photo Avatar:</b> Ek clean, centered headshot upload karo — achhi lighting, neutral background. HeyGen usse ek short talking clip mein convert kar deta hai. Ek 60-second clip aam taur par 2–3 minute mein render ho jaata hai.</li>
+        <li><b>Video Avatar (Digital Twin):</b> Ek chhoti si recording (kuch seconds se lekar 15 second tak) do, aur HeyGen ek full-motion avatar banata hai jise aap baar-baar naye scripts ke saath use kar sakte ho.</li>
+      </ul>
+      <div class="callout"><b>Tip:</b> Photo jitni "professional portrait" jaisi hogi — even lighting, clear face, koi complex background nahi — result utna hi clean aayega. Side-angle ya messy background wali photos mein edges par artifacts dikh sakte hain.</div>
+      <p>Agar real face use nahi karna chahte, toh ek fully AI-generated character bhi bana sakte ho — age, gender, appearance sab customize karke. Yeh faceless ya branded character content ke liye kaam aata hai.</p>
+    </section>
+
+    <section class="module" id="m4">
+      <div class="module-head"><span class="module-index">04</span><h2>Script se video: Video Agent</h2></div>
+      <span class="tag">MOST POWERFUL</span>
+      <p>Video Agent HeyGen ka sabse ambitious feature hai — ek text prompt do, aur AI poora structured video plan karke bana deta hai: scenes, script, avatar placement, sab kuch.</p>
+      <p>Agar khud likhna chahte ho, toh <b>AI Script Generator</b> use karo jo content pehle se draft kar deta hai. Recording karte waqt teleprompter camera ke saath saath chalta hai, aur <b>AI Eye Contact Correction</b> us halke neeche dekhne wale gaze ko fix kar deta hai jo teleprompter padhte waqt aata hai.</p>
+    </section>
+
+    <section class="module" id="m5">
+      <div class="module-head"><span class="module-index">05</span><h2>Voice cloning aur translation</h2></div>
+      <span class="tag">SCALE</span>
+      <p>HeyGen ka <b>Video Translator</b> ek existing video le kar usse 100+ languages mein translate kar sakta hai — aur lip movement ko bhi naye audio ke saath sync kar deta hai, taaki avatar us language mein hi bolta hua lage.</p>
+      <p>Voice library se ready voices chuno, ya apni khud ki voice clone karke use karo — taaki har video mein aapki hi awaaz sune.</p>
+    </section>
+
+    <section class="module" id="m6">
+      <div class="module-head"><span class="module-index">06</span><h2>AI Studio mein final editing</h2></div>
+      <span class="tag">POLISH</span>
+      <p>AI Studio ek scene-by-scene editor hai — yahan aap generate hue video ke individual clips ko refine kar sakte ho: timing adjust karna, avatar ka motion style (jaise expressive ya emotive preset) badalna, aur scenes ko reorder karna.</p>
+      <p>Ek naya feature, <b>HyperFrames</b>, ek interesting trick karta hai — yeh plain HTML/webpage ko seedha video mein render kar deta hai, jisse web content aur video production ek hi workflow mein aa jaate hain.</p>
+    </section>
+
+    <section class="module" id="m7">
+      <div class="module-head"><span class="module-index">07</span><h2>Beginner ke liye pro tips</h2></div>
+      <span class="tag">SHORTCUTS</span>
+      <ul>
+        <li>Photo upload karte waqt — recent photo, high resolution, aur ek se zyada expressions try karo, HeyGen khud batata hai upload screen par kya chahiye.</li>
+        <li>Lambi video banani ho toh chhote scenes mein todo — editing aur retry karna aasan ho jaata hai.</li>
+        <li>Script mein emotional cues likho ("excited tone mein") — avatar us hisaab se micro-expressions aur gestures adjust karta hai.</li>
+        <li>Pehla draft hamesha AI Studio mein review karo before final export — chhoti timing glitches yahin pakdi jaati hain.</li>
+      </ul>
+    </section>
+
+    <section class="module" id="m8">
+      <div class="module-head"><span class="module-index">08</span><h2>Pricing samajhna</h2></div>
+      <span class="tag">DECISION</span>
+      <p>HeyGen ka free plan low-friction hai — quick test videos ke liye kaafi hai. Paid plans usage aur avatar/voice cloning jaisi advanced features unlock karte hain, aur ek separate developer API bhi available hai bade scale ke liye.</p>
+      <div class="callout"><b>Suggestion:</b> Pehle free plan par poora workflow (avatar → script → export) ek baar chalao. Agar output aapke content style ke liye kaam karta hai, tabhi upgrade karo.</div>
+    </section>
+
+  </main>
+
+  <footer>
+    ▸ END OF COURSE — script likho, avatar chuno, render dabao.
+  </footer>
+</div>
+
+</body>
+</html>
