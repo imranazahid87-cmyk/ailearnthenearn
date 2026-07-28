@@ -1,1 +1,510 @@
 
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Runway AI — Ek Poora Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F5F2;
+    --paper-2:#ECEAE4;
+    --ink:#1D1B22;
+    --ink-soft:#5C5966;
+    --plum:#5B3A8E;
+    --plum-deep:#3D2763;
+    --amber:#E0862B;
+    --line:#DAD7CE;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{ background:var(--amber); color:var(--white); }
+
+  /* Timeline scrubber bar */
+  .scrubber{
+    height:26px;
+    width:100%;
+    background:var(--ink);
+    position:relative;
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
+  }
+  .scrubber .tick{
+    width:1px;
+    background:rgba(255,255,255,0.28);
+    flex-shrink:0;
+    margin-right:11px;
+  }
+  .scrubber .tick.major{ height:16px; background:rgba(255,255,255,0.65); }
+  .scrubber .tick.minor{ height:9px; }
+  .scrubber .playhead{
+    position:absolute;
+    top:0; left:22%;
+    width:2px; height:100%;
+    background:var(--amber);
+  }
+
+  header{
+    padding:64px 24px 48px;
+    max-width:920px;
+    margin:0 auto;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--plum-deep);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{
+    content:"●";
+    color:var(--amber);
+    font-size:10px;
+  }
+  h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:clamp(40px, 6.8vw, 74px);
+    line-height:1.04;
+    letter-spacing:-0.02em;
+    color:var(--ink);
+  }
+  h1 span.hl{
+    color:var(--plum-deep);
+  }
+  .sub{
+    margin-top:22px;
+    max-width:640px;
+    font-size:18px;
+    color:var(--ink-soft);
+  }
+  .meta-row{
+    margin-top:34px;
+    display:flex;
+    gap:28px;
+    flex-wrap:wrap;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--ink-soft);
+  }
+  .meta-row div{ display:flex; flex-direction:column; gap:4px; }
+  .meta-row strong{ color:var(--ink); font-size:14px; font-family:'Inter',sans-serif; }
+
+  nav.reel{
+    position:sticky; top:0; z-index:20;
+    background:rgba(246,245,242,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+    overflow-x:auto;
+    white-space:nowrap;
+  }
+  nav.reel .track{
+    display:flex;
+    padding:0 24px;
+    max-width:920px;
+    margin:0 auto;
+  }
+  nav.reel a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+    text-decoration:none;
+    padding:14px 16px;
+    border-right:1px solid var(--line);
+    transition:color .2s ease, background .2s ease;
+  }
+  nav.reel a:hover{ color:var(--plum-deep); background:var(--paper-2); }
+
+  main{ max-width:920px; margin:0 auto; padding:10px 24px 40px; }
+
+  section.scene{
+    padding:60px 0;
+    border-bottom:1px solid var(--line);
+  }
+  section.scene:last-of-type{ border-bottom:none; }
+
+  .slate{
+    display:flex;
+    align-items:baseline;
+    gap:16px;
+    margin-bottom:26px;
+    flex-wrap:wrap;
+  }
+  .slate .num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--white);
+    background:var(--plum-deep);
+    padding:4px 10px;
+    border-radius:3px;
+    letter-spacing:0.05em;
+  }
+  .slate h2{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:clamp(24px, 3.6vw, 34px);
+    color:var(--ink);
+  }
+  .slate .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--amber);
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    margin-left:auto;
+  }
+
+  p{ margin-bottom:16px; color:var(--ink); font-size:16px; max-width:680px; }
+  p.lead{ font-size:18px; color:var(--ink-soft); }
+
+  .callout{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-left:4px solid var(--plum-deep);
+    padding:18px 22px;
+    border-radius:4px;
+    margin:22px 0;
+    font-size:15px;
+  }
+  .callout strong{ color:var(--plum-deep); }
+
+  .timeline{ margin-top:10px; }
+  .tl-item{
+    display:grid;
+    grid-template-columns:110px 1fr;
+    gap:20px;
+    padding:16px 0;
+    border-top:1px dashed var(--line);
+  }
+  .tl-item:first-child{ border-top:none; }
+  .tl-date{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--plum-deep);
+    font-weight:500;
+    padding-top:2px;
+  }
+  .tl-body strong{ display:block; margin-bottom:4px; font-size:15.5px; }
+  .tl-body p{ font-size:14.5px; margin-bottom:0; color:var(--ink-soft); }
+
+  .toolgrid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+    gap:2px;
+    background:var(--line);
+    margin-top:20px;
+    border:1px solid var(--line);
+  }
+  .tool{
+    background:var(--paper);
+    padding:24px;
+  }
+  .tool h3{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:19px;
+    font-weight:600;
+    margin-bottom:8px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .tool h3 .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--plum-deep);
+    display:inline-block;
+    flex-shrink:0;
+  }
+  .tool p{ font-size:14.5px; color:var(--ink-soft); margin-bottom:0; }
+
+  .stack{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(190px,1fr));
+    gap:14px;
+    margin-top:20px;
+  }
+  .stack .card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:18px;
+    text-align:center;
+  }
+  .stack .card .name{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:15px;
+    margin-bottom:4px;
+  }
+  .stack .card .by{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--ink-soft);
+  }
+
+  .plans{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:16px;
+    margin-top:20px;
+  }
+  .plan{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:22px;
+  }
+  .plan.reco{ border-color:var(--plum-deep); box-shadow:0 0 0 1px var(--plum-deep); }
+  .plan .name{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:19px;
+    margin-bottom:6px;
+  }
+  .plan .price{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--amber);
+    margin-bottom:12px;
+  }
+  .plan ul{ padding-left:18px; }
+  .plan li{ font-size:13.5px; margin-bottom:7px; color:var(--ink); }
+
+  .tips{ margin-top:20px; display:flex; flex-direction:column; gap:14px; }
+  .tip{
+    display:grid;
+    grid-template-columns:34px 1fr;
+    gap:14px;
+    align-items:start;
+  }
+  .tip .n{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:500;
+    color:var(--white);
+    background:var(--plum-deep);
+    width:34px;height:34px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:13px;
+    flex-shrink:0;
+  }
+  .tip p{ margin-bottom:0; font-size:15px; }
+  .tip strong{ color:var(--ink); }
+
+  .promptbox{
+    background:var(--ink);
+    color:#EDEBF5;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13.5px;
+    padding:20px 22px;
+    border-radius:6px;
+    margin-top:18px;
+    line-height:1.7;
+  }
+  .promptbox .lbl{ color:var(--amber); display:block; margin-bottom:8px; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; }
+
+  .checklist{ margin-top:18px; }
+  .check{
+    display:flex; gap:12px; align-items:flex-start;
+    padding:10px 0;
+    border-top:1px solid var(--line);
+  }
+  .check:first-child{ border-top:none; }
+  .check .mark{ color:var(--plum-deep); font-weight:700; font-family:'IBM Plex Mono', monospace; }
+
+  footer{
+    max-width:920px; margin:0 auto;
+    padding:46px 24px 90px;
+    color:var(--ink-soft);
+    font-size:13.5px;
+  }
+  footer .fnote{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+    opacity:0.8;
+  }
+
+  @media (max-width:640px){
+    .tl-item{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="scrubber" id="scrub"></div>
+
+<header>
+  <div class="eyebrow">Course · Scene 01–08</div>
+  <h1>Runway AI <span class="hl">samajhne</span> ka poora course</h1>
+  <p class="sub">Sirf ek video model nahi — editing, motion capture, aur custom pipelines wala poora AI filmmaking studio. Kaise kaam karta hai, kya-kya kar sakta hai, aur ise professionally kaise use karein — sab ek jagah.</p>
+  <div class="meta-row">
+    <div><strong>8 Scenes</strong>self-paced</div>
+    <div><strong>Flagship model</strong>Gen-4.5</div>
+    <div><strong>Founded</strong>2018 · New York</div>
+  </div>
+</header>
+
+<nav class="reel">
+  <div class="track">
+    <a href="#s1">01 Kya hai</a>
+    <a href="#s2">02 Itihaas</a>
+    <a href="#s3">03 Toolkit</a>
+    <a href="#s4">04 Third-party models</a>
+    <a href="#s5">05 Pricing</a>
+    <a href="#s6">06 API</a>
+    <a href="#s7">07 Prompting</a>
+    <a href="#s8">08 Kab use karein</a>
+  </div>
+</nav>
+
+<main>
+
+  <section class="scene" id="s1">
+    <div class="slate"><span class="num">01</span><h2>Runway AI kya hai</h2><span class="tag">Intro</span></div>
+    <p class="lead">Runway ek cloud-based AI video generation aur editing platform hai — jo sirf ek model nahi, balki video, image, audio, aur 3D content banane wala poora creative suite hai.</p>
+    <p>Iska sabse bada strength yeh hai ki yeh sirf "generate" nahi karta — iske andar editing, color grading, audio tools aur real-time collaboration bhi built-in hain. Yeh entirely web browser mein chalta hai, 4K tak resolution support karta hai, aur teams ko kahin se bhi saath kaam karne deta hai. Runway ko Hollywood studios bhi use karte hain, aur ismein Google, Nvidia aur Salesforce jaisi companies ne invest kiya hua hai.</p>
+    <div class="callout"><strong>Simple shabdon mein:</strong> aap text likhein ya ek image upload karein, Runway usse ek moving, cinematic clip mein badal deta hai — aur phir usi platform ke andar use edit bhi kar sakte hain.</div>
+  </section>
+
+  <section class="scene" id="s2">
+    <div class="slate"><span class="num">02</span><h2>Itihaas — model se movement tak</h2><span class="tag">Timeline</span></div>
+    <p>Runway 2026 mein wo tool nahi raha jo yeh 2024 mein tha — yeh generation-dar-generation evolve hota gaya hai.</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">2018</div>
+        <div class="tl-body"><strong>Runway ki shuruaat</strong><p>New York mein founded, creative AI tools banane ke maqsad se.</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Mar 2025</div>
+        <div class="tl-body"><strong>Gen-4 launch</strong><p>Cross-scene mein visually consistent characters, objects aur environments banana iska sabse bada breakthrough tha.</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Late 2025</div>
+        <div class="tl-body"><strong>Gen-4.5 update</strong><p>Skin texture, fabric movement aur lighting transitions jaise subtle details ko aur zyada realistic banaya gaya.</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2026</div>
+        <div class="tl-body"><strong>Platform ban gaya "hub"</strong><p>Runway ne apna platform third-party models ke liye khol diya — ab yeh sirf ek model nahi, balki ek poora ecosystem hai.</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">May 2026</div>
+        <div class="tl-body"><strong>Act-Two update</strong><p>Ab performances ko directly existing videos ke characters par transpose kiya ja sakta hai — bina kisi 3D animation software ke.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene" id="s3">
+    <div class="slate"><span class="num">03</span><h2>Core toolkit</h2><span class="tag">Suite</span></div>
+    <p>Runway ke andar alag-alag tools hain, aur har ek production ke ek alag stage ke liye bana hai — concept se lekar final cut tak.</p>
+    <div class="toolgrid">
+      <div class="tool"><h3><span class="dot"></span>Gen-4 / Gen-4 Turbo</h3><p>Text-to-video aur image-to-video ke liye flagship models — realistic motion physics, natural lighting aur coherent scene composition ke saath.</p></div>
+      <div class="tool"><h3><span class="dot"></span>Aleph</h3><p>In-video editor — existing footage ko style transfer, motion modification ya subject replacement ke through transform karta hai.</p></div>
+      <div class="tool"><h3><span class="dot"></span>Act-Two</h3><p>Motion capture tool — lip-sync, emotional expressions aur head movements ko bina 3D software ke handle karta hai.</p></div>
+      <div class="tool"><h3><span class="dot"></span>Workflows</h3><p>Custom pipelines banane ka feature — repetitive creative tasks ko automate karne ke liye.</p></div>
+      <div class="tool"><h3><span class="dot"></span>Character consistency</h3><p>Reference images ke through ek protagonist ko poori short film mein consistent rakhta hai — pehle models mein character clip-dar-clip badal jaata tha.</p></div>
+      <div class="tool"><h3><span class="dot"></span>Clip chaining</h3><p>Multiple 5–10 second clips generate karke Runway ke editor mein assemble kiya ja sakta hai — lambi sequences banane ka tareeka.</p></div>
+    </div>
+  </section>
+
+  <section class="scene" id="s4">
+    <div class="slate"><span class="num">04</span><h2>Third-party models bhi ek chhat ke neeche</h2><span class="tag">Ecosystem</span></div>
+    <p>2026 ka sabse bada strategic move — Runway ne apne platform ko competing models ke liye khol diya. Matlab kisi aur company ka behtar model aaye, aap use bhi Runway ke andar hi use kar sakte ho.</p>
+    <div class="stack">
+      <div class="card"><div class="name">Kling 3.0</div><div class="by">realistic human faces mein strong</div></div>
+      <div class="card"><div class="name">Sora 2 Pro</div><div class="by">OpenAI ka video model</div></div>
+      <div class="card"><div class="name">GPT-Image-1.5</div><div class="by">image generation</div></div>
+      <div class="card"><div class="name">Veo 3 / 3.1</div><div class="by">Google ka video model</div></div>
+    </div>
+    <div class="callout"><strong>Practical fayda:</strong> aapko har naye model ke liye alag account nahi banana padta — Runway ek single interface se sab tak access deta hai.</div>
+  </section>
+
+  <section class="scene" id="s5">
+    <div class="slate"><span class="num">05</span><h2>Pricing — credit-based system</h2><span class="tag">Plans</span></div>
+    <p>Runway credits ke basis par kaam karta hai — har action credits kharch karta hai, aur alag-alag models alag rate se credits burn karte hain.</p>
+    <div class="plans">
+      <div class="plan">
+        <div class="name">Free</div>
+        <div class="price">₹0</div>
+        <ul><li>Limited credits</li><li>Watermarked output</li><li>Interface test karne ke liye theek, publish karne layak nahi</li></ul>
+      </div>
+      <div class="plan reco">
+        <div class="name">Standard</div>
+        <div class="price">$12/mo (annual billing)</div>
+        <ul><li>625 credits har mahine</li><li>Gen-4.5 roughly 25 credits/second video kharch karta hai</li><li>Regular creators ke liye entry point</li></ul>
+      </div>
+      <div class="plan">
+        <div class="name">Higher tiers</div>
+        <div class="price">Unlimited plan</div>
+        <ul><li>Heavy usage aur studios ke liye</li><li>Zyada credits, better value per-generation</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene" id="s6">
+    <div class="slate"><span class="num">06</span><h2>Developers ke liye API</h2><span class="tag">SDK</span></div>
+    <div class="checklist">
+      <div class="check"><span class="mark">→</span><div>Web access ke liye <strong>runwayml.com</strong> par sign up karein.</div></div>
+      <div class="check"><span class="mark">→</span><div>Free tier mein <strong>125 credits</strong> milte hain — lagbhag 8 second ka Gen-4 video.</div></div>
+      <div class="check"><span class="mark">→</span><div>Team ke saath kaam karne ke liye ek <strong>Workspace</strong> banayein, members invite karein aur assets share karein.</div></div>
+      <div class="check"><span class="mark">→</span><div>Developers ke liye official <strong>SDK</strong> available hai — API Key Dashboard ke Settings → API section mein milti hai.</div></div>
+      <div class="check"><span class="mark">→</span><div>Standard users ke liye rate limit hai <strong>5 concurrent requests</strong> — usse zyada par HTTP 429 error aata hai.</div></div>
+    </div>
+    <p style="margin-top:20px;">Runway ke andar Temporal Attention Layers hain, jo ensure karte hain ki har frame apne pichhle frame ke context ko samajhe — isi se early AI video mein aane wala "flickering" artifact rukta hai.</p>
+  </section>
+
+  <section class="scene" id="s7">
+    <div class="slate"><span class="num">07</span><h2>Achhi prompting kaise karein</h2><span class="tag">Practice</span></div>
+    <div class="tips">
+      <div class="tip"><span class="n">1</span><p><strong>Shot type se shuru karein</strong> — "Close up", "Wide shot" ya "Aerial view" jaisa word sabse pehle likhein, isse composition tay hota hai.</p></div>
+      <div class="tip"><span class="n">2</span><p><strong>Light describe karein</strong> — lighting hi realism decide karti hai, jaise "golden hour", "soft studio lighting" ya "hard noir shadows".</p></div>
+      <div class="tip"><span class="n">3</span><p><strong>Camera movement mention karein</strong> — jaise "slow camera pan right" — model camera terminology aur physics ko 2026 mein kaafi achhe se samajhta hai.</p></div>
+      <div class="tip"><span class="n">4</span><p><strong>Character consistency ke liye reference images use karein</strong> — poori short film mein same protagonist rakhne ke liye yeh zaroori hai.</p></div>
+    </div>
+    <div class="promptbox">
+      <span class="lbl">Example prompt</span>
+      A futuristic cyberpunk city in 2050, neon lights reflecting on wet pavement, cinematic lighting, 4k, hyper-realistic, slow camera pan right
+    </div>
+  </section>
+
+  <section class="scene" id="s8">
+    <div class="slate"><span class="num">08</span><h2>Kab use karein</h2><span class="tag">Verdict</span></div>
+    <p>Runway un logon ke liye best hai jo <strong>narrative-driven, professional-quality video content</strong> banana chahte hain — jahan post-production control, character consistency aur editing sab ek hi jagah chahiye.</p>
+    <p>Agar aapko sirf realistic human faces chahiye toh Kling 3.0 aage nikal jaata hai, aur stylized social clips ke liye Pika 2.5 zyada suited hai. Runway ki taakat hai iski <strong>breadth</strong> — ek subscription mein multiple tools, developer API, aur ek editing workflow jo concept se final cut tak fit baithta hai.</p>
+    <div class="callout"><strong>One-line takeaway:</strong> Runway ek studio hai, ek single-trick model nahi — agar aapko end-to-end production workflow chahiye, yeh 2026 mein sabse strong all-round choice hai.</div>
+  </section>
+
+</main>
+
+<footer>
+  <p class="fnote">Course based on publicly available information about Runway AI as of mid-2026. Features, pricing aur credit-costs change ho sakte hain — latest details ke liye runwayml.com check karein.</p>
+</footer>
+
+<div class="scrubber"></div>
+
+<script>
+  document.querySelectorAll('.scrubber').forEach(bar=>{
+    let html='';
+    for(let i=0;i<70;i++){
+      html += `<div class="tick ${i % 5 === 0 ? 'major':'minor'}"></div>`;
+    }
+    bar.innerHTML = html + '<div class="playhead"></div>';
+  });
+</script>
+
+</body>
+</html>
