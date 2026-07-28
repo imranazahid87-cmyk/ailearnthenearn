@@ -1,1 +1,318 @@
 
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sora AI — Ek Chhota Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sky:#F2F6FB;
+    --sky-2:#E8EFF8;
+    --ink:#1E2430;
+    --ink-soft:#5A6274;
+    --blue:#4C7EE0;
+    --blue-deep:#33599E;
+    --sunset:#E9825A;
+    --dusk:#8D7FD8;
+    --line:#D9E2EF;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--sky);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none !important; transition:none !important;}
+  }
+  .wrap{max-width:840px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- horizon divider with sun (signature) ---------- */
+  .horizon{
+    position:relative;
+    height:40px;
+    margin:0 0 8px;
+    overflow:hidden;
+  }
+  .horizon::before{
+    content:"";
+    position:absolute;left:0;right:0;top:50%;
+    height:1px;background:var(--line);
+  }
+  .horizon .disc{
+    position:absolute;
+    top:50%;
+    width:16px;height:16px;
+    border-radius:50%;
+    transform:translate(-50%,-50%);
+    background:var(--sunset);
+  }
+
+  /* ---------- hero ---------- */
+  header.hero{
+    padding:58px 0 10px;
+    background:linear-gradient(180deg, var(--sky-2), var(--sky) 80%);
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--blue-deep);
+    margin-bottom:14px;
+  }
+  h1.title{
+    font-family:'Newsreader',serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(32px,6.5vw,54px);
+    line-height:1.12;
+    margin:0 0 16px;
+    color:var(--ink);
+  }
+  h1.title .plain{font-style:normal;font-weight:600;color:var(--blue-deep);}
+  .hero-sub{
+    max-width:52ch;
+    margin:0 0 28px;
+    color:var(--ink-soft);
+    font-size:17px;
+  }
+
+  /* ---------- status banner ---------- */
+  .status{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-left:4px solid var(--sunset);
+    border-radius:0 10px 10px 0;
+    padding:18px 20px;
+    margin-bottom:36px;
+  }
+  .status .tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--sunset);
+    margin-bottom:8px;
+    display:block;
+  }
+  .status p{margin:0;font-size:14.5px;color:var(--ink-soft);}
+  .status strong{color:var(--ink);}
+
+  /* ---------- module blocks ---------- */
+  .module{padding:44px 0;border-bottom:1px solid var(--line);}
+  .module:last-of-type{border-bottom:none;}
+  .code{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    color:var(--blue-deep);
+    letter-spacing:0.04em;
+  }
+  .module h2{
+    font-family:'Newsreader',serif;
+    font-weight:600;
+    font-style:italic;
+    font-size:28px;
+    margin:6px 0 16px;
+    color:var(--ink);
+  }
+  .module p{margin:0 0 14px;}
+  .module p.lede{color:var(--ink-soft);font-size:17px;}
+
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:14px;
+    margin-top:18px;
+  }
+  .card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:16px 18px;
+  }
+  .card h3{
+    font-family:'Inter',sans-serif;
+    font-size:14.5px;
+    font-weight:700;
+    margin:0 0 6px;
+    color:var(--blue-deep);
+  }
+  .card p{font-size:14px;margin:0;color:var(--ink-soft);}
+
+  .steps{list-style:none;margin:18px 0 0;padding:0;}
+  .steps li{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:14px;
+    padding:12px 0;
+    border-top:1px dashed var(--line);
+  }
+  .steps li:first-child{border-top:none;}
+  .steps .tc{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--dusk);
+    padding-top:2px;
+  }
+  .steps strong{display:block;margin-bottom:2px;}
+
+  table.pricing{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+    font-size:14.5px;
+  }
+  table.pricing th, table.pricing td{
+    text-align:left;
+    padding:10px 12px;
+    border-bottom:1px solid var(--line);
+  }
+  table.pricing th{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--ink-soft);
+  }
+  table.pricing tr:last-child td{border-bottom:none;}
+
+  .callout{
+    background:var(--sky-2);
+    border-left:3px solid var(--blue);
+    border-radius:0 8px 8px 0;
+    padding:14px 18px;
+    margin-top:18px;
+    font-size:14.5px;
+    color:var(--ink-soft);
+  }
+  .callout strong{color:var(--ink);}
+
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+  .tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    padding:5px 10px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    color:var(--ink-soft);
+    background:var(--white);
+  }
+
+  footer{
+    text-align:center;
+    padding:40px 0 60px;
+    color:var(--ink-soft);
+    font-size:13.5px;
+  }
+  footer .final{font-family:'Newsreader',serif;font-style:italic;font-size:18px;color:var(--blue-deep);}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Sora AI · Beginner Course</div>
+    <h1 class="title">Sora — <span class="plain">OpenAI ka</span> video model</h1>
+    <p class="hero-sub">Kaafi realistic aur cinematic AI video banane wala model. Par ek zaroori baat pehle jaan lo — iska access route 2026 mein badal chuka hai.</p>
+    <div class="status">
+      <span class="tag">Current status · July 2026</span>
+      <p><strong>Sora ka consumer app (web + iOS) 26 April 2026 ko band ho chuka hai.</strong> Ab sirf developer API ke through access milta hai, aur woh bhi <strong>24 September 2026</strong> ko sunset (band) hone wala hai. Naya successor abhi officially announce nahi hua hai. Agar naya long-term project bana rahe ho, toh isi par depend na karo.</p>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="horizon"><div class="disc" style="left:8%"></div></div>
+  <section class="module">
+    <span class="code">01 · Intro</span>
+    <h2>Sora hai kya cheez?</h2>
+    <p class="lede">Sora, OpenAI ka text-to-video aur image-to-video model hai — Sora 2, 30 September 2025 ko release hua tha, aur tab se yeh apni cinematic realism ke liye jaana jaata hai.</p>
+    <p>Sora 2 pehle wale 6-second limit se aage badh kar 15-25 second tak ke clips synchronized audio (dialogue + sound effects) ke saath bana sakta hai. Iska ek unique feature hai "cameo" — jisme log apna consented likeness kisi generated scene mein daal sakte hain.</p>
+    <div class="cards">
+      <div class="card"><h3>Cinematic quality</h3><p>Film-grade output aur strong prompt-following ke liye jaana jaata hai.</p></div>
+      <div class="card"><h3>Synced audio</h3><p>Dialogue, sound effects aur music ek saath generate hote hain.</p></div>
+      <div class="card"><h3>Cameo</h3><p>Consented likeness ko scene mein daal sakte ho.</p></div>
+    </div>
+  </section>
+
+  <div class="horizon"><div class="disc" style="left:22%"></div></div>
+  <section class="module">
+    <span class="code">02 · Access</span>
+    <h2>Ab access kaise milta hai</h2>
+    <p class="lede">Consumer app band ho chuka hai, isliye ab sirf ek hi rasta bacha hai: OpenAI ka API.</p>
+    <ol class="steps">
+      <li><span class="tc">01</span><div><strong>Developer account</strong>OpenAI platform par API access set up karo.</div></li>
+      <li><span class="tc">02</span><div><strong>Model choose karo</strong>Sora 2 (720p tak) ya Sora 2 Pro (true 1080p tak).</div></li>
+      <li><span class="tc">03</span><div><strong>Video job create karo</strong>Prompt ya image reference bhejo — yeh asynchronous flow hai.</div></li>
+      <li><span class="tc">04</span><div><strong>Job poll karo</strong>Status check karte raho jab tak render complete na ho.</div></li>
+      <li><span class="tc">05</span><div><strong>Download karo</strong>Final video seconds/resolution ke hisaab se bill hoti hai.</div></li>
+    </ol>
+    <div class="callout"><strong>Note:</strong> ChatGPT Plus ($20/mo) ya Pro ($100-200/mo) subscription alag cheez hai — woh Sora 2 API seconds mein convert nahi hoti. Video generation ka kharcha API se alag lagta hai.</div>
+  </section>
+
+  <div class="horizon"><div class="disc" style="left:38%"></div></div>
+  <section class="module">
+    <span class="code">03 · Pricing</span>
+    <h2>Kitna kharcha aayega</h2>
+    <table class="pricing">
+      <tr><th>Tier</th><th>Rate</th><th>10-sec clip</th></tr>
+      <tr><td>Sora 2 (Standard)</td><td>$0.10/second</td><td>~$1.00</td></tr>
+      <tr><td>Sora 2 Pro</td><td>$0.30–0.70/second (resolution ke hisaab se)</td><td>~$3–$7</td></tr>
+      <tr><td>Batch tier</td><td>Standard rate se 50% kam</td><td>24-hour SLA ke saath</td></tr>
+    </table>
+    <div class="callout"><strong>Tip:</strong> Agar turant result nahi chahiye toh Batch tier use karo — aadhi kimat mein same output, bas thoda wait karna padta hai.</div>
+  </section>
+
+  <div class="horizon"><div class="disc" style="left:54%"></div></div>
+  <section class="module">
+    <span class="code">04 · Prompting</span>
+    <h2>Achha prompt kaise likhein</h2>
+    <div class="cards">
+      <div class="card"><h3>Scene detail</h3><p>Subject, setting aur lighting clearly describe karo.</p></div>
+      <div class="card"><h3>Camera language</h3><p>Pan, tracking shot, close-up jaise cinematic terms use karo.</p></div>
+      <div class="card"><h3>Audio cue</h3><p>Dialogue ya sound effect chahiye toh prompt mein likho — Sora audio bhi generate karta hai.</p></div>
+    </div>
+  </section>
+
+  <div class="horizon"><div class="disc" style="left:70%"></div></div>
+  <section class="module">
+    <span class="code">05 · Limits</span>
+    <h2>Kya kamzoriyan hain</h2>
+    <p class="lede">Sora bahut acha hai, par perfect nahi.</p>
+    <div class="cards">
+      <div class="card"><h3>Long-form consistency</h3><p>20-second scenes strong hain, par multi-minute storytelling abhi bhi mushkil hai.</p></div>
+      <div class="card"><h3>Fine editing</h3><p>Precise scene control manual production software jitna nahi hai.</p></div>
+      <div class="card"><h3>Sunset risk</h3><p>API 24 September 2026 ko band ho raha hai, roadmap clear nahi hai.</p></div>
+    </div>
+  </section>
+
+  <div class="horizon"><div class="disc" style="left:86%"></div></div>
+  <section class="module">
+    <span class="code">06 · Aage kya</span>
+    <h2>Agar API sunset ho jaaye toh</h2>
+    <p class="lede">Kyunki Sora 2 API ka future uncertain hai, apna workflow kisi ek tool par depend mat karo.</p>
+    <div class="tag-row">
+      <span class="tag">Google Veo 3.1</span>
+      <span class="tag">Kling 2.6 / 3.0</span>
+      <span class="tag">Runway Gen-4.5</span>
+    </div>
+    <p style="margin-top:14px;">Agar September 2026 ke baad bhi long-term project chal raha hai, toh migration plan pehle se bana lo.</p>
+  </section>
+
+  <footer>
+    <span class="final">"Sora" ka matlab hai aakash — thoda try karo, dekho kya banta hai.</span>
+  </footer>
+</div>
+
+</body>
+</html>
