@@ -1,1 +1,856 @@
 
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Midjourney Mini Course</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
+
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --card: #16161f;
+    --border: #2a2a3a;
+    --accent: #7c5cfc;
+    --accent2: #c084fc;
+    --gold: #f5c842;
+    --text: #e8e8f0;
+    --muted: #7a7a95;
+    --success: #4ade80;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Ambient gradient background */
+  body::before {
+    content: '';
+    position: fixed;
+    top: -30%;
+    left: -20%;
+    width: 70%;
+    height: 70%;
+    background: radial-gradient(ellipse, rgba(124,92,252,0.12) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    bottom: -20%;
+    right: -10%;
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(ellipse, rgba(192,132,252,0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 60px 0 40px;
+    text-align: center;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(124,92,252,0.15);
+    border: 1px solid rgba(124,92,252,0.3);
+    border-radius: 50px;
+    padding: 6px 16px;
+    font-size: 12px;
+    color: var(--accent2);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 6vw, 3.8rem);
+    font-weight: 700;
+    line-height: 1.1;
+    background: linear-gradient(135deg, #fff 30%, var(--accent2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 16px;
+  }
+
+  .hero-subtitle {
+    color: var(--muted);
+    font-size: 1.05rem;
+    max-width: 520px;
+    margin: 0 auto 36px;
+    line-height: 1.6;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    text-align: center;
+  }
+  .stat-num {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--accent2);
+  }
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* PROGRESS BAR */
+  .progress-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin: 32px 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .progress-text { font-size: 0.85rem; color: var(--muted); white-space: nowrap; }
+  .progress-bar-track {
+    flex: 1;
+    height: 6px;
+    background: var(--border);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: 99px;
+    transition: width 0.5s ease;
+  }
+  .progress-pct { font-size: 0.85rem; font-weight: 600; color: var(--accent2); white-space: nowrap; }
+
+  /* SECTION NAV */
+  .section-nav {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+  .nav-btn {
+    padding: 8px 18px;
+    border-radius: 50px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .nav-btn:hover { border-color: var(--accent); color: var(--accent2); }
+  .nav-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+  /* LESSON CARDS */
+  .lesson {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    transition: border-color 0.2s;
+    display: none;
+  }
+  .lesson.active-section { display: block; }
+  .lesson:hover { border-color: rgba(124,92,252,0.4); }
+
+  .lesson-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 22px 24px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .lesson-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+
+  .lesson-meta { flex: 1; }
+  .lesson-num { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; }
+  .lesson-title { font-size: 1rem; font-weight: 600; color: var(--text); }
+
+  .lesson-toggle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: var(--muted);
+    transition: all 0.3s;
+    flex-shrink: 0;
+  }
+  .lesson.open .lesson-toggle { background: var(--accent); color: #fff; transform: rotate(180deg); }
+
+  .lesson-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s;
+    padding: 0 24px;
+  }
+  .lesson.open .lesson-body {
+    max-height: 1200px;
+    padding: 0 24px 24px;
+  }
+
+  .lesson-divider {
+    height: 1px;
+    background: var(--border);
+    margin-bottom: 20px;
+  }
+
+  .lesson-content p {
+    color: #b0b0c8;
+    line-height: 1.75;
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+  }
+
+  .highlight-box {
+    background: rgba(124,92,252,0.1);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 14px 16px;
+    margin: 16px 0;
+    font-size: 0.9rem;
+    color: #c8c8e8;
+    line-height: 1.6;
+  }
+
+  .tip-box {
+    background: rgba(245,200,66,0.08);
+    border: 1px solid rgba(245,200,66,0.2);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin: 16px 0;
+    font-size: 0.88rem;
+    color: #e0c870;
+    line-height: 1.6;
+  }
+  .tip-box strong { color: var(--gold); }
+
+  .prompt-example {
+    background: #0d0d16;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    margin: 12px 0;
+    font-family: monospace;
+    font-size: 0.85rem;
+    color: #a0e0b0;
+    line-height: 1.6;
+    position: relative;
+  }
+  .prompt-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 12px 0;
+  }
+  .tag {
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 500;
+  }
+  .tag-purple { background: rgba(124,92,252,0.15); color: var(--accent2); border: 1px solid rgba(124,92,252,0.25); }
+  .tag-green { background: rgba(74,222,128,0.1); color: var(--success); border: 1px solid rgba(74,222,128,0.2); }
+  .tag-gold { background: rgba(245,200,66,0.1); color: var(--gold); border: 1px solid rgba(245,200,66,0.2); }
+
+  /* QUIZ */
+  .quiz-wrap {
+    background: rgba(124,92,252,0.06);
+    border: 1px solid rgba(124,92,252,0.2);
+    border-radius: 14px;
+    padding: 20px;
+    margin: 16px 0;
+  }
+  .quiz-q {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+  .quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .quiz-opt {
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: #b0b0c8;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.88rem;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s;
+  }
+  .quiz-opt:hover { border-color: var(--accent); color: var(--text); background: rgba(124,92,252,0.08); }
+  .quiz-opt.correct { border-color: var(--success); background: rgba(74,222,128,0.1); color: var(--success); }
+  .quiz-opt.wrong { border-color: #f87171; background: rgba(248,113,113,0.1); color: #f87171; }
+  .quiz-result { font-size: 0.85rem; margin-top: 10px; font-weight: 500; }
+
+  /* COMPLETE BTN */
+  .complete-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--muted);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .complete-btn:hover { border-color: var(--success); color: var(--success); }
+  .complete-btn.done { border-color: var(--success); color: var(--success); background: rgba(74,222,128,0.08); }
+  .complete-btn .check { width: 16px; height: 16px; border-radius: 50%; border: 2px solid currentColor; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 40px 0 60px;
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+
+  h3 { color: var(--text); font-size: 1rem; margin-bottom: 10px; margin-top: 16px; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 12px 0; }
+  @media(max-width:520px) { .grid-2 { grid-template-columns: 1fr; } }
+
+  .mini-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px;
+  }
+  .mini-card-title { font-size: 0.82rem; font-weight: 600; color: var(--accent2); margin-bottom: 6px; }
+  .mini-card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge">🎨 AI Art Mini Course</div>
+    <h1>Midjourney<br>Mastery Guide</h1>
+    <p class="hero-subtitle">Midjourney kya hai, kaise kaam karta hai, aur beginners se pro tak ka safar — sab kuch ek jagah.</p>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">7</div><div class="stat-label">Lessons</div></div>
+      <div class="stat"><div class="stat-num">~30</div><div class="stat-label">Minutes</div></div>
+      <div class="stat"><div class="stat-num">Free</div><div class="stat-label">Course</div></div>
+    </div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress-wrap">
+    <span class="progress-text">Progress</span>
+    <div class="progress-bar-track"><div class="progress-bar-fill" id="progressBar" style="width:0%"></div></div>
+    <span class="progress-pct" id="progressPct">0%</span>
+  </div>
+
+  <!-- NAV -->
+  <div class="section-nav">
+    <button class="nav-btn active" onclick="switchSection('basics')">🔰 Basics</button>
+    <button class="nav-btn" onclick="switchSection('prompts')">✍️ Prompts</button>
+    <button class="nav-btn" onclick="switchSection('advanced')">⚡ Advanced</button>
+  </div>
+
+  <!-- ===== BASICS ===== -->
+  <div id="section-basics">
+
+    <!-- Lesson 1 -->
+    <div class="lesson active-section" id="l1">
+      <div class="lesson-header" onclick="toggleLesson('l1')">
+        <div class="lesson-icon" style="background:rgba(124,92,252,0.15);">🤖</div>
+        <div class="lesson-meta">
+          <div class="lesson-num">Lesson 01 · Basics</div>
+          <div class="lesson-title">Midjourney Kya Hai?</div>
+        </div>
+        <div class="lesson-toggle">▼</div>
+      </div>
+      <div class="lesson-body">
+        <div class="lesson-divider"></div>
+        <div class="lesson-content">
+          <p><strong>Midjourney</strong> ek AI-powered image generation tool hai jo text prompts se stunning, photorealistic ya artistic images banata hai. Yeh 2022 mein launch hua aur abhi tak AI art ka sabse popular tool hai.</p>
+          
+          <div class="highlight-box">
+            💡 <strong>Simple words mein:</strong> Aap English mein likho "a futuristic city at sunset, cinematic" — aur Midjourney seconds mein ek beautiful image bana deta hai!
+          </div>
+
+          <h3>Midjourney Kaise Different Hai?</h3>
+          <div class="grid-2">
+            <div class="mini-card">
+              <div class="mini-card-title">🎨 Artistic Quality</div>
+              <div class="mini-card-desc">DALL-E ya Stable Diffusion se kaafi behtar artistic output deta hai</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-card-title">💬 Discord-Based</div>
+              <div class="mini-card-desc">Pehle sirf Discord pe tha, ab web interface bhi available hai</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-card-title">🏢 Commercial Use</div>
+              <div class="mini-card-desc">Paid plan mein generated images ko commercially use kar sakte ho</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-card-title">⚡ Speed</div>
+              <div class="mini-card-desc">Fast mode mein 4 images ~60 seconds mein generate hoti hain</div>
+            </div>
+          </div>
+
+          <div class="tip-box"><strong>💰 Pricing:</strong> Basic plan $10/month se shuru hota hai (~200 images/month). Pro plan $60/month mein unlimited fast generations milti hain.</div>
+
+          <button class="complete-btn" id="btn-l1" onclick="markDone('l1')"><span class="check">✓</span> Mark as Complete</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lesson 2 -->
+    <div class="lesson active-section" id="l2">
+      <div class="lesson-header" onclick="toggleLesson('l2')">
+        <div class="lesson-icon" style="background:rgba(192,132,252,0.12);">🚀</div>
+        <div class="lesson-meta">
+          <div class="lesson-num">Lesson 02 · Basics</div>
+          <div class="lesson-title">Shuru Kaise Karein — Setup Guide</div>
+        </div>
+        <div class="lesson-toggle">▼</div>
+      </div>
+      <div class="lesson-body">
+        <div class="lesson-divider"></div>
+        <div class="lesson-content">
+          <p>Midjourney use karna bohot simple hai. Neeche step-by-step process hai:</p>
+
+          <h3>Method 1: Web Interface (Recommended)</h3>
+          <p>Midjourney.com pe jao → Sign in with Discord → "Imagine" box mein apna prompt type karo → Enter dabao!</p>
+
+          <h3>Method 2: Discord Bot</h3>
+          <p>Discord join karo → Midjourney server enter karo → #newbies channel mein jao → <code>/imagine</code> command use karo</p>
+
+          <div class="highlight-box">
+            ⚡ <strong>First command:</strong><br>
+            <code>/imagine prompt: a beautiful mountain landscape, golden hour, cinematic photography</code>
+          </div>
+
+          <h3>4 Images Milti Hain — Kya Karna Hai?</h3>
+          <div class="tag-list">
+            <span class="tag tag-purple">U1-U4 = Upscale (bada karo)</span>
+            <span class="tag tag-green">V1-V4 = Variation (variety dekho)</span>
+            <span class="tag tag-gold">🔄 = Regenerate (dobara banao)</span>
+          </div>
+
+          <div class="tip-box"><strong>🎯 Pro Tip:</strong> Shuru mein free trial mein ~25 free generations milti hain. Carefully use karo taki concept samajh sako pehle!</div>
+
+          <button class="complete-btn" id="btn-l2" onclick="markDone('l2')"><span class="check">✓</span> Mark as Complete</button>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end basics -->
+
+  <!-- ===== PROMPTS ===== -->
+  <div id="section-prompts" style="display:none">
+
+    <!-- Lesson 3 -->
+    <div class="lesson active-section" id="l3">
+      <div class="lesson-header" onclick="toggleLesson('l3')">
+        <div class="lesson-icon" style="background:rgba(245,200,66,0.1);">✍️</div>
+        <div class="lesson-meta">
+          <div class="lesson-num">Lesson 03 · Prompts</div>
+          <div class="lesson-title">Perfect Prompt Kaise Likhein</div>
+        </div>
+        <div class="lesson-toggle">▼</div>
+      </div>
+      <div class="lesson-body">
+        <div class="lesson-divider"></div>
+        <div class="lesson-content">
+          <p>Prompt likhna ek art hai. Jitna detailed aur specific prompt, utna better result!</p>
+
+          <h3>Prompt Formula</h3>
+          <div class="highlight-box">
+            <strong>[Subject]</strong> + <strong>[Style]</strong> + <strong>[Lighting]</strong> + <strong>[Mood]</strong> + <strong>[Technical Details]</strong>
+          </div>
+
+          <h3>Example: Weak vs Strong Prompt</h3>
+          <div class="prompt-label">❌ Weak Prompt</div>
+          <div class="prompt-example">a girl in forest</div>
+
+          <div class="prompt-label">✅ Strong Prompt</div>
+          <div class="prompt-example">a young woman standing in an ancient forest, dappled sunlight through tall oak trees, emerald green atmosphere, fantasy portrait, photorealistic, 85mm lens, soft bokeh, by Greg Rutkowski --ar 2:3 --v 6</div>
+
+          <h3>Important Keywords Categories</h3>
+          <div class="grid-2">
+            <div class="mini-card">
+              <div class="mini-card-title">🎨 Art Styles</div>
+              <div class="mini-card-desc">photorealistic, oil painting, watercolor, anime, concept art, digital art, impressionist</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-card-title">💡 Lighting</div>
+              <div class="mini-card-desc">golden hour, dramatic lighting, soft diffused light, neon lights, rim lighting, studio lighting</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-card-title">📷 Camera</div>
+              <div class="mini-card-desc">35mm lens, wide angle, macro, aerial view, close-up portrait, shallow depth of field</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-card-title">🎭 Mood</div>
+              <div class="mini-card-desc">ethereal, melancholic, epic, cozy, mysterious, vibrant, dark and moody</div>
+            </div>
+          </div>
+
+          <!-- QUIZ -->
+          <div class="quiz-wrap">
+            <div class="quiz-q">🧠 Quick Quiz: Konsa prompt better results dega?</div>
+            <div class="quiz-options">
+              <button class="quiz-opt" onclick="quiz(this, false, 'q1')">cat sitting</button>
+              <button class="quiz-opt" onclick="quiz(this, true, 'q1')">a fluffy orange cat sitting on a Victorian windowsill, warm afternoon light, painterly style, detailed fur</button>
+              <button class="quiz-opt" onclick="quiz(this, false, 'q1')">orange cat, window</button>
+            </div>
+            <div class="quiz-result" id="q1-result"></div>
+          </div>
+
+          <button class="complete-btn" id="btn-l3" onclick="markDone('l3')"><span class="check">✓</span> Mark as Complete</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lesson 4 -->
+    <div class="lesson active-section" id="l4">
+      <div class="lesson-header" onclick="toggleLesson('l4')">
+        <div class="lesson-icon" style="background:rgba(74,222,128,0.1);">🎛️</div>
+        <div class="lesson-meta">
+          <div class="lesson-num">Lesson 04 · Prompts</div>
+          <div class="lesson-title">Parameters & Commands</div>
+        </div>
+        <div class="lesson-toggle">▼</div>
+      </div>
+      <div class="lesson-body">
+        <div class="lesson-divider"></div>
+        <div class="lesson-content">
+          <p>Parameters wo special codes hain jo prompt ke end mein lagate hain — yeh image ki properties control karte hain.</p>
+
+          <h3>Most Important Parameters</h3>
+
+          <div class="prompt-label">Aspect Ratio — --ar</div>
+          <div class="prompt-example">
+            --ar 1:1  → Square (Instagram post)<br>
+            --ar 16:9 → Widescreen (wallpaper, YouTube)<br>
+            --ar 9:16 → Portrait (phone, Stories)<br>
+            --ar 2:3  → Portrait photo
+          </div>
+
+          <div class="prompt-label">Quality — --q</div>
+          <div class="prompt-example">
+            --q .25  → Fast, less detail (GPU credits bachao)<br>
+            --q 1    → Default quality<br>
+            --q 2    → More detail (2x GPU cost)
+          </div>
+
+          <div class="prompt-label">Stylize — --s (0-1000)</div>
+          <div class="prompt-example">
+            --s 0    → Very literal, exact prompt follow<br>
+            --s 100  → Default balance<br>
+            --s 750  → More artistic, creative liberties<br>
+            --s 1000 → Maximum Midjourney style
+          </div>
+
+          <div class="prompt-label">No/Negative — --no</div>
+          <div class="prompt-example">
+            a landscape --no buildings, people, cars
+            (= yeh cheezein image mein mat daalo)
+          </div>
+
+          <div class="tip-box"><strong>💡 Version:</strong> --v 6 (latest) ya --niji 6 (anime style ke liye) use karo best results ke liye.</div>
+
+          <button class="complete-btn" id="btn-l4" onclick="markDone('l4')"><span class="check">✓</span> Mark as Complete</button>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end prompts -->
+
+  <!-- ===== ADVANCED ===== -->
+  <div id="section-advanced" style="display:none">
+
+    <!-- Lesson 5 -->
+    <div class="lesson active-section" id="l5">
+      <div class="lesson-header" onclick="toggleLesson('l5')">
+        <div class="lesson-icon" style="background:rgba(248,113,113,0.1);">🔥</div>
+        <div class="lesson-meta">
+          <div class="lesson-num">Lesson 05 · Advanced</div>
+          <div class="lesson-title">Pro Techniques — Image Prompting & Remix</div>
+        </div>
+        <div class="lesson-toggle">▼</div>
+      </div>
+      <div class="lesson-body">
+        <div class="lesson-divider"></div>
+        <div class="lesson-content">
+          <p>Yeh techniques aapko beginners se alag karte hain aur professional-level output dete hain:</p>
+
+          <h3>1. Image Prompt (Image + Text)</h3>
+          <p>Apni khud ki image upload karke usse style reference dena! Pehle image Discord ya web pe upload karo, uska URL copy karo, phir:</p>
+          <div class="prompt-example">[image_url] a person in this style, futuristic city background --iw 0.5</div>
+          <p style="font-size:0.82rem;color:var(--muted);margin-top:4px;">--iw = image weight (0.5 to 2.0) — kitna image influence karega</p>
+
+          <h3>2. Style Reference — --sref</h3>
+          <div class="prompt-example">a serene garden --sref [style_image_url] --sw 100</div>
+
+          <h3>3. Character Reference — --cref</h3>
+          <div class="prompt-example">portrait of a warrior --cref [character_image_url]
+(same character different scenes mein!)</div>
+
+          <h3>4. Remix Mode</h3>
+          <p>Variation buttons press karne ke baad aap prompt edit kar sakte ho! Settings mein "Remix Mode" ON karo.</p>
+
+          <div class="tip-box"><strong>🎯 Use Case:</strong> Ek character banao --cref se, phir usse alag alag settings (forest, city, space) mein dikhao — perfect for storytelling aur comics!</div>
+
+          <button class="complete-btn" id="btn-l5" onclick="markDone('l5')"><span class="check">✓</span> Mark as Complete</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lesson 6 -->
+    <div class="lesson active-section" id="l6">
+      <div class="lesson-header" onclick="toggleLesson('l6')">
+        <div class="lesson-icon" style="background:rgba(245,200,66,0.1);">💼</div>
+        <div class="lesson-meta">
+          <div class="lesson-num">Lesson 06 · Advanced</div>
+          <div class="lesson-title">Real World Use Cases & Paise Kamana</div>
+        </div>
+        <div class="lesson-toggle">▼</div>
+      </div>
+      <div class="lesson-body">
+        <div class="lesson-divider"></div>
+        <div class="lesson-content">
+          <p>Midjourney sirf hobby nahi — isse real income bhi generate ho sakti hai!</p>
+
+          <div class="grid-2">
+            <div class="mini-card">
+              <div class="mini-card-title">🖼️ Stock Images</div>
+              <div class="mini-card-desc">Adobe Stock, Shutterstock pe AI images sell karo (terms check karo)</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-card-title">👕 Print on Demand</div>
+              <div class="mini-card-desc">Redbubble, Merch ya apni Shopify store — T-shirts, mugs, posters</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-card-title">📚 Children's Books</div>
+              <div class="mini-card-desc">Illustrated story books banao aur Amazon KDP pe publish karo</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-card-title">🎨 Client Work</div>
+              <div class="mini-card-desc">Logos, social media content, book covers, concept art — Fiverr pe offer karo</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-card-title">🃏 NFT Art</div>
+              <div class="mini-card-desc">Unique art series banao aur OpenSea ya Rarible pe list karo</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-card-title">📱 Social Media</div>
+              <div class="mini-card-desc">Niche-based pages banao, audience grow karo, sponsorships lo</div>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            📈 <strong>Real Example:</strong> Ek Pakistani freelancer Midjourney se children's book illustrations $200–$500/book mein sell karta hai. Monthly 3-4 clients se $800–$2000 earn ho sakti hai!
+          </div>
+
+          <button class="complete-btn" id="btn-l6" onclick="markDone('l6')"><span class="check">✓</span> Mark as Complete</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lesson 7 -->
+    <div class="lesson active-section" id="l7">
+      <div class="lesson-header" onclick="toggleLesson('l7')">
+        <div class="lesson-icon" style="background:rgba(124,92,252,0.15);">🏆</div>
+        <div class="lesson-meta">
+          <div class="lesson-num">Lesson 07 · Advanced</div>
+          <div class="lesson-title">Pro Tips, Mistakes & Resources</div>
+        </div>
+        <div class="lesson-toggle">▼</div>
+      </div>
+      <div class="lesson-body">
+        <div class="lesson-divider"></div>
+        <div class="lesson-content">
+
+          <h3>✅ Common Mistakes Jo Beginners Karte Hain</h3>
+          <div class="tag-list">
+            <span class="tag tag-purple">Too vague prompts</span>
+            <span class="tag tag-purple">No art style mention</span>
+            <span class="tag tag-purple">Ignore --ar parameter</span>
+            <span class="tag tag-purple">First result se happy ho jana</span>
+            <span class="tag tag-purple">V buttons use na karna</span>
+          </div>
+
+          <h3>🔥 Pro Tips</h3>
+          <div class="highlight-box">
+            1. <strong>Seed use karo:</strong> --seed [number] same composition dobara banane ke liye<br><br>
+            2. <strong>Multi-prompts:</strong> "red::2 apple::1" — red ko 2x importance do<br><br>
+            3. <strong>Describe jo nahi chahiye:</strong> --no blur, ugly, distorted, watermark<br><br>
+            4. <strong>Artist names:</strong> "in the style of Monet" ya "by Alphonse Mucha" add karo<br><br>
+            5. <strong>Lighting is king:</strong> Har prompt mein lighting specify karo
+          </div>
+
+          <h3>📚 Seekhne Ke Liye Best Resources</h3>
+          <div class="grid-2">
+            <div class="mini-card">
+              <div class="mini-card-title">🌐 Official Docs</div>
+              <div class="mini-card-desc">docs.midjourney.com — sabse accurate aur updated</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-card-title">📺 YouTube</div>
+              <div class="mini-card-desc">Theoretically Media, Future Tools — best free tutorials</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-card-title">🤝 Reddit</div>
+              <div class="mini-card-desc">r/midjourney — community prompts aur tips share karte hain</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-card-title">🔍 PromptHero</div>
+              <div class="mini-card-desc">prompthero.com — inspiring images ke saath prompts copy karo</div>
+            </div>
+          </div>
+
+          <div class="tip-box"><strong>🎓 Final Advice:</strong> Roz 20-30 minutes practice karo. 30 din mein aap aise images banao ge jo log professionally banate hain!</div>
+
+          <!-- Final quiz -->
+          <div class="quiz-wrap">
+            <div class="quiz-q">🧠 Final Quiz: --ar 9:16 kab use karte hain?</div>
+            <div class="quiz-options">
+              <button class="quiz-opt" onclick="quiz(this, false, 'q2')">YouTube thumbnail ke liye</button>
+              <button class="quiz-opt" onclick="quiz(this, false, 'q2')">Square Instagram post ke liye</button>
+              <button class="quiz-opt" onclick="quiz(this, true, 'q2')">Instagram Stories ya phone wallpaper ke liye</button>
+            </div>
+            <div class="quiz-result" id="q2-result"></div>
+          </div>
+
+          <button class="complete-btn" id="btn-l7" onclick="markDone('l7')"><span class="check">✓</span> Mark as Complete</button>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end advanced -->
+
+  <div class="footer">
+    Made with ❤️ for Pakistani learners · Midjourney Mini Course 2026
+  </div>
+
+</div><!-- end container -->
+
+<script>
+  const totalLessons = 7;
+  const done = {};
+
+  function toggleLesson(id) {
+    const el = document.getElementById(id);
+    el.classList.toggle('open');
+  }
+
+  function markDone(id) {
+    done[id] = true;
+    const btn = document.getElementById('btn-' + id);
+    btn.classList.add('done');
+    btn.innerHTML = '<span class="check">✓</span> Completed!';
+    btn.disabled = true;
+    updateProgress();
+  }
+
+  function updateProgress() {
+    const count = Object.keys(done).length;
+    const pct = Math.round((count / totalLessons) * 100);
+    document.getElementById('progressBar').style.width = pct + '%';
+    document.getElementById('progressPct').textContent = pct + '%';
+  }
+
+  function switchSection(sec) {
+    document.getElementById('section-basics').style.display = 'none';
+    document.getElementById('section-prompts').style.display = 'none';
+    document.getElementById('section-advanced').style.display = 'none';
+    document.getElementById('section-' + sec).style.display = 'block';
+
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+  }
+
+  function quiz(btn, correct, id) {
+    const opts = btn.closest('.quiz-options').querySelectorAll('.quiz-opt');
+    opts.forEach(o => { o.disabled = true; });
+    const resultEl = document.getElementById(id + '-result');
+    if (correct) {
+      btn.classList.add('correct');
+      resultEl.style.color = 'var(--success)';
+      resultEl.textContent = '🎉 Bilkul sahi! Shabash!';
+    } else {
+      btn.classList.add('wrong');
+      resultEl.style.color = '#f87171';
+      resultEl.textContent = '❌ Galat! Sahi answer try karo.';
+      opts.forEach(o => { o.disabled = false; });
+      btn.disabled = true;
+    }
+  }
+</script>
+</body>
+</html>
