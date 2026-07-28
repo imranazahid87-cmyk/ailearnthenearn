@@ -1,1 +1,298 @@
 
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CapCut AI — Ek Chhota Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5F7F5;
+    --paper-2:#EBEFEC;
+    --ink:#1B201F;
+    --ink-soft:#59615D;
+    --blue:#2F6FED;
+    --blue-deep:#1E52C2;
+    --pink:#E63E76;
+    --lime:#8FC93A;
+    --line:#DCE3DE;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none !important; transition:none !important;}
+  }
+  .wrap{max-width:840px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- timeline divider (signature) ---------- */
+  .timeline{
+    height:34px;
+    background:var(--ink);
+    display:flex;
+    align-items:center;
+    gap:3px;
+    padding:0 10px;
+    position:relative;
+  }
+  .timeline .clip{height:16px;border-radius:2px;flex-shrink:0;}
+  .timeline .clip.a{width:60px;background:var(--blue);}
+  .timeline .clip.b{width:34px;background:var(--pink);}
+  .timeline .clip.c{width:90px;background:var(--lime);}
+  .timeline .clip.d{width:44px;background:var(--blue);opacity:0.6;}
+  .timeline .clip.e{width:70px;background:var(--pink);opacity:0.7;}
+  .timeline .clip.f{width:50px;background:var(--lime);opacity:0.75;}
+  .timeline::after{
+    content:"";
+    position:absolute;
+    top:0;bottom:0;left:38%;
+    width:2px;
+    background:var(--white);
+  }
+
+  /* ---------- hero ---------- */
+  header.hero{padding:52px 0 30px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--blue-deep);
+    margin-bottom:14px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .eyebrow::before{content:"▶";font-size:10px;color:var(--pink);}
+  h1.title{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:clamp(32px,6.5vw,52px);
+    line-height:1.06;
+    margin:0 0 14px;
+    letter-spacing:-0.01em;
+  }
+  h1.title .hl{
+    background:linear-gradient(180deg,transparent 62%, var(--lime) 62%);
+  }
+  .hero-sub{
+    max-width:50ch;
+    margin:0 0 20px;
+    color:var(--ink-soft);
+    font-size:17px;
+  }
+
+  /* ---------- module blocks ---------- */
+  .module{padding:44px 0;border-bottom:1px solid var(--line);}
+  .module:last-of-type{border-bottom:none;}
+  .code{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    color:var(--blue-deep);
+    letter-spacing:0.04em;
+  }
+  .module h2{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:27px;
+    margin:6px 0 16px;
+  }
+  .module p{margin:0 0 14px;}
+  .module p.lede{color:var(--ink-soft);font-size:17px;}
+
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:14px;
+    margin-top:18px;
+  }
+  .card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:16px 18px;
+    border-top:3px solid var(--blue);
+  }
+  .card:nth-child(3n+2){border-top-color:var(--pink);}
+  .card:nth-child(3n+3){border-top-color:var(--lime);}
+  .card h3{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:15px;
+    font-weight:700;
+    margin:0 0 6px;
+    color:var(--ink);
+  }
+  .card p{font-size:14px;margin:0;color:var(--ink-soft);}
+
+  .steps{list-style:none;margin:18px 0 0;padding:0;}
+  .steps li{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:14px;
+    padding:12px 0;
+    border-top:1px dashed var(--line);
+  }
+  .steps li:first-child{border-top:none;}
+  .steps .tc{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--pink);
+    padding-top:2px;
+  }
+  .steps strong{display:block;margin-bottom:2px;}
+
+  table.pricing{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+    font-size:14.5px;
+  }
+  table.pricing th, table.pricing td{
+    text-align:left;
+    padding:10px 12px;
+    border-bottom:1px solid var(--line);
+  }
+  table.pricing th{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--ink-soft);
+  }
+  table.pricing tr:last-child td{border-bottom:none;}
+
+  .callout{
+    background:var(--paper-2);
+    border-left:3px solid var(--blue);
+    border-radius:0 8px 8px 0;
+    padding:14px 18px;
+    margin-top:18px;
+    font-size:14.5px;
+    color:var(--ink-soft);
+  }
+  .callout strong{color:var(--ink);}
+
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+  .tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    padding:5px 10px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    color:var(--ink-soft);
+    background:var(--white);
+  }
+
+  footer{
+    text-align:center;
+    padding:40px 0 60px;
+    color:var(--ink-soft);
+    font-size:13.5px;
+  }
+  footer .final{font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--blue-deep);}
+</style>
+</head>
+<body>
+
+<div class="timeline">
+  <div class="clip a"></div><div class="clip b"></div><div class="clip c"></div>
+  <div class="clip d"></div><div class="clip e"></div><div class="clip f"></div>
+  <div class="clip a"></div><div class="clip c"></div><div class="clip b"></div>
+</div>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">CapCut AI · Beginner Course</div>
+    <h1 class="title">CapCut se <span class="hl">smart editing</span> seekho</h1>
+    <p class="hero-sub">Raw footage se lekar ready-to-post video tak — captions, background removal, aur auto-edit sab ek jagah.</p>
+  </header>
+
+  <section class="module">
+    <span class="code">01 · Intro</span>
+    <h2>CapCut AI hai kya cheez?</h2>
+    <p class="lede">CapCut ek all-in-one video editor hai jisme ab AI features bhi built-in hain — script se video, auto captions, background removal, aur ek click mein full auto-edit.</p>
+    <p>2026 mein CapCut sirf editing tool nahi raha — yeh ek poora creative suite ban gaya hai jisme video, image (Seedream) aur AI video generation (Seedance) sab shaamil hain. Sabse badi baat: iska free tier kaafi generous hai, isliye beginners ke liye yeh best starting point hai.</p>
+    <div class="cards">
+      <div class="card"><h3>Auto-Edit</h3><p>Raw footage do, AI khud scene-select, transition aur music laga deta hai.</p></div>
+      <div class="card"><h3>Auto Captions</h3><p>94-96% tak accurate captions, seconds mein ready.</p></div>
+      <div class="card"><h3>Background Removal</h3><p>Ek click mein background hata ke naya daalo.</p></div>
+    </div>
+  </section>
+
+  <section class="module">
+    <span class="code">02 · Features</span>
+    <h2>Sabse useful AI tools</h2>
+    <p class="lede">Yeh woh features hain jo sabse zyada time bachaate hain:</p>
+    <div class="cards">
+      <div class="card"><h3>Script-to-Video</h3><p>Text script daalo, AI visuals suggest karke draft video bana deta hai.</p></div>
+      <div class="card"><h3>Smart Reframe</h3><p>Ek video ko TikTok, Reels, YouTube ke hisaab se auto-resize karo.</p></div>
+      <div class="card"><h3>Text-to-Speech</h3><p>Bina recording ke natural-sounding voiceover add karo.</p></div>
+      <div class="card"><h3>AI Video Enhancement</h3><p>Purani ya dhundhli footage ko sharp aur upscale karo.</p></div>
+      <div class="card"><h3>Motion Tracking</h3><p>Text ya sticker ko moving object ke saath chipka do.</p></div>
+      <div class="card"><h3>Seedance / Seedream</h3><p>Text se naye video clips ya images generate karo.</p></div>
+    </div>
+  </section>
+
+  <section class="module">
+    <span class="code">03 · Workflow</span>
+    <h2>Auto-Edit se video kaise banayein</h2>
+    <ol class="steps">
+      <li><span class="tc">01</span><div><strong>Footage upload karo</strong>Apni raw clips, photos ya voice notes CapCut mein daalo.</div></li>
+      <li><span class="tc">02</span><div><strong>Kya chahiye woh likho</strong>Ek chhota description do — jaise "travel vlog, upbeat tone".</div></li>
+      <li><span class="tc">03</span><div><strong>AI analyze karega</strong>Scene recognition, speech transcription aur quality scoring se best parts chunta hai.</div></li>
+      <li><span class="tc">04</span><div><strong>Draft milega</strong>Auto color correction, audio leveling aur transitions ke saath ek pehla version ready.</div></li>
+      <li><span class="tc">05</span><div><strong>Khud review karo</strong>Story, timing, captions aur crop manually check karke final touch do.</div></li>
+    </ol>
+    <div class="callout"><strong>Tip:</strong> AI daraft ko replacement nahi, starting point maano — taste aur timing abhi bhi tumhara kaam hai.</div>
+  </section>
+
+  <section class="module">
+    <span class="code">04 · Captions</span>
+    <h2>Captions aur voice tools</h2>
+    <p class="lede">Bina sound ke bhi log video dekhte hain, isliye captions bahut zaroori hain.</p>
+    <div class="cards">
+      <div class="card"><h3>Auto Captions</h3><p>Clear English speech par 94-96% accuracy, background noise se thoda kam.</p></div>
+      <div class="card"><h3>Styling</h3><p>Font, color aur animation se captions ko brand ke hisaab se style karo.</p></div>
+      <div class="card"><h3>Text-to-Speech</h3><p>Multiple languages/voices mein narration add karo.</p></div>
+    </div>
+  </section>
+
+  <section class="module">
+    <span class="code">05 · Pricing</span>
+    <h2>Free vs Pro — kya lena chahiye</h2>
+    <table class="pricing">
+      <tr><th>Plan</th><th>Milta kya hai</th><th>Kiske liye</th></tr>
+      <tr><td>Free</td><td>Full editor, auto captions, background removal, smart reframe</td><td>Students, casual creators</td></tr>
+      <tr><td>Pro (~£7.99/mo)</td><td>Export limits hatate hain, higher-resolution processing</td><td>Regular ya high-volume creators</td></tr>
+    </table>
+    <div class="callout"><strong>Note:</strong> Pricing aur limits region aur platform (web/Android/iOS) ke hisaab se badalte hain — payment se pehle official pricing page zaroor check karo.</div>
+  </section>
+
+  <section class="module">
+    <span class="code">06 · Compare</span>
+    <h2>CapCut kab use karein, kab nahi</h2>
+    <p class="lede">CapCut sabse zyada kaam ka hai short-form social content ke liye — auto captions, trendy effects, beat-matched cuts.</p>
+    <div class="tag-row">
+      <span class="tag">short-form editing</span>
+      <span class="tag">auto captions</span>
+      <span class="tag">script-to-video</span>
+      <span class="tag">cloud collaboration</span>
+    </div>
+    <p style="margin-top:14px;">Agar tumhe pure generative video quality chahiye toh Runway jaise tools better hain, aur spoken-word heavy content ke liye Descript. Kaafi creators dono use karte hain — jaise ek AI tool se clip generate karke, CapCut mein final edit karna.</p>
+  </section>
+
+  <footer>
+    <span class="final">Apna pehla project kholo aur Auto-Edit try karo.</span>
+  </footer>
+</div>
+
+</body>
+</html>
