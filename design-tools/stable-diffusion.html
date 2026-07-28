@@ -1,1 +1,371 @@
 
+<!DOCTYPE html>
+<html lang="ur-Latn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stable Diffusion — Mini Course</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap');
+
+  :root{
+    --bg:#0e0e10;
+    --card:#word;
+    --card-bg:#161618;
+    --green:#4ade80;
+    --violet:#a78bfa;
+    --amber:#fbbf24;
+    --paper:#e5e5e8;
+    --dim:#88888f;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(circle at 10% 0%, rgba(167,139,250,0.08) 0%, transparent 40%),
+      radial-gradient(circle at 90% 10%, rgba(74,222,128,0.08) 0%, transparent 40%),
+      var(--bg);
+    color:var(--paper);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.6;
+  }
+
+  /* subtle noise/static texture — nods to the diffusion process itself */
+  .noise{
+    position:fixed; inset:0; z-index:0; pointer-events:none; opacity:0.05;
+    background-image:radial-gradient(circle, #fff 1px, transparent 1px);
+    background-size:3px 3px;
+  }
+
+  .wrap{max-width:820px;margin:0 auto;padding:0 24px 100px;position:relative;z-index:1;}
+
+  header.hero{
+    padding:80px 0 20px;
+    text-align:center;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px;
+    color:var(--green);
+    margin-bottom:22px;
+    letter-spacing:0.02em;
+  }
+  .eyebrow::before{content:"$ ";color:var(--dim);}
+  h1{
+    font-family:'JetBrains Mono', monospace;
+    font-weight:700;
+    font-size:46px;
+    line-height:1.15;
+    margin:0 0 20px;
+    color:#fff;
+  }
+  h1 .hi{color:var(--violet);}
+  .sub{
+    font-size:16.5px;
+    color:var(--dim);
+    max-width:540px;
+    margin:0 auto;
+    font-family:'Work Sans',sans-serif;
+  }
+
+  /* noise-to-image step strip: visualizes the denoising idea */
+  .steps-strip{
+    display:flex;
+    gap:4px;
+    margin:36px 0 8px;
+    border-top:1px solid #26262a;
+    border-bottom:1px solid #26262a;
+    padding:18px 0;
+  }
+  .steps-strip div{
+    flex:1;
+    height:34px;
+    border-radius:3px;
+  }
+  .steps-strip div:nth-child(1){background:repeating-linear-gradient(45deg,#333 0 2px,#1a1a1c 2px 4px);}
+  .steps-strip div:nth-child(2){background:repeating-linear-gradient(45deg,#3a3530 0 3px,#1a1a1c 3px 6px);}
+  .steps-strip div:nth-child(3){background:linear-gradient(100deg,#4d3f2a,#2a2a1f);}
+  .steps-strip div:nth-child(4){background:linear-gradient(100deg, var(--amber),#5a4a20);}
+  .steps-strip div:nth-child(5){background:linear-gradient(100deg, var(--green), var(--violet));}
+  .steps-caption{
+    display:flex;
+    justify-content:space-between;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--dim);
+    margin-bottom:20px;
+  }
+
+  .module{
+    margin-top:36px;
+    background:var(--card-bg);
+    border:1px solid #26262a;
+    border-radius:8px;
+    padding:32px 34px 28px;
+  }
+
+  .mod-label{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px;
+    color:var(--bg);
+    background:var(--green);
+    padding:3px 12px;
+    border-radius:3px;
+    margin-bottom:18px;
+  }
+
+  h2{
+    font-family:'Work Sans', sans-serif;
+    font-weight:700;
+    font-size:26px;
+    margin:0 0 14px;
+    color:#fff;
+  }
+  h2 span.accent{color:var(--violet);}
+
+  p{color:var(--dim); font-size:15.5px; margin:0 0 14px;}
+  p strong{color:var(--paper); font-weight:600;}
+
+  ul.points{list-style:none; margin:18px 0; padding:0;}
+  ul.points li{
+    position:relative;
+    padding:8px 0 8px 26px;
+    color:var(--dim);
+    font-size:15px;
+  }
+  ul.points li::before{
+    content:"›";
+    position:absolute;
+    left:0; top:6px;
+    color:var(--green);
+    font-family:'JetBrains Mono',monospace;
+    font-weight:700;
+  }
+  ul.points li strong{color:var(--paper);}
+
+  .prompt-box{
+    margin-top:20px;
+    background:#0a0a0b;
+    border:1px solid #2a2a2e;
+    border-radius:6px;
+    padding:16px 20px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:13.5px;
+    color:var(--green);
+  }
+  .prompt-box .tag{
+    display:block;
+    font-family:'Work Sans',sans-serif;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--dim);
+    margin-bottom:8px;
+  }
+  .prompt-box .neg{color:#ff6b6b; margin-top:8px;}
+
+  .setting-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    padding:11px 0;
+    border-bottom:1px solid #222225;
+    font-size:14.5px;
+    gap:16px;
+  }
+  .setting-row:last-child{border-bottom:none;}
+  .setting-row .name{
+    font-family:'JetBrains Mono',monospace;
+    color:var(--amber);
+    font-weight:600;
+    white-space:nowrap;
+  }
+  .setting-row .use{color:var(--dim); font-size:13.5px; text-align:right;}
+
+  .grid2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin-top:18px;
+  }
+  .mini-card{
+    background:#101012;
+    border:1px solid #26262a;
+    border-radius:8px;
+    padding:16px 18px;
+  }
+  .mini-card .num{
+    font-family:'JetBrains Mono',monospace;
+    font-size:19px;
+    color:var(--violet);
+  }
+  .mini-card p{margin:6px 0 0; font-size:14px;}
+
+  .warn{
+    margin-top:22px;
+    background:rgba(251,191,36,0.08);
+    border-left:3px solid var(--amber);
+    padding:14px 18px;
+    border-radius:0 6px 6px 0;
+  }
+  .warn p{color:var(--paper); font-size:14.5px; margin:0;}
+
+  .divider{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin:52px 0 0;
+    color:var(--dim);
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+  }
+  .divider::before, .divider::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:#26262a;
+  }
+
+  .final{
+    margin-top:52px;
+    text-align:center;
+    padding:36px 20px 0;
+  }
+  .final h2{font-size:30px;}
+  .final p{max-width:480px; margin:0 auto 24px; color:var(--dim);}
+  .cta{
+    display:inline-block;
+    background:var(--green);
+    color:var(--bg);
+    font-family:'JetBrains Mono', monospace;
+    font-weight:700;
+    padding:14px 32px;
+    border-radius:4px;
+    text-decoration:none;
+    font-size:14px;
+  }
+
+  @media (max-width:640px){
+    h1{font-size:32px;}
+    .grid2{grid-template-columns:1fr;}
+    .module{padding:24px 20px;}
+    header.hero{padding:56px 0 16px;}
+    .setting-row{flex-direction:column; gap:2px;}
+    .setting-row .use{text-align:left;}
+  }
+</style>
+</head>
+<body>
+<div class="noise"></div>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">open-source · mini-course · 8 modules</div>
+    <h1>Stable Diffusion<br><span class="hi">noise → image</span></h1>
+    <p class="sub">Ek open-source AI model jo shor (noise) se tasveer banata hai. Ye course iske andar chalne wale process aur zaroori settings ko clear tareeqe se samjhata hai.</p>
+  </header>
+
+  <div class="steps-strip">
+    <div></div><div></div><div></div><div></div><div></div>
+  </div>
+  <div class="steps-caption"><span>PURE NOISE</span><span>DENOISING STEPS →</span><span>FINAL IMAGE</span></div>
+
+  <!-- Module 1 -->
+  <div class="module">
+    <span class="mod-label">module_01</span>
+    <h2>Stable Diffusion <span class="accent">hai kya?</span></h2>
+    <p>Stable Diffusion ek <strong>open-source image-generation model</strong> hai — matlab iska code publicly available hai, aur log ise apne computer par bhi chala sakte hain, sirf website ke through nahi.</p>
+    <ul class="points">
+      <li><strong>Free aur customizable</strong> — koi bhi model ko modify kar sakta hai</li>
+      <li><strong>Bara community ecosystem</strong> — hazaaron custom models maujood</li>
+      <li><strong>Local ya cloud</strong> — apni machine par ya online run kiya ja sakta hai</li>
+    </ul>
+  </div>
+
+  <!-- Module 2 -->
+  <div class="module">
+    <span class="mod-label">module_02</span>
+    <h2>Ye kaam <span class="accent">kaise karta hai?</span></h2>
+    <p>Iska naam hi is process ko batata hai: model ek <strong>random shor (noise)</strong> se shuru karta hai, aur qadam-ba-qadam (steps) us noise ko saaf karte hue, aapke prompt ke mutabiq ek image banata hai — bilkul jaise dhundh se dheere-dheere koi shakl nazar aane lage.</p>
+  </div>
+
+  <!-- Module 3 -->
+  <div class="module">
+    <span class="mod-label">module_03</span>
+    <h2>Checkpoints <span class="accent">— alag "personalities"</span></h2>
+    <p>Community ne Stable Diffusion ke base model ko fine-tune karke hazaaron <strong>checkpoints</strong> banaye hain — har ek ka apna style, jaise realistic photos, anime, ya fantasy art.</p>
+  </div>
+
+  <!-- Module 4 -->
+  <div class="module">
+    <span class="mod-label">module_04</span>
+    <h2>LoRA <span class="accent">— chhoti add-on files</span></h2>
+    <p>LoRA ek chhoti file hoti hai jo kisi khaas style, character, ya object ko model mein add kar deti hai — bina pura naya model banaye. Ye halki hoti hain aur jaldi load ho jaati hain.</p>
+    <div class="grid2">
+      <div class="mini-card"><div class="num">Style LoRA</div><p>Ek specific art style ko lock karna</p></div>
+      <div class="mini-card"><div class="num">Character LoRA</div><p>Ek khaas character ko consistent rakhna</p></div>
+    </div>
+  </div>
+
+  <!-- Module 5 -->
+  <div class="module">
+    <span class="mod-label">module_05</span>
+    <h2>ControlNet <span class="accent">— composition ka control</span></h2>
+    <p>ControlNet aapko image ki <strong>pose, structure ya outline</strong> control karne deta hai — jaise kisi insaan ki body position ko fix rakhna, jabke baaki sab kuch AI generate kare.</p>
+  </div>
+
+  <!-- Module 6 -->
+  <div class="module">
+    <span class="mod-label">module_06</span>
+    <h2>Zaroori <span class="accent">settings</span></h2>
+    <div class="setting-row">
+      <span class="name">STEPS</span>
+      <span class="use">Kitni baar noise saaf hoga (zyada = zyada detail, lekin slow)</span>
+    </div>
+    <div class="setting-row">
+      <span class="name">CFG SCALE</span>
+      <span class="use">AI prompt ki kitni pairvi kare (zyada = strict, kam = creative)</span>
+    </div>
+    <div class="setting-row">
+      <span class="name">SAMPLER</span>
+      <span class="use">Noise saaf karne ka riyaazi tareeqa (har ek ka apna look)</span>
+    </div>
+  </div>
+
+  <!-- Module 7 -->
+  <div class="module">
+    <span class="mod-label">module_07</span>
+    <h2>Positive <span class="accent">aur Negative prompts</span></h2>
+    <div class="prompt-box">
+      <span class="tag">Positive Prompt</span>
+      a serene mountain lake at sunrise, misty, highly detailed, cinematic lighting
+      <div class="neg">Negative Prompt: blurry, low quality, distorted</div>
+    </div>
+    <p>Negative prompt batata hai ke image mein <strong>kya nahi</strong> chahiye — jese blurriness ya extra fingers. Ye Stable Diffusion ka ek khaas aur bohat useful feature hai.</p>
+  </div>
+
+  <!-- Module 8 -->
+  <div class="module">
+    <span class="mod-label">module_08</span>
+    <h2>Zimmedari <span class="accent">se istemal</span></h2>
+    <div class="warn">
+      <p>Open-source hone ki wajah se ye control aapke haath mein zyada hota hai — isi liye zimmedari bhi zyada hai. Kisi real insaan ki deepfake image banana, ya kisi ka copyright kaam churana, in dono se bachna zaroori hai.</p>
+    </div>
+  </div>
+
+  <div class="divider">course complete</div>
+
+  <div class="final">
+    <h2>Ab experiment karein</h2>
+    <p>Ek simple prompt likhein aur steps ya CFG scale ko badal kar dekhein ke result kaise badalta hai. Yehi tareeqa hai in settings ki samajh paane ka.</p>
+    <a class="cta" href="https://stability.ai" target="_blank">stability.ai</a>
+  </div>
+
+</div>
+</body>
+</html>
