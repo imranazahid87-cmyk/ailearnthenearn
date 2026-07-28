@@ -1,1 +1,511 @@
 
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Flow — Ek Poora Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F4EC;
+    --paper-2:#EFEADC;
+    --ink:#211F1C;
+    --ink-soft:#5B5750;
+    --teal:#2C6E63;
+    --teal-deep:#1D4B43;
+    --gold:#C9A227;
+    --line:#D8D2C2;
+    --white:#FFFDF8;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{ background:var(--gold); color:var(--ink); }
+
+  /* Filmstrip top/bottom border */
+  .filmstrip{
+    height:22px;
+    width:100%;
+    background:var(--ink);
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding:0 12px;
+    overflow:hidden;
+  }
+  .filmstrip span{
+    width:10px;height:10px;border-radius:2px;
+    background:var(--paper);
+    flex-shrink:0;
+  }
+
+  header{
+    padding:70px 24px 50px;
+    max-width:900px;
+    margin:0 auto;
+    text-align:left;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--teal-deep);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px;height:22px;
+    border:2px solid var(--teal-deep);
+    border-radius:50%;
+    display:inline-block;
+    position:relative;
+  }
+  .eyebrow::after{
+    content:"";
+    position:absolute;
+    margin-left:-15px;
+    width:0;height:0;
+  }
+  h1{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:clamp(42px, 7vw, 78px);
+    line-height:1.02;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  h1 em{
+    font-style:italic;
+    font-weight:500;
+    color:var(--teal-deep);
+  }
+  .sub{
+    margin-top:22px;
+    max-width:620px;
+    font-size:18px;
+    color:var(--ink-soft);
+  }
+  .meta-row{
+    margin-top:36px;
+    display:flex;
+    gap:28px;
+    flex-wrap:wrap;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--ink-soft);
+  }
+  .meta-row div{ display:flex; flex-direction:column; gap:4px; }
+  .meta-row strong{ color:var(--ink); font-size:14px; }
+
+  /* Reel nav */
+  nav.reel{
+    position:sticky; top:0; z-index:20;
+    background:rgba(247,244,236,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+    overflow-x:auto;
+    white-space:nowrap;
+  }
+  nav.reel .track{
+    display:flex;
+    padding:0 24px;
+    max-width:900px;
+    margin:0 auto;
+  }
+  nav.reel a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+    text-decoration:none;
+    padding:14px 16px;
+    border-right:1px solid var(--line);
+    transition:color .2s ease, background .2s ease;
+  }
+  nav.reel a:hover{ color:var(--teal-deep); background:var(--paper-2); }
+
+  main{ max-width:900px; margin:0 auto; padding:10px 24px 40px; }
+
+  section.scene{
+    padding:64px 0;
+    border-bottom:1px solid var(--line);
+  }
+  section.scene:last-of-type{ border-bottom:none; }
+
+  .slate{
+    display:flex;
+    align-items:baseline;
+    gap:16px;
+    margin-bottom:28px;
+  }
+  .slate .num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--white);
+    background:var(--ink);
+    padding:4px 10px;
+    border-radius:3px;
+    letter-spacing:0.05em;
+  }
+  .slate h2{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:clamp(26px, 4vw, 36px);
+    color:var(--ink);
+  }
+  .slate .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--gold);
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    margin-left:auto;
+  }
+
+  p{ margin-bottom:16px; color:var(--ink); font-size:16px; max-width:680px; }
+  p.lead{ font-size:18px; color:var(--ink-soft); }
+
+  .callout{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-left:4px solid var(--teal-deep);
+    padding:18px 22px;
+    border-radius:4px;
+    margin:22px 0;
+    font-size:15px;
+  }
+  .callout strong{ color:var(--teal-deep); }
+
+  /* Timeline */
+  .timeline{ margin-top:10px; }
+  .tl-item{
+    display:grid;
+    grid-template-columns:110px 1fr;
+    gap:20px;
+    padding:16px 0;
+    border-top:1px dashed var(--line);
+  }
+  .tl-item:first-child{ border-top:none; }
+  .tl-date{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--teal-deep);
+    font-weight:500;
+    padding-top:2px;
+  }
+  .tl-body strong{ display:block; margin-bottom:4px; font-size:15.5px; }
+  .tl-body p{ font-size:14.5px; margin-bottom:0; color:var(--ink-soft); }
+
+  /* Model stack cards */
+  .stack{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
+    gap:16px;
+    margin-top:20px;
+  }
+  .stack .card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:22px;
+    position:relative;
+  }
+  .stack .card::before{
+    content:attr(data-role);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--gold);
+    display:block;
+    margin-bottom:10px;
+  }
+  .stack .card h3{
+    font-family:'Fraunces', serif;
+    font-size:20px;
+    font-weight:600;
+    margin-bottom:8px;
+  }
+  .stack .card p{ font-size:14px; color:var(--ink-soft); margin-bottom:0; }
+
+  /* Feature grid */
+  .features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+    gap:2px;
+    background:var(--line);
+    margin-top:20px;
+    border:1px solid var(--line);
+  }
+  .feature{
+    background:var(--paper);
+    padding:24px;
+  }
+  .feature h3{
+    font-family:'Fraunces', serif;
+    font-size:19px;
+    font-weight:600;
+    margin-bottom:8px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .feature h3 .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--teal-deep);
+    display:inline-block;
+    flex-shrink:0;
+  }
+  .feature p{ font-size:14.5px; color:var(--ink-soft); margin-bottom:0; }
+
+  /* Plans table */
+  .plans{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    margin-top:20px;
+  }
+  .plan{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:26px;
+  }
+  .plan.ultra{ border-color:var(--teal-deep); box-shadow:0 0 0 1px var(--teal-deep); }
+  .plan .name{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:22px;
+    margin-bottom:6px;
+  }
+  .plan .badge{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--gold);
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+  }
+  .plan ul{ margin-top:14px; padding-left:18px; }
+  .plan li{ font-size:14.5px; margin-bottom:8px; color:var(--ink); }
+
+  /* Prompt tips */
+  .tips{ margin-top:20px; display:flex; flex-direction:column; gap:14px; }
+  .tip{
+    display:grid;
+    grid-template-columns:34px 1fr;
+    gap:14px;
+    align-items:start;
+  }
+  .tip .n{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:500;
+    color:var(--white);
+    background:var(--teal-deep);
+    width:34px;height:34px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:13px;
+  }
+  .tip p{ margin-bottom:0; font-size:15px; }
+  .tip strong{ color:var(--ink); }
+
+  /* Access checklist */
+  .checklist{ margin-top:18px; }
+  .check{
+    display:flex; gap:12px; align-items:flex-start;
+    padding:10px 0;
+    border-top:1px solid var(--line);
+  }
+  .check:first-child{ border-top:none; }
+  .check .mark{ color:var(--teal-deep); font-weight:700; font-family:'IBM Plex Mono', monospace; }
+
+  footer{
+    max-width:900px; margin:0 auto;
+    padding:50px 24px 90px;
+    color:var(--ink-soft);
+    font-size:13.5px;
+  }
+  footer .fnote{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+    opacity:0.8;
+  }
+
+  @media (max-width:640px){
+    .plans{ grid-template-columns:1fr; }
+    .tl-item{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="filmstrip">
+  <script>document.write('<span></span>'.repeat(60))</script>
+</div>
+
+<header>
+  <div class="eyebrow">Course · Scene 01–08</div>
+  <h1>Google <em>Flow</em><br>samajhne ka poora course</h1>
+  <p class="sub">Text se cinematic video banane wala Google ka AI filmmaking studio — kaise kaam karta hai, kya-kya kar sakta hai, aur ek beginner isse professionally kaise use kare, sab is course mein.</p>
+  <div class="meta-row">
+    <div><strong>8 Scenes</strong>self-paced</div>
+    <div><strong>Powered by</strong>Veo 3.1 · Imagen 4 · Gemini</div>
+    <div><strong>Launch</strong>20 May 2025 (Google I/O)</div>
+  </div>
+</header>
+
+<nav class="reel">
+  <div class="track">
+    <a href="#s1">01 Kya hai</a>
+    <a href="#s2">02 Itihaas</a>
+    <a href="#s3">03 AI Stack</a>
+    <a href="#s4">04 Features</a>
+    <a href="#s5">05 Plans</a>
+    <a href="#s6">06 Access</a>
+    <a href="#s7">07 Prompting</a>
+    <a href="#s8">08 Kab use karein</a>
+  </div>
+</nav>
+
+<main>
+
+  <section class="scene" id="s1">
+    <div class="slate"><span class="num">01</span><h2>Google Flow kya hai</h2><span class="tag">Intro</span></div>
+    <p class="lead">Flow ek AI-powered filmmaking aur creative studio hai jise Google ne 20 May 2025 ko Google I/O mein launch kiya tha.</p>
+    <p>Yeh sirf ek "video generator" nahi hai — yeh text descriptions aur images ko cinematic video clips mein badalne wala poora creative workspace hai. Iske peeche teen Google AI models kaam karte hain: Veo (video), Imagen (images), aur Gemini (natural language prompting). Flow, Google ke pehle prototype VideoFX ka improved version hai — better visuals aur zyada natural storytelling ke saath.</p>
+    <div class="callout"><strong>Simple shabdon mein:</strong> aap plain Hindi/English mein apni scene describe karte ho — jaise "raat ko baarish mein ek akela figure chhatri ke saath chal raha hai" — aur Flow usse ek chhota cinematic clip bana deta hai, saath mein matching audio bhi.</div>
+  </section>
+
+  <section class="scene" id="s2">
+    <div class="slate"><span class="num">02</span><h2>Itihaas — Flow yahan tak kaise pahuncha</h2><span class="tag">Timeline</span></div>
+    <p>Flow achanak nahi aaya — yeh kai tools ke merge hone ka result hai.</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">May 2024</div>
+        <div class="tl-body"><strong>Original Flow (prototype)</strong><p>Google I/O mein Veo-powered text-to-video tool ke roop mein pehli baar dikhaya gaya.</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Dec 2024</div>
+        <div class="tl-body"><strong>Whisk AI launch</strong><p>Google Labs ka ek alag experiment, jo image-remixing ke liye bohot popular hua — 1.5 billion se zyada creations.</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">20 May 2025</div>
+        <div class="tl-body"><strong>Flow ka official launch</strong><p>Veo, Imagen aur Gemini teeno ko jodkar ek dedicated filmmaking product ban kar aaya — camera control, scene builder aur asset management ke saath.</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">25 Feb 2026</div>
+        <div class="tl-body"><strong>Bada merge</strong><p>Google ne Flow, Whisk, aur ImageFX teeno ko ek hi workspace mein combine kar diya — ab image generation, video generation aur editing sab ek jagah.</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">30 Apr 2026</div>
+        <div class="tl-body"><strong>Whisk permanently band</strong><p>Whisk ke saare features, credits aur saved projects Flow mein shift ho gaye.</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2026</div>
+        <div class="tl-body"><strong>Veo 3.1 update</strong><p>Har generation mode mein native audio aa gaya — ab video ke saath dialogue, ambient sound sab automatically generate hote hain.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene" id="s3">
+    <div class="slate"><span class="num">03</span><h2>Andar ka AI stack</h2><span class="tag">Engine</span></div>
+    <p>Flow khud ek model nahi hai — yeh teen models ko ek production workspace mein jodta hai.</p>
+    <div class="stack">
+      <div class="card" data-role="Video engine"><h3>Veo 3.1</h3><p>Physics aur realism mein strong, high prompt-adherence ke saath cinematic clips banata hai — ab native audio (dialogue, ambient sound) ke saath.</p></div>
+      <div class="card" data-role="Image engine"><h3>Imagen 4 (Nano Banana)</h3><p>Plain language se still images banata hai — koi special syntax ya weighting symbols ki zaroorat nahi.</p></div>
+      <div class="card" data-role="Language layer"><h3>Gemini</h3><p>Prompting ko intuitive banata hai — aap apna vision rozmarra ki bhasha mein describe karte ho, Gemini use samajh kar models tak pahunchata hai.</p></div>
+    </div>
+  </section>
+
+  <section class="scene" id="s4">
+    <div class="slate"><span class="num">04</span><h2>Core features</h2><span class="tag">Toolkit</span></div>
+    <p>Flow ka design real filmmaking problems solve karne ke liye hua hai — jaise scenes ke beech character ka chehra badal jaana, ya galat lighting.</p>
+    <div class="features">
+      <div class="feature"><h3><span class="dot"></span>SceneBuilder</h3><p>Har generation ko naye se shuru karne ke bajaye, ek existing shot ko extend ya continue karta hai — production mein continuity banaye rakhne ke liye sabse practical feature.</p></div>
+      <div class="feature"><h3><span class="dot"></span>Ingredients</h3><p>Prompts, characters aur reusable creative parts ko organize karne ki jagah — jab ek hi subject ke multiple variants chahiye ho.</p></div>
+      <div class="feature"><h3><span class="dot"></span>Camera controls</h3><p>Scene ke andar camera ka angle ya view badalne ki freedom — ek real camera director jaisa control.</p></div>
+      <div class="feature"><h3><span class="dot"></span>Insert / Remove</h3><p>Kisi image ya video mein object/character add karo (lighting-shadow auto-match hoga) ya kisi element ko hata do — background khud-ba-khud convincingly fill ho jata hai.</p></div>
+      <div class="feature"><h3><span class="dot"></span>Lasso Tool</h3><p>Image ke kisi bhi area ko freehand select karke, plain language mein type karo ki wahan kya badalna hai.</p></div>
+      <div class="feature"><h3><span class="dot"></span>Flow TV</h3><p>Learning layer — working examples, prompts aur techniques dikhata hai taaki aap zero se shuru karne ke bajaye real outputs se seekh sako.</p></div>
+    </div>
+  </section>
+
+  <section class="scene" id="s5">
+    <div class="slate"><span class="num">05</span><h2>Plans — Pro vs Ultra</h2><span class="tag">Pricing</span></div>
+    <p>Flow free Labs experiment nahi hai — yeh Google AI ke subscription plans ke saath tied hai.</p>
+    <div class="plans">
+      <div class="plan">
+        <div class="badge">Entry</div>
+        <div class="name">Google AI Pro</div>
+        <ul>
+          <li>Flow ke key features milte hain</li>
+          <li>Har mahine 100 generations ki capped limit</li>
+          <li>Roz ke creative use ke liye theek</li>
+        </ul>
+      </div>
+      <div class="plan ultra">
+        <div class="badge">Higher tier</div>
+        <div class="name">Google AI Ultra</div>
+        <ul>
+          <li>Sabse zyada usage limits</li>
+          <li>1080p generation</li>
+          <li>Advanced camera controls</li>
+          <li>Naye Veo features tak early access, jaise native audio wala Veo 3</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout"><strong>Yaad rakhein:</strong> yeh product story "free Labs experiment" nahi, balki "subscription-based creation workspace" hai jo Google ke video stack ke upar tayyar kiya gaya hai.</div>
+  </section>
+
+  <section class="scene" id="s6">
+    <div class="slate"><span class="num">06</span><h2>Access kaise milega</h2><span class="tag">Getting in</span></div>
+    <div class="checklist">
+      <div class="check"><span class="mark">→</span><div>Primary platform hai <strong>flow.google.com</strong>, jahan SceneBuilder aur 4K export jaisa full feature set milta hai.</div></div>
+      <div class="check"><span class="mark">→</span><div>2026 mein Google Play Store par ek <strong>Android app beta</strong> mein launch hui.</div></div>
+      <div class="check"><span class="mark">→</span><div>iOS app abhi tak release nahi hui hai (May 2026 tak ki jaankari ke mutabik).</div></div>
+      <div class="check"><span class="mark">→</span><div>Use karne ke liye aapki age <strong>18 ya usse zyada</strong> honi chahiye, aur aap Google ke supported regions mein se kisi ek mein located hone chahiye.</div></div>
+    </div>
+  </section>
+
+  <section class="scene" id="s7">
+    <div class="slate"><span class="num">07</span><h2>Achhi prompting kaise karein</h2><span class="tag">Practice</span></div>
+    <div class="tips">
+      <div class="tip"><span class="n">1</span><p><strong>Plain bhasha mein likhein</strong> — koi special syntax ya weighting symbols ki zaroorat nahi, Gemini layer aapki language samajh leta hai.</p></div>
+      <div class="tip"><span class="n">2</span><p><strong>Continuity ke liye SceneBuilder use karein</strong> — har baar naya generation banane ke bajaye pichhle shot ko extend karein, taaki character aur environment consistent rahe.</p></div>
+      <div class="tip"><span class="n">3</span><p><strong>Ingredients mein reusable parts save karein</strong> — ek hi character ya scene ke multiple variants banane ho toh yeh time bachata hai.</p></div>
+      <div class="tip"><span class="n">4</span><p><strong>Audio detail bhi describe karein</strong> — Veo 3.1 video ke saath dialogue aur ambient sound bhi generate karta hai, toh mood ke mutabik sound bhi mention karein.</p></div>
+      <div class="tip"><span class="n">5</span><p><strong>Flow TV se seekhein</strong> — working prompts aur examples dekh kar samjhein ki achhe outputs kaise likhe jaate hain.</p></div>
+    </div>
+  </section>
+
+  <section class="scene" id="s8">
+    <div class="slate"><span class="num">08</span><h2>Kab use karein</h2><span class="tag">Verdict</span></div>
+    <p>Google Flow sabse zyada suited hai <strong>cinematic storytelling, creative filmmaking, aur single high-quality productions</strong> ke liye — jaise short films, art projects ya ek polished hero video.</p>
+    <p>Agar aapko ek saath 10+ videos, bulk commercial content, branded ad campaigns ya multilingual output chahiye, toh us tarah ke workflow ke liye dusre bulk-focused tools zyada suited hote hain.</p>
+    <div class="callout"><strong>One-line takeaway:</strong> Flow ek director ka tool hai, ek assembly line ka nahi — quality aur craft ke liye banaya gaya hai, volume ke liye nahi.</div>
+  </section>
+
+</main>
+
+<footer>
+  <p class="fnote">Course based on publicly available information about Google Flow as of mid-2026. Product features, pricing aur availability change ho sakte hain — latest details ke liye flow.google.com check karein.</p>
+</footer>
+
+<div class="filmstrip">
+  <script>document.write('<span></span>'.repeat(60))</script>
+</div>
+
+</body>
+</html>
