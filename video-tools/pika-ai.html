@@ -1,1 +1,287 @@
 
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pika AI — Ek Chhota Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBF6EF;
+    --paper-2:#F3ECE0;
+    --ink:#231F1A;
+    --ink-soft:#5D584F;
+    --coral:#FF6B4A;
+    --coral-deep:#D9502F;
+    --lilac:#7C6FD6;
+    --mint:#3E9E77;
+    --line:#E4DACB;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none !important; transition:none !important;}
+  }
+  .wrap{max-width:840px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- hero ---------- */
+  header.hero{padding:64px 0 20px;text-align:center;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--coral-deep);
+    margin-bottom:14px;
+  }
+  h1.title{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:800;
+    font-size:clamp(34px,7vw,58px);
+    line-height:1.03;
+    margin:0 0 14px;
+    letter-spacing:-0.01em;
+  }
+  h1.title .pop{color:var(--coral);}
+  .hero-sub{
+    max-width:46ch;
+    margin:0 auto 34px;
+    color:var(--ink-soft);
+    font-size:17px;
+  }
+
+  /* ---------- sticker strip (signature) ---------- */
+  .sticker-strip{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:14px;
+    margin-bottom:10px;
+  }
+  .sticker{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:700;
+    font-size:13.5px;
+    padding:10px 18px;
+    border-radius:999px;
+    border:2px solid var(--ink);
+    background:var(--white);
+    box-shadow:3px 3px 0 var(--ink);
+  }
+  .sticker:nth-child(1){transform:rotate(-4deg);color:var(--coral-deep);}
+  .sticker:nth-child(2){transform:rotate(3deg);color:var(--lilac);}
+  .sticker:nth-child(3){transform:rotate(-2deg);color:var(--mint);}
+  .sticker:nth-child(4){transform:rotate(5deg);color:var(--coral-deep);}
+  .sticker:nth-child(5){transform:rotate(-3deg);color:var(--lilac);}
+  .sticker:nth-child(6){transform:rotate(2deg);color:var(--mint);}
+
+  /* ---------- module blocks ---------- */
+  .module{padding:46px 0;border-bottom:1px solid var(--line);}
+  .module:last-of-type{border-bottom:none;}
+  .code{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    color:var(--lilac);
+    letter-spacing:0.04em;
+  }
+  .module h2{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:700;
+    font-size:28px;
+    margin:6px 0 16px;
+  }
+  .module p{margin:0 0 14px;}
+  .module p.lede{color:var(--ink-soft);font-size:17px;}
+
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:14px;
+    margin-top:18px;
+  }
+  .card{
+    background:var(--white);
+    border:1.5px solid var(--ink);
+    border-radius:14px;
+    padding:16px 18px;
+    box-shadow:4px 4px 0 var(--line);
+  }
+  .card h3{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-size:15.5px;
+    font-weight:700;
+    margin:0 0 6px;
+    color:var(--coral-deep);
+  }
+  .card p{font-size:14px;margin:0;color:var(--ink-soft);}
+
+  .steps{list-style:none;margin:18px 0 0;padding:0;}
+  .steps li{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:14px;
+    padding:12px 0;
+    border-top:1px dashed var(--line);
+  }
+  .steps li:first-child{border-top:none;}
+  .steps .tc{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--mint);
+    padding-top:2px;
+  }
+  .steps strong{display:block;margin-bottom:2px;}
+
+  table.pricing{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+    font-size:14.5px;
+  }
+  table.pricing th, table.pricing td{
+    text-align:left;
+    padding:10px 12px;
+    border-bottom:1px solid var(--line);
+  }
+  table.pricing th{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--ink-soft);
+  }
+  table.pricing tr:last-child td{border-bottom:none;}
+
+  .callout{
+    background:var(--paper-2);
+    border-left:3px solid var(--coral);
+    border-radius:0 10px 10px 0;
+    padding:14px 18px;
+    margin-top:18px;
+    font-size:14.5px;
+    color:var(--ink-soft);
+  }
+  .callout strong{color:var(--ink);}
+
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+  .tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    padding:5px 10px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    color:var(--ink-soft);
+    background:var(--white);
+  }
+
+  footer{
+    text-align:center;
+    padding:44px 0 60px;
+    color:var(--ink-soft);
+    font-size:13.5px;
+  }
+  footer .pop-line{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;color:var(--coral-deep);}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">Pika AI · Beginner Course</div>
+    <h1 class="title">Pika se <span class="pop">maze wali</span> video banao</h1>
+    <p class="hero-sub">Ek chhota, practical guide — prompt se lekar "Explode" effect tak. Halka-phulka, seedha kaam ka.</p>
+    <div class="sticker-strip">
+      <span class="sticker">Explode 💥</span>
+      <span class="sticker">Melt</span>
+      <span class="sticker">Inflate</span>
+      <span class="sticker">Squish</span>
+      <span class="sticker">Cake-ify 🎂</span>
+      <span class="sticker">Crush</span>
+    </div>
+  </header>
+
+  <section class="module">
+    <span class="code">01 — Shuru se</span>
+    <h2>Pika AI hai kya cheez?</h2>
+    <p class="lede">Pika ek text-to-video aur image-to-video tool hai jo pika.art par milta hai. Yeh Kling ya Veo jaise cinematic-realism wale tools se thoda alag hai — Pika ka pura focus hai creative control aur maze wale effects par.</p>
+    <p>2026 mein Pika ka Pika 2.5 engine physics-aware hai — matlab ek ball gire toh sahi weight ke saath girega, balloon fule toh sahi tarah se phoolega. Chhote (3-10 second) clips ke liye yeh best hai — Reels, TikTok, Shorts jaisa short-form content banane mein.</p>
+    <div class="cards">
+      <div class="card"><h3>Text-to-Video</h3><p>Prompt likho, chhota video seconds mein taiyar.</p></div>
+      <div class="card"><h3>Image-to-Video</h3><p>Ek photo do, usme jaan daal do.</p></div>
+      <div class="card"><h3>Pikaffects</h3><p>Ek click mein object ko explode, melt ya squish karo.</p></div>
+    </div>
+  </section>
+
+  <section class="module">
+    <span class="code">02 — Version</span>
+    <h2>Kaunsa model use karein</h2>
+    <table class="pricing">
+      <tr><th>Model</th><th>Khaas baat</th><th>Kab use karein</th></tr>
+      <tr><td>Pika 2.2</td><td>720p/1080p, Pikaframes (keyframe control)</td><td>Quick tests aur transitions</td></tr>
+      <tr><td>Pika 2.5</td><td>Physics-aware motion, sound effects auto-generate</td><td>Polished, realistic short clips</td></tr>
+      <tr><td>Model v3.0</td><td>4K rendering, better character consistency (CREF)</td><td>Final, professional output</td></tr>
+    </table>
+    <div class="callout"><strong>Tip:</strong> Agar sirf idea test kar rahe ho toh 720p par karo — final render ke liye 1080p ya 4K par jao.</div>
+  </section>
+
+  <section class="module">
+    <span class="code">03 — Setup</span>
+    <h2>Shuru kaise karein</h2>
+    <ol class="steps">
+      <li><span class="tc">01</span><div><strong>pika.art par account banao</strong>Free tier mein roz kuch generations milte hain.</div></li>
+      <li><span class="tc">02</span><div><strong>Text ya image se shuru karo</strong>Prompt likho, ya ek image upload karke usme motion do.</div></li>
+      <li><span class="tc">03</span><div><strong>Duration aur resolution choose karo</strong>5-10 second ke beech pick karo, 720p ya 1080p.</div></li>
+      <li><span class="tc">04</span><div><strong>Chaaho toh ek Pikaffect lagao</strong>Explode, Melt, Inflate, Crush, Cake-ify — ek click mein.</div></li>
+      <li><span class="tc">05</span><div><strong>Generate karo</strong>Video ready hote hi phone par notification bhi mil jaata hai.</div></li>
+    </ol>
+  </section>
+
+  <section class="module">
+    <span class="code">04 — Prompting</span>
+    <h2>Achha prompt kaise likhein</h2>
+    <p class="lede">Pika camera-syntax aur negative prompts dono samajhta hai.</p>
+    <div class="cards">
+      <div class="card"><h3>Camera syntax</h3><p>"-camera zoom in", "-camera pan left", "-camera rotate cw" jaise commands use karo.</p></div>
+      <div class="card"><h3>Negative prompt</h3><p>Jo nahi chahiye woh likho — "-neg distorted faces, extra limbs, text".</p></div>
+      <div class="card"><h3>Lighting keywords</h3><p>"Volumetric lighting", "Rembrandt lighting", "God rays" — mood turant badal jaata hai.</p></div>
+    </div>
+    <div class="callout"><strong>Yaad rakho:</strong> Effect ka naam clearly likho (jaise "explode into confetti") — Pika named effects ko achhe se pehchanta hai.</div>
+  </section>
+
+  <section class="module">
+    <span class="code">05 — Kharcha</span>
+    <h2>Pricing — kitna kharcha aayega</h2>
+    <p class="lede">Free tier se shuru karo, phir zarurat ke hisaab se upgrade karo.</p>
+    <div class="callout"><strong>Note:</strong> Limits aksar badalte rehte hain, toh signup se pehle current plan page zaroor check kar lena. Free tier chhote, playful clips ke liye sabse acha starting point hai.</div>
+    <div class="tag-row">
+      <span class="tag">free tier</span>
+      <span class="tag">paid plans</span>
+      <span class="tag">short-form focus</span>
+    </div>
+  </section>
+
+  <section class="module">
+    <span class="code">06 — Extra</span>
+    <h2>Bonus: automation ke saath jodna</h2>
+    <p class="lede">Power users Pika ko Zapier ya Make jaise no-code tools ke saath jodte hain — jaise koi naya blog post publish ho, script ban jaaye, aur Pika usse video mein badal de. Batch generation se ek scene ki 10+ variations bhi bana sakte ho, best wali cherry-pick karne ke liye.</p>
+  </section>
+
+  <footer>
+    <span class="pop-line">Ab try karo — apna pehla effect chuno.</span><br>
+    Prompt likho, Pikaffect lagao, aur "Generate" dabao.
+  </footer>
+</div>
+
+</body>
+</html>
