@@ -1,1 +1,291 @@
 
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Descript — Ek Chhota Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5F6F3;
+    --paper-2:#EBEDE7;
+    --ink:#1F2421;
+    --ink-soft:#5B6058;
+    --green:#2E7D5B;
+    --green-deep:#215F44;
+    --red:#C6483F;
+    --mustard:#D9A233;
+    --line:#DCE0D9;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none !important; transition:none !important;}
+  }
+  .wrap{max-width:840px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- hero ---------- */
+  header.hero{padding:56px 0 26px;}
+  .eyebrow{
+    font-family:'Space Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--green-deep);
+    margin-bottom:14px;
+  }
+  h1.title{
+    font-family:'Space Mono',monospace;
+    font-weight:700;
+    font-size:clamp(28px,5.6vw,44px);
+    line-height:1.18;
+    margin:0 0 16px;
+    letter-spacing:-0.01em;
+  }
+  h1.title .del{
+    text-decoration:line-through;
+    text-decoration-color:var(--red);
+    text-decoration-thickness:2px;
+    color:var(--ink-soft);
+  }
+  .hero-sub{
+    max-width:52ch;
+    margin:0 0 28px;
+    color:var(--ink-soft);
+    font-size:17px;
+    font-family:'Inter',sans-serif;
+  }
+
+  /* ---------- transcript panel (signature) ---------- */
+  .transcript{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:20px 22px;
+    font-family:'Space Mono',monospace;
+    font-size:14px;
+    color:var(--ink);
+    line-height:2;
+  }
+  .transcript .del{
+    text-decoration:line-through;
+    text-decoration-color:var(--red);
+    color:var(--ink-soft);
+  }
+  .transcript .keep{
+    background:rgba(46,125,91,0.12);
+    padding:1px 3px;
+    border-radius:3px;
+  }
+  .wave{
+    display:flex;
+    align-items:flex-end;
+    gap:2px;
+    height:20px;
+    margin-top:14px;
+  }
+  .wave span{width:3px;background:var(--green);border-radius:2px;opacity:0.7;}
+  .wave span.cut{background:var(--red);opacity:0.35;}
+
+  /* ---------- module blocks ---------- */
+  .module{padding:44px 0;border-bottom:1px solid var(--line);}
+  .module:last-of-type{border-bottom:none;}
+  .code{
+    font-family:'Space Mono',monospace;
+    font-size:13px;
+    color:var(--green-deep);
+    letter-spacing:0.02em;
+  }
+  .module h2{
+    font-family:'Space Mono',monospace;
+    font-weight:700;
+    font-size:24px;
+    margin:6px 0 16px;
+  }
+  .module p{margin:0 0 14px;}
+  .module p.lede{color:var(--ink-soft);font-size:17px;}
+
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:14px;
+    margin-top:18px;
+  }
+  .card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:16px 18px;
+  }
+  .card h3{
+    font-family:'Inter',sans-serif;
+    font-size:14.5px;
+    font-weight:700;
+    margin:0 0 6px;
+    color:var(--green-deep);
+  }
+  .card p{font-size:14px;margin:0;color:var(--ink-soft);}
+
+  .steps{list-style:none;margin:18px 0 0;padding:0;}
+  .steps li{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:14px;
+    padding:12px 0;
+    border-top:1px dashed var(--line);
+  }
+  .steps li:first-child{border-top:none;}
+  .steps .tc{
+    font-family:'Space Mono',monospace;
+    font-size:12px;
+    color:var(--mustard);
+    padding-top:2px;
+  }
+  .steps strong{display:block;margin-bottom:2px;}
+
+  table.pricing{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+    font-size:14.5px;
+  }
+  table.pricing th, table.pricing td{
+    text-align:left;
+    padding:10px 12px;
+    border-bottom:1px solid var(--line);
+  }
+  table.pricing th{
+    font-family:'Space Mono',monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    color:var(--ink-soft);
+  }
+  table.pricing tr:last-child td{border-bottom:none;}
+
+  .callout{
+    background:var(--paper-2);
+    border-left:3px solid var(--green);
+    border-radius:0 8px 8px 0;
+    padding:14px 18px;
+    margin-top:18px;
+    font-size:14.5px;
+    color:var(--ink-soft);
+  }
+  .callout strong{color:var(--ink);}
+
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+  .tag{
+    font-family:'Space Mono',monospace;
+    font-size:12px;
+    padding:5px 10px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    color:var(--ink-soft);
+    background:var(--white);
+  }
+
+  footer{
+    text-align:center;
+    padding:40px 0 60px;
+    color:var(--ink-soft);
+    font-size:13.5px;
+  }
+  footer .final{font-family:'Space Mono',monospace;font-weight:700;color:var(--green-deep);}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">Descript · Beginner Course</div>
+    <h1 class="title">Video edit karo <span class="del">jaise editing software</span> jaise ek Word doc</h1>
+    <p class="hero-sub">Text delete karo, video khud cut ho jaata hai. Yeh hai Descript ka pura idea.</p>
+    <div class="transcript">
+      "Aaj hum baat karenge <span class="del">um, you know,</span> AI editing ke baare mein — <span class="keep">yeh bahut hi useful tool hai</span> content creators ke liye."
+      <div class="wave">
+        <span style="height:10px"></span><span style="height:16px"></span><span style="height:8px" class="cut"></span><span style="height:6px" class="cut"></span><span style="height:14px"></span><span style="height:18px"></span><span style="height:12px"></span><span style="height:9px" class="cut"></span><span style="height:15px"></span><span style="height:11px"></span>
+      </div>
+    </div>
+  </header>
+
+  <section class="module">
+    <span class="code">01 // Intro</span>
+    <h2>Descript hai kya cheez?</h2>
+    <p class="lede">Descript ek AI-powered audio-video editor hai jo tumhari recording ko automatically transcribe karta hai — phir tum text edit karte ho, aur video/audio khud usi hisaab se cut ho jaata hai.</p>
+    <p>Yeh un logo ke liye perfect hai jo talking-head videos, podcasts, interviews ya tutorials banate hain. "Um", "you know" jaise filler words select karke delete karo — corresponding audio bhi turant hat jaata hai.</p>
+    <div class="cards">
+      <div class="card"><h3>Transcript Editing</h3><p>Text delete karo, video edit ho jaata hai.</p></div>
+      <div class="card"><h3>Underlord AI</h3><p>Ek AI sidebar jo tumhari footage se baat kar sakta hai.</p></div>
+      <div class="card"><h3>Studio Sound</h3><p>Background noise clean karke professional audio banata hai.</p></div>
+    </div>
+  </section>
+
+  <section class="module">
+    <span class="code">02 // Features</span>
+    <h2>Sabse kaam ke AI tools</h2>
+    <div class="cards">
+      <div class="card"><h3>Overdub</h3><p>Sirf kuch minute ki apni voice se digital voice-twin bana lo, missed words fix karne ke liye.</p></div>
+      <div class="card"><h3>Eye Contact</h3><p>Script padhte waqt camera se nazrein hati ho toh AI unhe camera ki taraf adjust kar deta hai.</p></div>
+      <div class="card"><h3>Green Screen</h3><p>Bina asli green screen ke background remove ya replace karo.</p></div>
+      <div class="card"><h3>Redaction</h3><p>Sensitive information ko auto-detect karke bleep/blur kar deta hai.</p></div>
+    </div>
+  </section>
+
+  <section class="module">
+    <span class="code">03 // Workflow</span>
+    <h2>Pehla edit kaise karein</h2>
+    <ol class="steps">
+      <li><span class="tc">01</span><div><strong>Record ya upload karo</strong>Descript mein hi record karo, ya existing footage upload karo.</div></li>
+      <li><span class="tc">02</span><div><strong>Auto-transcribe hota hai</strong>Kuch hi seconds mein poora transcript text ban jaata hai.</div></li>
+      <li><span class="tc">03</span><div><strong>Text edit karo</strong>Jo bhi hatana hai, transcript se select karke delete karo.</div></li>
+      <li><span class="tc">04</span><div><strong>AI tools lagao</strong>Studio Sound, Eye Contact ya Green Screen jahan zarurat ho.</div></li>
+      <li><span class="tc">05</span><div><strong>Export karo</strong>Direct export karo, ya XML se Premiere jaise editor mein bhejo.</div></li>
+    </ol>
+    <div class="callout"><strong>Tip:</strong> "Paper Edit" workflow try karo — lambi recording ka transcript padho, best parts highlight karke naye composition mein copy karo. Ek rough cut minutes mein ban jaata hai.</div>
+  </section>
+
+  <section class="module">
+    <span class="code">04 // Kharcha</span>
+    <h2>Pricing — kitna kharcha aayega</h2>
+    <table class="pricing">
+      <tr><th>Plan</th><th>Kimat (annual)</th><th>Milta kya hai</th></tr>
+      <tr><td>Free</td><td>₹0</td><td>60 min/month media, kuch AI credits</td></tr>
+      <tr><td>Hobbyist</td><td>~$16–24/mo</td><td>Watermark-free, zyada AI credits</td></tr>
+      <tr><td>Creator</td><td>~$24–35/mo</td><td>4K export, stock media, advanced AI tools</td></tr>
+      <tr><td>Business</td><td>~$40–65/mo</td><td>Team collaboration, video translation</td></tr>
+    </table>
+    <div class="callout"><strong>Note:</strong> Plans "media hours" (per month) ke hisaab se limited hain, seats ke hisaab se nahi — aur AI features (Underlord, Studio Sound, avatars) alag "AI credits" use karte hain. Payment se pehle official pricing page zaroor check karo.</div>
+  </section>
+
+  <section class="module">
+    <span class="code">05 // Kiske liye</span>
+    <h2>Kab use karein, kab nahi</h2>
+    <p class="lede">Descript un logo ke liye best hai jo transcript se edit karna chahte hain aur built-in AI cleanup chahte hain.</p>
+    <div class="tag-row">
+      <span class="tag">podcasts</span>
+      <span class="tag">interviews</span>
+      <span class="tag">tutorials</span>
+      <span class="tag">screen recordings</span>
+    </div>
+    <p style="margin-top:14px;">Agar tumhe deep timeline control, cinematic color grading ya complex motion graphics chahiye, toh Premiere Pro jaisa advanced editor better rahega. Descript ka focus speed aur simplicity hai, frame-by-frame precision nahi.</p>
+  </section>
+
+  <footer>
+    <span class="final">Apni pehli recording upload karo — transcript se edit shuru karo.</span>
+  </footer>
+</div>
+
+</body>
+</html>
