@@ -1,1 +1,236 @@
 
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notion AI Course — Workspace ko Dimaag Do</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAFAF9;
+    --card:#FFFFFF;
+    --ink:#191919;
+    --ink-soft:#6B6B68;
+    --accent:#7C5CFC;
+    --block:#F1F1EF;
+    --border:#E9E9E7;
+    --highlight:#EFE9FE;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--highlight); color:var(--ink);}
+  .wrap{max-width:940px; margin:0 auto; padding:0 26px;}
+
+  /* ---------- Hero ---------- */
+  header.hero{padding:54px 0 30px;}
+  .kicker{
+    display:flex; align-items:center; gap:8px;
+    font-family:'JetBrains Mono', monospace; font-size:12.5px; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--accent); font-weight:500; margin-bottom:18px;
+  }
+  .kicker .sq{
+    width:16px; height:16px; border-radius:4px;
+    background:linear-gradient(135deg, #7C5CFC, #2F80ED);
+    display:inline-block;
+  }
+  h1{
+    font-family:'Lexend', sans-serif; font-weight:600;
+    font-size:clamp(32px, 5.6vw, 52px); line-height:1.15; letter-spacing:-0.01em; max-width:800px;
+    color:var(--ink);
+  }
+  h1 span{color:var(--accent);}
+  .hero-sub{margin-top:18px; font-size:17px; color:var(--ink-soft); max-width:600px;}
+  .hero-meta{display:flex; gap:24px; margin-top:26px; flex-wrap:wrap;}
+  .meta-item{font-family:'JetBrains Mono', monospace; font-size:12.5px; color:var(--ink-soft);}
+  .meta-item b{color:var(--ink); font-weight:600;}
+
+  /* ---------- Sidebar-style nav (signature) ---------- */
+  .nav-section{padding:36px 0 8px;}
+  .nav-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:10px;
+  }
+  .nav-card .head{
+    font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--ink-soft); padding:8px 10px 10px;
+  }
+  .nav-item{
+    display:flex; align-items:center; gap:10px;
+    text-decoration:none; color:var(--ink);
+    padding:9px 10px; border-radius:6px;
+    font-size:14.5px; font-weight:500;
+    transition:background .12s ease;
+  }
+  .nav-item:hover{background:var(--block);}
+  .nav-item .icon{font-size:16px; width:20px; text-align:center;}
+  .nav-item .idx{
+    font-family:'JetBrains Mono', monospace; color:var(--accent); font-size:11.5px; margin-left:auto;
+  }
+
+  /* ---------- Modules (Notion "blocks") ---------- */
+  main{padding:32px 0 40px;}
+  .module{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:34px 36px;
+    margin:20px 0;
+    scroll-margin-top:22px;
+  }
+  .module-head{display:flex; align-items:center; gap:12px; margin-bottom:6px;}
+  .module-head .emoji{font-size:24px;}
+  .module h2{font-family:'Lexend', sans-serif; font-weight:600; font-size:24px; color:var(--ink);}
+  .slash{
+    font-family:'JetBrains Mono', monospace; font-size:11.5px; color:var(--accent);
+    background:var(--highlight); padding:3px 9px; border-radius:5px;
+    margin-bottom:16px; display:inline-block;
+  }
+  .module p{color:#33322F; font-size:15.5px; margin-bottom:13px; max-width:760px;}
+  .module ul{margin:12px 0 4px 20px;}
+  .module li{margin-bottom:9px; font-size:15px; color:#33322F;}
+  .module li b{color:var(--ink);}
+
+  /* Notion-style toggle callout */
+  .toggle{
+    margin-top:18px;
+    background:var(--block);
+    border-radius:6px;
+    padding:13px 16px;
+    font-size:14.5px;
+    color:#3A3A38;
+    display:flex; gap:10px;
+  }
+  .toggle .arrow{color:var(--ink-soft); font-size:13px; margin-top:2px;}
+  .toggle b{color:var(--ink);}
+
+  footer{
+    border-top:1px solid var(--border);
+    padding:32px 0 60px;
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:13px;
+    font-family:'JetBrains Mono', monospace;
+  }
+
+  @media (max-width:640px){
+    .module{padding:24px 20px;}
+    .wrap{padding:0 16px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="kicker"><span class="sq"></span> WORKSPACE · MINI COURSE</div>
+    <h1>Apne Notion workspace ko <span>Notion AI</span> se ek dimaag do.</h1>
+    <p class="hero-sub">Yeh course sikhayega ki AI ko kaise invoke karein, apna workspace se sawaal kaise poochein, databases automate kaise karein, aur naye Custom Agents se kaam khud-ba-khud kaise chalayein.</p>
+    <div class="hero-meta">
+      <div class="meta-item"><b>8</b> modules</div>
+      <div class="meta-item"><b>~20</b> min read</div>
+      <div class="meta-item">$8/month add-on</div>
+    </div>
+  </header>
+
+  <section class="nav-section">
+    <div class="nav-card">
+      <div class="head">▸ Page Contents</div>
+      <a href="#m1" class="nav-item"><span class="icon">🧠</span> Notion AI kya hai <span class="idx">01</span></a>
+      <a href="#m2" class="nav-item"><span class="icon">✨</span> AI ko invoke karna <span class="idx">02</span></a>
+      <a href="#m3" class="nav-item"><span class="icon">✍️</span> Writing & editing <span class="idx">03</span></a>
+      <a href="#m4" class="nav-item"><span class="icon">💬</span> Workspace-wide Q&A <span class="idx">04</span></a>
+      <a href="#m5" class="nav-item"><span class="icon">🗂️</span> AI Autofill (databases) <span class="idx">05</span></a>
+      <a href="#m6" class="nav-item"><span class="icon">🔗</span> Enterprise Search <span class="idx">06</span></a>
+      <a href="#m7" class="nav-item"><span class="icon">🤖</span> Custom Agents <span class="idx">07</span></a>
+      <a href="#m8" class="nav-item"><span class="icon">💡</span> Pro tips <span class="idx">08</span></a>
+    </div>
+  </section>
+
+  <main>
+
+    <section class="module" id="m1">
+      <div class="module-head"><span class="emoji">🧠</span><h2>Notion AI kya hai?</h2></div>
+      <span class="slash">FOUNDATION</span>
+      <p>Notion AI aapke Notion workspace ke andar hi built-in ek intelligence layer hai — writing assistance, summarization, database intelligence, aur workspace-wide Q&A sab ek jagah.</p>
+      <p>ChatGPT ya Claude jaise standalone tools se farq yeh hai: Notion AI ke paas seedha <b>aapka internal data</b> — wikis, project databases, meeting notes, documentation — sab tak access hota hai, isliye jawab aapke context ke hisaab se hi aate hain.</p>
+      <div class="toggle"><span class="arrow">▸</span><div><b>Note:</b> Notion AI $8/month per member add-on hai, kisi bhi Notion plan ke upar.</div></div>
+    </section>
+
+    <section class="module" id="m2">
+      <div class="module-head"><span class="emoji">✨</span><h2>AI ko invoke karna</h2></div>
+      <span class="slash">GETTING STARTED</span>
+      <p>Notion AI use karne ke kai tarike hain — sab built-in hain, kuch install nahi karna:</p>
+      <ul>
+        <li><b>AI sidebar:</b> left sidebar mein sparkle icon click karo — Q&A aur writing assistance ke liye chat panel khulta hai.</li>
+        <li><b>Inline on page:</b> kisi empty line par spacebar (ya Tab) dabao — AI write/edit menu khul jaata hai.</li>
+        <li><b>Text selection:</b> koi bhi text select karo, phir AI icon dabao — summarize, rewrite, translate, simplify jaise actions dikhte hain.</li>
+        <li><b>Database property:</b> kisi property par hover karke "AI Autofill" chuno — poora column auto-populate ho jaata hai.</li>
+      </ul>
+    </section>
+
+    <section class="module" id="m3">
+      <div class="module-head"><span class="emoji">✍️</span><h2>Writing aur editing</h2></div>
+      <span class="slash">CORE SKILL</span>
+      <p>Empty line par space dabao aur type karo, jaise "Write an agenda for a product review meeting" ya "Draft a job description for a senior engineer" — AI content generate kar dega.</p>
+      <p>Ek achha use-case: Product Managers ek rough bulleted feature list likh kar "Make Longer" prompt use karke poora PRD (Product Requirement Document) bana lete hain.</p>
+      <div class="toggle"><span class="arrow">▸</span><div><b>Yaad rakho:</b> Notion AI prompt se pehle page ka content "padh" leta hai — isliye context page mein rakho, prompt chhota bhi kaam karega.</div></div>
+    </section>
+
+    <section class="module" id="m4">
+      <div class="module-head"><span class="emoji">💬</span><h2>Workspace-wide Q&A</h2></div>
+      <span class="slash">FLAGSHIP FEATURE</span>
+      <p>Yeh Notion AI ka sabse powerful feature hai. AI icon dabao ya Cmd+J, aur apne poore workspace se sawaal poocho — jaise "Q2 marketing roadmap ke key decisions kya the?"</p>
+      <p>Q&A <b>grounded</b> hai — matlab jawab ke saath specific pages ke citations bhi aate hain, taaki aap verify kar sako. Hundreds of pages wale teams ke liye yeh akela feature subscription justify kar deta hai.</p>
+    </section>
+
+    <section class="module" id="m5">
+      <div class="module-head"><span class="emoji">🗂️</span><h2>AI Autofill — databases ke liye</h2></div>
+      <span class="slash">AUTOMATION</span>
+      <p>Kisi bhi database property par AI-powered column add kar sakte ho. Jaise ek expenses database mein "Starbucks" ko khud-ba-khud "Meals & Entertainment" category mein daal dena — bina manually har row edit kiye.</p>
+    </section>
+
+    <section class="module" id="m6">
+      <div class="module-head"><span class="emoji">🔗</span><h2>Enterprise Search & Connectors</h2></div>
+      <span class="slash">2026 UPDATE</span>
+      <p>Q&A ab sirf Notion tak simit nahi — Enterprise Search se aap Notion workspace <b>plus connected apps</b> se bhi jawab paa sakte ho: Slack, Google Drive, GitHub, Linear, aur Notion Mail.</p>
+      <p>Dus channels aur documents khud dhoondhne ke bajaye, seedha sawaal poocho aur AI source links ke saath jawab la deta hai.</p>
+    </section>
+
+    <section class="module" id="m7">
+      <div class="module-head"><span class="emoji">🤖</span><h2>Custom Agents — khud kaam karne wale</h2></div>
+      <span class="slash">NEWEST</span>
+      <p>Custom Agents sirf sawalon ka jawab nahi dete — <b>actions leते hain</b>. Yeh schedules ya triggers par chal sakte hain, poore workspace mein shareable hote hain, aur usage-based pricing par kaam karte hain.</p>
+      <p>Agents ke andar aap Claude ya GPT jaise models choose kar sakte ho — Notion ke AI Lead Engineer ke mutabik, Claude Opus jaisa model khaas taur par yeh samajhne mein achha hai ki user asal mein kya chahta hai, aur pehli hi baar mein shareable content bana deta hai.</p>
+    </section>
+
+    <section class="module" id="m8">
+      <div class="module-head"><span class="emoji">💡</span><h2>Prompting ke pro tips</h2></div>
+      <span class="slash">SHORTCUTS</span>
+      <ul>
+        <li>Naya writing project shuru karne se pehle apna core idea aur target audience AI ko do — pehle outline banwao, phir har section ke liye sub-points brainstorm karwao.</li>
+        <li>Long meeting transcripts ya reports ko "key decisions" ya "action items" nikalne ke liye pooch kar summarize karwao.</li>
+        <li>Diagrams bhi bana sakte ho — jaise "Create a Mermaid.js sequence diagram showing a user logging into an app."</li>
+        <li>Agar bar-bar ek jaisa kaam karna hai, ek baar ke prompt ke bajaye Custom Agent bana kar schedule kar do.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    ▸ END OF WORKSPACE — sawaal poocho, block banao, agent ko kaam saunp do.
+  </footer>
+</div>
+
+</body>
+</html>
