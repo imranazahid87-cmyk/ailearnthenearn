@@ -1,1 +1,327 @@
 
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Synthesia AI — Ek Chhota Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F6F9;
+    --paper-2:#EAEDF3;
+    --ink:#1C2331;
+    --ink-soft:#585F72;
+    --blue:#2E5AAC;
+    --blue-deep:#1F4380;
+    --amber:#E0A23D;
+    --mint:#4FAF8B;
+    --line:#DCE2EC;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none !important; transition:none !important;}
+  }
+  .wrap{max-width:840px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- hero ---------- */
+  header.hero{padding:56px 0 30px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--blue-deep);
+    margin-bottom:14px;
+  }
+  h1.title{
+    font-family:'Manrope',sans-serif;
+    font-weight:800;
+    font-size:clamp(32px,6.5vw,52px);
+    line-height:1.08;
+    margin:0 0 16px;
+    letter-spacing:-0.01em;
+  }
+  h1.title .accent{color:var(--blue);}
+  .hero-sub{
+    max-width:52ch;
+    margin:0 0 30px;
+    color:var(--ink-soft);
+    font-size:17px;
+  }
+
+  /* ---------- presenter frame (signature) ---------- */
+  .presenter{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:14px;
+    overflow:hidden;
+  }
+  .presenter .screen{
+    position:relative;
+    height:150px;
+    background:linear-gradient(180deg,#EEF1F7,#E4E9F2);
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+  }
+  .presenter .avatar{
+    width:78px;height:78px;border-radius:50%;
+    background:var(--blue);
+    margin-bottom:-30px;
+    position:relative;
+  }
+  .presenter .avatar::after{
+    content:"";
+    position:absolute;
+    bottom:-46px;left:50%;
+    transform:translateX(-50%);
+    width:150px;height:70px;
+    background:var(--blue);
+    border-radius:70px 70px 0 0;
+  }
+  .presenter .live{
+    position:absolute;top:12px;left:14px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:var(--white);
+    background:rgba(28,35,49,0.75);
+    padding:4px 9px;
+    border-radius:20px;
+    display:flex;align-items:center;gap:5px;
+  }
+  .presenter .live::before{
+    content:"";width:6px;height:6px;border-radius:50%;background:#E2564A;
+  }
+  .presenter .caption-bar{
+    padding:14px 16px 16px;
+    border-top:1px solid var(--line);
+  }
+  .presenter .caption-bar p{
+    margin:0 0 10px;
+    font-size:13.5px;
+    color:var(--ink-soft);
+  }
+  .lang-row{display:flex;flex-wrap:wrap;gap:6px;}
+  .lang-chip{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    padding:4px 9px;
+    border-radius:20px;
+    background:var(--paper-2);
+    color:var(--ink-soft);
+    border:1px solid var(--line);
+  }
+
+  /* ---------- module blocks ---------- */
+  .module{padding:44px 0;border-bottom:1px solid var(--line);}
+  .module:last-of-type{border-bottom:none;}
+  .code{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    color:var(--blue-deep);
+    letter-spacing:0.04em;
+  }
+  .module h2{
+    font-family:'Manrope',sans-serif;
+    font-weight:700;
+    font-size:27px;
+    margin:6px 0 16px;
+  }
+  .module p{margin:0 0 14px;}
+  .module p.lede{color:var(--ink-soft);font-size:17px;}
+
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:14px;
+    margin-top:18px;
+  }
+  .card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:16px 18px;
+  }
+  .card h3{
+    font-family:'Manrope',sans-serif;
+    font-size:15px;
+    font-weight:700;
+    margin:0 0 6px;
+    color:var(--blue-deep);
+  }
+  .card p{font-size:14px;margin:0;color:var(--ink-soft);}
+
+  .steps{list-style:none;margin:18px 0 0;padding:0;}
+  .steps li{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:14px;
+    padding:12px 0;
+    border-top:1px dashed var(--line);
+  }
+  .steps li:first-child{border-top:none;}
+  .steps .tc{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--mint);
+    padding-top:2px;
+  }
+  .steps strong{display:block;margin-bottom:2px;}
+
+  table.pricing{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+    font-size:14.5px;
+  }
+  table.pricing th, table.pricing td{
+    text-align:left;
+    padding:10px 12px;
+    border-bottom:1px solid var(--line);
+  }
+  table.pricing th{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--ink-soft);
+  }
+  table.pricing tr:last-child td{border-bottom:none;}
+
+  .callout{
+    background:var(--paper-2);
+    border-left:3px solid var(--blue);
+    border-radius:0 8px 8px 0;
+    padding:14px 18px;
+    margin-top:18px;
+    font-size:14.5px;
+    color:var(--ink-soft);
+  }
+  .callout strong{color:var(--ink);}
+
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+  .tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    padding:5px 10px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    color:var(--ink-soft);
+    background:var(--white);
+  }
+
+  footer{
+    text-align:center;
+    padding:40px 0 60px;
+    color:var(--ink-soft);
+    font-size:13.5px;
+  }
+  footer .final{font-family:'Manrope',sans-serif;font-weight:700;color:var(--blue-deep);}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">Synthesia · Beginner Course</div>
+    <h1 class="title">Camera ke bina <span class="accent">presenter video</span> banao</h1>
+    <p class="hero-sub">Sirf script likho — AI avatar usse bol ke video bana deta hai, 80+ languages mein bhi.</p>
+    <div class="presenter">
+      <div class="screen">
+        <span class="live">REC</span>
+        <div class="avatar"></div>
+      </div>
+      <div class="caption-bar">
+        <p>"Namaste, aaj hum baat karenge onboarding process ke baare mein..."</p>
+        <div class="lang-row">
+          <span class="lang-chip">EN</span>
+          <span class="lang-chip">HI</span>
+          <span class="lang-chip">ES</span>
+          <span class="lang-chip">FR</span>
+          <span class="lang-chip">+76 more</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="module">
+    <span class="code">01 · Intro</span>
+    <h2>Synthesia hai kya cheez?</h2>
+    <p class="lede">Synthesia ek AI avatar video platform hai — tum sirf ek script likhte ho, aur AI presenter usse bolte hue ek professional video bana deta hai. Na camera chahiye, na studio.</p>
+    <p>2017 se London mein bana yeh platform khaas kar enterprise training, onboarding aur internal communication videos ke liye jaana jaata hai. Iske avatars ki lip-sync accuracy aur micro-expressions category mein sabse natural mane jaate hain.</p>
+    <div class="cards">
+      <div class="card"><h3>Text-to-Avatar-Video</h3><p>Script likho, AI presenter usse bol kar video bana deta hai.</p></div>
+      <div class="card"><h3>Personal Avatar</h3><p>Apni ek short recording se apna digital twin bana lo.</p></div>
+      <div class="card"><h3>80+ Languages</h3><p>Ek video ko kai languages mein instantly dub kar sakte ho.</p></div>
+    </div>
+  </section>
+
+  <section class="module">
+    <span class="code">02 · Features</span>
+    <h2>Sabse kaam ki cheezein</h2>
+    <div class="cards">
+      <div class="card"><h3>125+ Stock Avatars</h3><p>Ready-made presenters, alag looks aur styles mein.</p></div>
+      <div class="card"><h3>Templates</h3><p>Training, onboarding ya marketing ke liye ready layouts.</p></div>
+      <div class="card"><h3>Interactive Video</h3><p>Viewer ke choices ke hisaab se video branch ho sakti hai.</p></div>
+      <div class="card"><h3>API Access</h3><p>Bulk video generation ko apne workflow se automate karo.</p></div>
+    </div>
+  </section>
+
+  <section class="module">
+    <span class="code">03 · Setup</span>
+    <h2>Pehla video kaise banayein</h2>
+    <ol class="steps">
+      <li><span class="tc">01</span><div><strong>Account banao</strong>Free plan se bina credit card ke shuru karo.</div></li>
+      <li><span class="tc">02</span><div><strong>Avatar choose karo</strong>Stock avatar pick karo, ya apna personal avatar banao.</div></li>
+      <li><span class="tc">03</span><div><strong>Script likho</strong>Editor mein text daalo — yeh hi presenter bolega.</div></li>
+      <li><span class="tc">04</span><div><strong>Language/voice set karo</strong>Zarurat ho toh translation aur dubbing add karo.</div></li>
+      <li><span class="tc">05</span><div><strong>Generate karke download karo</strong>Free plan par sirf link share hota hai, download ke liye paid plan chahiye.</div></li>
+    </ol>
+    <div class="callout"><strong>Zaroori baat:</strong> Synthesia ek acha PowerPoint ko turant achi video nahi bana deta — yeh sirf delivery improve karta hai. Script/instructional design pehle se strong hona chahiye.</div>
+  </section>
+
+  <section class="module">
+    <span class="code">04 · Kharcha</span>
+    <h2>Pricing — kitna kharcha aayega</h2>
+    <table class="pricing">
+      <tr><th>Plan</th><th>Kimat (annual)</th><th>Milta kya hai</th></tr>
+      <tr><td>Free</td><td>₹0</td><td>~10 min/month, 9 avatars, watermark</td></tr>
+      <tr><td>Starter</td><td>~$18–29/mo</td><td>125+ avatars, 3 personal avatars, download</td></tr>
+      <tr><td>Creator</td><td>~$64–89/mo</td><td>180+ avatars, 5 personal avatars, API access</td></tr>
+      <tr><td>Enterprise</td><td>Custom</td><td>Unlimited minutes/avatars, SSO, SCORM export</td></tr>
+    </table>
+    <div class="callout"><strong>Note:</strong> Usage "credits" mein measure hota hai (roughly 2 credits per second of video). Extra minutes alag se billed hote hain — payment se pehle official pricing page check karo.</div>
+  </section>
+
+  <section class="module">
+    <span class="code">05 · Kiske liye</span>
+    <h2>Kab use karein, kab nahi</h2>
+    <p class="lede">Synthesia sabse zyada kaam ka hai jab video script-driven ho aur output predictable ho.</p>
+    <div class="tag-row">
+      <span class="tag">training videos</span>
+      <span class="tag">onboarding</span>
+      <span class="tag">multilingual comms</span>
+      <span class="tag">L&D content</span>
+    </div>
+    <p style="margin-top:14px;">Agar tumhe fast, casual, credit-based iteration chahiye toh HeyGen jaisa tool better fit ho sakta hai. Aur yaad rakho — Synthesia ka koi dedicated mobile app nahi hai, editor sirf desktop browser ke liye bana hai.</p>
+  </section>
+
+  <footer>
+    <span class="final">Apna pehla script likho, avatar choose karo, aur banao.</span>
+  </footer>
+</div>
+
+</body>
+</html>
