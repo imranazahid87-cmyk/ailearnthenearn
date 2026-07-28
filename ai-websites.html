@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Website Builders - AI Learn Then Earn</title>
+<style>
+  :root{
+    --navy:#0b0f2b;
+    --blue:#2f6bff;
+    --lightbg:#f4f6fb;
+    --text:#1a1a2e;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Segoe UI', Arial, sans-serif;
+    background:var(--lightbg);
+    color:var(--text);
+    line-height:1.6;
+  }
+  header{
+    background:var(--navy);
+    color:#fff;
+    padding:16px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+  }
+  header .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:bold;
+    font-size:1.1em;
+  }
+  header .brand img{
+    width:40px; height:40px; border-radius:8px;
+  }
+  nav a{
+    color:#fff;
+    text-decoration:none;
+    margin-left:18px;
+    font-size:0.95em;
+  }
+  .page-title{
+    text-align:center;
+    padding:34px 20px 10px;
+  }
+  .page-title h1{
+    color:var(--navy);
+    font-size:1.7em;
+    margin-bottom:8px;
+  }
+  .page-title p{
+    color:#555;
+    max-width:600px;
+    margin:0 auto;
+  }
+  .grid{
+    max-width:1000px;
+    margin:0 auto;
+    padding:24px 20px 60px;
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:20px;
+  }
+  @media (max-width:640px){
+    .grid{grid-template-columns:1fr;}
+  }
+  .card{
+    background:#fff;
+    border-radius:14px;
+    box-shadow:0 4px 14px rgba(0,0,0,0.07);
+    text-align:center;
+    padding:28px 20px;
+    position:relative;
+    transition:transform 0.2s;
+  }
+  .card:hover{
+    transform:translateY(-4px);
+  }
+  .badge{
+    position:absolute;
+    top:14px;
+    left:14px;
+    background:var(--blue);
+    color:#fff;
+    font-size:0.7em;
+    font-weight:bold;
+    padding:4px 10px;
+    border-radius:12px;
+  }
+  .card img{
+    width:56px;
+    height:56px;
+    border-radius:12px;
+    margin-bottom:14px;
+    background:var(--lightbg);
+    object-fit:contain;
+    padding:8px;
+  }
+  .card h3{
+    color:var(--navy);
+    font-size:1.15em;
+    margin-bottom:10px;
+  }
+  .card p{
+    color:#555;
+    font-size:0.92em;
+    margin-bottom:18px;
+  }
+  .card a.btn{
+    display:inline-block;
+    background:var(--blue);
+    color:#fff;
+    padding:10px 26px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:0.9em;
+  }
+  .card a.btn:hover{
+    background:#1d4fd6;
+  }
+  footer{
+    text-align:center;
+    padding:24px;
+    background:var(--navy);
+    color:#aab;
+    font-size:0.85em;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <img src="https://via.placeholder.com/40/2f6bff/ffffff?text=AI" alt="AI Learn Then Earn logo">
+    AI Learn Then Earn
+  </div>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/ai-tools.html">AI Tools</a>
+    <a href="/ai-websites.html">AI Websites</a>
+    <a href="/courses.html">Courses</a>
+  </nav>
+</header>
+
+<div class="page-title">
+  <h1>AI Website Builders</h1>
+  <p>Build professional websites in minutes using AI. Most important and popular website builders listed first, with step-by-step courses for each.</p>
+</div>
+
+<div class="grid">
+
+  <div class="card">
+    <span class="badge">Most Popular</span>
+    <img src="https://via.placeholder.com/56/2f6bff/ffffff?text=Wix" alt="Wix AI">
+    <h3>Wix AI</h3>
+    <p>Build a full website in minutes just by answering a few questions — Wix's AI designs and sets it up for you.</p>
+    <a class="btn" href="courses/ai-websites/wix-ai.html">Learn More</a>
+  </div>
+
+  <div class="card">
+    <span class="badge">Trending</span>
+    <img src="https://via.placeholder.com/56/2f6bff/ffffff?text=v0" alt="v0 by Vercel">
+    <h3>v0 by Vercel</h3>
+    <p>Generate working website and app UI code from simple text prompts, built by the team behind Vercel.</p>
+    <a class="btn" href="courses/ai-websites/v0-vercel.html">Learn More</a>
+  </div>
+
+  <div class="card">
+    <span class="badge">Trending</span>
+    <img src="https://via.placeholder.com/56/2f6bff/ffffff?text=LV" alt="Lovable">
+    <h3>Lovable</h3>
+    <p>Describe your idea in plain text and Lovable's AI builds a full working website or web app for you.</p>
+    <a class="btn" href="courses/ai-websites/lovable.html">Learn More</a>
+  </div>
+
+  <div class="card">
+    <img src="https://via.placeholder.com/56/2f6bff/ffffff?text=FR" alt="Framer AI">
+    <h3>Framer AI</h3>
+    <p>Generate stunning, responsive websites with AI and customize them visually without writing code.</p>
+    <a class="btn" href="courses/ai-websites/framer-ai.html">Learn More</a>
+  </div>
+
+  <div class="card">
+    <img src="https://via.placeholder.com/56/2f6bff/ffffff?text=WF" alt="Webflow AI">
+    <h3>Webflow AI</h3>
+    <p>Professional-grade AI website builder with advanced design control and clean code output.</p>
+    <a class="btn" href="courses/ai-websites/webflow-ai.html">Learn More</a>
+  </div>
+
+  <div class="card">
+    <img src="https://via.placeholder.com/56/2f6bff/ffffff?text=HP" alt="Hostinger AI">
+    <h3>Hostinger AI</h3>
+    <p>Create and host a complete website using AI, with hosting, domain and design handled in one place.</p>
+    <a class="btn" href="courses/ai-websites/hostinger-ai.html">Learn More</a>
+  </div>
+
+  <div class="card">
+    <img src="https://via.placeholder.com/56/2f6bff/ffffff?text=10W" alt="10Web AI">
+    <h3>10Web AI (WordPress)</h3>
+    <p>Automatically generate a full WordPress website with AI, including content, images and layout.</p>
+    <a class="btn" href="courses/ai-websites/10web-ai.html">Learn More</a>
+  </div>
+
+  <div class="card">
+    <img src="https://via.placeholder.com/56/2f6bff/ffffff?text=DR" alt="Durable AI">
+    <h3>Durable AI</h3>
+    <p>Builds a complete business website with text, images and a CRM in under a minute using AI.</p>
+    <a class="btn" href="courses/ai-websites/durable-ai.html">Learn More</a>
+  </div>
+
+  <div class="card">
+    <img src="https://via.placeholder.com/56/2f6bff/ffffff?text=CD" alt="CodeDesign AI">
+    <h3>CodeDesign AI</h3>
+    <p>AI website builder that generates clean, editable code, ideal for freelancers and small businesses.</p>
+    <a class="btn" href="courses/ai-websites/codedesign-ai.html">Learn More</a>
+  </div>
+
+  <div class="card">
+    <img src="https://via.placeholder.com/56/2f6bff/ffffff?text=SQ" alt="Squarespace AI">
+    <h3>Squarespace AI</h3>
+    <p>Design elegant, professional websites with AI-assisted layouts, content and styling suggestions.</p>
+    <a class="btn" href="courses/ai-websites/squarespace-ai.html">Learn More</a>
+  </div>
+
+</div>
+
+<footer>
+  &copy; 2026 AI Learn Then Earn. All rights reserved.
+</footer>
+
+</body>
+</html>
