@@ -1,1 +1,253 @@
 
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gamma AI Course — Prompt se Poori Presentation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFFCFB;
+    --card:#FFFFFF;
+    --ink:#221C2B;
+    --ink-soft:#6E6675;
+    --border:#F1E7ED;
+    --g1:#8B5CF6; --g1b:#EC4899;
+    --g2:#FF6F91; --g2b:#FFB86B;
+    --g3:#22C1C3; --g3b:#5B7FFF;
+    --g4:#F5A623; --g4b:#F76B8A;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:#F3E3FF; color:var(--ink);}
+  .wrap{max-width:940px; margin:0 auto; padding:0 26px;}
+
+  /* ---------- Hero ---------- */
+  header.hero{padding:56px 0 26px;}
+  .kicker{
+    display:inline-flex; align-items:center; gap:7px;
+    font-size:12.5px; font-weight:700; letter-spacing:0.06em;
+    text-transform:uppercase; color:#fff; margin-bottom:22px;
+    background:linear-gradient(90deg, var(--g1), var(--g1b));
+    padding:6px 13px; border-radius:20px;
+  }
+  h1{
+    font-family:'Sora', sans-serif; font-weight:700;
+    font-size:clamp(32px, 5.8vw, 54px); line-height:1.12; letter-spacing:-0.015em; max-width:800px;
+  }
+  h1 span{
+    background:linear-gradient(90deg, var(--g1), var(--g2));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero-sub{margin-top:20px; font-size:17px; color:var(--ink-soft); max-width:600px;}
+  .hero-meta{display:flex; gap:24px; margin-top:28px; flex-wrap:wrap;}
+  .meta-item{font-size:13px; color:var(--ink-soft); font-weight:500;}
+  .meta-item b{color:var(--ink); font-weight:700;}
+
+  /* ---------- Fanned card-deck nav (signature) ---------- */
+  .deck-section{padding:40px 0 8px;}
+  .deck-label{
+    font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--ink-soft); margin-bottom:14px;
+  }
+  .deck{display:flex; flex-wrap:wrap; gap:10px;}
+  .deck a{
+    text-decoration:none; color:var(--ink);
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:14px 16px;
+    flex:1 0 130px;
+    min-width:130px;
+    font-size:13.5px; font-weight:600;
+    box-shadow:0 2px 10px rgba(139,92,246,0.06);
+    transition:transform .15s ease, box-shadow .15s ease;
+    position:relative;
+    overflow:hidden;
+  }
+  .deck a::before{
+    content:""; position:absolute; top:0; left:0; right:0; height:4px;
+  }
+  .deck a:hover{transform:translateY(-3px); box-shadow:0 8px 20px rgba(139,92,246,0.14);}
+  .deck a .n{display:block; font-size:11px; color:var(--ink-soft); font-weight:700; margin-bottom:5px;}
+  .deck a:nth-child(4n+1)::before{background:linear-gradient(90deg,var(--g1),var(--g1b));}
+  .deck a:nth-child(4n+2)::before{background:linear-gradient(90deg,var(--g2),var(--g2b));}
+  .deck a:nth-child(4n+3)::before{background:linear-gradient(90deg,var(--g3),var(--g3b));}
+  .deck a:nth-child(4n+4)::before{background:linear-gradient(90deg,var(--g4),var(--g4b));}
+
+  /* ---------- Modules as growing cards ---------- */
+  main{padding:34px 0 40px;}
+  .module{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:36px 38px;
+    margin:22px 0;
+    scroll-margin-top:24px;
+    position:relative;
+    overflow:hidden;
+  }
+  .module::before{content:""; position:absolute; top:0; left:0; right:0; height:5px;}
+  .module:nth-of-type(4n+1)::before{background:linear-gradient(90deg,var(--g1),var(--g1b));}
+  .module:nth-of-type(4n+2)::before{background:linear-gradient(90deg,var(--g2),var(--g2b));}
+  .module:nth-of-type(4n+3)::before{background:linear-gradient(90deg,var(--g3),var(--g3b));}
+  .module:nth-of-type(4n+4)::before{background:linear-gradient(90deg,var(--g4),var(--g4b));}
+
+  .module-head{display:flex; align-items:baseline; gap:14px; margin-bottom:6px; margin-top:6px;}
+  .module-index{font-weight:800; font-size:14px; color:var(--g1);}
+  .module h2{font-family:'Sora', sans-serif; font-weight:700; font-size:25px;}
+  .chip{
+    font-size:11px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase;
+    color:#8B5CF6; background:#F5EEFF; padding:4px 11px; border-radius:20px;
+    margin-bottom:16px; display:inline-block;
+  }
+  .module p{color:#3B3444; font-size:15.5px; margin-bottom:13px; max-width:760px;}
+  .module ul{margin:12px 0 4px 20px;}
+  .module li{margin-bottom:9px; font-size:15px; color:#3B3444;}
+  .module li b{color:var(--ink);}
+  .note{
+    margin-top:18px;
+    background:#FFF7F0;
+    border:1px solid #FDE6CE;
+    padding:14px 18px;
+    border-radius:12px;
+    font-size:14.5px;
+    color:#7A4A12;
+  }
+  .note b{color:#5C3608;}
+  .warn{
+    margin-top:18px;
+    background:#FFF1F4;
+    border:1px solid #FFD3DD;
+    padding:14px 18px;
+    border-radius:12px;
+    font-size:14.5px;
+    color:#8A0F32;
+  }
+  .warn b{color:#620924;}
+
+  footer{
+    border-top:1px solid var(--border);
+    padding:34px 0 60px;
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:13px;
+    font-weight:500;
+  }
+
+  @media (max-width:640px){
+    .module{padding:26px 22px;}
+    .wrap{padding:0 16px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="kicker">✦ CARD DECK · MINI COURSE</div>
+    <h1>Ek prompt likho, aur <span>poori presentation</span> chand seconds mein tayyar.</h1>
+    <p class="hero-sub">Gamma AI slides, docs, aur websites — teeno ko ek hi tool se banata hai. Yeh course sikhayega prompt se deck banana, brand kit apply karna, aur apna kaam duniya ke saath share karna.</p>
+    <div class="hero-meta">
+      <div class="meta-item"><b>8</b> modules</div>
+      <div class="meta-item"><b>~20</b> min read</div>
+      <div class="meta-item">Free tier available</div>
+    </div>
+  </header>
+
+  <section class="deck-section">
+    <div class="deck-label">▸ Course Deck</div>
+    <div class="deck">
+      <a href="#m1"><span class="n">01</span>Gamma AI kya hai</a>
+      <a href="#m2"><span class="n">02</span>Prompt se deck</a>
+      <a href="#m3"><span class="n">03</span>Card layout system</a>
+      <a href="#m4"><span class="n">04</span>Themes & Brand Kit</a>
+      <a href="#m5"><span class="n">05</span>Import karna</a>
+      <a href="#m6"><span class="n">06</span>Interactive elements</a>
+      <a href="#m7"><span class="n">07</span>Present & Share</a>
+      <a href="#m8"><span class="n">08</span>Pro tips</a>
+    </div>
+  </section>
+
+  <main>
+
+    <section class="module" id="m1">
+      <div class="module-head"><span class="module-index">01</span><h2>Gamma AI kya hai?</h2></div>
+      <span class="chip">FOUNDATION</span>
+      <p>Gamma ek web-native AI tool hai jo text prompt se presentations, documents, aur websites banata hai. Aap type karte ho "10-slide deck on Q3 marketing trends for SaaS founders" — aur kuch seconds mein aapke paas titles, body text, images sab ke saath ek structured deck ready hota hai.</p>
+      <p>Yeh traditional PowerPoint/Google Slides se alag hai — fixed slides ki jagah, Gamma ek <b>responsive card layout</b> use karta hai jo web par kahin bhi acha dikhta hai.</p>
+    </section>
+
+    <section class="module" id="m2">
+      <div class="module-head"><span class="module-index">02</span><h2>Prompt se deck banana</h2></div>
+      <span class="chip">CORE SKILL</span>
+      <p>Ek achha, clean deck banane ke liye AI se sirf structure aur pehla draft lo — phir narrative, data emphasis, aur imagery ko khud apni audience ke hisaab se customize karo.</p>
+      <ul>
+        <li>Themes tab mein jao aur "New Theme" chuno — base template se shuru karo ya blank content outline se.</li>
+        <li>Ek full 10-slide deck prompt se 60 second ke andar generate ho jaata hai.</li>
+        <li>Existing PowerPoint bhi import karke usse update kar sakte ho.</li>
+      </ul>
+    </section>
+
+    <section class="module" id="m3">
+      <div class="module-head"><span class="module-index">03</span><h2>Card layout system</h2></div>
+      <span class="chip">SIGNATURE FEATURE</span>
+      <p>Gamma traditional slides ki jagah <b>Card layout</b> use karta hai. Cards content ke hisaab se vertically grow hote hain — matlab text compress karne ya line spacing adjust karne ki zaroorat nahi padti, jaisa PowerPoint mein hota hai.</p>
+      <p>Key features menu se ek click mein layouts change kar sakte ho — bina design se panga liye.</p>
+    </section>
+
+    <section class="module" id="m4">
+      <div class="module-head"><span class="module-index">04</span><h2>Themes aur Brand Kit</h2></div>
+      <span class="chip">BRANDING</span>
+      <p>Apni company ke colors, fonts, aur logo se ek <b>Brand Kit</b> apply karo — taaki har deck automatically on-brand bane, bina har baar manually style karne ke.</p>
+      <p>Various presentation styles aur customizable color schemes available hain jo written content ko turant polished visuals mein badal dete hain.</p>
+    </section>
+
+    <section class="module" id="m5">
+      <div class="module-head"><span class="module-index">05</span><h2>Content import karna</h2></div>
+      <span class="chip">WORKFLOW</span>
+      <p>Sirf prompt hi nahi — Gamma URL, PDF, ya existing document se bhi deck bana sakta hai. Ek blog post ya webpage ka link paste karo, aur AI usse structured deck mein convert kar deta hai.</p>
+      <p>Apna kaam unlimited folders mein organize kar sakte ho, taaki sab kuch neat rahe.</p>
+    </section>
+
+    <section class="module" id="m6">
+      <div class="module-head"><span class="module-index">06</span><h2>Interactive elements</h2></div>
+      <span class="chip">ENGAGEMENT</span>
+      <p>Deck mein sirf text-image nahi — webpages, videos, aur other interactive embeds bhi daal sakte ho, taaki audience engaged rahe. Notion, Slack, aur 30+ dusre tools ke saath integrations bhi available hain.</p>
+    </section>
+
+    <section class="module" id="m7">
+      <div class="module-head"><span class="module-index">07</span><h2>Present aur Share karna</h2></div>
+      <span class="chip">DISTRIBUTION</span>
+      <p>"Present" dabao aur seedha ideas present karna shuru karo, ya sirf link team ke saath share kar do — koi file bhejne ki zaroorat nahi. Web-shared decks aur audience engagement metrics track karna chahte ho toh Gamma is kaam ke liye best fit hai.</p>
+    </section>
+
+    <section class="module" id="m8">
+      <div class="module-head"><span class="module-index">08</span><h2>Pro tips aur limitations</h2></div>
+      <span class="chip">HONEST NOTES</span>
+      <ul>
+        <li>Free tier lifetime credits ke saath aata hai — heavy use se pehle plan samajh lo.</li>
+        <li>Repetitive layouts se bachne ke liye apna khud ka imagery aur structure thoda customize karo.</li>
+      </ul>
+      <div class="warn"><b>Zaroori:</b> Gamma facts, dates, ya numbers kabhi-kabhi galat generate kar sakta hai (hallucination). Koi bhi substantive data present karne se pehle khud fact-check zaroor karo.</div>
+      <div class="note"><b>Tip:</b> Agar deck ko PowerPoint mein export karke client ko dena hai, toh layout thoda "drift" ho sakta hai — final export hamesha review kar lo.</div>
+    </section>
+
+  </main>
+
+  <footer>
+    ▸ END OF DECK — prompt likho, card grow hone do, present karo.
+  </footer>
+</div>
+
+</body>
+</html>
