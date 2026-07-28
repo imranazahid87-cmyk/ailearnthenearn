@@ -1,1 +1,230 @@
 
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zapier AI Course — Apps ko Jodo, Kaam Khud Ho</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAFAF9;
+    --card:#FFFFFF;
+    --ink:#1A1A1A;
+    --ink-soft:#6B6863;
+    --border:#EAE7E2;
+    --orange:#FF4F00;
+    --orange-deep:#C41E00;
+    --black-node:#1A1A1A;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:#FFDCCB; color:var(--ink);}
+  .wrap{max-width:940px; margin:0 auto; padding:0 26px;}
+
+  /* ---------- Hero ---------- */
+  header.hero{padding:54px 0 26px;}
+  .kicker{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'JetBrains Mono', monospace; font-size:12px; font-weight:500;
+    letter-spacing:0.1em; text-transform:uppercase; color:var(--orange); margin-bottom:20px;
+  }
+  .kicker .bolt{
+    width:9px; height:9px; background:var(--orange); border-radius:2px;
+    transform:rotate(45deg); display:inline-block;
+  }
+  h1{
+    font-family:'Space Grotesk', sans-serif; font-weight:700;
+    font-size:clamp(32px, 5.6vw, 52px); line-height:1.14; letter-spacing:-0.015em; max-width:800px;
+  }
+  h1 span{color:var(--orange);}
+  .hero-sub{margin-top:18px; font-size:17px; color:var(--ink-soft); max-width:600px;}
+  .hero-meta{display:flex; gap:24px; margin-top:26px; flex-wrap:wrap;}
+  .meta-item{font-family:'JetBrains Mono', monospace; font-size:12.5px; color:var(--ink-soft);}
+  .meta-item b{color:var(--ink); font-weight:600;}
+
+  /* ---------- Flow / connector nav (signature) ---------- */
+  .flow-section{padding:40px 0 8px;}
+  .flow-label{
+    font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--ink-soft); margin-bottom:14px;
+  }
+  .flow{display:flex; flex-wrap:wrap; align-items:center; gap:6px;}
+  .node{
+    text-decoration:none; color:#fff;
+    background:var(--black-node);
+    border-radius:20px;
+    padding:9px 16px;
+    font-size:12.5px; font-weight:600;
+    display:inline-flex; align-items:center; gap:6px;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .node:hover{background:var(--orange); transform:translateY(-2px);}
+  .node .n{font-family:'JetBrains Mono', monospace; opacity:0.6; font-size:10.5px;}
+  .arrow{color:var(--ink-soft); font-size:14px; font-weight:700;}
+
+  /* ---------- Modules ---------- */
+  main{padding:34px 0 40px;}
+  .module{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:34px 36px;
+    margin:20px 0;
+    scroll-margin-top:22px;
+    position:relative;
+  }
+  .module::before{
+    content:""; position:absolute; left:0; top:24px; bottom:24px; width:4px;
+    background:linear-gradient(180deg, var(--orange), var(--orange-deep));
+    border-radius:0 3px 3px 0;
+  }
+  .module-head{display:flex; align-items:baseline; gap:14px; margin-bottom:6px; padding-left:8px;}
+  .module-index{font-family:'JetBrains Mono', monospace; color:var(--orange); font-size:13px; font-weight:600;}
+  .module h2{font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:25px;}
+  .tag{
+    font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--orange-deep);
+    background:#FFF0EA; padding:3px 10px; border-radius:5px;
+    margin-bottom:16px; margin-left:8px; display:inline-block; letter-spacing:0.03em;
+  }
+  .module p{color:#2E2C29; font-size:15.5px; margin-bottom:13px; max-width:760px; padding-left:8px;}
+  .module ul{margin:12px 0 4px 28px;}
+  .module li{margin-bottom:9px; font-size:15px; color:#2E2C29;}
+  .module li b{color:var(--ink);}
+  .step{
+    margin-top:18px; margin-left:8px;
+    background:#FAFAFA;
+    border:1px dashed var(--border);
+    padding:13px 17px;
+    border-radius:10px;
+    font-size:14px;
+    color:#4A4741;
+    font-family:'JetBrains Mono', monospace;
+  }
+  .step b{color:var(--ink); font-family:'Inter', sans-serif;}
+
+  footer{
+    border-top:1px solid var(--border);
+    padding:32px 0 60px;
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:13px;
+    font-family:'JetBrains Mono', monospace;
+  }
+
+  @media (max-width:640px){
+    .module{padding:26px 22px 26px 30px;}
+    .wrap{padding:0 16px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="kicker"><span class="bolt"></span> AUTOMATION FLOW · MINI COURSE</div>
+    <h1>Apps ko jodo, aur <span>routine kaam</span> khud-ba-khud chalne do.</h1>
+    <p class="hero-sub">Zapier 7,000+ apps ko connect karta hai — aur ab AI ke saath, yeh sirf "if this then that" nahi, decisions bhi khud le sakta hai. Yeh course trigger se agent tak poora journey sikhayega.</p>
+    <div class="hero-meta">
+      <div class="meta-item"><b>8</b> modules</div>
+      <div class="meta-item"><b>~21</b> min read</div>
+      <div class="meta-item">Free: 100 tasks/month</div>
+    </div>
+  </header>
+
+  <section class="flow-section">
+    <div class="flow-label">▸ Automation Path</div>
+    <div class="flow">
+      <a href="#m1" class="node"><span class="n">01</span>Zapier kya hai</a><span class="arrow">→</span>
+      <a href="#m2" class="node"><span class="n">02</span>Pehla Zap</a><span class="arrow">→</span>
+      <a href="#m3" class="node"><span class="n">03</span>Copilot</a><span class="arrow">→</span>
+      <a href="#m4" class="node"><span class="n">04</span>AI Step</a><span class="arrow">→</span>
+      <a href="#m5" class="node"><span class="n">05</span>AI Actions</a><span class="arrow">→</span>
+      <a href="#m6" class="node"><span class="n">06</span>Central & Agents</a><span class="arrow">→</span>
+      <a href="#m7" class="node"><span class="n">07</span>Real workflows</a><span class="arrow">→</span>
+      <a href="#m8" class="node"><span class="n">08</span>Pro tips</a>
+    </div>
+  </section>
+
+  <main>
+
+    <section class="module" id="m1">
+      <div class="module-head"><span class="module-index">01</span><h2>Zapier kya hai?</h2></div>
+      <span class="tag">FOUNDATION</span>
+      <p>Zapier apps ke beech "digital glue" hai — ek app mein kuch hota hai (trigger), aur dusre app mein automatically kuch action hota hai, bina code likhe. Automation ki ek unit ko <b>"Zap"</b> kehte hain.</p>
+      <p>2026 mein Zapier ne AI capabilities add ki hain — lead qualification, sentiment detection, aur intelligent notifications jaise kaam ab simple rules se aage badh kar smart decisions le sakte hain.</p>
+    </section>
+
+    <section class="module" id="m2">
+      <div class="module-head"><span class="module-index">02</span><h2>Apna pehla Zap banana</h2></div>
+      <span class="tag">GETTING STARTED</span>
+      <p>zapier.com par sign up karo — free plan hamesha ke liye basic automations chalata hai. Dashboard mein apne existing apps (jaise Gmail, Slack) link karo.</p>
+      <div class="step">Trigger: <b>New Google Form submission</b> → Action: <b>Send Slack notification</b></div>
+      <p>Har Zap banane ke baad usse test zaroor karo, taaki confirm ho jaaye ki woh sahi kaam kar raha hai.</p>
+    </section>
+
+    <section class="module" id="m3">
+      <div class="module-head"><span class="module-index">03</span><h2>Zapier Copilot — plain English se Zap</h2></div>
+      <span class="tag">AI BUILDER</span>
+      <p>Bas apna automation plain English mein describe karo — jaise "jab bhi naya lead HubSpot mein aaye, Slack par mujhe notify karo" — aur Copilot poora Zap structure suggest kar deta hai, setup time kaafi kam ho jaata hai.</p>
+    </section>
+
+    <section class="module" id="m4">
+      <div class="module-head"><span class="module-index">04</span><h2>AI Step — Zap ke andar hi AI</h2></div>
+      <span class="tag">IN-ZAP AI</span>
+      <p>"AI by Zapier" ek action step hai jo kisi bhi running Zap ke andar text <b>summarize, classify, extract, translate,</b> ya <b>generate</b> kar sakta hai — bina OpenAI account ke, Zapier khud API call handle karta hai.</p>
+      <p>Agar chaho toh apni khud ki OpenAI, Anthropic, ya Google API key connect karke specific model (GPT, Claude, Gemini) bhi use kar sakte ho.</p>
+    </section>
+
+    <section class="module" id="m5">
+      <div class="module-head"><span class="module-index">05</span><h2>AI Actions — ChatGPT se seedha Zap trigger</h2></div>
+      <span class="tag">REVERSE FLOW</span>
+      <p>AI Actions se ChatGPT natural language commands ke zariye real Zapier automations trigger kar sakta hai — bina Zapier app khole. Matlab AI chat ke andar hi bol do, aur woh asal duniya mein action le lega.</p>
+    </section>
+
+    <section class="module" id="m6">
+      <div class="module-head"><span class="module-index">06</span><h2>Zapier Central aur Agents</h2></div>
+      <span class="tag">AUTONOMOUS</span>
+      <p>Zapier Agents 7,000+ apps ke across autonomously kaam karte hain — leads process karna, support tickets manage karna, research karna, sab plain English instructions se, 24/7, bina soye.</p>
+      <div class="step">Example: <b>"Get Asana tasks" bolo</b> → Agent tasks fetch karta hai → daily Slack summary bhejta hai</div>
+      <p>Agents ko existing Zap workflows ke andar bhi ek step ki tarah add kar sakte ho — jahan research ya complex decision-making chahiye ho.</p>
+    </section>
+
+    <section class="module" id="m7">
+      <div class="module-head"><span class="module-index">07</span><h2>Real-world multi-step workflows</h2></div>
+      <span class="tag">EXAMPLES</span>
+      <ul>
+        <li><b>Lead routing:</b> LinkedIn Ads se naya lead → Clearbit se validate → company size 500+ ho toh Salesforce + Slack alert, warna HubSpot nurturing sequence.</li>
+        <li><b>Invoice processing:</b> Email mein invoice attachment aaye → PDF extract ho → multimodal AI line items padhe → data JSON format mein QuickBooks tak pahunche.</li>
+        <li><b>Support escalation:</b> Negative sentiment wali review/ticket detect ho → manager ko turant escalate ho jaaye.</li>
+      </ul>
+    </section>
+
+    <section class="module" id="m8">
+      <div class="module-head"><span class="module-index">08</span><h2>Pro tips aur pricing samajhna</h2></div>
+      <span class="tag">SHORTCUTS</span>
+      <ul>
+        <li>Free plan mein 100 tasks/month milte hain aur basic AI features bhi included hain.</li>
+        <li>Poore AI Step aur Copilot ke liye Starter plan ($19.99/month se shuru) chahiye hota hai.</li>
+        <li>Complex ya edge-case-heavy workflow ke liye — pehle simple Zap se shuru karo, phir AI Step add karo, tab jaake Agent step try karo.</li>
+        <li>Kisi bhi naye Zap ko production mein daalne se pehle hamesha test karo — chhoti si galti poore workflow ko break kar sakti hai.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    ▸ END OF FLOW — trigger set karo, action jodo, kaam khud hone do.
+  </footer>
+</div>
+
+</body>
+</html>
