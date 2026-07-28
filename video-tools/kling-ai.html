@@ -1,1 +1,350 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kling AI — Ek Chhota Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F2E9;
+    --paper-2:#F1EADB;
+    --ink:#221F1B;
+    --ink-soft:#5B554C;
+    --amber:#D9922E;
+    --amber-deep:#B5711A;
+    --rec:#C1503F;
+    --sage:#5F7A63;
+    --line:#DDD3BE;
+    --white:#FFFDF8;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none !important; transition:none !important;}
+  }
 
+  .wrap{max-width:840px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- sprocket filmstrip divider ---------- */
+  .filmstrip{
+    height:26px;
+    background:repeating-linear-gradient(
+      90deg,
+      var(--ink) 0, var(--ink) 0
+    );
+    background-color: var(--ink);
+    position:relative;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+  }
+  .filmstrip .holes{
+    display:flex;
+    width:100%;
+    justify-content:space-around;
+  }
+  .filmstrip .holes span{
+    width:11px;height:11px;border-radius:2px;background:var(--paper);
+    flex-shrink:0;
+  }
+
+  /* ---------- hero: clapperboard ---------- */
+  header.hero{
+    padding:56px 0 40px;
+  }
+  .slate{
+    background:var(--ink);
+    color:var(--white);
+    border-radius:6px;
+    overflow:hidden;
+    box-shadow:0 18px 40px -18px rgba(34,31,27,0.55);
+  }
+  .slate-stripes{
+    height:34px;
+    background:repeating-linear-gradient(
+      -20deg,
+      var(--white) 0 22px,
+      var(--ink) 22px 44px
+    );
+  }
+  .slate-body{padding:28px 28px 30px;}
+  .slate-row{
+    display:flex;
+    justify-content:space-between;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.06em;
+    color:#D8D2C6;
+    text-transform:uppercase;
+    border-bottom:1px solid rgba(255,255,255,0.15);
+    padding-bottom:14px;
+    margin-bottom:18px;
+  }
+  h1.title{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:clamp(32px,6vw,52px);
+    line-height:1.05;
+    margin:0 0 10px;
+  }
+  h1.title em{
+    font-style:italic;
+    font-weight:500;
+    color:var(--amber);
+  }
+  .slate-sub{
+    color:#C9C2B4;
+    font-size:16px;
+    max-width:48ch;
+    margin:0;
+  }
+  .rec-dot{
+    display:inline-flex;align-items:center;gap:6px;
+    color:var(--rec);
+  }
+  .rec-dot::before{
+    content:"";width:8px;height:8px;border-radius:50%;
+    background:var(--rec);
+    animation:pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.35;}}
+
+  /* ---------- module blocks ---------- */
+  .module{
+    padding:44px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .module:last-of-type{border-bottom:none;}
+  .code{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    color:var(--amber-deep);
+    letter-spacing:0.04em;
+  }
+  .module h2{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:28px;
+    margin:6px 0 16px;
+  }
+  .module p{margin:0 0 14px;color:var(--ink);}
+  .module p.lede{color:var(--ink-soft);font-size:17px;}
+
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:14px;
+    margin-top:18px;
+  }
+  .card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:16px 18px;
+  }
+  .card h3{
+    font-family:'Inter',sans-serif;
+    font-size:14.5px;
+    font-weight:700;
+    margin:0 0 6px;
+    color:var(--amber-deep);
+  }
+  .card p{font-size:14px;margin:0;color:var(--ink-soft);}
+
+  .steps{list-style:none;margin:18px 0 0;padding:0;}
+  .steps li{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:14px;
+    padding:12px 0;
+    border-top:1px dashed var(--line);
+  }
+  .steps li:first-child{border-top:none;}
+  .steps .tc{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--sage);
+    padding-top:2px;
+  }
+  .steps strong{display:block;margin-bottom:2px;}
+
+  table.pricing{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+    font-size:14.5px;
+  }
+  table.pricing th, table.pricing td{
+    text-align:left;
+    padding:10px 12px;
+    border-bottom:1px solid var(--line);
+  }
+  table.pricing th{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--ink-soft);
+  }
+  table.pricing tr:last-child td{border-bottom:none;}
+
+  .callout{
+    background:var(--paper-2);
+    border-left:3px solid var(--amber);
+    border-radius:0 8px 8px 0;
+    padding:14px 18px;
+    margin-top:18px;
+    font-size:14.5px;
+    color:var(--ink-soft);
+  }
+  .callout strong{color:var(--ink);}
+
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+  .tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    padding:5px 10px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    color:var(--ink-soft);
+    background:var(--white);
+  }
+
+  footer{
+    text-align:center;
+    padding:40px 0 60px;
+    color:var(--ink-soft);
+    font-size:13.5px;
+  }
+  footer .clap{font-family:'Fraunces',serif;font-style:italic;color:var(--amber-deep);}
+</style>
+</head>
+<body>
+
+<div class="filmstrip"><div class="holes">
+  <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+</div></div>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="slate">
+      <div class="slate-stripes"></div>
+      <div class="slate-body">
+        <div class="slate-row">
+          <span>Kling AI — Course</span>
+          <span class="rec-dot">Live Reel</span>
+        </div>
+        <h1 class="title">Kling AI se <em>video banana</em> seekho</h1>
+        <p class="slate-sub">Ek chhota, practical course — prompt se lekar 4K clip tak. Scroll karo, seekho, banao.</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="module">
+    <span class="code">SCENE 01 · 00:00</span>
+    <h2>Kling AI hai kya cheez?</h2>
+    <p class="lede">Kling, Kuaishou (Kwai wali company) ka bana hua text-to-video aur image-to-video generator hai. Simple bhasha mein: tum likhte ho ya photo dete ho, aur woh usse ek chalti-phirti video bana deta hai.</p>
+    <p>2026 mein Kling apne diffusion-transformer architecture ki wajah se khaas hai — motion realistic lagta hai, chehre consistent rehte hain, aur physics (paani, baal, kapde ka hilna) kaafi accurate dikhti hai. Yehi wajah hai ki Runway, Luma aur Google Veo ke saath iska naam seedha compare hota hai.</p>
+    <div class="cards">
+      <div class="card"><h3>Text-to-Video</h3><p>Sirf ek acha prompt likho, Kling scene bana dega.</p></div>
+      <div class="card"><h3>Image-to-Video</h3><p>Ek still photo upload karo, usme motion daal do.</p></div>
+      <div class="card"><h3>Multi-Shot</h3><p>Alag camera angles mein bhi character same rakhta hai.</p></div>
+    </div>
+  </section>
+
+  <section class="module">
+    <span class="code">SCENE 02 · 00:04</span>
+    <h2>Kaunsa model use karein</h2>
+    <p class="lede">Kling ke kai versions aa chuke hain — har ek pichle se behtar. 2026 mein sabse important teen yeh hain:</p>
+    <table class="pricing">
+      <tr><th>Model</th><th>Khaas baat</th><th>Kab use karein</th></tr>
+      <tr><td>2.5 Turbo Pro</td><td>Fast aur sasta, achi quality</td><td>Roz ke experiments, quick drafts</td></tr>
+      <tr><td>2.6</td><td>Audio + lip sync saath mein</td><td>Dialogue wale shots</td></tr>
+      <tr><td>3.0 / 3.5</td><td>Native 4K, 60fps, better physics, 6 shots tak consistency</td><td>Final, client-ready output</td></tr>
+    </table>
+    <div class="callout"><strong>Tip:</strong> Shuruaat mein sasta model use karo prompt test karne ke liye, phir final render high model se lo — credits bachte hain.</div>
+  </section>
+
+  <section class="module">
+    <span class="code">SCENE 03 · 00:09</span>
+    <h2>Shuru kaise karein</h2>
+    <ol class="steps">
+      <li><span class="tc">01</span><div><strong>Account banao</strong>Kling ki official site par sign up karo — free tier mein roz kuch credits milte hain.</div></li>
+      <li><span class="tc">02</span><div><strong>Mode choose karo</strong>Text-to-video ya image-to-video — dono options top par milenge.</div></li>
+      <li><span class="tc">03</span><div><strong>Prompt likho ya photo daalo</strong>Jitna specific prompt hoga, utna behtar result aayega.</div></li>
+      <li><span class="tc">04</span><div><strong>Settings set karo</strong>Duration, resolution, aur agar zarurat ho toh Motion Brush se movement direction batao.</div></li>
+      <li><span class="tc">05</span><div><strong>Generate dabao</strong>Kuch minute wait karo — 4K clips thoda zyada time lete hain.</div></li>
+    </ol>
+  </section>
+
+  <section class="module">
+    <span class="code">SCENE 04 · 00:14</span>
+    <h2>Achha prompt kaise likhein</h2>
+    <p class="lede">Kling camera-language samajhta hai — jaise ek cinematographer se baat kar rahe ho.</p>
+    <div class="cards">
+      <div class="card"><h3>Subject</h3><p>Kaun/kya hai scene mein, kya pehna hai, expression kya hai.</p></div>
+      <div class="card"><h3>Action</h3><p>Woh kya kar raha hai — chal raha, muskura raha, hawa mein udta hua kapda.</p></div>
+      <div class="card"><h3>Camera</h3><p>Close-up, slow pan, drone shot — camera movement bhi likho.</p></div>
+      <div class="card"><h3>Mood</h3><p>Lighting aur color feel — golden hour, neon night, soft overcast.</p></div>
+    </div>
+    <div class="callout"><strong>Yaad rakho:</strong> Vague prompt ("a girl walking") se generic result milega. Specific prompt ("a girl in a red coat walking through rain-soaked Tokyo street, neon reflections, slow tracking shot") se kaafi behtar output aata hai.</div>
+  </section>
+
+  <section class="module">
+    <span class="code">SCENE 05 · 00:19</span>
+    <h2>Pricing — kitna kharcha aayega</h2>
+    <p class="lede">Free tier se try kar sakte ho, phir zarurat ke hisaab se upgrade karo.</p>
+    <table class="pricing">
+      <tr><th>Plan</th><th>Kimat</th><th>Kiske liye</th></tr>
+      <tr><td>Free</td><td>₹0</td><td>Roz ke credits, seekhne ke liye best</td></tr>
+      <tr><td>Standard</td><td>~$6.99/mo se shuru</td><td>Casual creators</td></tr>
+      <tr><td>Premier</td><td>~$64.99/mo tak</td><td>Heavy/professional use</td></tr>
+    </table>
+    <p>API ke through (jaise fal.ai) per-second billing bhi milti hai, jo developers ke liye useful hai.</p>
+  </section>
+
+  <section class="module">
+    <span class="code">SCENE 06 · 00:23</span>
+    <h2>Common galtiyan aur pro tips</h2>
+    <div class="cards">
+      <div class="card"><h3>Zyada complex scene ek saath</h3><p>Chhoti clips banao aur unhe "extend" feature se lamba karo, ek hi shot mein sab kuch mat daalo.</p></div>
+      <div class="card"><h3>Hands aur fingers</h3><p>Yeh AI video ki purani kamzori abhi bhi hai — close-up hand shots avoid karo.</p></div>
+      <div class="card"><h3>Long consistency</h3><p>Multi-clip mein character same rakhne ke liye reference image ya same seed use karo.</p></div>
+      <div class="card"><h3>Credits bachana</h3><p>Draft low model par, final render high-quality model par karo.</p></div>
+    </div>
+    <div class="tag-row">
+      <span class="tag">text-to-video</span>
+      <span class="tag">image-to-video</span>
+      <span class="tag">motion brush</span>
+      <span class="tag">multi-shot</span>
+      <span class="tag">lip sync</span>
+      <span class="tag">4K · 60fps</span>
+    </div>
+  </section>
+
+  <footer>
+    <span class="clap">"Cut! That's a wrap."</span><br>
+    Ab practice karne ki baari hai — apna pehla prompt likho aur "Generate" dabao.
+  </footer>
+</div>
+
+<div class="filmstrip"><div class="holes">
+  <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+</div></div>
+
+</body>
+</html>
