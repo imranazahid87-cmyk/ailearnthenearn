@@ -1,1 +1,372 @@
 
+<!DOCTYPE html>
+<html lang="ur-Latn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Krea AI — Mini Course</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+  :root{
+    --space:#090c14;
+    --glass:rgba(255,255,255,0.05);
+    --glass-brd:rgba(255,255,255,0.12);
+    --emerald:#00e5a0;
+    --violet:#8b6bff;
+    --cyan:#00d4ff;
+    --magenta:#ff4fd8;
+    --paper:#f2f4fb;
+    --dim:#9ba3c0;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--space);
+    color:var(--paper);
+    font-family:'Inter', sans-serif;
+    line-height:1.65;
+    position:relative;
+    overflow-x:hidden;
+  }
+
+  .aurora{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    filter:blur(60px);
+    opacity:0.55;
+    pointer-events:none;
+  }
+  .aurora div{position:absolute; border-radius:50%;}
+  .a1{width:420px;height:420px; background:var(--violet); top:-120px; left:-100px;}
+  .a2{width:380px;height:380px; background:var(--emerald); top:280px; right:-140px;}
+  .a3{width:320px;height:320px; background:var(--magenta); bottom:60px; left:10%;}
+  .a4{width:300px;height:300px; background:var(--cyan); bottom:-100px; right:15%;}
+
+  .wrap{max-width:820px;margin:0 auto;padding:0 24px 100px;position:relative;z-index:1;}
+
+  header.hero{
+    padding:84px 0 44px;
+    text-align:center;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:12.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--dim);
+    background:var(--glass);
+    border:1px solid var(--glass-brd);
+    padding:6px 16px;
+    border-radius:100px;
+    margin-bottom:24px;
+  }
+  .eyebrow .dot{
+    width:7px; height:7px; border-radius:50%;
+    background:var(--emerald);
+    box-shadow:0 0 8px 2px rgba(0,229,160,0.7);
+  }
+  h1{
+    font-family:'Sora', sans-serif;
+    font-weight:800;
+    font-size:52px;
+    line-height:1.08;
+    margin:0 0 20px;
+    background:linear-gradient(110deg, var(--cyan) 0%, var(--violet) 45%, var(--magenta) 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .sub{
+    font-size:17px;
+    color:var(--dim);
+    max-width:540px;
+    margin:0 auto;
+  }
+
+  .module{
+    margin-top:44px;
+    background:var(--glass);
+    backdrop-filter:blur(14px);
+    border:1px solid var(--glass-brd);
+    border-radius:22px;
+    padding:32px 34px 28px;
+    position:relative;
+  }
+
+  .mod-label{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'Sora', sans-serif;
+    font-size:12.5px;
+    font-weight:700;
+    letter-spacing:0.08em;
+    color:var(--space);
+    background:linear-gradient(100deg, var(--emerald), var(--cyan));
+    padding:4px 14px;
+    border-radius:100px;
+    margin-bottom:18px;
+  }
+
+  h2{
+    font-family:'Sora', sans-serif;
+    font-weight:700;
+    font-size:27px;
+    margin:0 0 14px;
+    color:var(--paper);
+  }
+  h2 span.accent{
+    background:linear-gradient(100deg, var(--violet), var(--magenta));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+
+  p{color:var(--dim); font-size:15.5px; margin:0 0 14px;}
+  p strong{color:var(--paper); font-weight:600;}
+
+  ul.points{list-style:none; margin:18px 0; padding:0;}
+  ul.points li{
+    position:relative;
+    padding:8px 0 8px 28px;
+    color:var(--dim);
+    font-size:15px;
+  }
+  ul.points li::before{
+    content:"◆";
+    position:absolute;
+    left:0; top:9px;
+    color:var(--cyan);
+    font-size:9px;
+  }
+  ul.points li strong{color:var(--paper);}
+
+  .prompt-box{
+    margin-top:20px;
+    background:rgba(0,0,0,0.35);
+    border:1px solid rgba(139,107,255,0.4);
+    border-radius:14px;
+    padding:16px 20px;
+    font-family:'Inter',monospace;
+    font-size:14px;
+    color:var(--emerald);
+  }
+  .prompt-box .tag{
+    display:block;
+    font-family:'Sora',sans-serif;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--dim);
+    margin-bottom:8px;
+  }
+
+  .grid2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin-top:18px;
+  }
+  .mini-card{
+    background:rgba(255,255,255,0.03);
+    border:1px solid var(--glass-brd);
+    border-radius:14px;
+    padding:16px 18px;
+  }
+  .mini-card .num{
+    font-family:'Sora',sans-serif;
+    font-size:20px;
+    color:var(--magenta);
+    font-weight:700;
+  }
+  .mini-card p{margin:6px 0 0; font-size:14px;}
+
+  .live-row{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    padding:12px 0;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .live-row:last-child{border-bottom:none;}
+  .live-row .badge{
+    flex-shrink:0;
+    font-family:'Sora',sans-serif;
+    font-size:11px;
+    font-weight:700;
+    color:var(--space);
+    background:var(--cyan);
+    padding:2px 9px;
+    border-radius:5px;
+    margin-top:2px;
+  }
+  .live-row p{margin:0; font-size:14.5px;}
+
+  .warn{
+    margin-top:22px;
+    background:rgba(255,79,216,0.1);
+    border:1px solid rgba(255,79,216,0.35);
+    padding:14px 18px;
+    border-radius:14px;
+  }
+  .warn p{color:var(--paper); font-size:14.5px; margin:0;}
+
+  .divider{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin:56px 0 0;
+    color:var(--dim);
+    font-size:12.5px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+  }
+  .divider::before, .divider::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:rgba(255,255,255,0.12);
+  }
+
+  .final{
+    margin-top:56px;
+    text-align:center;
+    padding:40px 20px 0;
+  }
+  .final h2{font-size:32px;}
+  .final p{max-width:480px; margin:0 auto 24px; color:var(--dim);}
+  .cta{
+    display:inline-block;
+    background:linear-gradient(100deg, var(--emerald), var(--cyan));
+    color:var(--space);
+    font-family:'Sora',sans-serif;
+    font-weight:700;
+    padding:14px 34px;
+    border-radius:100px;
+    text-decoration:none;
+    font-size:15px;
+  }
+
+  @media (max-width:640px){
+    h1{font-size:36px;}
+    .grid2{grid-template-columns:1fr;}
+    .module{padding:24px 20px;}
+    header.hero{padding:56px 0 32px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="aurora">
+  <div class="a1"></div>
+  <div class="a2"></div>
+  <div class="a3"></div>
+  <div class="a4"></div>
+</div>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow"><span class="dot"></span>Mini Course · 8 Modules</div>
+    <h1>Krea AI<br>Sochte Hi Banta Hai</h1>
+    <p class="sub">Krea ek real-time creative tool hai — jahan aapka idea type ya draw karte hi, palak jhapakte tasveer mein badalta hai. Ye course iske live tools ko samjhata hai.</p>
+  </header>
+
+  <!-- Module 1 -->
+  <div class="module">
+    <span class="mod-label">Module 01</span>
+    <h2>Krea AI <span class="accent">hai kya?</span></h2>
+    <p>Krea AI ek image aur video generation platform hai jiski pehchaan hi <strong>real-time speed</strong> hai — yahan aap type karte ya sketch banate hi, result live update hota rehta hai, bilkul kisi live canvas ki tarah.</p>
+    <ul class="points">
+      <li><strong>Instant feedback</strong> — wait karne ki zaroorat nahi</li>
+      <li><strong>Image aur video</strong> — dono generation is ek jagah</li>
+      <li><strong>High-quality upscaling</strong> — professional output ke liye</li>
+    </ul>
+  </div>
+
+  <!-- Module 2 -->
+  <div class="module">
+    <span class="mod-label">Module 02</span>
+    <h2>Real-Time Generation <span class="accent">ka jaadu</span></h2>
+    <p>Ye Krea ka sabse khaas feature hai. Jaise hi aap prompt likhte hain, image screen par <strong>live shakl badalti</strong> hai — jaise koi cheez khud ba khud shakl le rahi ho, bina kisi "generate" button ka intezaar kiye.</p>
+  </div>
+
+  <!-- Module 3 -->
+  <div class="module">
+    <span class="mod-label">Module 03</span>
+    <h2>Live Canvas <span class="accent">— sketch se image tak</span></h2>
+    <p>Ek simple shape ya rough sketch banao — jaise ek circle ya line drawing — aur Krea usay real-time mein ek detailed, polished image mein badal deta hai, jese aap sketch banate waqt result live badalta jaye.</p>
+    <div class="live-row">
+      <span class="badge">DRAW</span>
+      <p>Aap canvas par ek mota sa shape banate hain</p>
+    </div>
+    <div class="live-row">
+      <span class="badge">LIVE</span>
+      <p>Wahi shape turant ek detailed scene mein badal jaati hai</p>
+    </div>
+  </div>
+
+  <!-- Module 4 -->
+  <div class="module">
+    <span class="mod-label">Module 04</span>
+    <h2>Image <span class="accent">aur Video generation</span></h2>
+    <div class="prompt-box">
+      <span class="tag">Example Prompt</span>
+      "A neon-lit street at night, rain reflections, cinematic wide shot, cyberpunk aesthetic"
+    </div>
+    <p>Krea text-to-image ke sath sath <strong>text-to-video</strong> bhi support karta hai — chhote clips banane ke liye jo motion aur mood dono capture karte hain.</p>
+  </div>
+
+  <!-- Module 5 -->
+  <div class="module">
+    <span class="mod-label">Module 05</span>
+    <h2>Enhance <span class="accent">— upscaling tool</span></h2>
+    <p>Kisi bhi purani ya low-quality image ko high-resolution mein badalna, bina detail khoye. Ye feature product photos aur art dono ke liye kaam aata hai.</p>
+  </div>
+
+  <!-- Module 6 -->
+  <div class="module">
+    <span class="mod-label">Module 06</span>
+    <h2>Style References <span class="accent">se consistency</span></h2>
+    <div class="grid2">
+      <div class="mini-card"><div class="num">01</div><p>Apni pasandeeda image ko reference ke tor par upload karna</p></div>
+      <div class="mini-card"><div class="num">02</div><p>Us style ko nayi generations mein consistent rakhna</p></div>
+    </div>
+  </div>
+
+  <!-- Module 7 -->
+  <div class="module">
+    <span class="mod-label">Module 07</span>
+    <h2>Behtareen <span class="accent">prompt likhne ka tareeqa</span></h2>
+    <ul class="points">
+      <li><strong>Real-time ka faida uthao</strong> — chhoti tabdeeliyan karo aur farq turant dekho</li>
+      <li><strong>Camera angle batao</strong> — wide shot, close-up, top-down</li>
+      <li><strong>Mood aur lighting zaroor likho</strong> — moody, bright, golden hour</li>
+    </ul>
+  </div>
+
+  <!-- Module 8 -->
+  <div class="module">
+    <span class="mod-label">Module 08</span>
+    <h2>Zimmedari <span class="accent">se istemal</span></h2>
+    <div class="warn">
+      <p>Real logon ki tasveer ya video bina ijazat generate karna, ya kisi ko dhoka dene wala content banana — dono se bachna zaroori hai. Krea ko creative exploration ka zariya samjhein.</p>
+    </div>
+  </div>
+
+  <div class="divider">Course Complete</div>
+
+  <div class="final">
+    <h2>Ab live try karein</h2>
+    <p>Canvas kholein aur ek simple shape draw karein, phir dekhein Krea usay kaise real-time mein badalta hai. Yehi is tool ka asal maza hai.</p>
+    <a class="cta" href="https://krea.ai" target="_blank">krea.ai</a>
+  </div>
+
+</div>
+</body>
+</html>
