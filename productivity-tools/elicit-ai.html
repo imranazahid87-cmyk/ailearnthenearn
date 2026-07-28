@@ -1,1 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elicit AI Mastery Course | AI Learn Then Earn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F7F6F1;
+    --paper:#FFFFFF;
+    --ink:#1C2333;
+    --muted:#5E6272;
+    --accent:#1D4ED8;
+    --accent-soft:#E9EEFC;
+    --highlight:#FFE58A;
+    --highlight-soft:#FFF7DD;
+    --line:#E7E4D9;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Source Serif 4',serif;font-weight:600;letter-spacing:-0.01em;margin:0;}
+  .mono{font-family:'JetBrains Mono',monospace;letter-spacing:0.02em;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
 
+  nav{display:flex;align-items:center;justify-content:space-between;padding:22px 24px;max-width:1080px;margin:0 auto;}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px;}
+  .brand-mark{width:28px;height:28px;border-radius:8px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;}
+  .crumb{font-size:13px;color:var(--muted);}
+  .crumb a{color:var(--accent);font-weight:600;}
+
+  .hero{padding:40px 24px 70px;}
+  .hero-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1.05fr 0.95fr;gap:48px;align-items:center;}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--accent-soft);color:var(--accent);
+    padding:6px 14px;border-radius:100px;font-size:13px;font-weight:600;margin-bottom:20px;}
+  .hero h1{font-size:clamp(30px,4.4vw,46px);line-height:1.1;}
+  .hero h1 span{background:linear-gradient(to top, var(--highlight) 38%, transparent 38%);padding:0 2px;}
+  .hero p.sub{margin-top:18px;font-size:16.5px;color:var(--muted);max-width:480px;}
+  .hero-actions{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap;}
+  .btn-primary{background:var(--accent);color:#fff;border:none;padding:14px 26px;border-radius:10px;
+    font-size:15px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line);padding:14px 26px;
+    border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;}
+
+  /* SIGNATURE: highlighted paper mockup */
+  .paper-mock{background:var(--paper);border:1px solid var(--line);border-radius:14px;
+    box-shadow:0 24px 60px -24px rgba(29,78,216,0.22);padding:32px 30px;position:relative;}
+  .paper-mock .doc-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);
+    text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px;display:flex;justify-content:space-between;}
+  .paper-mock h3{font-size:17px;margin-bottom:14px;}
+  .paper-mock p{font-size:14.5px;color:#3A3F52;margin:0 0 12px;}
+  .hl{background:var(--highlight);border-radius:3px;padding:1px 3px;box-shadow:0 0 0 3px var(--highlight);
+    animation:sweep 2.6s ease-in-out infinite;}
+  .paper-mock .extract-box{margin-top:20px;background:var(--highlight-soft);border:1px dashed #E3C25A;
+    border-radius:10px;padding:14px 16px;}
+  .paper-mock .extract-box .k{font-size:11px;font-family:'JetBrains Mono',monospace;color:#8A6D1A;
+    text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;}
+  .paper-mock .extract-box .v{font-size:14px;font-weight:600;}
+  @keyframes sweep{
+    0%,100%{filter:brightness(1);}
+    50%{filter:brightness(1.15);}
+  }
+
+  .section{padding:70px 24px;}
+  .section-head{max-width:600px;margin:0 auto 44px;text-align:center;}
+  .section-head .eyebrow{margin-bottom:14px;}
+  .section-head h2{font-size:clamp(24px,3.2vw,32px);}
+  .section-head p{color:var(--muted);margin-top:12px;font-size:15.5px;}
+
+  .value-grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .value-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:26px;}
+  .value-card .ico{font-size:22px;margin-bottom:12px;display:block;}
+  .value-card h3{font-size:17.5px;margin-bottom:8px;}
+  .value-card p{color:var(--muted);font-size:14px;margin:0;}
+
+  /* PROGRESS CARD - matches site's course-page pattern */
+  .progress-card{max-width:1080px;margin:0 auto 50px;background:var(--paper);border:1px solid var(--line);
+    border-radius:16px;padding:26px 30px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+  .progress-meta{font-size:13.5px;color:var(--muted);}
+  .progress-meta strong{color:var(--ink);}
+  .bar-track{flex:1;min-width:180px;height:8px;background:var(--accent-soft);border-radius:100px;overflow:hidden;}
+  .bar-fill{height:100%;width:0%;background:var(--accent);border-radius:100px;}
+
+  .modules{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  .module{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 24px;
+    display:flex;flex-direction:column;gap:6px;}
+  .module .m-num{font-family:'JetBrains Mono',monospace;color:var(--accent);font-size:12.5px;font-weight:600;}
+  .module h3{font-size:17px;}
+  .module p{color:var(--muted);font-size:13.8px;margin:0 0 10px;}
+  .module .open{font-size:13.5px;font-weight:600;color:var(--accent);}
+
+  .cta-section{background:var(--ink);border-radius:22px;max-width:1080px;margin:0 auto;
+    padding:56px 40px;text-align:center;color:#fff;}
+  .cta-section h2{color:#fff;font-size:clamp(24px,3.2vw,32px);}
+  .cta-section p{color:#B7BBD1;margin-top:12px;font-size:15px;}
+  .cta-section .btn-primary{margin-top:24px;background:var(--highlight);color:#3A2E00;}
+
+  footer{padding:36px 24px;text-align:center;color:var(--muted);font-size:12.5px;}
+
+  @media(max-width:860px){
+    .hero-inner{grid-template-columns:1fr;}
+    .value-grid{grid-template-columns:1fr;}
+    .modules{grid-template-columns:1fr;}
+    .paper-mock{order:-1;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand"><span class="brand-mark">AI</span>AI Learn Then Earn</div>
+  <div class="crumb"><a href="../courses.html">← All Courses</a></div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="eyebrow">📚 Productivity AI · Beginner to Advanced</span>
+      <h1>Master <span>Elicit AI</span> for Research That Doesn't Take Weeks</h1>
+      <p class="sub">Elicit is the AI research assistant that reads hundreds of papers so you don't have to. Learn to search, extract, and summarize academic research in minutes — perfect for students, writers, and research freelancers.</p>
+      <div class="hero-actions">
+        <button class="btn-primary">🚀 Start Learning</button>
+        <button class="btn-ghost">View Modules</button>
+      </div>
+    </div>
+    <div class="paper-mock">
+      <div class="doc-label"><span>research_paper.pdf</span><span>Extracted by Elicit</span></div>
+      <h3>Effects of Sleep on Memory Consolidation</h3>
+      <p>Participants who slept <span class="hl">8 hours showed 34% better recall</span> compared to the sleep-deprived group across all test conditions.</p>
+      <p>The study followed <span class="hl">240 adults over 6 weeks</span> using controlled lab conditions.</p>
+      <div class="extract-box">
+        <div class="k">Key Finding</div>
+        <div class="v">Sleep duration directly improves memory recall by up to 34%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <span class="eyebrow">Why Elicit</span>
+    <h2>Research used to take weeks. Now it takes minutes.</h2>
+    <p>Elicit reads papers, pulls out the data that matters, and organizes it into tables — so you spend your time thinking, not skimming.</p>
+  </div>
+  <div class="value-grid">
+    <div class="value-card">
+      <span class="ico">🔎</span>
+      <h3>Ask, Don't Search</h3>
+      <p>Type a research question in plain English and Elicit finds the most relevant papers — no keyword guessing.</p>
+    </div>
+    <div class="value-card">
+      <span class="ico">📊</span>
+      <h3>Auto-Extracted Data</h3>
+      <p>Sample sizes, methods, outcomes — Elicit pulls key data points into a table automatically for every paper.</p>
+    </div>
+    <div class="value-card">
+      <span class="ico">💼</span>
+      <h3>A Real Freelance Skill</h3>
+      <p>Literature reviews and research summaries are in demand on Fiverr and Upwork — this course turns Elicit into an income skill.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="modules">
+  <div class="section-head">
+    <span class="eyebrow">Course Modules</span>
+    <h2>7 Modules · Practical Projects</h2>
+  </div>
+
+  <div class="progress-card">
+    <div class="progress-meta"><strong>7 Modules</strong> · Beginner to Advanced · Practical Projects</div>
+    <div class="bar-track"><div class="bar-fill"></div></div>
+    <div class="progress-meta">Progress: <strong>0%</strong> Completed</div>
+  </div>
+
+  <div class="modules">
+    <div class="module">
+      <span class="m-num">MODULE 01</span>
+      <h3>Introduction to Elicit AI</h3>
+      <p>What Elicit is, who it's for, and how it fits into a research workflow.</p>
+      <a class="open" href="module1.html">Open Module →</a>
+    </div>
+    <div class="module">
+      <span class="m-num">MODULE 02</span>
+      <h3>Getting Started</h3>
+      <p>Account setup, the interface, and running your first research question.</p>
+      <a class="open" href="module2.html">Open Module →</a>
+    </div>
+    <div class="module">
+      <span class="m-num">MODULE 03</span>
+      <h3>Smart Literature Search</h3>
+      <p>Writing research questions that return the most relevant, high-quality papers.</p>
+      <a class="open" href="module3.html">Open Module →</a>
+    </div>
+    <div class="module">
+      <span class="m-num">MODULE 04</span>
+      <h3>Extracting Data from Papers</h3>
+      <p>Using Elicit's extraction tables to pull findings, methods, and sample sizes.</p>
+      <a class="open" href="module4.html">Open Module →</a>
+    </div>
+    <div class="module">
+      <span class="m-num">MODULE 05</span>
+      <h3>Chat With Papers</h3>
+      <p>Asking Elicit direct questions about a specific PDF and verifying its answers.</p>
+      <a class="open" href="module5.html">Open Module →</a>
+    </div>
+    <div class="module">
+      <span class="m-num">MODULE 06</span>
+      <h3>Systematic Reviews, Simplified</h3>
+      <p>Screening, organizing, and summarizing dozens of papers for a full literature review.</p>
+      <a class="open" href="module6.html">Open Module →</a>
+    </div>
+    <div class="module">
+      <span class="m-num">MODULE 07</span>
+      <h3>Earn With Research Skills</h3>
+      <p>Turning literature-review and research-summary skills into freelance income.</p>
+      <a class="open" href="module7.html">Open Module →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="cta-section">
+    <h2>Stop skimming papers. Start extracting answers.</h2>
+    <p>Join the course and finish your first AI-assisted literature review this week.</p>
+    <button class="btn-primary">🚀 Start Learning</button>
+  </div>
+</section>
+
+<footer>© 2026 AI Learn Then Earn. All Rights Reserved.</footer>
+
+</body>
+</html>
