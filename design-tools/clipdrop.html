@@ -1,1 +1,366 @@
 
+<!DOCTYPE html>
+<html lang="ur-Latn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clipdrop — Mini Course</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap');
+
+  :root{
+    --blue:#0d2f4f;
+    --blue2:#123a5e;
+    --line:#8ecae6;
+    --paper:#eef4f8;
+    --dim:#a9c2d4;
+    --orange:#ff6a39;
+    --lime:#c5e86c;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      linear-gradient(rgba(142,202,230,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(142,202,230,0.07) 1px, transparent 1px),
+      var(--blue);
+    background-size:32px 32px, 32px 32px, auto;
+    color:var(--paper);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.6;
+  }
+
+  .wrap{max-width:820px;margin:0 auto;padding:0 24px 100px;}
+
+  header.hero{
+    padding:76px 0 40px;
+    text-align:center;
+    position:relative;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.1em;
+    color:var(--orange);
+    margin-bottom:20px;
+  }
+  h1{
+    font-family:'Work Sans', sans-serif;
+    font-weight:700;
+    font-size:52px;
+    line-height:1.1;
+    margin:0 0 20px;
+    color:#fff;
+  }
+  h1 .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.4em;
+    color:var(--orange);
+    vertical-align:super;
+  }
+  .sub{
+    font-size:16.5px;
+    color:var(--dim);
+    max-width:520px;
+    margin:0 auto;
+  }
+
+  .module{
+    margin-top:44px;
+    background:var(--blue2);
+    border:1.5px solid rgba(142,202,230,0.35);
+    border-radius:4px;
+    padding:32px 34px 28px;
+    position:relative;
+  }
+  /* registration marks, like blueprint corner crops */
+  .module::before, .module::after{
+    content:"";
+    position:absolute;
+    width:16px; height:16px;
+  }
+  .module::before{
+    top:-1px; left:-1px;
+    border-top:2px solid var(--orange);
+    border-left:2px solid var(--orange);
+  }
+  .module::after{
+    bottom:-1px; right:-1px;
+    border-bottom:2px solid var(--orange);
+    border-right:2px solid var(--orange);
+  }
+
+  .mod-label{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.06em;
+    color:var(--line);
+    margin-bottom:18px;
+  }
+  .mod-label .box{
+    background:var(--orange);
+    color:var(--blue);
+    font-weight:700;
+    padding:2px 9px;
+    border-radius:2px;
+  }
+
+  h2{
+    font-weight:700;
+    font-size:27px;
+    margin:0 0 14px;
+    color:#fff;
+  }
+  h2 span.accent{color:var(--lime);}
+
+  p{color:var(--dim); font-size:15.5px; margin:0 0 14px;}
+  p strong{color:#fff; font-weight:600;}
+
+  ul.points{list-style:none; margin:18px 0; padding:0;}
+  ul.points li{
+    position:relative;
+    padding:8px 0 8px 30px;
+    color:var(--dim);
+    font-size:15px;
+  }
+  ul.points li::before{
+    content:"▸";
+    position:absolute;
+    left:0; top:7px;
+    color:var(--orange);
+  }
+  ul.points li strong{color:#fff;}
+
+  .prompt-box{
+    margin-top:20px;
+    background:#0a2440;
+    border:1px dashed var(--line);
+    border-radius:4px;
+    padding:16px 20px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13.5px;
+    color:var(--lime);
+  }
+  .prompt-box .tag{
+    display:block;
+    font-family:'Work Sans',sans-serif;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--dim);
+    margin-bottom:8px;
+  }
+
+  .tool-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:2px;
+    margin-top:20px;
+    background:rgba(142,202,230,0.25);
+  }
+  .tool-card{
+    background:var(--blue2);
+    padding:16px 18px;
+  }
+  .tool-card .name{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:14px;
+    color:var(--orange);
+    font-weight:700;
+    display:block;
+    margin-bottom:6px;
+  }
+  .tool-card p{margin:0; font-size:14px;}
+
+  .measure{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin:22px 0 6px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--line);
+    letter-spacing:0.05em;
+  }
+  .measure::before, .measure::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:repeating-linear-gradient(90deg, var(--line) 0 4px, transparent 4px 8px);
+  }
+
+  .warn{
+    margin-top:22px;
+    background:rgba(255,106,57,0.12);
+    border-left:3px solid var(--orange);
+    padding:14px 18px;
+    border-radius:0 4px 4px 0;
+  }
+  .warn p{color:#fff; font-size:14.5px; margin:0;}
+
+  .divider{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin:56px 0 0;
+    color:var(--dim);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+  }
+  .divider::before, .divider::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:rgba(142,202,230,0.25);
+  }
+
+  .final{
+    margin-top:56px;
+    text-align:center;
+    padding:40px 20px 0;
+  }
+  .final h2{font-size:32px;}
+  .final p{max-width:480px; margin:0 auto 24px;}
+  .cta{
+    display:inline-block;
+    background:var(--orange);
+    color:#0d2f4f;
+    font-weight:700;
+    padding:14px 32px;
+    border-radius:2px;
+    text-decoration:none;
+    font-size:14.5px;
+    font-family:'IBM Plex Mono', monospace;
+    letter-spacing:0.03em;
+  }
+
+  @media (max-width:640px){
+    h1{font-size:36px;}
+    .tool-grid{grid-template-columns:1fr;}
+    .module{padding:24px 20px;}
+    header.hero{padding:56px 0 30px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">// TOOLKIT · MINI COURSE · 8 MODULES</div>
+    <h1>Clipdrop<span class="tag">by Stability AI</span></h1>
+    <p class="sub">Ek chhota course jo Clipdrop ke alag-alag "utility tools" ko samjhata hai — jahan har tool ek khaas kaam ke liye bana hai, jaise ek professional ka toolbox.</p>
+  </header>
+
+  <!-- Module 1 -->
+  <div class="module">
+    <div class="mod-label"><span class="box">01</span>INTRODUCTION</div>
+    <h2>Clipdrop <span class="accent">hai kya?</span></h2>
+    <p>Clipdrop ek <strong>image-editing toolkit</strong> hai — Photoshop jaisa ek bara software nahi, balke chhotay-chhotay, focused tools ka collection jo ek hi kaam bohat achi tarah karte hain: background hataana, kisi cheez ko mitana, ya lighting badalna.</p>
+    <ul class="points">
+      <li><strong>Har tool alag purpose ke liye</strong> — seekhna asaan hai</li>
+      <li><strong>Fast results</strong> — kaam seconds mein ho jaata hai</li>
+      <li><strong>Web, app aur API</strong> — teeno tareeqon se available</li>
+    </ul>
+  </div>
+
+  <!-- Module 2 -->
+  <div class="module">
+    <div class="mod-label"><span class="box">02</span>TOOL</div>
+    <h2>Remove Background <span class="accent">— ek click mein</span></h2>
+    <p>Kisi bhi image ka background instantly hata dena — bilkul saaf, precise edges ke saath. Product photos, profile pictures ya design assets ke liye khaas taur par useful.</p>
+  </div>
+
+  <!-- Module 3 -->
+  <div class="module">
+    <div class="mod-label"><span class="box">03</span>TOOL</div>
+    <h2>Cleanup <span class="accent">— object removal</span></h2>
+    <p>Image mein kisi unwanted cheez par brush karo — chahe wo koi insaan ho, koi tar ho, ya koi daag — aur Clipdrop usay naturally hata kar background fill kar deta hai.</p>
+    <div class="prompt-box">
+      <span class="tag">Use Case</span>
+      Tourist photo se background mein khare ajnabi logon ko hataana
+    </div>
+  </div>
+
+  <!-- Module 4 -->
+  <div class="module">
+    <div class="mod-label"><span class="box">04</span>TOOL</div>
+    <h2>Uncrop <span class="accent">— frame badhaana</span></h2>
+    <p>Chhoti ya crop hui image ko kisi bhi direction mein expand karo — AI baaki scene ko khud generate kar deta hai, jaise original photo kabhi bari thi hi.</p>
+  </div>
+
+  <div class="measure">MORE TOOLS</div>
+
+  <!-- Module 5 -->
+  <div class="module">
+    <div class="mod-label"><span class="box">05</span>TOOL SET</div>
+    <h2>Reimagine <span class="accent">aur Relight</span></h2>
+    <div class="tool-grid">
+      <div class="tool-card">
+        <span class="name">REIMAGINE</span>
+        <p>Ek image se milti-julti nayi variations banana</p>
+      </div>
+      <div class="tool-card">
+        <span class="name">RELIGHT</span>
+        <p>Photo ki lighting direction aur mood badalna</p>
+      </div>
+      <div class="tool-card">
+        <span class="name">SKETCH TO IMAGE</span>
+        <p>Simple sketch ko real image mein badalna</p>
+      </div>
+      <div class="tool-card">
+        <span class="name">UPSCALE</span>
+        <p>Image ki resolution aur clarity barhana</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Module 6 -->
+  <div class="module">
+    <div class="mod-label"><span class="box">06</span>TOOL</div>
+    <h2>Text-to-Image <span class="accent">generation</span></h2>
+    <p>Clipdrop mein bhi ek text-to-image tool maujood hai jo Stable Diffusion par based hai — sirf ek jumla likh kar tasveer banayi ja sakti hai.</p>
+    <div class="prompt-box">
+      <span class="tag">Example Prompt</span>
+      "A minimalist workspace with a laptop, plant, and warm afternoon light, product photography style"
+    </div>
+  </div>
+
+  <!-- Module 7 -->
+  <div class="module">
+    <div class="mod-label"><span class="box">07</span>APPLICATIONS</div>
+    <h2>Ye kis kaam <span class="accent">aata hai?</span></h2>
+    <ul class="points">
+      <li><strong>E-commerce</strong> — product photos ko jaldi clean karna</li>
+      <li><strong>Social media content</strong> — quick edits, bina design software ke</li>
+      <li><strong>Photography touch-ups</strong> — chhoti khaamiyan theek karna</li>
+      <li><strong>Developers</strong> — API se apni app mein editing tools add karna</li>
+    </ul>
+  </div>
+
+  <!-- Module 8 -->
+  <div class="module">
+    <div class="mod-label"><span class="box">08</span>GUIDELINES</div>
+    <h2>Zimmedari <span class="accent">se istemal</span></h2>
+    <div class="warn">
+      <p>Kisi tasveer se sach ko chhupana — jaise koi zaroori gawah ya evidence hataana — ya kisi ki tasveer ko misleading tareeqe se badalna, in dono se bachna zaroori hai. Clipdrop ko sirf halaal, creative aur professional editing ke liye istemal karein.</p>
+    </div>
+  </div>
+
+  <div class="divider">Course Complete</div>
+
+  <div class="final">
+    <h2>Ab tool khol lein</h2>
+    <p>Ek purani photo chunein aur Remove Background ya Cleanup try karein. Ek tool achi tarah seekhna, das tools ko sirsari tareeqe se jaanne se behtar hai.</p>
+    <a class="cta" href="https://clipdrop.co" target="_blank">clipdrop.co</a>
+  </div>
+
+</div>
+</body>
+</html>
