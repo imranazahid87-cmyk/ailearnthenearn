@@ -1,253 +1,904 @@
-
+>
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="ur" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gamma AI Course — Prompt se Poori Presentation</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Reclaim AI Mini Course – AI Learn Then Earn</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#FFFCFB;
-    --card:#FFFFFF;
-    --ink:#221C2B;
-    --ink-soft:#6E6675;
-    --border:#F1E7ED;
-    --g1:#8B5CF6; --g1b:#EC4899;
-    --g2:#FF6F91; --g2b:#FFB86B;
-    --g3:#22C1C3; --g3b:#5B7FFF;
-    --g4:#F5A623; --g4b:#F76B8A;
+  :root {
+    --bg: #0b0f1a;
+    --surface: #131929;
+    --card: #1a2236;
+    --border: #243050;
+    --accent: #4f8ef7;
+    --accent2: #7c5cfc;
+    --green: #22d3a5;
+    --yellow: #f5c542;
+    --text: #e8edf7;
+    --muted: #7a8aaa;
+    --radius: 14px;
   }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:'Inter', sans-serif;
-    line-height:1.65;
-    -webkit-font-smoothing:antialiased;
-  }
-  ::selection{background:#F3E3FF; color:var(--ink);}
-  .wrap{max-width:940px; margin:0 auto; padding:0 26px;}
-
-  /* ---------- Hero ---------- */
-  header.hero{padding:56px 0 26px;}
-  .kicker{
-    display:inline-flex; align-items:center; gap:7px;
-    font-size:12.5px; font-weight:700; letter-spacing:0.06em;
-    text-transform:uppercase; color:#fff; margin-bottom:22px;
-    background:linear-gradient(90deg, var(--g1), var(--g1b));
-    padding:6px 13px; border-radius:20px;
-  }
-  h1{
-    font-family:'Sora', sans-serif; font-weight:700;
-    font-size:clamp(32px, 5.8vw, 54px); line-height:1.12; letter-spacing:-0.015em; max-width:800px;
-  }
-  h1 span{
-    background:linear-gradient(90deg, var(--g1), var(--g2));
-    -webkit-background-clip:text; background-clip:text; color:transparent;
-  }
-  .hero-sub{margin-top:20px; font-size:17px; color:var(--ink-soft); max-width:600px;}
-  .hero-meta{display:flex; gap:24px; margin-top:28px; flex-wrap:wrap;}
-  .meta-item{font-size:13px; color:var(--ink-soft); font-weight:500;}
-  .meta-item b{color:var(--ink); font-weight:700;}
-
-  /* ---------- Fanned card-deck nav (signature) ---------- */
-  .deck-section{padding:40px 0 8px;}
-  .deck-label{
-    font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase;
-    color:var(--ink-soft); margin-bottom:14px;
-  }
-  .deck{display:flex; flex-wrap:wrap; gap:10px;}
-  .deck a{
-    text-decoration:none; color:var(--ink);
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:14px;
-    padding:14px 16px;
-    flex:1 0 130px;
-    min-width:130px;
-    font-size:13.5px; font-weight:600;
-    box-shadow:0 2px 10px rgba(139,92,246,0.06);
-    transition:transform .15s ease, box-shadow .15s ease;
-    position:relative;
-    overflow:hidden;
-  }
-  .deck a::before{
-    content:""; position:absolute; top:0; left:0; right:0; height:4px;
-  }
-  .deck a:hover{transform:translateY(-3px); box-shadow:0 8px 20px rgba(139,92,246,0.14);}
-  .deck a .n{display:block; font-size:11px; color:var(--ink-soft); font-weight:700; margin-bottom:5px;}
-  .deck a:nth-child(4n+1)::before{background:linear-gradient(90deg,var(--g1),var(--g1b));}
-  .deck a:nth-child(4n+2)::before{background:linear-gradient(90deg,var(--g2),var(--g2b));}
-  .deck a:nth-child(4n+3)::before{background:linear-gradient(90deg,var(--g3),var(--g3b));}
-  .deck a:nth-child(4n+4)::before{background:linear-gradient(90deg,var(--g4),var(--g4b));}
-
-  /* ---------- Modules as growing cards ---------- */
-  main{padding:34px 0 40px;}
-  .module{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:20px;
-    padding:36px 38px;
-    margin:22px 0;
-    scroll-margin-top:24px;
-    position:relative;
-    overflow:hidden;
-  }
-  .module::before{content:""; position:absolute; top:0; left:0; right:0; height:5px;}
-  .module:nth-of-type(4n+1)::before{background:linear-gradient(90deg,var(--g1),var(--g1b));}
-  .module:nth-of-type(4n+2)::before{background:linear-gradient(90deg,var(--g2),var(--g2b));}
-  .module:nth-of-type(4n+3)::before{background:linear-gradient(90deg,var(--g3),var(--g3b));}
-  .module:nth-of-type(4n+4)::before{background:linear-gradient(90deg,var(--g4),var(--g4b));}
-
-  .module-head{display:flex; align-items:baseline; gap:14px; margin-bottom:6px; margin-top:6px;}
-  .module-index{font-weight:800; font-size:14px; color:var(--g1);}
-  .module h2{font-family:'Sora', sans-serif; font-weight:700; font-size:25px;}
-  .chip{
-    font-size:11px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase;
-    color:#8B5CF6; background:#F5EEFF; padding:4px 11px; border-radius:20px;
-    margin-bottom:16px; display:inline-block;
-  }
-  .module p{color:#3B3444; font-size:15.5px; margin-bottom:13px; max-width:760px;}
-  .module ul{margin:12px 0 4px 20px;}
-  .module li{margin-bottom:9px; font-size:15px; color:#3B3444;}
-  .module li b{color:var(--ink);}
-  .note{
-    margin-top:18px;
-    background:#FFF7F0;
-    border:1px solid #FDE6CE;
-    padding:14px 18px;
-    border-radius:12px;
-    font-size:14.5px;
-    color:#7A4A12;
-  }
-  .note b{color:#5C3608;}
-  .warn{
-    margin-top:18px;
-    background:#FFF1F4;
-    border:1px solid #FFD3DD;
-    padding:14px 18px;
-    border-radius:12px;
-    font-size:14.5px;
-    color:#8A0F32;
-  }
-  .warn b{color:#620924;}
-
-  footer{
-    border-top:1px solid var(--border);
-    padding:34px 0 60px;
-    text-align:center;
-    color:var(--ink-soft);
-    font-size:13px;
-    font-weight:500;
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    min-height: 100vh;
   }
 
-  @media (max-width:640px){
-    .module{padding:26px 22px;}
-    .wrap{padding:0 16px;}
+  /* HEADER */
+  .site-header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .site-header span { color: var(--accent); font-weight: 600; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #0f1a35 0%, #1a1040 100%);
+    padding: 60px 24px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: 50%;
+    transform: translateX(-50%);
+    width: 500px; height: 300px;
+    background: radial-gradient(ellipse, rgba(79,142,247,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(79,142,247,0.15);
+    border: 1px solid rgba(79,142,247,0.35);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(26px, 5vw, 44px);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    background: linear-gradient(90deg, #ffffff 0%, #8bb8ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-sub {
+    color: var(--muted);
+    max-width: 520px;
+    margin: 0 auto 28px;
+    font-size: 15px;
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Sora', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--accent);
+  }
+  .stat-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+  /* PROGRESS BAR */
+  .progress-wrap {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .progress-top {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .progress-bar-bg {
+    height: 4px;
+    background: var(--border);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: 99px;
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+
+  /* MAIN */
+  .main { max-width: 780px; margin: 0 auto; padding: 40px 20px 80px; }
+
+  /* LESSON TABS */
+  .tabs {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+  .tab-btn {
+    padding: 7px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .tab-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .tab-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  .tab-btn.done {
+    background: rgba(34,211,165,0.12);
+    border-color: var(--green);
+    color: var(--green);
+  }
+
+  /* LESSON CARD */
+  .lesson {
+    display: none;
+    animation: fadeUp 0.4s ease;
+  }
+  .lesson.active { display: block; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .lesson-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .lesson-num {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Sora', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .ln-blue { background: rgba(79,142,247,0.15); color: var(--accent); }
+  .ln-purple { background: rgba(124,92,252,0.15); color: var(--accent2); }
+  .ln-green { background: rgba(34,211,165,0.15); color: var(--green); }
+  .ln-yellow { background: rgba(245,197,66,0.15); color: var(--yellow); }
+  .ln-pink { background: rgba(247,79,147,0.15); color: #f74f93; }
+
+  .lesson-title-wrap { flex: 1; }
+  .lesson-eyebrow { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+  .lesson-title {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(18px, 3.5vw, 24px);
+    font-weight: 700;
+    line-height: 1.25;
+    margin-top: 4px;
+  }
+
+  /* SECTION BLOCKS */
+  .block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    margin-bottom: 16px;
+  }
+  .block-heading {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--accent);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .block p { color: #b8c4d8; line-height: 1.75; margin-bottom: 10px; }
+  .block p:last-child { margin-bottom: 0; }
+
+  /* HIGHLIGHT BOX */
+  .highlight {
+    background: rgba(79,142,247,0.08);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    color: #c5d5f5;
+    font-size: 14px;
+  }
+  .highlight.green {
+    background: rgba(34,211,165,0.08);
+    border-color: var(--green);
+    color: #b0f0e0;
+  }
+  .highlight.yellow {
+    background: rgba(245,197,66,0.08);
+    border-color: var(--yellow);
+    color: #f5e4a0;
+  }
+
+  /* FEATURE GRID */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .feature-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+  }
+  .feature-icon { font-size: 22px; margin-bottom: 8px; }
+  .feature-name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+  .feature-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+  /* STEP LIST */
+  .step-list { list-style: none; margin-top: 8px; }
+  .step-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: #c0cce0;
+  }
+  .step-list li:last-child { border-bottom: none; }
+  .step-dot {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: rgba(79,142,247,0.2);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* COMPARISON TABLE */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 12px;
+  }
+  .compare-table th {
+    background: rgba(79,142,247,0.12);
+    color: var(--accent);
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 1px solid var(--border);
+  }
+  .compare-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    color: #b0bccc;
+    vertical-align: top;
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .check { color: var(--green); }
+  .cross { color: #f74f93; }
+
+  /* QUIZ */
+  .quiz-wrap { margin-top: 16px; }
+  .quiz-question {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+  .quiz-options { display: flex; flex-direction: column; gap: 8px; }
+  .quiz-opt {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    cursor: pointer;
+    font-size: 13px;
+    color: #b8c4d8;
+    transition: all 0.2s;
+    text-align: left;
+  }
+  .quiz-opt:hover { border-color: var(--accent); color: var(--text); }
+  .quiz-opt.correct { background: rgba(34,211,165,0.12); border-color: var(--green); color: var(--green); }
+  .quiz-opt.wrong { background: rgba(247,79,147,0.1); border-color: #f74f93; color: #f74f93; }
+  .quiz-feedback {
+    margin-top: 12px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    display: none;
+  }
+  .quiz-feedback.show { display: block; }
+  .quiz-feedback.ok { background: rgba(34,211,165,0.1); color: var(--green); }
+  .quiz-feedback.nope { background: rgba(247,79,147,0.1); color: #f74f93; }
+
+  /* TIP BOX */
+  .tip {
+    background: rgba(124,92,252,0.1);
+    border: 1px solid rgba(124,92,252,0.3);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: #c8b8f8;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-top: 16px;
+  }
+  .tip-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+  /* NAV BUTTONS */
+  .lesson-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 32px;
+    gap: 12px;
+  }
+  .btn {
+    padding: 11px 22px;
+    border-radius: 9px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+  }
+  .btn-outline {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff;
+  }
+  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+  .btn:disabled { opacity: 0.35; cursor: not-allowed; transform: none !important; }
+
+  /* COMPLETE BADGE */
+  .complete-screen {
+    text-align: center;
+    padding: 48px 24px;
+    display: none;
+  }
+  .complete-screen.show { display: block; }
+  .trophy { font-size: 64px; margin-bottom: 16px; }
+  .complete-screen h2 {
+    font-family: 'Sora', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 10px;
+  }
+  .complete-screen p { color: var(--muted); max-width: 400px; margin: 0 auto 24px; }
+  .cert-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(79,142,247,0.15), rgba(124,92,252,0.15));
+    border: 1px solid rgba(124,92,252,0.4);
+    border-radius: 12px;
+    padding: 16px 32px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #c8b8f8;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 500px) {
+    .hero { padding: 40px 16px 36px; }
+    .lesson-nav { flex-direction: column; }
+    .btn { text-align: center; }
+    .hero-stats { gap: 20px; }
   }
 </style>
 </head>
 <body>
 
-<div class="wrap">
-  <header class="hero">
-    <div class="kicker">✦ CARD DECK · MINI COURSE</div>
-    <h1>Ek prompt likho, aur <span>poori presentation</span> chand seconds mein tayyar.</h1>
-    <p class="hero-sub">Gamma AI slides, docs, aur websites — teeno ko ek hi tool se banata hai. Yeh course sikhayega prompt se deck banana, brand kit apply karna, aur apna kaam duniya ke saath share karna.</p>
-    <div class="hero-meta">
-      <div class="meta-item"><b>8</b> modules</div>
-      <div class="meta-item"><b>~20</b> min read</div>
-      <div class="meta-item">Free tier available</div>
-    </div>
-  </header>
+<header class="site-header">
+  🏠 <span>AI Learn Then Earn</span> &nbsp;›&nbsp; Productivity Tools &nbsp;›&nbsp; Reclaim AI Mini Course
+</header>
 
-  <section class="deck-section">
-    <div class="deck-label">▸ Course Deck</div>
-    <div class="deck">
-      <a href="#m1"><span class="n">01</span>Gamma AI kya hai</a>
-      <a href="#m2"><span class="n">02</span>Prompt se deck</a>
-      <a href="#m3"><span class="n">03</span>Card layout system</a>
-      <a href="#m4"><span class="n">04</span>Themes & Brand Kit</a>
-      <a href="#m5"><span class="n">05</span>Import karna</a>
-      <a href="#m6"><span class="n">06</span>Interactive elements</a>
-      <a href="#m7"><span class="n">07</span>Present & Share</a>
-      <a href="#m8"><span class="n">08</span>Pro tips</a>
-    </div>
-  </section>
+<section class="hero">
+  <div class="hero-badge">📅 Mini Course · Free</div>
+  <h1>Reclaim AI سیکھیں<br>اپنا وقت بچائیں</h1>
+  <p class="hero-sub">AI-powered calendar tool jo automatically aapka schedule manage karta hai — bina kisi manual effort ke.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label">Lessons</div></div>
+    <div class="stat"><div class="stat-num">15 min</div><div class="stat-label">Read Time</div></div>
+    <div class="stat"><div class="stat-num">Free</div><div class="stat-label">Plan Available</div></div>
+    <div class="stat"><div class="stat-num">40%</div><div class="stat-label">Time Saved</div></div>
+  </div>
+</section>
 
-  <main>
-
-    <section class="module" id="m1">
-      <div class="module-head"><span class="module-index">01</span><h2>Gamma AI kya hai?</h2></div>
-      <span class="chip">FOUNDATION</span>
-      <p>Gamma ek web-native AI tool hai jo text prompt se presentations, documents, aur websites banata hai. Aap type karte ho "10-slide deck on Q3 marketing trends for SaaS founders" — aur kuch seconds mein aapke paas titles, body text, images sab ke saath ek structured deck ready hota hai.</p>
-      <p>Yeh traditional PowerPoint/Google Slides se alag hai — fixed slides ki jagah, Gamma ek <b>responsive card layout</b> use karta hai jo web par kahin bhi acha dikhta hai.</p>
-    </section>
-
-    <section class="module" id="m2">
-      <div class="module-head"><span class="module-index">02</span><h2>Prompt se deck banana</h2></div>
-      <span class="chip">CORE SKILL</span>
-      <p>Ek achha, clean deck banane ke liye AI se sirf structure aur pehla draft lo — phir narrative, data emphasis, aur imagery ko khud apni audience ke hisaab se customize karo.</p>
-      <ul>
-        <li>Themes tab mein jao aur "New Theme" chuno — base template se shuru karo ya blank content outline se.</li>
-        <li>Ek full 10-slide deck prompt se 60 second ke andar generate ho jaata hai.</li>
-        <li>Existing PowerPoint bhi import karke usse update kar sakte ho.</li>
-      </ul>
-    </section>
-
-    <section class="module" id="m3">
-      <div class="module-head"><span class="module-index">03</span><h2>Card layout system</h2></div>
-      <span class="chip">SIGNATURE FEATURE</span>
-      <p>Gamma traditional slides ki jagah <b>Card layout</b> use karta hai. Cards content ke hisaab se vertically grow hote hain — matlab text compress karne ya line spacing adjust karne ki zaroorat nahi padti, jaisa PowerPoint mein hota hai.</p>
-      <p>Key features menu se ek click mein layouts change kar sakte ho — bina design se panga liye.</p>
-    </section>
-
-    <section class="module" id="m4">
-      <div class="module-head"><span class="module-index">04</span><h2>Themes aur Brand Kit</h2></div>
-      <span class="chip">BRANDING</span>
-      <p>Apni company ke colors, fonts, aur logo se ek <b>Brand Kit</b> apply karo — taaki har deck automatically on-brand bane, bina har baar manually style karne ke.</p>
-      <p>Various presentation styles aur customizable color schemes available hain jo written content ko turant polished visuals mein badal dete hain.</p>
-    </section>
-
-    <section class="module" id="m5">
-      <div class="module-head"><span class="module-index">05</span><h2>Content import karna</h2></div>
-      <span class="chip">WORKFLOW</span>
-      <p>Sirf prompt hi nahi — Gamma URL, PDF, ya existing document se bhi deck bana sakta hai. Ek blog post ya webpage ka link paste karo, aur AI usse structured deck mein convert kar deta hai.</p>
-      <p>Apna kaam unlimited folders mein organize kar sakte ho, taaki sab kuch neat rahe.</p>
-    </section>
-
-    <section class="module" id="m6">
-      <div class="module-head"><span class="module-index">06</span><h2>Interactive elements</h2></div>
-      <span class="chip">ENGAGEMENT</span>
-      <p>Deck mein sirf text-image nahi — webpages, videos, aur other interactive embeds bhi daal sakte ho, taaki audience engaged rahe. Notion, Slack, aur 30+ dusre tools ke saath integrations bhi available hain.</p>
-    </section>
-
-    <section class="module" id="m7">
-      <div class="module-head"><span class="module-index">07</span><h2>Present aur Share karna</h2></div>
-      <span class="chip">DISTRIBUTION</span>
-      <p>"Present" dabao aur seedha ideas present karna shuru karo, ya sirf link team ke saath share kar do — koi file bhejne ki zaroorat nahi. Web-shared decks aur audience engagement metrics track karna chahte ho toh Gamma is kaam ke liye best fit hai.</p>
-    </section>
-
-    <section class="module" id="m8">
-      <div class="module-head"><span class="module-index">08</span><h2>Pro tips aur limitations</h2></div>
-      <span class="chip">HONEST NOTES</span>
-      <ul>
-        <li>Free tier lifetime credits ke saath aata hai — heavy use se pehle plan samajh lo.</li>
-        <li>Repetitive layouts se bachne ke liye apna khud ka imagery aur structure thoda customize karo.</li>
-      </ul>
-      <div class="warn"><b>Zaroori:</b> Gamma facts, dates, ya numbers kabhi-kabhi galat generate kar sakta hai (hallucination). Koi bhi substantive data present karne se pehle khud fact-check zaroor karo.</div>
-      <div class="note"><b>Tip:</b> Agar deck ko PowerPoint mein export karke client ko dena hai, toh layout thoda "drift" ho sakta hai — final export hamesha review kar lo.</div>
-    </section>
-
-  </main>
-
-  <footer>
-    ▸ END OF DECK — prompt likho, card grow hone do, present karo.
-  </footer>
+<div class="progress-wrap">
+  <div class="progress-top">
+    <span id="progress-label">Lesson 1 of 5</span>
+    <span id="progress-pct">0% Complete</span>
+  </div>
+  <div class="progress-bar-bg">
+    <div class="progress-bar-fill" id="progress-fill"></div>
+  </div>
 </div>
 
+<main class="main">
+
+  <div class="tabs" id="tabs">
+    <button class="tab-btn active" onclick="goLesson(0)">📌 Intro</button>
+    <button class="tab-btn" onclick="goLesson(1)">⚙️ Features</button>
+    <button class="tab-btn" onclick="goLesson(2)">🚀 Setup</button>
+    <button class="tab-btn" onclick="goLesson(3)">💡 Tips</button>
+    <button class="tab-btn" onclick="goLesson(4)">📊 Pricing</button>
+  </div>
+
+  <!-- LESSON 1 -->
+  <div class="lesson active" id="lesson-0">
+    <div class="lesson-header">
+      <div class="lesson-num ln-blue">01</div>
+      <div class="lesson-title-wrap">
+        <div class="lesson-eyebrow">Lesson 1 · Introduction</div>
+        <div class="lesson-title">Reclaim AI کیا ہے؟</div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-heading">🤖 Reclaim AI کا مختصر تعارف</div>
+      <p>Reclaim AI ایک smart calendar tool ہے جو آپ کا Google Calendar یا Outlook Calendar سے connect ہوتا ہے اور automatically آپ کا پورا schedule manage کرتا ہے۔</p>
+      <p>اسے "AI Calendar Assistant" بھی کہہ سکتے ہیں — یہ آپ کے tasks، meetings، habits، اور breaks کو automatically سب سے بہترین time slot میں fit کرتا ہے۔</p>
+      <div class="highlight">
+        💬 <strong>Simple بات:</strong> پہلے آپ خود سوچتے تھے "یہ کام کب کروں?" — اب Reclaim AI یہ خود سوچتا ہے۔
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-heading">😩 Problem کیا ہے جو یہ Solve کرتا ہے؟</div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">📅</div>
+          <div class="feature-name">Messy Calendar</div>
+          <div class="feature-desc">Meetings کے درمیان کام کا وقت نہیں ملتا</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">😰</div>
+          <div class="feature-name">Constant Rescheduling</div>
+          <div class="feature-desc">ایک meeting بدلے تو سب کچھ بدلنا پڑتا ہے</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🧠</div>
+          <div class="feature-name">Decision Fatigue</div>
+          <div class="feature-desc">ہر کام کے لیے وقت ڈھونڈنا تھکا دیتا ہے</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💼</div>
+          <div class="feature-name">No Deep Work</div>
+          <div class="feature-desc">Focus time کبھی نہیں ملتا</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-heading">📊 Quick Stats</div>
+      <p>2026 تک Reclaim AI کو <strong>5 لاکھ سے زیادہ users</strong> اور <strong>ہزاروں companies</strong> استعمال کر رہی ہیں — جن میں Shopify اور Calendly جیسی بڑی کمپنیاں شامل ہیں۔</p>
+      <div class="highlight green">
+        ✅ Research کے مطابق Reclaim AI users اپنے week کا <strong>40% وقت</strong> بچاتے ہیں۔
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-heading">🧠 Quiz Time!</div>
+      <div class="quiz-wrap">
+        <div class="quiz-question">Reclaim AI primarily کس چیز کو automate کرتا ہے؟</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="checkQuiz(this, false, 'q1')">📧 Emails لکھنا</button>
+          <button class="quiz-opt" onclick="checkQuiz(this, true, 'q1')">📅 Calendar scheduling</button>
+          <button class="quiz-opt" onclick="checkQuiz(this, false, 'q1')">🎨 Design بنانا</button>
+          <button class="quiz-opt" onclick="checkQuiz(this, false, 'q1')">📊 Reports بنانا</button>
+        </div>
+        <div class="quiz-feedback ok" id="q1-ok">🎉 بالکل صحیح! Reclaim AI آپ کا calendar automatically manage کرتا ہے۔</div>
+        <div class="quiz-feedback nope" id="q1-nope">❌ غلط — Reclaim AI calendar scheduling اور time management کے لیے ہے۔</div>
+      </div>
+    </div>
+
+    <div class="lesson-nav">
+      <button class="btn btn-outline" disabled>← پچھلا</button>
+      <button class="btn btn-primary" onclick="nextLesson(0)">اگلا سبق →</button>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson" id="lesson-1">
+    <div class="lesson-header">
+      <div class="lesson-num ln-purple">02</div>
+      <div class="lesson-title-wrap">
+        <div class="lesson-eyebrow">Lesson 2 · Features</div>
+        <div class="lesson-title">Reclaim AI کے 5 اہم Features</div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-heading">⚡ 1. Smart Task Scheduling</div>
+      <p>آپ صرف task add کریں اور deadline بتائیں — Reclaim AI خود best time slot ڈھونڈ کر calendar میں add کر دیتا ہے۔</p>
+      <p>اگر آپ کسی task کی priority <strong>Low سے High</strong> کریں، تو AI فوراً پورا calendar reshuffle کر دیتا ہے۔</p>
+      <div class="highlight">📌 یہ Asana، Todoist، اور ClickUp سے integrate ہوتا ہے — tasks خود calendar میں آ جاتے ہیں۔</div>
+    </div>
+
+    <div class="block">
+      <div class="block-heading">🎯 2. Focus Time Protection</div>
+      <p>Reclaim AI آپ کے calendar میں <strong>"Focus Time" blocks</strong> automatically create کرتا ہے تاکہ کوئی meeting اس وقت schedule نہ ہو۔</p>
+      <p>Deep work کے لیے یہ feature game-changer ہے — خاص طور پر developers، writers، اور freelancers کے لیے۔</p>
+    </div>
+
+    <div class="block">
+      <div class="block-heading">🔄 3. Habit Tracking</div>
+      <p>Daily habits جیسے exercise، reading، یا learning — Reclaim AI انہیں automatically آپ کی schedule میں fit کرتا ہے۔</p>
+      <div class="highlight green">
+        ✅ اگر کوئی meeting آ جائے تو habit block خود move ہو جاتا ہے — cancel نہیں ہوتا!
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-heading">🤝 4. Smart Meeting Scheduling</div>
+      <p>Calendly جیسا scheduling link بنائیں، لیکن AI-powered — یہ automatically ایسے slots suggest کرتا ہے جو آپ کے focus time اور habits کو disturb نہ کریں۔</p>
+    </div>
+
+    <div class="block">
+      <div class="block-heading">☕ 5. Breaks & Buffer Time</div>
+      <p>Reclaim AI meetings کے درمیان automatic buffer time اور breaks بھی schedule کرتا ہے — تاکہ آپ mentally fresh رہیں۔</p>
+      <div class="tip">
+        <div class="tip-icon">💡</div>
+        <div>Pro Tip: Lunch break کو habit کے طور پر add کریں — Reclaim اسے کبھی override نہیں کرے گا۔</div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-heading">🧠 Quiz Time!</div>
+      <div class="quiz-wrap">
+        <div class="quiz-question">اگر کوئی meeting آئے تو Reclaim AI آپ کی habit کا کیا کرتا ہے؟</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="checkQuiz(this, false, 'q2')">🗑️ Delete کر دیتا ہے</button>
+          <button class="quiz-opt" onclick="checkQuiz(this, true, 'q2')">📅 دوسرے وقت move کر دیتا ہے</button>
+          <button class="quiz-opt" onclick="checkQuiz(this, false, 'q2')">⚠️ Error دیتا ہے</button>
+          <button class="quiz-opt" onclick="checkQuiz(this, false, 'q2')">😐 کچھ نہیں کرتا</button>
+        </div>
+        <div class="quiz-feedback ok" id="q2-ok">🎉 بالکل! Reclaim AI habit کو cancel نہیں کرتا، بلکہ اسے بہترین دوسرے slot میں move کر دیتا ہے۔</div>
+        <div class="quiz-feedback nope" id="q2-nope">❌ غلط! Reclaim AI habit کو move کرتا ہے، delete یا ignore نہیں کرتا۔</div>
+      </div>
+    </div>
+
+    <div class="lesson-nav">
+      <button class="btn btn-outline" onclick="goLesson(0)">← پچھلا</button>
+      <button class="btn btn-primary" onclick="nextLesson(1)">اگلا سبق →</button>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson" id="lesson-2">
+    <div class="lesson-header">
+      <div class="lesson-num ln-green">03</div>
+      <div class="lesson-title-wrap">
+        <div class="lesson-eyebrow">Lesson 3 · Setup Guide</div>
+        <div class="lesson-title">Reclaim AI کیسے شروع کریں؟</div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-heading">🚀 Step-by-Step Setup</div>
+      <ul class="step-list">
+        <li><div class="step-dot">1</div><div><strong>reclaim.ai پر جائیں</strong> — Free plan سے sign up کریں (کوئی credit card نہیں چاہیے)</div></li>
+        <li><div class="step-dot">2</div><div><strong>Google Calendar connect کریں</strong> — یہ آپ کی existing events پڑھتا ہے</div></li>
+        <li><div class="step-dot">3</div><div><strong>Working Hours set کریں</strong> — بتائیں کہ آپ کس وقت کام کرتے ہیں</div></li>
+        <li><div class="step-dot">4</div><div><strong>Habits add کریں</strong> — Exercise، lunch، learning وغیرہ</div></li>
+        <li><div class="step-dot">5</div><div><strong>Tasks add کریں</strong> — Title، deadline، اور priority کے ساتھ</div></li>
+        <li><div class="step-dot">6</div><div><strong>AI کو چلنے دیں</strong> — 24 گھنٹے میں فرق نظر آئے گا!</div></li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <div class="block-heading">🔗 Best Integrations</div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">📋</div>
+          <div class="feature-name">Asana</div>
+          <div class="feature-desc">Tasks automatically calendar میں آتی ہیں</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">✅</div>
+          <div class="feature-name">Todoist</div>
+          <div class="feature-desc">To-do list کو time blocks میں convert کریں</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💬</div>
+          <div class="feature-name">Slack</div>
+          <div class="feature-desc">Status automatically update ہوتی ہے</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📁</div>
+          <div class="feature-name">ClickUp / Jira</div>
+          <div class="feature-desc">Project tasks directly sync ہوتی ہیں</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-heading">⚠️ Common Mistakes (جو نہ کریں)</div>
+      <div class="highlight yellow">
+        ❌ سب tasks ایک ساتھ add مت کریں — پہلے 3–5 tasks سے start کریں<br><br>
+        ❌ Priority ہر چیز کو "High" مت رکھیں — AI confuse ہو جاتا ہے<br><br>
+        ❌ Working hours realistic رکھیں — 6 AM to midnight مت لکھیں!
+      </div>
+    </div>
+
+    <div class="tip">
+      <div class="tip-icon">🎯</div>
+      <div>پہلے ہفتے صرف <strong>Habits + Focus Time</strong> set کریں — پھر tasks add کریں۔ اس طرح AI کو سیکھنے کا موقع ملتا ہے۔</div>
+    </div>
+
+    <div class="lesson-nav">
+      <button class="btn btn-outline" onclick="goLesson(1)">← پچھلا</button>
+      <button class="btn btn-primary" onclick="nextLesson(2)">اگلا سبق →</button>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson" id="lesson-3">
+    <div class="lesson-header">
+      <div class="lesson-num ln-yellow">04</div>
+      <div class="lesson-title-wrap">
+        <div class="lesson-eyebrow">Lesson 4 · Pro Tips</div>
+        <div class="lesson-title">Reclaim AI کو زیادہ سے زیادہ کیسے استعمال کریں؟</div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-heading">💡 5 Power User Tips</div>
+      <ul class="step-list">
+        <li><div class="step-dot">★</div><div><strong>"Time Defended" meetings بنائیں</strong> — Deep work کے لیے calendar میں بڑے blocks reserve کریں جو کوئی book نہ کر سکے۔</div></li>
+        <li><div class="step-dot">★</div><div><strong>Priority Levels سمجھیں</strong> — P1 سب سے پہلے schedule ہوتا ہے، P4 آخری میں۔ Daily tasks کو P2 رکھیں۔</div></li>
+        <li><div class="step-dot">★</div><div><strong>Scheduling Links share کریں</strong> — Clients کو direct Reclaim scheduling link دیں — وہ خود best slot choose کریں گے۔</div></li>
+        <li><div class="step-dot">★</div><div><strong>Weekly Review کریں</strong> — ہر Friday دیکھیں کتنے tasks complete ہوئے اور priority adjust کریں۔</div></li>
+        <li><div class="step-dot">★</div><div><strong>Slack Integration on کریں</strong> — Focus Time میں automatically "Do Not Disturb" status آ جائے گی۔</div></li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <div class="block-heading">🆚 Reclaim AI vs. Manual Planning</div>
+      <table class="compare-table">
+        <tr>
+          <th>Comparison</th>
+          <th>Manual Planning</th>
+          <th>Reclaim AI</th>
+        </tr>
+        <tr>
+          <td>Schedule بنانا</td>
+          <td>ہر روز 20–30 منٹ</td>
+          <td class="check">✓ Automatic</td>
+        </tr>
+        <tr>
+          <td>Meeting conflict</td>
+          <td>خود handle کرنا پڑتا ہے</td>
+          <td class="check">✓ Auto-reshuffle</td>
+        </tr>
+        <tr>
+          <td>Habits</td>
+          <td>اکثر skip ہو جاتی ہیں</td>
+          <td class="check">✓ Protected</td>
+        </tr>
+        <tr>
+          <td>Focus time</td>
+          <td>کوئی بھی meeting رکھ سکتا ہے</td>
+          <td class="check">✓ Defended automatically</td>
+        </tr>
+        <tr>
+          <td>Time saved/week</td>
+          <td>—</td>
+          <td class="check">✓ Average 40%</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="block">
+      <div class="block-heading">🧠 Quiz Time!</div>
+      <div class="quiz-wrap">
+        <div class="quiz-question">Reclaim AI میں سب سے پہلے کون سا task schedule ہوتا ہے؟</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="checkQuiz(this, false, 'q3')">P4 (Lowest Priority)</button>
+          <button class="quiz-opt" onclick="checkQuiz(this, false, 'q3')">P2 (Medium)</button>
+          <button class="quiz-opt" onclick="checkQuiz(this, true, 'q3')">P1 (Highest Priority)</button>
+          <button class="quiz-opt" onclick="checkQuiz(this, false, 'q3')">Random order میں</button>
+        </div>
+        <div class="quiz-feedback ok" id="q3-ok">🎉 بالکل! P1 tasks سب سے پہلے best slots میں schedule ہوتے ہیں۔</div>
+        <div class="quiz-feedback nope" id="q3-nope">❌ غلط — P1 (Highest Priority) سب سے پہلے schedule ہوتا ہے۔</div>
+      </div>
+    </div>
+
+    <div class="lesson-nav">
+      <button class="btn btn-outline" onclick="goLesson(2)">← پچھلا</button>
+      <button class="btn btn-primary" onclick="nextLesson(3)">اگلا سبق →</button>
+    </div>
+  </div>
+
+  <!-- LESSON 5 -->
+  <div class="lesson" id="lesson-4">
+    <div class="lesson-header">
+      <div class="lesson-num ln-pink">05</div>
+      <div class="lesson-title-wrap">
+        <div class="lesson-eyebrow">Lesson 5 · Pricing & Verdict</div>
+        <div class="lesson-title">کتنا پیسہ لگتا ہے؟ آپ کے لیے صحیح ہے؟</div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-heading">💰 Pricing Plans</div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🆓</div>
+          <div class="feature-name">Free Plan</div>
+          <div class="feature-desc">Basic task scheduling، habits، focus time — شروع کرنے کے لیے بہترین</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⭐</div>
+          <div class="feature-name">Pro · ~$10/month</div>
+          <div class="feature-desc">Advanced analytics، unlimited integrations، team features</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏢</div>
+          <div class="feature-name">Team Plans</div>
+          <div class="feature-desc">Multiple calendars sync، team availability، enterprise features</div>
+        </div>
+      </div>
+      <div class="highlight green" style="margin-top:16px">
+        ✅ شروع میں Free Plan کافی ہے — پہلے ہفتہ استعمال کریں، پھر decide کریں۔
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-heading">👤 آپ کے لیے صحیح ہے اگر…</div>
+      <ul class="step-list">
+        <li><div class="step-dot">✓</div><div>آپ <strong>Freelancer</strong> ہیں اور multiple clients manage کرتے ہیں</div></li>
+        <li><div class="step-dot">✓</div><div>آپ کے پاس <strong>بہت ساری meetings</strong> ہیں لیکن focus time کم ہے</div></li>
+        <li><div class="step-dot">✓</div><div>آپ <strong>daily habits</strong> build کرنا چاہتے ہیں (exercise، learning)</div></li>
+        <li><div class="step-dot">✓</div><div>آپ <strong>Google Calendar</strong> استعمال کرتے ہیں</div></li>
+        <li><div class="step-dot">✓</div><div>آپ productivity improve کرنا چاہتے ہیں بغیر ہر چیز manually کرے</div></li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <div class="block-heading">⚠️ Limitations (جو جاننی چاہیے)</div>
+      <div class="highlight yellow">
+        ❌ ابھی mobile app نہیں ہے (browser یا desktop ہی ہے)<br><br>
+        ❌ صرف Google Calendar اور Outlook support ہوتا ہے<br><br>
+        ❌ Free plan میں limited integrations ہیں<br><br>
+        ❌ شروع میں سیکھنے میں 2–3 دن لگ سکتے ہیں
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-heading">🏆 Final Verdict</div>
+      <p>اگر آپ کا دن meetings، tasks، اور deadlines سے بھرا ہے تو Reclaim AI واقعی ایک <strong>game-changer</strong> ہے۔</p>
+      <p>Free plan سے شروع کریں، ایک ہفتہ استعمال کریں — اگر آپ کو فرق نہ لگے تو Pro کی ضرورت نہیں۔</p>
+      <div class="highlight">
+        🚀 <strong>Action:</strong> ابھی <a href="https://reclaim.ai" target="_blank" style="color:var(--accent)">reclaim.ai</a> پر جائیں اور free account بنائیں!
+      </div>
+    </div>
+
+    <div class="lesson-nav">
+      <button class="btn btn-outline" onclick="goLesson(3)">← پچھلا</button>
+      <button class="btn btn-primary" onclick="completeCourse()">🎉 Course Complete!</button>
+    </div>
+  </div>
+
+  <!-- COMPLETE SCREEN -->
+  <div class="complete-screen" id="complete-screen">
+    <div class="trophy">🏆</div>
+    <h2>مبارک ہو! Course مکمل ہوا</h2>
+    <p>آپ نے Reclaim AI Mini Course کامیابی سے مکمل کیا۔ اب آپ اپنا وقت AI سے manage کروا سکتے ہیں!</p>
+    <div class="cert-badge">📜 Reclaim AI Mini Course — Completed ✓</div>
+    <br>
+    <button class="btn btn-primary" onclick="restartCourse()" style="margin-top:12px">دوبارہ شروع کریں 🔄</button>
+  </div>
+
+</main>
+
+<script>
+  let currentLesson = 0;
+  const totalLessons = 5;
+  const completed = new Array(totalLessons).fill(false);
+
+  function goLesson(idx) {
+    document.querySelectorAll('.lesson').forEach(l => l.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach((b, i) => {
+      b.classList.remove('active');
+      if (completed[i]) b.classList.add('done');
+      else b.classList.remove('done');
+    });
+    document.getElementById('lesson-' + idx).classList.add('active');
+    document.querySelectorAll('.tab-btn')[idx].classList.add('active');
+    currentLesson = idx;
+    updateProgress();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.getElementById('complete-screen').classList.remove('show');
+  }
+
+  function nextLesson(idx) {
+    completed[idx] = true;
+    if (idx + 1 < totalLessons) goLesson(idx + 1);
+    updateProgress();
+  }
+
+  function updateProgress() {
+    const done = completed.filter(Boolean).length;
+    const pct = Math.round((done / totalLessons) * 100);
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('progress-label').textContent = 'Lesson ' + (currentLesson + 1) + ' of ' + totalLessons;
+    document.getElementById('progress-pct').textContent = pct + '% Complete';
+    document.querySelectorAll('.tab-btn').forEach((b, i) => {
+      b.classList.remove('done');
+      if (completed[i] && i !== currentLesson) b.classList.add('done');
+    });
+  }
+
+  function completeCourse() {
+    completed[4] = true;
+    updateProgress();
+    document.querySelectorAll('.lesson').forEach(l => l.classList.remove('active'));
+    document.getElementById('complete-screen').classList.add('show');
+    document.getElementById('progress-fill').style.width = '100%';
+    document.getElementById('progress-pct').textContent = '100% Complete';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function restartCourse() {
+    completed.fill(false);
+    document.getElementById('complete-screen').classList.remove('show');
+    goLesson(0);
+  }
+
+  function checkQuiz(btn, isCorrect, qid) {
+    const parent = btn.closest('.quiz-wrap');
+    if (parent.querySelector('.quiz-opt.correct') || parent.querySelector('.quiz-opt.wrong')) return;
+    btn.classList.add(isCorrect ? 'correct' : 'wrong');
+    const ok = document.getElementById(qid + '-ok');
+    const nope = document.getElementById(qid + '-nope');
+    if (isCorrect) { ok.classList.add('show'); }
+    else { nope.classList.add('show'); }
+  }
+</script>
 </body>
 </html>
