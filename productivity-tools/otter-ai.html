@@ -1,233 +1,276 @@
-
 <!DOCTYPE html>
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Otter AI Course — Meetings ko Searchable Text Banao</title>
+<title>Otter AI — Poora Course</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#F4F9FB;
-    --card:#FFFFFF;
-    --ink:#10262E;
-    --ink-soft:#56727A;
-    --border:#DCEBEE;
-    --teal:#0E9594;
-    --teal-deep:#0A6E6D;
-    --coral:#FF6B57;
+    --bg: #F7F8F6;
+    --panel: #FFFFFF;
+    --ink: #1C2321;
+    --ink-soft: #5A6460;
+    --deepteal: #205C56;
+    --amber: #D68A34;
+    --plum: #6E4E7A;
+    --line: #E1E6DE;
   }
-  *{box-sizing:border-box; margin:0; padding:0;}
+  *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:'Inter', sans-serif;
-    line-height:1.65;
-    -webkit-font-smoothing:antialiased;
-  }
-  ::selection{background:#FFE1DC; color:var(--ink);}
-  .wrap{max-width:940px; margin:0 auto; padding:0 26px;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;line-height:1.6;}
+  h1,h2,h3,.display{font-family:'Sora',sans-serif;letter-spacing:-0.01em;}
+  code,.mono{font-family:'JetBrains Mono',monospace;}
 
-  /* ---------- Hero ---------- */
-  header.hero{padding:54px 0 24px;}
-  .kicker{
-    display:flex; align-items:center; gap:10px; margin-bottom:22px;
+  .topbar{
+    background:var(--panel); border-bottom:1px solid var(--line); padding:14px 24px;
+    display:flex; gap:22px; overflow-x:auto; position:sticky; top:0; z-index:50;
   }
-  .kicker span{
-    font-family:'IBM Plex Mono', monospace; font-size:12px; font-weight:500;
-    letter-spacing:0.1em; text-transform:uppercase; color:var(--teal);
-  }
-  .wave{display:flex; align-items:center; gap:2px; height:16px;}
-  .wave i{width:3px; background:var(--teal); border-radius:2px; display:block;}
-  .wave i:nth-child(1){height:6px;} .wave i:nth-child(2){height:14px;}
-  .wave i:nth-child(3){height:9px;} .wave i:nth-child(4){height:16px;}
-  .wave i:nth-child(5){height:7px;}
+  .topbar a{ font-size:13.5px; color:var(--ink-soft); text-decoration:none; white-space:nowrap; font-weight:500; cursor:pointer; }
+  .topbar a:hover{ color:var(--deepteal); }
 
-  h1{
-    font-family:'Plus Jakarta Sans', sans-serif; font-weight:700;
-    font-size:clamp(32px, 5.6vw, 52px); line-height:1.16; letter-spacing:-0.015em; max-width:800px;
-  }
-  h1 span{color:var(--teal);}
-  .hero-sub{margin-top:18px; font-size:17px; color:var(--ink-soft); max-width:600px;}
-  .hero-meta{display:flex; gap:24px; margin-top:26px; flex-wrap:wrap;}
-  .meta-item{font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--ink-soft);}
-  .meta-item b{color:var(--ink); font-weight:600;}
+  main{max-width:920px; margin:0 auto; padding:0 24px;}
 
-  /* ---------- Transcript-style nav (signature) ---------- */
-  .transcript-section{padding:38px 0 8px;}
-  .transcript-label{
-    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.1em;
-    text-transform:uppercase; color:var(--ink-soft); margin-bottom:12px;
+  .hero{ padding:70px 0 50px; border-bottom:1px solid var(--line); }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600; color:var(--amber);
+    background:#FBEEDD; padding:6px 12px; border-radius:100px; margin-bottom:20px;
   }
-  .transcript{
-    background:var(--card); border:1px solid var(--border); border-radius:12px; padding:6px;
-  }
-  .t-row{
-    display:flex; align-items:flex-start; gap:12px;
-    text-decoration:none; color:var(--ink);
-    padding:11px 12px; border-radius:8px;
-    transition:background .12s ease;
-  }
-  .t-row:hover{background:#EAF6F6;}
-  .t-avatar{
-    width:26px; height:26px; border-radius:50%; flex-shrink:0;
-    background:var(--teal); color:#fff; font-size:11px; font-weight:700;
-    display:flex; align-items:center; justify-content:center;
-    font-family:'Plus Jakarta Sans', sans-serif;
-  }
-  .t-time{
-    font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--coral);
-    min-width:44px; margin-top:5px; font-weight:500;
-  }
-  .t-text{font-size:14px; font-weight:600; margin-top:4px;}
+  .hero h1{ font-size:clamp(32px,5.6vw,50px); font-weight:700; margin:0 0 18px; max-width:16ch; }
+  .hero h1 em{ color:var(--deepteal); font-style:italic; }
+  .hero p{ font-size:18px; color:var(--ink-soft); max-width:60ch; margin:0 0 32px; }
 
-  /* ---------- Modules ---------- */
-  main{padding:34px 0 40px;}
-  .module{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:14px;
-    padding:34px 36px;
-    margin:20px 0;
-    scroll-margin-top:22px;
-    border-left:4px solid var(--teal);
+  /* Signature: a live waveform turning into a labeled transcript */
+  .transcript-demo{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:22px;
   }
-  .module-head{display:flex; align-items:center; gap:12px; margin-bottom:6px;}
-  .module h2{font-family:'Plus Jakarta Sans', sans-serif; font-weight:700; font-size:24px; color:var(--teal-deep);}
-  .tag{
-    font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--teal-deep);
-    background:#E4F5F4; padding:3px 10px; border-radius:20px;
-    margin-bottom:16px; display:inline-block; letter-spacing:0.04em;
+  .wave{
+    display:flex; align-items:flex-end; gap:3px; height:44px; margin-bottom:18px;
   }
-  .module p{color:#26383E; font-size:15.5px; margin-bottom:13px; max-width:760px;}
-  .module ul{margin:12px 0 4px 20px;}
-  .module li{margin-bottom:9px; font-size:15px; color:#26383E;}
-  .module li b{color:var(--ink);}
-  .highlight{
-    margin-top:18px;
-    background:#FFF3F0;
-    border-left:3px solid var(--coral);
-    padding:13px 17px;
-    border-radius:0 8px 8px 0;
-    font-size:14.5px;
-    color:#7A2A1C;
+  .wave span{
+    width:4px; background:var(--deepteal); border-radius:2px; opacity:.75;
+    animation:bounce 1.2s ease-in-out infinite;
   }
-  .highlight b{color:#591506;}
+  .wave span:nth-child(odd){ animation-delay:.15s; }
+  .wave span:nth-child(3n){ animation-delay:.3s; }
+  @keyframes bounce{ 0%,100%{height:10px;} 50%{height:40px;} }
+  .transcript-line{ display:flex; gap:10px; margin-bottom:10px; font-size:14px; }
+  .speaker{ font-weight:700; color:var(--plum); min-width:70px; font-family:'Sora',sans-serif; font-size:13px; }
+  .ttext{ color:var(--ink-soft); }
+  .action-tag{ background:#EAF3F0; color:var(--deepteal); font-size:11.5px; padding:2px 8px; border-radius:5px; font-weight:600; margin-left:6px; }
 
-  footer{
-    border-top:1px solid var(--border);
-    padding:32px 0 60px;
-    text-align:center;
-    color:var(--ink-soft);
-    font-size:13px;
-    font-family:'IBM Plex Mono', monospace;
+  section{ padding:56px 0; border-bottom:1px solid var(--line); }
+  section.no-border{ border-bottom:none; }
+  .section-label{
+    font-size:13px; font-weight:600; color:var(--amber); text-transform:uppercase; letter-spacing:.08em; margin-bottom:10px;
   }
+  section h2{ font-size:clamp(24px,3.4vw,32px); margin:0 0 24px; }
 
-  @media (max-width:640px){
-    .module{padding:24px 20px;}
-    .wrap{padding:0 16px;}
+  .grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px; }
+  .card{ background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:20px; }
+  .card h3{ font-size:17px; margin:0 0 8px; display:flex; align-items:center; gap:8px; }
+  .card p{ font-size:14.5px; color:var(--ink-soft); margin:0; }
+  .tag-dot{ width:10px; height:10px; border-radius:3px; flex-shrink:0; }
+
+  .feat-tabs{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px; }
+  .feat-btn{
+    font-size:14px; font-weight:500; padding:9px 16px; border-radius:8px;
+    border:1px solid var(--line); background:var(--panel); cursor:pointer; color:var(--ink-soft);
+  }
+  .feat-btn.active{ background:var(--ink); color:#fff; border-color:var(--ink); }
+  .feat-panel{ display:none; }
+  .feat-panel.active{ display:block; }
+  .prompt-box{
+    background:var(--deepteal); color:#E7F3F0; border-radius:10px; padding:16px 18px;
+    font-family:'JetBrains Mono',monospace; font-size:13.5px; margin-bottom:12px; line-height:1.7;
+  }
+  .prompt-box .lbl{ color:#F0C48A; font-weight:600; }
+  .feat-result{ font-size:14.5px; color:var(--ink-soft); padding-left:2px; }
+
+  .steps{ counter-reset:step; list-style:none; margin:0; padding:0; }
+  .steps li{ counter-increment:step; display:flex; gap:16px; padding:16px 0; border-top:1px solid var(--line); }
+  .steps li:first-child{ border-top:none; }
+  .steps li::before{
+    content:counter(step); font-family:'Sora',sans-serif; font-weight:700; font-size:14px;
+    color:var(--plum); background:#F1EAF3; width:30px; height:30px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .steps h4{ margin:0 0 4px; font-size:15.5px; }
+  .steps p{ margin:0; font-size:14px; color:var(--ink-soft); }
+
+  .accordion-item{ border:1px solid var(--line); border-radius:10px; margin-bottom:10px; background:var(--panel); overflow:hidden; }
+  .accordion-q{ padding:16px 18px; display:flex; justify-content:space-between; align-items:center; cursor:pointer; font-weight:500; font-size:15px; }
+  .accordion-arrow{ transition:.25s; color:var(--ink-soft); }
+  .accordion-item.open .accordion-arrow{ transform:rotate(180deg); }
+  .accordion-a{ max-height:0; overflow:hidden; transition:max-height .3s ease; font-size:14.5px; color:var(--ink-soft); padding:0 18px; }
+  .accordion-item.open .accordion-a{ padding:0 18px 16px; }
+
+  .quiz-box{ background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:24px; }
+  .quiz-q{ font-weight:600; margin-bottom:14px; }
+  .quiz-opt{ display:block; width:100%; text-align:left; padding:12px 14px; margin-bottom:8px; border:1px solid var(--line); border-radius:8px; background:#fff; cursor:pointer; font-size:14.5px; font-family:inherit; }
+  .quiz-opt:hover{ border-color:var(--deepteal); }
+  .quiz-opt.correct{ background:#EAF3F0; border-color:var(--deepteal); color:var(--deepteal); font-weight:600; }
+  .quiz-opt.wrong{ background:#F8EAE2; border-color:var(--amber); color:#B5642C; }
+  .quiz-feedback{ margin-top:12px; font-size:14px; color:var(--ink-soft); min-height:20px; }
+
+  footer{ padding:40px 0 60px; text-align:center; color:var(--ink-soft); font-size:13.5px; }
+
+  @media (max-width:600px){
+    .hero{padding:48px 0 36px;}
   }
 </style>
 </head>
 <body>
 
-<div class="wrap">
-  <header class="hero">
-    <div class="kicker">
-      <div class="wave"><i></i><i></i><i></i><i></i><i></i></div>
-      <span>LIVE TRANSCRIPT · MINI COURSE</span>
-    </div>
-    <h1>Har meeting ko <span>searchable text</span> aur action items mein badlo.</h1>
-    <p class="hero-sub">Otter AI aapki calls mein khud join karta hai, live transcribe karta hai, aur baad mein summary aur action items nikaal deta hai. Yeh course poora workflow sikhayega.</p>
-    <div class="hero-meta">
-      <div class="meta-item"><b>8</b> modules</div>
-      <div class="meta-item"><b>~20</b> min read</div>
-      <div class="meta-item">Free: 300 min/month</div>
-    </div>
-  </header>
+<nav class="topbar">
+  <a onclick="jump('kya-hai')">Kya Hai</a>
+  <a onclick="jump('features')">Features</a>
+  <a onclick="jump('workflow')">Workflow</a>
+  <a onclick="jump('usecases')">Use-Cases</a>
+  <a onclick="jump('faq')">Do's & Don'ts</a>
+  <a onclick="jump('quiz')">Quiz</a>
+</nav>
 
-  <section class="transcript-section">
-    <div class="transcript-label">▸ Meeting Agenda</div>
-    <div class="transcript">
-      <a href="#m1" class="t-row"><div class="t-avatar">O</div><div class="t-time">00:00</div><div class="t-text">Otter AI kya hai</div></a>
-      <a href="#m2" class="t-row"><div class="t-avatar">O</div><div class="t-time">02:30</div><div class="t-text">Meeting join & record</div></a>
-      <a href="#m3" class="t-row"><div class="t-avatar">O</div><div class="t-time">05:10</div><div class="t-text">Live transcript & captions</div></a>
-      <a href="#m4" class="t-row"><div class="t-avatar">O</div><div class="t-time">08:45</div><div class="t-text">Summary & action items</div></a>
-      <a href="#m5" class="t-row"><div class="t-avatar">O</div><div class="t-time">11:20</div><div class="t-text">Otter AI Chat se sawaal</div></a>
-      <a href="#m6" class="t-row"><div class="t-avatar">O</div><div class="t-time">14:00</div><div class="t-text">Kuch bhi transcribe karo</div></a>
-      <a href="#m7" class="t-row"><div class="t-avatar">O</div><div class="t-time">16:35</div><div class="t-text">Search & repository</div></a>
-      <a href="#m8" class="t-row"><div class="t-avatar">O</div><div class="t-time">19:10</div><div class="t-text">Pro tips & limitations</div></a>
+<main>
+
+  <section class="hero no-border">
+    <div class="eyebrow">● Meeting AI Course</div>
+    <h1>Otter AI — meeting mein baithkar sirf <em>sunna</em>, notes ka tension nahi</h1>
+    <p>Otter live meetings ko record karke real-time transcript banata hai — kaun kya bol raha hai, alag-alag likhta hai, aur end mein ek summary aur action items apne aap nikal deta hai.</p>
+
+    <div class="transcript-demo">
+      <div class="wave">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="transcript-line"><span class="speaker">Ravi:</span><span class="ttext">Humein Friday tak launch date finalize karni hai.</span></div>
+      <div class="transcript-line"><span class="speaker">Priya:</span><span class="ttext">Main design team se baat kar leti hoon. <span class="action-tag">Action Item</span></span></div>
     </div>
   </section>
 
-  <main>
+  <section id="kya-hai">
+    <div class="section-label">Shuruaat</div>
+    <h2>Otter AI hai kya cheez?</h2>
+    <p style="color:var(--ink-soft); max-width:65ch; margin-bottom:24px;">Otter Zoom, Google Meet ya Teams meetings mein join hokar (ya phone se live record karke) speech-to-text transcript banata hai. Ye alag-alag speakers ko pehchanta hai, key points highlight karta hai, aur meeting khatam hote hi ek summary + action items ready kar deta hai.</p>
+    <div class="grid">
+      <div class="card">
+        <h3><span class="tag-dot" style="background:var(--deepteal);"></span>Live Transcription</h3>
+        <p>Meeting chalte hi real-time mein text ban raha hota hai — recording khatam hone ka wait nahi karna padta.</p>
+      </div>
+      <div class="card">
+        <h3><span class="tag-dot" style="background:var(--amber);"></span>Speaker Identification</h3>
+        <p>Har line ke saath pata chalta hai kis speaker ne kya bola — mixed-voice recording bhi samjha deta hai.</p>
+      </div>
+      <div class="card">
+        <h3><span class="tag-dot" style="background:var(--plum);"></span>Auto Action Items</h3>
+        <p>Meeting mein bole gaye commitments ko khud detect karke ek checklist bana deta hai.</p>
+      </div>
+    </div>
+  </section>
 
-    <section class="module" id="m1">
-      <div class="module-head"><h2>Otter AI kya hai?</h2></div>
-      <span class="tag">FOUNDATION</span>
-      <p>Otter AI ek meeting transcription tool hai jo audio ko real-time text mein badalta hai. Yeh 10 million+ users ke saath sabse recognized AI transcription names mein se ek hai.</p>
-      <p>Sabse bada use case: <b>meeting ke dauraan note-taking se free ho jana</b> — aap conversation par focus karo, Otter poori transcript, summary, aur action items sambhal lega.</p>
-    </section>
+  <section id="features">
+    <div class="section-label">Core Features</div>
+    <h2>Roz kaam aane wale features</h2>
+    <div class="feat-tabs">
+      <button class="feat-btn active" onclick="showFeat('live', this)">Live Meeting</button>
+      <button class="feat-btn" onclick="showFeat('chat', this)">Otter Chat</button>
+      <button class="feat-btn" onclick="showFeat('summary', this)">Auto Summary</button>
+    </div>
+    <div class="feat-panel active" id="feat-live">
+      <div class="prompt-box"><span class="lbl">Meeting join karo:</span> Otter Zoom link ke saath calendar se auto-join ho jaata hai</div>
+      <p class="feat-result">Aapko manually record button dabane ki zaroorat nahi — calendar sync se ye khud aa jaata hai.</p>
+    </div>
+    <div class="feat-panel" id="feat-chat">
+      <div class="prompt-box"><span class="lbl">Poocho:</span> "Budget approval ke baare mein kya decide hua tha?"</div>
+      <p class="feat-result">Poore transcript mein se relevant hissa dhoondh kar seedha jawab deta hai, timestamp ke saath.</p>
+    </div>
+    <div class="feat-panel" id="feat-summary">
+      <div class="prompt-box"><span class="lbl">Meeting khatam hote hi:</span> Auto-generated summary + action items + key decisions</div>
+      <p class="feat-result">Bina kuch type kiye, meeting ke turant baad ek clean summary sabko email ho sakta hai.</p>
+    </div>
+  </section>
 
-    <section class="module" id="m2">
-      <div class="module-head"><h2>Meeting join karna aur record karna</h2></div>
-      <span class="tag">GETTING STARTED</span>
-      <p>Otter apna calendar (Google Calendar, Microsoft Outlook, iOS Calendar) connect karta hai aur scheduled meetings mein <b>OtterPilot</b> ke naam se ek virtual participant ki tarah khud join ho jaata hai — Zoom, Microsoft Teams, ya Google Meet, teeno par.</p>
-      <div class="highlight"><b>Transparency:</b> OtterPilot ek visible bot ki tarah call mein dikhta hai — sabhi participants ko pata chalega ki recording ho rahi hai.</div>
-    </section>
+  <section id="workflow">
+    <div class="section-label">Hands-On</div>
+    <h2>Otter use karne ka tarika</h2>
+    <ol class="steps">
+      <li><div><h4>Calendar connect karo</h4><p>Google/Outlook calendar se link karo taaki Otter apne aap upcoming meetings mein join ho sake.</p></div></li>
+      <li><div><h4>Meeting record hone do</h4><p>Live transcript aapko khud dikhta hai, bina wait kiye — screen share bhi capture hota hai.</p></div></li>
+      <li><div><h4>Highlights maaro</h4><p>Meeting ke dauraan important lines ko star/highlight karo taaki baad mein jaldi mile.</p></div></li>
+      <li><div><h4>Summary check karo</h4><p>Meeting khatam hote hi AI summary aur action items generate ho jaate hain — review karo.</p></div></li>
+      <li><div><h4>Share ya export karo</h4><p>Team ko transcript ya summary email/Slack se share karo, ya doc mein export karo.</p></div></li>
+    </ol>
+  </section>
 
-    <section class="module" id="m3">
-      <div class="module-head"><h2>Live transcript aur captions</h2></div>
-      <span class="tag">CORE SKILL</span>
-      <p>Meeting ke dauraan audio real-time text mein convert hota hai, aur transcript sabhi participants ke saath share hoti hai. Har line <b>timestamped</b> hoti hai, taaki baad mein specific moment par jump kar sako, aur <b>speaker identification</b> se pata chalta hai kisne kya bola.</p>
-      <p>Aap live transcript mein important parts <b>highlight</b> bhi kar sakte ho jab woh bol rahe ho — taaki baad mein poori transcript dobara padhne ki zaroorat na pade.</p>
-    </section>
+  <section id="usecases">
+    <div class="section-label">Practical</div>
+    <h2>Kaam aane wale use-cases</h2>
+    <div class="grid">
+      <div class="card"><h3>🗓️ Client calls</h3><p>Har client meeting ka transcript rakhna taaki koi commitment miss na ho.</p></div>
+      <div class="card"><h3>🎓 Lecture notes</h3><p>Students class ki poori recording transcript ke saath revise kar sakte hain.</p></div>
+      <div class="card"><h3>🧑‍💼 Interview records</h3><p>Hiring managers interview ka transcript reference ke liye rakh sakte hain.</p></div>
+      <div class="card"><h3>📋 Standup summaries</h3><p>Daily team standups se turant action items nikal kar sabko bhejna.</p></div>
+    </div>
+  </section>
 
-    <section class="module" id="m4">
-      <div class="module-head"><h2>Automatic summary aur action items</h2></div>
-      <span class="tag">POST-MEETING</span>
-      <p>Meeting khatam hone ke kuch minute baad, Otter NLP use karke ek summary generate karta hai jisme key points, decisions, aur action items highlight hote hain — poori transcript padhe bina hi overview mil jaata hai.</p>
-      <p>Aap takeaways ko highlight kar ke teammates ko <b>tag</b> bhi kar sakte ho, taaki action items directly unhe assign ho jayein.</p>
-    </section>
+  <section id="faq">
+    <div class="section-label">Zaroori</div>
+    <h2>Do's aur Don'ts</h2>
+    <div class="accordion-item" onclick="toggleAcc(this)">
+      <div class="accordion-q">Kya sabko batana zaroori hai ki meeting record ho rahi hai? <span class="accordion-arrow">▾</span></div>
+      <div class="accordion-a">Haan, recording consent bahut jagah legally zaroori hota hai — meeting shuru hone se pehle sabko inform karo.</div>
+    </div>
+    <div class="accordion-item" onclick="toggleAcc(this)">
+      <div class="accordion-q">Kya transcript 100% accurate hota hai? <span class="accordion-arrow">▾</span></div>
+      <div class="accordion-a">Nahi, accents, background noise ya technical terms ki wajah se kabhi-kabhi galtiyan aa sakti hain — important parts verify kar lo.</div>
+    </div>
+    <div class="accordion-item" onclick="toggleAcc(this)">
+      <div class="accordion-q">Kya sensitive meetings record karni chahiye? <span class="accordion-arrow">▾</span></div>
+      <div class="accordion-a">Confidential ya HR-sensitive discussions ke liye company policy zaroor check karo before recording.</div>
+    </div>
+  </section>
 
-    <section class="module" id="m5">
-      <div class="module-head"><h2>Otter AI Chat se sawaal poochna</h2></div>
-      <span class="tag">Q&A</span>
-      <p>Otter ek built-in AI chatbot bhi deta hai jo meeting content ke baare mein sawaalon ka jawab de sakta hai — jaise "Q3 launch ke baare mein kya decide hua?" — bina poori transcript scroll kiye.</p>
-    </section>
+  <section id="quiz" class="no-border">
+    <div class="section-label">Test Yourself</div>
+    <h2>Ek quick quiz</h2>
+    <div class="quiz-box">
+      <div class="quiz-q">Otter AI ka core kaam kya hai?</div>
+      <button class="quiz-opt" onclick="checkAns(this,false)">Ye sirf presentation slides banata hai</button>
+      <button class="quiz-opt" onclick="checkAns(this,true)">Live meetings ko transcribe karke summary aur action items nikalna</button>
+      <button class="quiz-opt" onclick="checkAns(this,false)">Ye sirf photo editing karta hai</button>
+      <div class="quiz-feedback" id="feedback"></div>
+    </div>
+  </section>
 
-    <section class="module" id="m6">
-      <div class="module-head"><h2>Kuch bhi transcribe karo</h2></div>
-      <span class="tag">FLEXIBILITY</span>
-      <p>Sirf live meetings hi nahi — Otter kisi bhi <b>YouTube video</b> ko transcribe kar sakta hai (video play karo, phir Otter mein Record dabao), aur Dropbox mein audio/video file daalte hi woh automatically transcribe ho jaati hai.</p>
-      <p>In-person conversations bhi record kar sakte ho apne phone se — desktop app, iOS, Android, aur Chrome extension, sab available hain.</p>
-    </section>
+</main>
 
-    <section class="module" id="m7">
-      <div class="module-head"><h2>Search aur centralized repository</h2></div>
-      <span class="tag">ORGANIZE</span>
-      <p>Har meeting note ek searchable, centralized repository mein store hoti hai. Folders bana sakte ho, comments add kar sakte ho, aur team-wide access ke liye Single Sign-On (SSO) aur usage analytics jaise admin controls bhi hain.</p>
-    </section>
+<footer>Otter AI Course — meeting mein baat karo, notes AI ko likhne do.</footer>
 
-    <section class="module" id="m8">
-      <div class="module-head"><h2>Pro tips aur honest limitations</h2></div>
-      <span class="tag">HONEST NOTES</span>
-      <ul>
-        <li>Transcription accuracy typically 85-90% hoti hai — background noise ya heavy accents ke saath thoda kam ho sakti hai.</li>
-        <li>Insights (summary, action items) meeting <b>khatam hone ke baad hi</b> milte hain — live call ke dauraan real-time AI help ke liye yeh best fit nahi hai.</li>
-        <li>Free plan mein 300 minutes/month milte hain — usse zyada chahiye toh paid plan dekhna hoga.</li>
-      </ul>
-      <div class="highlight"><b>Yaad rakho:</b> Sensitive ya confidential meetings record karne se pehle sabhi participants ko batana zaroori aur ethical hai — kai jagah legally bhi.</div>
-    </section>
+<script>
+function jump(id){ document.getElementById(id).scrollIntoView({behavior:'smooth'}); }
 
-  </main>
+function showFeat(name, btn){
+  document.querySelectorAll('.feat-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.feat-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('feat-'+name).classList.add('active');
+  btn.classList.add('active');
+}
 
-  <footer>
-    ▸ END OF TRANSCRIPT — record karo, sunna chhodo, action items le lo.
-  </footer>
-</div>
+function toggleAcc(el){ el.classList.toggle('open'); }
+
+function checkAns(btn, isCorrect){
+  const opts = btn.parentElement.querySelectorAll('.quiz-opt');
+  opts.forEach(o=>o.disabled=true);
+  if(isCorrect){
+    btn.classList.add('correct');
+    document.getElementById('feedback').textContent = "Sahi jawab! Live transcription + auto action items hi Otter ki jaan hai.";
+  } else {
+    btn.classList.add('wrong');
+    document.getElementById('feedback').textContent = "Thoda aur socho — sahi jawab highlight ho gaya hai.";
+    opts.forEach(o=>{ if(o.onclick.toString().includes('true')) o.classList.add('correct'); });
+  }
+}
+</script>
 
 </body>
 </html>
