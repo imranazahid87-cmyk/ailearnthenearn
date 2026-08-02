@@ -32,9 +32,9 @@
 
 <nav id="navbar">
 <a href="index.html">Home</a>
-<a href="tools.html">AI Tools</a>
+<a href="ai-assistants/">AI Tools</a>
 <a href="courses.html">Courses</a>
-<a href="blog.html">Blog</a>
+<a href="blog.html" class="active">Blog</a>
 <a href="earn.html">Earn</a>
 <a href="contact.html">Contact</a>
 </nav>
@@ -42,8 +42,8 @@
 <div class="header-right">
 
 <div class="search-box">
-<input type="text" placeholder="Search Articles...">
-<button onclick="searchWebsite()">🔍</button>
+<input type="text" id="searchInput" placeholder="Search Articles..." onkeydown="if(event.key==='Enter'){window.location.href='search.html?q='+this.value}">
+<button onclick="window.location.href='search.html?q='+document.getElementById('searchInput').value">🔍</button>
 </div>
 
 <div class="menu-btn" onclick="toggleMenu()">☰</div>
@@ -64,151 +64,93 @@
 Read practical AI tutorials, SEO tips, freelancing guides and the latest AI news.
 </p>
 
-<div class="course-grid"><div class="course-card">
+<div class="course-grid">
 
+<div class="course-card">
 <h3>🤖 What is ChatGPT?</h3>
-
-<p>
-Learn what ChatGPT is, how it works and how beginners can use it for learning and earning.
-</p>
-
-<a href="#" class="btn">Read Article</a>
-
+<p>Learn what ChatGPT is, how it works and how beginners can use it for learning and earning.</p>
+<a href="blog/chatgpt-guide.html" class="btn">Read Article</a>
 </div>
 
 <div class="course-card">
-
 <h3>💎 Google Gemini Guide</h3>
-
-<p>
-Complete beginner guide to Google Gemini with practical examples and tips.
-</p>
-
-<a href="#" class="btn">Read Article</a>
-
+<p>Complete beginner guide to Google Gemini with practical examples and tips.</p>
+<a href="blog/google-gemini-guide.html" class="btn">Read Article</a>
 </div>
 
 <div class="course-card">
-
 <h3>📈 SEO in 2026</h3>
-
-<p>
-Discover the latest SEO techniques to improve your website rankings.
-</p>
-
-<a href="#" class="btn">Read Article</a>
-
+<p>Discover the latest SEO techniques to improve your website rankings.</p>
+<a href="blog/seo-2026.html" class="btn">Read Article</a>
 </div>
 
 <div class="course-card">
-
 <h3>💼 Freelancing Tips</h3>
-
-<p>
-Start your freelancing journey on Fiverr and Upwork with confidence.
-</p>
-
-<a href="#" class="btn">Read Article</a>
-
+<p>Start your freelancing journey on Fiverr and Upwork with confidence.</p>
+<a href="blog/freelancing-tips.html" class="btn">Read Article</a>
 </div>
 
 <div class="course-card">
-
 <h3>🎨 AI Image Generation</h3>
-
-<p>
-Create amazing AI images using today's most popular image generation tools.
-</p>
-
-<a href="#" class="btn">Read Article</a>
-
+<p>Create amazing AI images using today's most popular image generation tools.</p>
+<a href="blog/ai-image-generation.html" class="btn">Read Article</a>
 </div>
 
 <div class="course-card">
-
 <h3>🎬 AI Video Creation</h3>
-
-<p>
-Learn how AI can help you create professional videos for YouTube and social media.
-</p>
-
-<a href="#" class="btn">Read Article</a>
-
+<p>Learn how AI can help you create professional videos for YouTube and social media.</p>
+<a href="blog/ai-video-creation.html" class="btn">Read Article</a>
 </div>
 
 <div class="course-card">
-
 <h3>✍️ Prompt Engineering</h3>
-
-<p>
-Write better prompts to get more accurate and useful AI responses.
-</p>
-
-<a href="#" class="btn">Read Article</a>
-
+<p>Write better prompts to get more accurate and useful AI responses.</p>
+<a href="blog/prompt-engineering.html" class="btn">Read Article</a>
 </div>
 
 <div class="course-card">
-
 <h3>💰 Earn Money with AI</h3>
-
-<p>
-Explore practical ways to earn online using AI tools and digital skills.
-</p>
-
-<a href="#" class="btn">Read Article</a>
-
+<p>Explore practical ways to earn online using AI tools and digital skills.</p>
+<a href="blog/earn-with-ai.html" class="btn">Read Article</a>
 </div>
 
 </div>
 
 </div>
 
-</section><!-- FOOTER -->
+</section>
 
+<!-- FOOTER -->
 <footer>
 
 <div class="container footer-content">
 
 <div>
-
 <h3>AI Learn Then Earn</h3>
-
-<p>
-Learn AI, Build Skills & Earn Online through practical courses, AI tools and step-by-step guides.
-</p>
-
+<p>Learn AI, Build Skills & Earn Online through practical courses, AI tools and step-by-step guides.</p>
 </div>
 
 <div>
-
 <h4>Quick Links</h4>
-
 <a href="index.html">Home</a>
-<a href="tools.html">AI Tools</a>
+<a href="ai-assistants/">AI Tools</a>
 <a href="courses.html">Courses</a>
 <a href="blog.html">Blog</a>
 <a href="earn.html">Earn</a>
 <a href="contact.html">Contact</a>
-
 </div>
 
 <div>
-
 <h4>Contact</h4>
-
 <p>📧 info@ailearnthenearn.com</p>
 <p>📍 Pakistan</p>
-
 </div>
 
 </div>
 
 <hr>
 
-<p class="copyright">
-© 2026 AI Learn Then Earn. All Rights Reserved.
-</p>
+<p class="copyright">© 2026 AI Learn Then Earn. All Rights Reserved.</p>
 
 </footer>
 
