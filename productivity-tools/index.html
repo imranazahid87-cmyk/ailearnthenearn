@@ -1,150 +1,200 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Productivity Tools | AI Learn Then Earn</title>
-<link rel="stylesheet" href="../style.css">
+<title>Productivity AI Tools — Poora Course Index</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FAF8F3;
+    --panel: #FFFFFF;
+    --ink: #201F2B;
+    --ink-soft: #5E5C6E;
+    --plum: #5B3FA0;
+    --coral: #DD6B48;
+    --teal: #227868;
+    --amber: #D68A2E;
+    --navy: #2E4570;
+    --olive: #6D8248;
+    --line: #E8E2D3;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;line-height:1.6;}
+  h1,h2,h3,.display{font-family:'Fraunces',serif;letter-spacing:-0.01em;}
+  code,.mono{font-family:'JetBrains Mono',monospace;}
+
+  main{max-width:960px; margin:0 auto; padding:0 24px;}
+
+  .hero{ padding:64px 0 40px; border-bottom:1px solid var(--line); }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600; color:var(--coral);
+    background:#FBEADF; padding:6px 12px; border-radius:100px; margin-bottom:20px;
+  }
+  .hero h1{ font-size:clamp(32px,6vw,50px); font-weight:700; margin:0 0 16px; max-width:16ch; }
+  .hero h1 em{ color:var(--plum); font-style:italic; }
+  .hero p{ font-size:17.5px; color:var(--ink-soft); max-width:60ch; margin:0; }
+
+  .progress-track{
+    height:6px; background:var(--line); border-radius:3px; margin-top:28px; overflow:hidden;
+  }
+  .progress-fill{ height:100%; background:var(--plum); width:100%; border-radius:3px; }
+  .progress-label{ font-size:12.5px; color:var(--ink-soft); margin-top:8px; }
+
+  section{ padding:48px 0; }
+  .section-label{
+    font-size:13px; font-weight:600; color:var(--coral); text-transform:uppercase; letter-spacing:.08em; margin-bottom:10px;
+  }
+
+  .tool-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+    gap:16px;
+  }
+  .tool-card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:22px;
+    text-decoration:none;
+    color:var(--ink);
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    transition:.2s;
+  }
+  .tool-card:hover{
+    border-color:var(--plum);
+    box-shadow:0 14px 30px -18px rgba(32,31,43,.3);
+    transform:translateY(-2px);
+  }
+  .tool-num{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+  }
+  .tool-name{ font-size:19px; font-weight:700; margin:0; }
+  .tool-tag{
+    font-size:12.5px; font-weight:600; padding:4px 10px; border-radius:20px;
+    display:inline-flex; align-self:flex-start;
+  }
+  .tool-desc{ font-size:14px; color:var(--ink-soft); margin:0; }
+  .tool-cta{
+    font-size:13.5px; font-weight:600; color:var(--plum); margin-top:auto;
+    display:flex; align-items:center; gap:5px;
+  }
+
+  footer{ padding:40px 0 60px; text-align:center; color:var(--ink-soft); font-size:13.5px; border-top:1px solid var(--line); }
+
+  @media (max-width:600px){
+    .hero{padding:44px 0 32px;}
+  }
+</style>
 </head>
 <body>
 
-<header class="header">
-  <div class="container">
-    <a href="../index.html" class="logo">
-      <img src="../images/logo.webp" alt="AI Learn Then Earn">
-      <span>AI Learn Then Earn</span>
-    </a>
-    <nav id="navbar">
-      <a href="../index.html">Home</a>
-      <a href="../tools.html">AI Tools</a>
-      <a href="../courses.html">Courses</a>
-      <a href="../earn.html">Earn</a>
-      <a href="../blog.html">Blog</a>
-      <a href="../contact.html">Contact</a>
-    </nav>
-    <div class="header-right">
-      <div class="search-box">
-        <input type="text" placeholder="Search AI Productivity Tools...">
-        <button>🔍</button>
-      </div>
-      <div class="menu-btn" onclick="toggleMenu()">☰</div>
-    </div>
-  </div>
-</header>
+<main>
 
-<section class="hero" style="padding:60px 0;">
-  <div class="container" style="text-align:center;">
-    <h1 style="font-size:46px;color:#fff;margin-bottom:15px;">📚 Top 10 AI Productivity Tools</h1>
-    <p style="font-size:18px;color:#dbe7ff;max-width:700px;margin:auto;">
-      Discover the most powerful AI tools for productivity, note-taking, research, presentations and workflow automation.
-    </p>
-  </div>
-</section>
+  <section class="hero">
+    <div class="eyebrow">● Productivity AI — Course Library</div>
+    <h1>10 productivity AI tools, ek <em>hi jagah</em> seekho</h1>
+    <p>Har card apne alag course tak le jaata hai — Hinglish mein, interactive examples ke saath, taaki aap in tools ko fatafat apne kaam mein use karna seekh sako.</p>
+    <div class="progress-track"><div class="progress-fill"></div></div>
+    <div class="progress-label">10 / 10 courses ready</div>
+  </section>
 
-<section class="ai-page">
-  <div class="container">
-    <h2 style="text-align:center;font-size:36px;color:#0f172a;margin-bottom:10px;">Choose Your AI Productivity Tool</h2>
-    <p class="section-title">Select any AI Productivity tool below and explore its features.</p>
+  <section>
+    <div class="section-label">Sab Courses</div>
+    <div class="tool-grid">
 
-    <div class="ai-grid">
+      <a class="tool-card" href="microsoft-365-copilot-course.html">
+        <div class="tool-num">01</div>
+        <h3 class="tool-name">Microsoft 365 Copilot</h3>
+        <span class="tool-tag" style="background:#EAF1F8; color:var(--navy);">Office Assistant</span>
+        <p class="tool-desc">Word, Excel, PowerPoint, Outlook, Teams ke andar AI se kaam kaise lein.</p>
+        <div class="tool-cta">Course kholo →</div>
+      </a>
 
-      <div class="ai-card">
-        <h3>🗒️ Notion AI</h3>
-        <p>All-in-one AI workspace for notes, docs, projects and team collaboration with smart AI assistance.</p>
-        <a href="notion-ai.html" class="ai-btn">Learn More</a>
-      </div>
+      <a class="tool-card" href="beautiful-ai-course.html">
+        <div class="tool-num">02</div>
+        <h3 class="tool-name">Beautiful.ai</h3>
+        <span class="tool-tag" style="background:#F0EAFB; color:var(--plum);">Presentation Design</span>
+        <p class="tool-desc">Design AI se auto-aligned, professional slides banana.</p>
+        <div class="tool-cta">Course kholo →</div>
+      </a>
 
-      <div class="ai-card">
-        <h3>📓 NotebookLM</h3>
-        <p>Google's AI research assistant that reads your documents and answers questions from your own sources.</p>
-        <a href="notebooklm.html" class="ai-btn">Learn More</a>
-      </div>
+      <a class="tool-card" href="elicit-ai-course.html">
+        <div class="tool-num">03</div>
+        <h3 class="tool-name">Elicit AI</h3>
+        <span class="tool-tag" style="background:#E9F1EC; color:var(--teal);">Research Assistant</span>
+        <p class="tool-desc">Academic papers se data extract karke comparison table banana.</p>
+        <div class="tool-cta">Course kholo →</div>
+      </a>
 
-      <div class="ai-card">
-        <h3>📊 Gamma AI</h3>
-        <p>Create beautiful presentations, documents and websites from text prompts in minutes with AI.</p>
-        <a href="gamma-ai.html" class="ai-btn">Learn More</a>
-      </div>
+      <a class="tool-card" href="gamma-ai-course.html">
+        <div class="tool-num">04</div>
+        <h3 class="tool-name">Gamma AI</h3>
+        <span class="tool-tag" style="background:#FBEEE1; color:var(--amber);">Content Generator</span>
+        <p class="tool-desc">Ek prompt se poora deck, doc ya webpage generate karna.</p>
+        <div class="tool-cta">Course kholo →</div>
+      </a>
 
-      <div class="ai-card">
-        <h3>📎 Microsoft 365 Copilot</h3>
-        <p>AI assistant built into Word, Excel, PowerPoint and Outlook to boost your daily productivity.</p>
-        <a href="microsoft-365-copilot.html" class="ai-btn">Learn More</a>
-      </div>
+      <a class="tool-card" href="notebooklm-course.html">
+        <div class="tool-num">05</div>
+        <h3 class="tool-name">NotebookLM</h3>
+        <span class="tool-tag" style="background:#EAF1F8; color:var(--navy);">Grounded Research</span>
+        <p class="tool-desc">Apne sources se hi citation ke saath jawab lena.</p>
+        <div class="tool-cta">Course kholo →</div>
+      </a>
 
-      <div class="ai-card">
-        <h3>🦦 Otter AI</h3>
-        <p>AI meeting assistant that records, transcribes and summarizes meetings and conversations automatically.</p>
-        <a href="otter-ai.html" class="ai-btn">Learn More</a>
-      </div>
+      <a class="tool-card" href="notion-ai-course.html">
+        <div class="tool-num">06</div>
+        <h3 class="tool-name">Notion AI</h3>
+        <span class="tool-tag" style="background:#FBEEE1; color:var(--coral);">Workspace Assistant</span>
+        <p class="tool-desc">Apne notes aur workspace ke andar hi likhna aur sawaal poochna.</p>
+        <div class="tool-cta">Course kholo →</div>
+      </a>
 
-      <div class="ai-card">
-        <h3>⚡ Zapier AI</h3>
-        <p>Automate your workflows and connect 6000+ apps with AI-powered automation without any coding.</p>
-        <a href="zapier-ai.html" class="ai-btn">Learn More</a>
-      </div>
+      <a class="tool-card" href="otter-ai-course.html">
+        <div class="tool-num">07</div>
+        <h3 class="tool-name">Otter AI</h3>
+        <span class="tool-tag" style="background:#E9F1EC; color:var(--teal);">Meeting Transcription</span>
+        <p class="tool-desc">Live meetings ko transcribe karke summary aur action items nikalna.</p>
+        <div class="tool-cta">Course kholo →</div>
+      </a>
 
-      <div class="ai-card">
-        <h3>🔍 Elicit AI</h3>
-        <p>AI research assistant that finds, summarizes and analyzes academic papers and research automatically.</p>
-        <a href="elicit-ai.html" class="ai-btn">Learn More</a>
-      </div>
+      <a class="tool-card" href="reclaim-ai-course.html">
+        <div class="tool-num">08</div>
+        <h3 class="tool-name">Reclaim AI</h3>
+        <span class="tool-tag" style="background:#F0EAFB; color:var(--plum);">Smart Calendar</span>
+        <p class="tool-desc">Tasks aur habits ko priority ke hisaab se khud calendar mein fit karna.</p>
+        <div class="tool-cta">Course kholo →</div>
+      </a>
 
-      <div class="ai-card">
-        <h3>✨ Beautiful AI</h3>
-        <p>Smart presentation maker that automatically designs stunning slides as you add your content.</p>
-        <a href="beautiful-ai.html" class="ai-btn">Learn More</a>
-      </div>
+      <a class="tool-card" href="taskade-ai-course.html">
+        <div class="tool-num">09</div>
+        <h3 class="tool-name">Taskade AI</h3>
+        <span class="tool-tag" style="background:#E9F1EC; color:var(--olive);">Tasks + AI Agents</span>
+        <p class="tool-desc">Projects manage karna aur custom AI agents se kaam karwana.</p>
+        <div class="tool-cta">Course kholo →</div>
+      </a>
 
-      <div class="ai-card">
-        <h3>📅 Reclaim AI</h3>
-        <p>AI calendar assistant that automatically schedules tasks, meetings and habits to maximize your time.</p>
-        <a href="reclaim-ai.html" class="ai-btn">Learn More</a>
-      </div>
-
-      <div class="ai-card">
-        <h3>✅ Taskade AI</h3>
-        <p>AI-powered project management and team collaboration tool for tasks, notes and workflow automation.</p>
-        <a href="taskade-ai.html" class="ai-btn">Learn More</a>
-      </div>
+      <a class="tool-card" href="zapier-ai-course.html">
+        <div class="tool-num">10</div>
+        <h3 class="tool-name">Zapier AI</h3>
+        <span class="tool-tag" style="background:#FBEADF; color:var(--coral);">Automation</span>
+        <p class="tool-desc">Apps ko trigger → action ke through ek dusre se connect karna.</p>
+        <div class="tool-cta">Course kholo →</div>
+      </a>
 
     </div>
-  </div>
-</section>
+  </section>
 
-<footer>
-  <div class="container footer-content">
-    <div>
-      <h3>AI Learn Then Earn</h3>
-      <p>Master AI Skills and Start Earning Online. Learn ChatGPT, Gemini, Claude, Copilot, SEO, AI Tools and much more.</p>
-    </div>
-    <div>
-      <h4>Quick Links</h4>
-      <a href="../index.html">Home</a>
-      <a href="../tools.html">AI Tools</a>
-      <a href="../courses.html">Courses</a>
-      <a href="../earn.html">Earn Online</a>
-      <a href="../blog.html">Blog</a>
-      <a href="../contact.html">Contact</a>
-    </div>
-    <div>
-      <h4>Top Productivity Tools</h4>
-      <a href="notion-ai.html">Notion AI</a>
-      <a href="notebooklm.html">NotebookLM</a>
-      <a href="gamma-ai.html">Gamma AI</a>
-      <a href="microsoft-365-copilot.html">Microsoft 365 Copilot</a>
-      <a href="otter-ai.html">Otter AI</a>
-    </div>
-  </div>
-  <hr>
-  <p class="copyright">© 2026 AI Learn Then Earn. All Rights Reserved.</p>
-</footer>
+</main>
 
-<button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-<script src="../script.js"></script>
+<footer>Productivity AI Tools Course Library — sab courses ek jagah, apni raftaar se seekho.</footer>
 
 </body>
 </html>
