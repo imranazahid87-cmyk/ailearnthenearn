@@ -32,10 +32,10 @@
     </nav>
 
     <div class="header-right">
-      <div class="search-box">
-        <input type="text" placeholder="Search AI Courses...">
-        <button>🔍</button>
-      </div>
+      <div class="search-box" onclick="window.location.href='search.html'" style="cursor:pointer">
+  <input type="text" id="searchInput" placeholder="Search AI Courses..." onkeydown="if(event.key==='Enter'){window.location.href='search.html?q='+this.value}">
+  <button onclick="window.location.href='search.html?q='+document.getElementById('searchInput').value">🔍</button>
+</div>
       <div class="menu-btn" onclick="toggleMenu()">☰</div>
     </div>
 
