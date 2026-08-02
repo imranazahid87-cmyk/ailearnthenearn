@@ -1,1 +1,307 @@
 
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beautiful.ai — Poora Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FBF9F6;
+    --panel: #FFFFFF;
+    --ink: #211F2E;
+    --ink-soft: #625F73;
+    --violet: #5B4B8A;
+    --coral: #E0673F;
+    --mint: #2E8B76;
+    --line: #E8E3D8;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;line-height:1.6;}
+  h1,h2,h3,.display{font-family:'Fraunces',serif;letter-spacing:-0.01em;}
+  code,.mono{font-family:'JetBrains Mono',monospace;}
+
+  .topbar{
+    background:var(--panel);
+    border-bottom:1px solid var(--line);
+    padding:14px 24px;
+    display:flex;
+    gap:22px;
+    overflow-x:auto;
+    position:sticky; top:0; z-index:50;
+  }
+  .topbar a{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    text-decoration:none;
+    white-space:nowrap;
+    font-weight:500;
+    cursor:pointer;
+  }
+  .topbar a:hover{ color:var(--violet); }
+
+  main{max-width:920px; margin:0 auto; padding:0 24px;}
+
+  .hero{ padding:70px 0 50px; border-bottom:1px solid var(--line); }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:13px; font-weight:600; color:var(--coral);
+    background:#FCEEE8; padding:6px 12px; border-radius:100px; margin-bottom:20px;
+  }
+  .hero h1{ font-size:clamp(34px,6vw,52px); font-weight:700; margin:0 0 18px; max-width:15ch; }
+  .hero h1 em{ color:var(--violet); font-style:italic; }
+  .hero p{ font-size:18px; color:var(--ink-soft); max-width:60ch; margin:0 0 32px; }
+
+  /* Signature: animated slide-deck stack, since Beautiful.ai IS about slides that auto-arrange */
+  .deck{
+    position:relative;
+    height:230px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .slide{
+    position:absolute;
+    width:340px;
+    height:190px;
+    border-radius:10px;
+    box-shadow:0 20px 40px -18px rgba(33,31,46,.35);
+    padding:22px;
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+  }
+  .slide.s1{ background:var(--violet); transform:rotate(-6deg) translateX(-70px); z-index:1; }
+  .slide.s2{ background:var(--coral); transform:rotate(2deg) translateY(-10px); z-index:3; }
+  .slide.s3{ background:var(--mint); transform:rotate(8deg) translateX(70px); z-index:2; }
+  .slide .bar{ height:8px; border-radius:4px; background:rgba(255,255,255,.5); margin-bottom:8px;}
+  .slide .bar.w60{width:60%;} .slide .bar.w40{width:40%;} .slide .bar.w80{width:80%;}
+  .slide .num{ font-family:'Fraunces',serif; font-size:26px; font-weight:700; }
+
+  section{ padding:56px 0; border-bottom:1px solid var(--line); }
+  section.no-border{ border-bottom:none; }
+  .section-label{
+    font-size:13px; font-weight:600; color:var(--coral);
+    text-transform:uppercase; letter-spacing:.08em; margin-bottom:10px;
+  }
+  section h2{ font-size:clamp(24px,3.4vw,32px); margin:0 0 24px; }
+
+  .grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px; }
+  .card{ background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:20px; }
+  .card h3{ font-size:17px; margin:0 0 8px; display:flex; align-items:center; gap:8px; }
+  .card p{ font-size:14.5px; color:var(--ink-soft); margin:0; }
+  .tag-dot{ width:10px; height:10px; border-radius:3px; flex-shrink:0; }
+
+  .compare{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+  .compare-col{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:20px;
+  }
+  .compare-col h4{ margin:0 0 12px; font-size:15px; }
+  .compare-col.old h4{ color:var(--ink-soft); }
+  .compare-col.new h4{ color:var(--violet); }
+  .compare-col ul{ margin:0; padding-left:18px; font-size:14px; color:var(--ink-soft); }
+  .compare-col li{ margin-bottom:6px; }
+
+  .steps{ counter-reset:step; list-style:none; margin:0; padding:0; }
+  .steps li{ counter-increment:step; display:flex; gap:16px; padding:16px 0; border-top:1px solid var(--line); }
+  .steps li:first-child{ border-top:none; }
+  .steps li::before{
+    content:counter(step); font-family:'Fraunces',serif; font-weight:700; font-size:14px;
+    color:var(--mint); background:#E9F4F1; width:30px; height:30px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .steps h4{ margin:0 0 4px; font-size:15.5px; }
+  .steps p{ margin:0; font-size:14px; color:var(--ink-soft); }
+
+  .accordion-item{ border:1px solid var(--line); border-radius:10px; margin-bottom:10px; background:var(--panel); overflow:hidden; }
+  .accordion-q{ padding:16px 18px; display:flex; justify-content:space-between; align-items:center; cursor:pointer; font-weight:500; font-size:15px; }
+  .accordion-arrow{ transition:.25s; color:var(--ink-soft); }
+  .accordion-item.open .accordion-arrow{ transform:rotate(180deg); }
+  .accordion-a{ max-height:0; overflow:hidden; transition:max-height .3s ease; font-size:14.5px; color:var(--ink-soft); padding:0 18px; }
+  .accordion-item.open .accordion-a{ padding:0 18px 16px; }
+
+  .quiz-box{ background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:24px; }
+  .quiz-q{ font-weight:600; margin-bottom:14px; }
+  .quiz-opt{ display:block; width:100%; text-align:left; padding:12px 14px; margin-bottom:8px; border:1px solid var(--line); border-radius:8px; background:#fff; cursor:pointer; font-size:14.5px; font-family:inherit; }
+  .quiz-opt:hover{ border-color:var(--violet); }
+  .quiz-opt.correct{ background:#E9F4F1; border-color:var(--mint); color:var(--mint); font-weight:600; }
+  .quiz-opt.wrong{ background:#FBEAE8; border-color:#C75A4E; color:#C75A4E; }
+  .quiz-feedback{ margin-top:12px; font-size:14px; color:var(--ink-soft); min-height:20px; }
+
+  footer{ padding:40px 0 60px; text-align:center; color:var(--ink-soft); font-size:13.5px; }
+
+  @media (max-width:600px){
+    .hero{padding:48px 0 36px;}
+    .deck{height:200px;}
+    .slide{width:260px; height:150px; padding:16px;}
+    .compare{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <a onclick="jump('kya-hai')">Kya Hai</a>
+  <a onclick="jump('design-ai')">Design AI</a>
+  <a onclick="jump('workflow')">Workflow</a>
+  <a onclick="jump('usecases')">Use-Cases</a>
+  <a onclick="jump('faq')">Do's & Don'ts</a>
+  <a onclick="jump('quiz')">Quiz</a>
+</nav>
+
+<main>
+
+  <section class="hero no-border">
+    <div class="eyebrow">● Presentation AI Course</div>
+    <h1>Beautiful.ai se <em>designer-level</em> slides, bina designer ke</h1>
+    <p>Beautiful.ai ek presentation tool hai jahan aap sirf content daalte ho, aur ek "Design AI" automatically har slide ko alignment, spacing aur layout ke hisaab se sundar banata rehta hai — real-time mein.</p>
+
+    <div class="deck">
+      <div class="slide s1">
+        <div><div class="bar w60"></div><div class="bar w40"></div></div>
+        <div class="num">01</div>
+      </div>
+      <div class="slide s2">
+        <div><div class="bar w80"></div><div class="bar w40"></div></div>
+        <div class="num">02</div>
+      </div>
+      <div class="slide s3">
+        <div><div class="bar w60"></div><div class="bar w80"></div></div>
+        <div class="num">03</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kya-hai">
+    <div class="section-label">Shuruaat</div>
+    <h2>Beautiful.ai hai kya cheez?</h2>
+    <p style="color:var(--ink-soft); max-width:65ch; margin-bottom:24px;">Ye PowerPoint jaisa hi presentation tool hai, lekin farak ek hai: yahan aap manually text-box ko drag karke align nahi karte. Aap content daalte ho aur Design AI khud decide karta hai spacing, size aur position — aur jab bhi aap kuch add/remove karte ho, poora slide khud-ba-khud re-adjust ho jaata hai.</p>
+    <div class="grid">
+      <div class="card">
+        <h3><span class="tag-dot" style="background:var(--violet);"></span>Smart Templates</h3>
+        <p>Har slide type (timeline, comparison, stats) ke liye ready template — bas apna data daalo.</p>
+      </div>
+      <div class="card">
+        <h3><span class="tag-dot" style="background:var(--coral);"></span>Auto-Design</h3>
+        <p>Text ya image add karo, design engine khud layout ko balance kar deta hai — misalignment ka scope hi nahi.</p>
+      </div>
+      <div class="card">
+        <h3><span class="tag-dot" style="background:var(--mint);"></span>Team Brand Kit</h3>
+        <p>Company ka logo, colors, fonts ek baar set karo — har naya deck automatically brand-consistent banega.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="design-ai">
+    <div class="section-label">Core Idea</div>
+    <h2>Design AI ka jaadu kaise chalta hai</h2>
+    <div class="compare">
+      <div class="compare-col old">
+        <h4>Normal PowerPoint mein</h4>
+        <ul>
+          <li>Text box khud resize karna</li>
+          <li>Alignment guides se manually match karna</li>
+          <li>Naya point add karo toh sab kuch hilta hai</li>
+          <li>Design sense chahiye achha dikhne ke liye</li>
+        </ul>
+      </div>
+      <div class="compare-col new">
+        <h4>Beautiful.ai mein</h4>
+        <ul>
+          <li>Content type karo, layout khud set hota hai</li>
+          <li>Alignment hamesha perfect rehta hai</li>
+          <li>Naya point add karo, baaki elements khud adjust</li>
+          <li>Design sense AI ke paas hai, aap sirf content par focus karo</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="workflow">
+    <div class="section-label">Hands-On</div>
+    <h2>Ek deck banane ka workflow</h2>
+    <ol class="steps">
+      <li><div><h4>Topic aur outline batao</h4><p>AI se poochho "Q3 sales review ke liye 8-slide deck banao" — ek starting structure mil jaata hai.</p></div></li>
+      <li><div><h4>Smart slide type chuno</h4><p>Comparison, timeline, team-intro, stats — har type ka apna auto-layout hota hai.</p></div></li>
+      <li><div><h4>Content daalo, design chhod do</h4><p>Bullets, numbers, images add karte jao — spacing aur size Design AI sambhal lega.</p></div></li>
+      <li><div><h4>Brand kit apply karo</h4><p>Ek click mein company ke colors aur fonts poore deck par consistent ho jaate hain.</p></div></li>
+      <li><div><h4>Present ya share karo</h4><p>Live present karo, PDF export karo, ya link se share — sab options built-in hain.</p></div></li>
+    </ol>
+  </section>
+
+  <section id="usecases">
+    <div class="section-label">Practical</div>
+    <h2>Kaam aane wale use-cases</h2>
+    <div class="grid">
+      <div class="card"><h3>📈 Sales pitch</h3><p>Client ko dikhane wala professional deck 20 minute mein, bina design skills ke.</p></div>
+      <div class="card"><h3>🎓 Class presentation</h3><p>Student projects ko clean, organized look dena bina hours lagaye.</p></div>
+      <div class="card"><h3>🧾 Board update</h3><p>Monthly metrics aur updates ko consistent, brand-matching slides mein present karna.</p></div>
+      <div class="card"><h3>🤝 Team all-hands</h3><p>Har team member same brand kit se apni updates jaldi bana sakta hai.</p></div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="section-label">Zaroori</div>
+    <h2>Do's aur Don'ts</h2>
+    <div class="accordion-item" onclick="toggleAcc(this)">
+      <div class="accordion-q">Kya Beautiful.ai free hai? <span class="accordion-arrow">▾</span></div>
+      <div class="accordion-a">Ek limited free trial milta hai, lekin poora feature set (brand kit, unlimited exports) paid plans mein aata hai.</div>
+    </div>
+    <div class="accordion-item" onclick="toggleAcc(this)">
+      <div class="accordion-q">Kya main isse pixel-perfect manual control kar sakta hoon? <span class="accordion-arrow">▾</span></div>
+      <div class="accordion-a">Nahi, ye iska trade-off hai — aap thoda manual control chhodte ho taaki design hamesha consistent rahe. Bahut fine-tuned custom design ke liye ye best tool nahi hai.</div>
+    </div>
+    <div class="accordion-item" onclick="toggleAcc(this)">
+      <div class="accordion-q">Kya PowerPoint files import kar sakte hain? <span class="accordion-arrow">▾</span></div>
+      <div class="accordion-a">Haan, import possible hai, lekin layout Beautiful.ai ke smart templates ke hisaab se re-adjust ho sakta hai.</div>
+    </div>
+  </section>
+
+  <section id="quiz" class="no-border">
+    <div class="section-label">Test Yourself</div>
+    <h2>Ek quick quiz</h2>
+    <div class="quiz-box">
+      <div class="quiz-q">Beautiful.ai ka sabse bada unique feature kya hai?</div>
+      <button class="quiz-opt" onclick="checkAns(this,false)">Ye sirf stock images provide karta hai</button>
+      <button class="quiz-opt" onclick="checkAns(this,true)">Design AI jo har slide ko real-time mein auto-align aur balance karta hai</button>
+      <button class="quiz-opt" onclick="checkAns(this,false)">Ye sirf video editing tool hai</button>
+      <div class="quiz-feedback" id="feedback"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>Beautiful.ai Course — content par focus karo, design AI par chhodo.</footer>
+
+<script>
+function jump(id){ document.getElementById(id).scrollIntoView({behavior:'smooth'}); }
+
+function toggleAcc(el){ el.classList.toggle('open'); }
+
+function checkAns(btn, isCorrect){
+  const opts = btn.parentElement.querySelectorAll('.quiz-opt');
+  opts.forEach(o=>o.disabled=true);
+  if(isCorrect){
+    btn.classList.add('correct');
+    document.getElementById('feedback').textContent = "Sahi jawab! Design AI hi iski jaan hai.";
+  } else {
+    btn.classList.add('wrong');
+    document.getElementById('feedback').textContent = "Thoda aur socho — sahi jawab highlight ho gaya hai.";
+    opts.forEach(o=>{ if(o.onclick.toString().includes('true')) o.classList.add('correct'); });
+  }
+}
+</script>
+
+</body>
+</html>
