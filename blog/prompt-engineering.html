@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompt Engineering Guide 2026 | AI Learn Then Earn</title>
+<meta name="description" content="Learn prompt engineering in 2026 — the skill of writing effective AI prompts. Discover proven frameworks, techniques and how to earn money as a prompt engineer.">
+<link rel="stylesheet" href="../style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  .blog-hero {
+    background: linear-gradient(135deg, #0b1736, #0d4fd8);
+    padding: 60px 0 40px;
+    text-align: center;
+    color: #fff;
+  }
+  .blog-hero h1 { font-size: 36px; font-weight: 700; margin-bottom: 15px; line-height: 1.3; }
+  .blog-hero p { font-size: 17px; color: #dbe7ff; max-width: 650px; margin: 0 auto 20px; }
+  .blog-meta { display: flex; justify-content: center; gap: 20px; font-size: 14px; color: #a0b4ff; flex-wrap: wrap; }
+  .blog-body { max-width: 800px; margin: 50px auto; padding: 0 20px 80px; }
+  .blog-body h2 { font-size: 26px; color: #0b1736; margin: 40px 0 15px; padding-left: 14px; border-left: 4px solid #2f80ff; }
+  .blog-body h3 { font-size: 20px; color: #1a2a6c; margin: 25px 0 10px; }
+  .blog-body p { font-size: 16px; color: #444; line-height: 1.9; margin-bottom: 18px; }
+  .blog-body ul, .blog-body ol { padding-left: 22px; margin-bottom: 20px; }
+  .blog-body li { font-size: 16px; color: #444; line-height: 1.8; margin-bottom: 8px; }
+  .highlight-box { background: #eef4ff; border-left: 5px solid #2f80ff; border-radius: 8px; padding: 20px 24px; margin: 30px 0; }
+  .highlight-box p { margin: 0; color: #1a2a6c; font-weight: 500; }
+  .tip-box { background: #f0fff4; border-left: 5px solid #22c55e; border-radius: 8px; padding: 20px 24px; margin: 30px 0; }
+  .tip-box p { margin: 0; color: #166534; font-weight: 500; }
+  .warning-box { background: #fffbeb; border-left: 5px solid #f59e0b; border-radius: 8px; padding: 20px 24px; margin: 30px 0; }
+  .warning-box p { margin: 0; color: #92400e; font-weight: 500; }
+  .tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin: 25px 0; }
+  .tool-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 22px 18px; text-align: center; box-shadow: 0 4px 14px rgba(0,0,0,0.06); }
+  .tool-card .icon { font-size: 36px; margin-bottom: 10px; }
+  .tool-card h4 { font-size: 17px; color: #0b1736; margin-bottom: 6px; }
+  .tool-card .tag { display: inline-block; background: #eef4ff; color: #2f80ff; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 20px; margin-bottom: 8px; }
+  .tool-card p { font-size: 14px; color: #666; margin: 0; }
+  .prompt-box { background: #0b1736; border-radius: 10px; padding: 20px 24px; margin: 20px 0; }
+  .prompt-box p { color: #a0b4ff; font-size: 13px; margin: 0 0 8px; }
+  .prompt-box code { color: #7dd3fc; font-size: 14px; line-height: 1.8; font-family: monospace; }
+  .earn-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin: 25px 0; }
+  .earn-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 22px 18px; box-shadow: 0 4px 14px rgba(0,0,0,0.06); }
+  .earn-card .num { font-size: 26px; font-weight: 700; color: #2f80ff; margin-bottom: 8px; }
+  .earn-card h4 { font-size: 16px; color: #0b1736; margin-bottom: 6px; }
+  .earn-card p { font-size: 14px; color: #666; margin: 0; }
+  .cta-section { background: linear-gradient(135deg, #0b1736, #0d4fd8); border-radius: 16px; padding: 40px 30px; text-align: center; color: #fff; margin-top: 50px; }
+  .cta-section h3 { font-size: 24px; margin-bottom: 12px; }
+  .cta-section p { color: #dbe7ff; margin-bottom: 25px; font-size: 16px; }
+  .blog-nav { display: flex; justify-content: space-between; margin-top: 50px; gap: 15px; flex-wrap: wrap; }
+  .blog-nav a { flex: 1 1 200px; background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px 18px; text-decoration: none; color: #0b1736; font-size: 14px; font-weight: 500; transition: .3s; }
+  .blog-nav a:hover { border-color: #2f80ff; color: #2f80ff; }
+  .blog-nav a span { display: block; font-size: 12px; color: #999; margin-bottom: 4px; }
+  .blog-nav a.next { text-align: right; }
+  @media(max-width: 600px) {
+    .blog-hero h1 { font-size: 26px; }
+    .blog-body h2 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="container">
+    <a href="../index.html" class="logo">
+      <img src="../images/logo.webp" alt="AI Learn Then Earn Logo">
+      <span>AI Learn Then Earn</span>
+    </a>
+    <nav id="navbar">
+      <a href="../index.html">Home</a>
+      <a href="../ai-assistants/">AI Tools</a>
+      <a href="../courses.html">Courses</a>
+      <a href="../earn.html">Earn</a>
+      <a href="../blog.html" class="active">Blog</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+    <div class="header-right">
+      <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    </div>
+  </div>
+</header>
+
+<!-- BLOG HERO -->
+<div class="blog-hero">
+  <div class="container">
+    <h1>Prompt Engineering in 2026 — The Skill Everyone Needs to Learn</h1>
+    <p>A complete beginner's guide to prompt engineering — proven frameworks, real prompt examples and how to turn this skill into an income stream.</p>
+    <div class="blog-meta">
+      <span>📅 August 2026</span>
+      <span>⏱ 7 min read</span>
+      <span>🏷 Prompt Engineering · ChatGPT · Claude</span>
+    </div>
+  </div>
+</div>
+
+<!-- BLOG CONTENT -->
+<div class="blog-body">
+
+  <p>Every AI tool you use — chatbots, image generators, video tools, coding assistants — responds to one thing above all else: how you ask. Prompt engineering is the skill of writing clear, structured instructions that get AI models to produce exactly the result you want, instead of vague or generic output.</p>
+  <p>As AI becomes part of everyday work, prompt engineering has quietly become one of the most valuable and transferable skills you can learn. This guide breaks down exactly how it works, the frameworks that professionals use and how you can turn this skill into real income.</p>
+
+  <div class="highlight-box">
+    <p>🧠 Prompt engineering isn't about "tricking" AI — it's about communicating clearly. The better you describe what you want, the better the AI can deliver it.</p>
+  </div>
+
+  <h2>What Is Prompt Engineering?</h2>
+  <p>Prompt engineering is the process of crafting inputs — questions, instructions or context — that guide an AI model toward a specific, high-quality output. It applies to text models like ChatGPT and Claude, image generators like Midjourney, video tools like Runway, and even AI coding assistants.</p>
+  <p>The same underlying model can produce wildly different results depending on the prompt. A vague prompt gets a generic answer. A well-structured prompt with context, examples and clear instructions gets a precise, useful one.</p>
+
+  <h2>Core Prompt Engineering Techniques</h2>
+
+  <div class="tool-grid">
+    <div class="tool-card">
+      <div class="icon">🎯</div>
+      <h4>Role Prompting</h4>
+      <span class="tag">Foundational</span>
+      <p>Tell the AI what role to play, e.g. "act as an experienced copywriter," to shape tone and expertise.</p>
+    </div>
+    <div class="tool-card">
+      <div class="icon">📋</div>
+      <h4>Few-Shot Examples</h4>
+      <span class="tag">Powerful</span>
+      <p>Show the AI 1-3 examples of the output format you want. It will follow the pattern closely.</p>
+    </div>
+    <div class="tool-card">
+      <div class="icon">🪜</div>
+      <h4>Step-by-Step Prompting</h4>
+      <span class="tag">Best for Reasoning</span>
+      <p>Ask the AI to "think step by step" or break a task into stages for more accurate, logical answers.</p>
+    </div>
+    <div class="tool-card">
+      <div class="icon">🔁</div>
+      <h4>Iterative Refinement</h4>
+      <span class="tag">Essential</span>
+      <p>Treat the first response as a draft. Ask follow-up questions to refine tone, length or detail.</p>
+    </div>
+    <div class="tool-card">
+      <div class="icon">🧩</div>
+      <h4>Context Stacking</h4>
+      <span class="tag">Advanced</span>
+      <p>Provide background information, constraints and goals upfront so the AI has everything it needs in one go.</p>
+    </div>
+    <div class="tool-card">
+      <div class="icon">📐</div>
+      <h4>Output Formatting</h4>
+      <span class="tag">Practical</span>
+      <p>Specify exactly how you want the answer structured — bullet points, tables, word count or tone.</p>
+    </div>
+  </div>
+
+  <h2>A Simple Prompt Formula That Works Every Time</h2>
+  <p><strong>Role + Task + Context + Format + Constraints</strong></p>
+  <p>Here are real examples showing the difference between a weak prompt and a strong one:</p>
+
+  <h3>Basic Prompt (Poor Result)</h3>
+  <div class="prompt-box">
+    <p>❌ Too vague:</p>
+    <code>write me a marketing email</code>
+  </div>
+
+  <h3>Improved Prompt (Much Better Result)</h3>
+  <div class="prompt-box">
+    <p>✅ Detailed and specific:</p>
+    <code>write a marketing email for a small coffee shop announcing a new autumn menu, friendly and warm tone, under 150 words</code>
+  </div>
+
+  <h3>Advanced Prompt (Professional Result)</h3>
+  <div class="prompt-box">
+    <p>🌟 Full professional prompt:</p>
+    <code>act as an experienced email copywriter. Write a marketing email for a small independent coffee shop announcing our new autumn menu (pumpkin spice latte, cinnamon rolls, chai tea). Tone: warm, friendly, slightly playful. Include a subject line, a short intro, 3 bullet points highlighting menu items, and a clear call to action to visit this weekend. Keep it under 150 words.</code>
+  </div>
+
+  <div class="tip-box">
+    <p>✅ Pro tip: Always tell the AI what to avoid, not just what to include — e.g. "avoid corporate jargon" or "don't use exclamation marks" — this often improves results as much as positive instructions do.</p>
+  </div>
+
+  <h2>Common Mistakes to Avoid</h2>
+  <ul>
+    <li><strong>Being too vague:</strong> "make it better" gives the AI nothing to work with — be specific about what's wrong</li>
+    <li><strong>Overloading one prompt:</strong> break complex tasks into smaller steps instead of asking for everything at once</li>
+    <li><strong>Skipping context:</strong> the AI doesn't know your audience, goals or constraints unless you tell it</li>
+    <li><strong>Not iterating:</strong> the first response is rarely final — refine it with follow-up prompts</li>
+    <li><strong>Ignoring format:</strong> always specify structure if it matters — tables, bullet points, length, tone</li>
+  </ul>
+
+  <h2>5 Ways to Earn Money With Prompt Engineering</h2>
+
+  <div class="earn-grid">
+    <div class="earn-card">
+      <div class="num">01</div>
+      <h4>Sell Prompt Packs</h4>
+      <p>Create and sell curated prompt collections for specific niches (marketing, coding, design) on platforms like PromptBase or Gumroad.</p>
+    </div>
+    <div class="earn-card">
+      <div class="num">02</div>
+      <h4>Freelance AI Consulting</h4>
+      <p>Help businesses design prompts and workflows for their customer support, content or internal tools on Upwork or Fiverr.</p>
+    </div>
+    <div class="earn-card">
+      <div class="num">03</div>
+      <h4>AI Workflow Automation</h4>
+      <p>Combine strong prompting with tools like Zapier or Make to build automated content and business workflows for clients.</p>
+    </div>
+    <div class="earn-card">
+      <div class="num">04</div>
+      <h4>Teach Prompt Engineering</h4>
+      <p>Create courses, guides or YouTube content teaching others how to prompt effectively across different AI tools.</p>
+    </div>
+    <div class="earn-card">
+      <div class="num">05</div>
+      <h4>AI-Powered Freelance Work</h4>
+      <p>Use strong prompting skills to deliver writing, design or research work faster and take on more freelance clients.</p>
+    </div>
+  </div>
+
+  <h2>Getting Started Today — Your First Steps</h2>
+  <ol>
+    <li>Pick one AI tool (ChatGPT, Claude or Gemini) and practice writing prompts daily</li>
+    <li>Rewrite 5 vague prompts using the Role + Task + Context + Format + Constraints formula</li>
+    <li>Practice iterative refinement — never settle for the first response</li>
+    <li>Save your best-performing prompts in a personal prompt library</li>
+    <li>Explore one earning method — selling prompt packs is a great low-cost starting point</li>
+  </ol>
+
+  <div class="cta-section">
+    <h3>Want to Master Prompt Engineering?</h3>
+    <p>Our Prompt Engineering course teaches you proven frameworks and real-world techniques to get better results from any AI tool — step by step.</p>
+    <a href="../Prompt-Engineering-Mastery/index.html" class="btn">🚀 Start Prompt Engineering Course</a>
+  </div>
+
+  <div class="blog-nav">
+    <a href="ai-video-creation.html"><span>← Previous Article</span>AI Video Creation</a>
+    <a class="next" href="earn-with-ai.html"><span>Next Article →</span>Earn With AI</a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container footer-content">
+    <div>
+      <h3>AI Learn Then Earn</h3>
+      <p>Learn AI, Build Skills and Start Earning Online with step-by-step practical courses.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <a href="../index.html">Home</a>
+      <a href="../ai-assistants/">AI Tools</a>
+      <a href="../courses.html">Courses</a>
+      <a href="../earn.html">Earn Online</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../contact.html">Contact</a>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p>📧 info@ailearnthenearn.com</p>
+      <p>📍 Pakistan</p>
+    </div>
+  </div>
+  <hr>
+  <p class="copyright">© 2026 AI Learn Then Earn. All Rights Reserved.</p>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>
