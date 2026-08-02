@@ -343,7 +343,23 @@ body{
     line-height:1.7;
     font-size:16px;
 }
+.btn-secondary {
+    display: inline-block;
+    padding: 14px 28px;
+    background: #ffffff;
+    color: #0b1736;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: .3s;
+    border: 2px solid #ffffff;
+}
 
+.btn-secondary:hover {
+    background: transparent;
+    color: #ffffff;
+    transform: translateY(-3px);
+}
 /* ===== COURSES ===== */
 .course-grid{
     display:grid;
