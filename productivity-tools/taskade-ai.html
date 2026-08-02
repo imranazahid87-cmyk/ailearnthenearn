@@ -1,1 +1,284 @@
 
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taskade AI — Poora Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F7F8FA;
+    --panel: #FFFFFF;
+    --ink: #1B1F2A;
+    --ink-soft: #565C6B;
+    --violet: #5B3DA8;
+    --teal: #1E8C7A;
+    --amber: #D98A2E;
+    --line: #E3E6EC;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;line-height:1.6;}
+  h1,h2,h3,.display{font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:-0.02em;}
+  code,.mono{font-family:'JetBrains Mono',monospace;}
+
+  .topbar{
+    background:var(--panel); border-bottom:1px solid var(--line); padding:14px 24px;
+    display:flex; gap:22px; overflow-x:auto; position:sticky; top:0; z-index:50;
+  }
+  .topbar a{ font-size:13.5px; color:var(--ink-soft); text-decoration:none; white-space:nowrap; font-weight:500; cursor:pointer; }
+  .topbar a:hover{ color:var(--violet); }
+
+  main{max-width:920px; margin:0 auto; padding:0 24px;}
+
+  .hero{ padding:70px 0 50px; border-bottom:1px solid var(--line); }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:var(--teal);
+    background:#E7F3F0; padding:6px 12px; border-radius:100px; margin-bottom:20px;
+  }
+  .hero h1{ font-size:clamp(34px,6vw,52px); font-weight:800; margin:0 0 18px; max-width:15ch; }
+  .hero h1 span{ color:var(--violet); }
+  .hero p{ font-size:18px; color:var(--ink-soft); max-width:60ch; margin:0 0 32px; }
+
+  /* Signature: a checklist that spawns AI agent "worker" icons next to each task */
+  .agent-demo{ background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:22px; }
+  .task-row{
+    display:flex; align-items:center; gap:12px; padding:10px 0; border-bottom:1px solid var(--line);
+  }
+  .task-row:last-child{ border-bottom:none; }
+  .checkbox{ width:18px; height:18px; border-radius:5px; border:2px solid var(--line); flex-shrink:0; }
+  .checkbox.done{ background:var(--teal); border-color:var(--teal); }
+  .task-text{ flex:1; font-size:14.5px; }
+  .task-text.strike{ text-decoration:line-through; color:var(--ink-soft); }
+  .agent-badge{
+    font-size:11px; font-weight:700; background:#F0EAFB; color:var(--violet);
+    padding:4px 9px; border-radius:20px; display:flex; align-items:center; gap:4px;
+  }
+
+  section{ padding:56px 0; border-bottom:1px solid var(--line); }
+  section.no-border{ border-bottom:none; }
+  .section-label{
+    font-size:13px; font-weight:700; color:var(--teal); text-transform:uppercase; letter-spacing:.08em; margin-bottom:10px;
+  }
+  section h2{ font-size:clamp(24px,3.4vw,32px); margin:0 0 24px; }
+
+  .grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px; }
+  .card{ background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:20px; }
+  .card h3{ font-size:17px; margin:0 0 8px; display:flex; align-items:center; gap:8px; }
+  .card p{ font-size:14.5px; color:var(--ink-soft); margin:0; }
+  .tag-dot{ width:10px; height:10px; border-radius:3px; flex-shrink:0; }
+
+  .feat-tabs{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px; }
+  .feat-btn{
+    font-size:14px; font-weight:600; padding:9px 16px; border-radius:8px;
+    border:1px solid var(--line); background:var(--panel); cursor:pointer; color:var(--ink-soft);
+  }
+  .feat-btn.active{ background:var(--ink); color:#fff; border-color:var(--ink); }
+  .feat-panel{ display:none; }
+  .feat-panel.active{ display:block; }
+  .prompt-box{
+    background:var(--violet); color:#F1ECFB; border-radius:10px; padding:16px 18px;
+    font-family:'JetBrains Mono',monospace; font-size:13.5px; margin-bottom:12px; line-height:1.7;
+  }
+  .prompt-box .lbl{ color:#F0C48A; font-weight:700; }
+  .feat-result{ font-size:14.5px; color:var(--ink-soft); padding-left:2px; }
+
+  .steps{ counter-reset:step; list-style:none; margin:0; padding:0; }
+  .steps li{ counter-increment:step; display:flex; gap:16px; padding:16px 0; border-top:1px solid var(--line); }
+  .steps li:first-child{ border-top:none; }
+  .steps li::before{
+    content:counter(step); font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:14px;
+    color:var(--amber); background:#FBEEDD; width:30px; height:30px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .steps h4{ margin:0 0 4px; font-size:15.5px; }
+  .steps p{ margin:0; font-size:14px; color:var(--ink-soft); }
+
+  .accordion-item{ border:1px solid var(--line); border-radius:10px; margin-bottom:10px; background:var(--panel); overflow:hidden; }
+  .accordion-q{ padding:16px 18px; display:flex; justify-content:space-between; align-items:center; cursor:pointer; font-weight:600; font-size:15px; }
+  .accordion-arrow{ transition:.25s; color:var(--ink-soft); }
+  .accordion-item.open .accordion-arrow{ transform:rotate(180deg); }
+  .accordion-a{ max-height:0; overflow:hidden; transition:max-height .3s ease; font-size:14.5px; color:var(--ink-soft); padding:0 18px; }
+  .accordion-item.open .accordion-a{ padding:0 18px 16px; }
+
+  .quiz-box{ background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:24px; }
+  .quiz-q{ font-weight:700; margin-bottom:14px; }
+  .quiz-opt{ display:block; width:100%; text-align:left; padding:12px 14px; margin-bottom:8px; border:1px solid var(--line); border-radius:8px; background:#fff; cursor:pointer; font-size:14.5px; font-family:inherit; }
+  .quiz-opt:hover{ border-color:var(--violet); }
+  .quiz-opt.correct{ background:#E7F3F0; border-color:var(--teal); color:var(--teal); font-weight:700; }
+  .quiz-opt.wrong{ background:#FBEAE4; border-color:var(--amber); color:#B5642C; }
+  .quiz-feedback{ margin-top:12px; font-size:14px; color:var(--ink-soft); min-height:20px; }
+
+  footer{ padding:40px 0 60px; text-align:center; color:var(--ink-soft); font-size:13.5px; }
+
+  @media (max-width:600px){
+    .hero{padding:48px 0 36px;}
+    .task-row{ flex-wrap:wrap; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <a onclick="jump('kya-hai')">Kya Hai</a>
+  <a onclick="jump('features')">Features</a>
+  <a onclick="jump('workflow')">Workflow</a>
+  <a onclick="jump('usecases')">Use-Cases</a>
+  <a onclick="jump('faq')">Do's & Don'ts</a>
+  <a onclick="jump('quiz')">Quiz</a>
+</nav>
+
+<main>
+
+  <section class="hero no-border">
+    <div class="eyebrow">● Task & AI Agents Course</div>
+    <h1>Taskade — projects manage karo, <span>AI agents</span> se kaam bhi karwao</h1>
+    <p>Taskade ek project management tool hai jisme aap tasks, notes aur mind-maps banate ho — aur uske upar AI agents bhi bana sakte ho jo aapke liye repetitive kaam khud karte hain.</p>
+
+    <div class="agent-demo">
+      <div class="task-row">
+        <div class="checkbox done"></div>
+        <div class="task-text strike">Competitor research</div>
+        <div class="agent-badge">🤖 Research Agent</div>
+      </div>
+      <div class="task-row">
+        <div class="checkbox"></div>
+        <div class="task-text">Weekly report draft</div>
+        <div class="agent-badge">🤖 Writer Agent</div>
+      </div>
+      <div class="task-row">
+        <div class="checkbox"></div>
+        <div class="task-text">Client follow-up email</div>
+        <div class="agent-badge">🤖 Outreach Agent</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kya-hai">
+    <div class="section-label">Shuruaat</div>
+    <h2>Taskade hai kya cheez?</h2>
+    <p style="color:var(--ink-soft); max-width:65ch; margin-bottom:24px;">Taskade Notion aur Trello jaisa hi ek project-management workspace hai — lists, kanban boards, mind-maps sab milte hain. Lekin iska AI layer isse alag banata hai: aap yahan custom "AI Agents" bana sakte ho jo automatically research, writing, ya scheduling jaisa kaam khud kar sakte hain.</p>
+    <div class="grid">
+      <div class="card">
+        <h3><span class="tag-dot" style="background:var(--violet);"></span>Custom AI Agents</h3>
+        <p>Apna khud ka agent banao jo ek specific role (research, support, writing) ke liye trained ho.</p>
+      </div>
+      <div class="card">
+        <h3><span class="tag-dot" style="background:var(--teal);"></span>Multiple Views</h3>
+        <p>List, board, mind-map, calendar — same project ko alag-alag view mein dekh sakte ho.</p>
+      </div>
+      <div class="card">
+        <h3><span class="tag-dot" style="background:var(--amber);"></span>Team + Agent Collaboration</h3>
+        <p>Insaan aur AI agents dono ek hi project board par kaam karte dikhte hain.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="section-label">Core Features</div>
+    <h2>Roz kaam aane wale features</h2>
+    <div class="feat-tabs">
+      <button class="feat-btn active" onclick="showFeat('gen', this)">AI Generation</button>
+      <button class="feat-btn" onclick="showFeat('agents', this)">AI Agents</button>
+      <button class="feat-btn" onclick="showFeat('views', this)">Multiple Views</button>
+    </div>
+    <div class="feat-panel active" id="feat-gen">
+      <div class="prompt-box"><span class="lbl">Poocho:</span> "Naye product launch ka poora project plan banao"</div>
+      <p class="feat-result">AI khud tasks, subtasks aur timeline generate karke ek ready structure de deta hai.</p>
+    </div>
+    <div class="feat-panel" id="feat-agents">
+      <div class="prompt-box"><span class="lbl">Agent banao:</span> "Har naye lead ko welcome email bhejne wala agent"</div>
+      <p class="feat-result">Ek baar setup karne ke baad ye agent trigger hone par khud kaam kar deta hai — bina manual intervention ke.</p>
+    </div>
+    <div class="feat-panel" id="feat-views">
+      <div class="prompt-box"><span class="lbl">Ek click se switch:</span> List view → Kanban board → Mind map</div>
+      <p class="feat-result">Same data ko team ke different members apni pasand ke view mein dekh sakte hain.</p>
+    </div>
+  </section>
+
+  <section id="workflow">
+    <div class="section-label">Hands-On</div>
+    <h2>Ek project shuru karne ka tarika</h2>
+    <ol class="steps">
+      <li><div><h4>Project ya template chuno</h4><p>Blank se shuru karo ya ready templates (marketing plan, sprint board) use karo.</p></div></li>
+      <li><div><h4>AI se outline generate karwao</h4><p>Topic batao, AI khud tasks aur subtasks bana deta hai.</p></div></li>
+      <li><div><h4>View select karo</h4><p>Team ke hisaab se list, kanban ya calendar view choose karo.</p></div></li>
+      <li><div><h4>Agent add karo (optional)</h4><p>Repetitive kaam ke liye ek AI agent set up karo jo trigger hone par khud chale.</p></div></li>
+      <li><div><h4>Team ke saath share karo</h4><p>Members ko invite karo — insaan aur agent dono same board par dikhte hain.</p></div></li>
+    </ol>
+  </section>
+
+  <section id="usecases">
+    <div class="section-label">Practical</div>
+    <h2>Kaam aane wale use-cases</h2>
+    <div class="grid">
+      <div class="card"><h3>📦 Product launch plan</h3><p>Poora launch timeline AI se generate karke team ko assign karna.</p></div>
+      <div class="card"><h3>🤖 Customer support agent</h3><p>Common questions ke liye ek AI agent jo pehle response khud de de.</p></div>
+      <div class="card"><h3>🧭 Content calendar</h3><p>Blog/social posts ka calendar banake AI se draft bhi generate karwana.</p></div>
+      <div class="card"><h3>🗺️ Brainstorming sessions</h3><p>Mind-map view mein ideas ko visually organize karna.</p></div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="section-label">Zaroori</div>
+    <h2>Do's aur Don'ts</h2>
+    <div class="accordion-item" onclick="toggleAcc(this)">
+      <div class="accordion-q">Kya AI agents bina supervision ke chhod dene chahiye? <span class="accordion-arrow">▾</span></div>
+      <div class="accordion-a">Shuru mein agent ke output ko regularly review karo — especially customer-facing kaam ke liye, taaki galtiyan pakdi ja sakein.</div>
+    </div>
+    <div class="accordion-item" onclick="toggleAcc(this)">
+      <div class="accordion-q">Kya Taskade sirf solo use ke liye hai? <span class="accordion-arrow">▾</span></div>
+      <div class="accordion-a">Nahi, ye individual aur team dono ke liye designed hai — team plans mein shared boards aur permissions milte hain.</div>
+    </div>
+    <div class="accordion-item" onclick="toggleAcc(this)">
+      <div class="accordion-q">Kya generated project plan ko edit kar sakte hain? <span class="accordion-arrow">▾</span></div>
+      <div class="accordion-a">Haan, AI-generated tasks starting point hote hain — aap freely add, remove ya reorder kar sakte ho.</div>
+    </div>
+  </section>
+
+  <section id="quiz" class="no-border">
+    <div class="section-label">Test Yourself</div>
+    <h2>Ek quick quiz</h2>
+    <div class="quiz-box">
+      <div class="quiz-q">Taskade ko normal task manager se kya alag banata hai?</div>
+      <button class="quiz-opt" onclick="checkAns(this,false)">Ye sirf email client hai</button>
+      <button class="quiz-opt" onclick="checkAns(this,true)">Custom AI agents banane ki ability jo tasks khud complete kar sakte hain</button>
+      <button class="quiz-opt" onclick="checkAns(this,false)">Ye sirf photo editing tool hai</button>
+      <div class="quiz-feedback" id="feedback"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>Taskade Course — plan bhi karo, execute bhi AI se karwao.</footer>
+
+<script>
+function jump(id){ document.getElementById(id).scrollIntoView({behavior:'smooth'}); }
+
+function showFeat(name, btn){
+  document.querySelectorAll('.feat-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.feat-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('feat-'+name).classList.add('active');
+  btn.classList.add('active');
+}
+
+function toggleAcc(el){ el.classList.toggle('open'); }
+
+function checkAns(btn, isCorrect){
+  const opts = btn.parentElement.querySelectorAll('.quiz-opt');
+  opts.forEach(o=>o.disabled=true);
+  if(isCorrect){
+    btn.classList.add('correct');
+    document.getElementById('feedback').textContent = "Sahi jawab! Custom AI agents hi Taskade ki asli power hain.";
+  } else {
+    btn.classList.add('wrong');
+    document.getElementById('feedback').textContent = "Thoda aur socho — sahi jawab highlight ho gaya hai.";
+    opts.forEach(o=>{ if(o.onclick.toString().includes('true')) o.classList.add('correct'); });
+  }
+}
+</script>
+
+</body>
+</html>
