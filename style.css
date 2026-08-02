@@ -889,3 +889,6 @@ body.dark-mode p{
     }
 
 }
+html {
+  scroll-behavior: smooth;
+}
