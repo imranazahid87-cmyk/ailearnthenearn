@@ -1,1 +1,311 @@
 
+<!DOCTYPE html>
+<html lang="ur-Latn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Webflow Course | AI Website Builders</title>
+<meta name="description" content="Webflow ko samjho — features, kaise use karein, pricing aur kab yeh tool aapke liye sahi hai.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16181A;
+    --paper:#EDEEE9;
+    --panel:#E2DFD3;
+    --orange:#E8560A;
+    --steel:#2C5F7C;
+    --brass:#C9A227;
+    --muted:#5B5A54;
+    --green:#3F7D4C;
+    --red:#B23A2D;
+    --line: rgba(22,24,26,0.14);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--steel);}
+  .wrap{max-width:760px; margin:0 auto; padding:28px 20px 80px;}
+
+  /* breadcrumb */
+  .crumb{
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.04em;
+    color:var(--muted); margin-bottom:18px; flex-wrap:wrap; gap:8px;
+  }
+  .crumb a{color:var(--muted); text-decoration:none; border-bottom:1px dotted var(--muted);}
+  .crumb a:hover{color:var(--orange); border-color:var(--orange);}
+
+  /* spec plate header */
+  .plate{
+    position:relative;
+    background:var(--ink); color:var(--paper);
+    border-radius:6px;
+    padding:34px 28px 28px;
+    margin-bottom:26px;
+    overflow:hidden;
+  }
+  .plate::before, .plate::after{
+    content:""; position:absolute; width:9px; height:9px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #cfcac0, #7a766c 70%);
+    top:14px;
+  }
+  .plate::before{left:14px;}
+  .plate::after{right:14px;}
+  .rivet-b1,.rivet-b2{
+    content:""; position:absolute; width:9px; height:9px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #cfcac0, #7a766c 70%);
+    bottom:14px;
+  }
+  .rivet-b1{left:14px;} .rivet-b2{right:14px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:.14em;
+    color:var(--brass); text-transform:uppercase; margin-bottom:10px;
+  }
+  .plate h1{
+    font-family:'Oswald',sans-serif; font-weight:700; text-transform:uppercase;
+    font-size:clamp(30px,7vw,42px); letter-spacing:.01em; line-height:1.05;
+    margin-bottom:8px;
+  }
+  .tagline{color:#C9C6BC; font-size:15px; max-width:46ch; margin-bottom:22px;}
+  .plate-body{display:flex; gap:24px; align-items:flex-end; flex-wrap:wrap;}
+  .intro{flex:1 1 280px; font-size:14.5px; color:#DDD9CD;}
+  .intro strong{color:#fff;}
+
+  /* gauge */
+  .gauge-box{flex:0 0 150px; text-align:center;}
+  .gauge{
+    width:150px; height:75px; position:relative; margin:0 auto 6px;
+    border-radius:150px 150px 0 0; overflow:hidden;
+    background:conic-gradient(from 270deg at 50% 100%,
+      var(--steel) 0deg 60deg, var(--brass) 60deg 120deg, var(--orange) 120deg 180deg);
+  }
+  .gauge::after{
+    content:""; position:absolute; left:50%; top:100%; width:118px; height:59px;
+    background:var(--ink); border-radius:118px 118px 0 0;
+    transform:translate(-50%,-100%);
+  }
+  .needle{
+    position:absolute; left:50%; bottom:0; width:3px; height:62px;
+    background:#fff; transform-origin:bottom center;
+    box-shadow:0 0 4px rgba(0,0,0,.4);
+  }
+  .gauge-dot{
+    position:absolute; left:50%; bottom:-4px; width:9px; height:9px;
+    background:#fff; border-radius:50%; transform:translateX(-50%);
+  }
+  .gauge-label{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.05em; color:#C9C6BC; text-transform:uppercase;}
+  .gauge-level{font-family:'Oswald',sans-serif; font-size:14px; color:var(--brass); letter-spacing:.03em; margin-top:2px;}
+
+  /* sections */
+  section{margin-bottom:26px;}
+  .h2{
+    font-family:'Oswald',sans-serif; font-weight:600; text-transform:uppercase;
+    font-size:20px; letter-spacing:.02em; margin-bottom:14px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .h2 .tag{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; background:var(--orange);
+    color:#fff; padding:3px 7px; border-radius:3px; letter-spacing:.03em;
+  }
+
+  /* spec rows (features) */
+  .spec-row{
+    display:flex; gap:16px; padding:13px 0; border-top:1px solid var(--line);
+    font-size:14.5px;
+  }
+  .spec-row:last-child{border-bottom:1px solid var(--line);}
+  .spec-key{
+    flex:0 0 118px; font-family:'IBM Plex Mono',monospace; font-size:11.5px;
+    color:var(--steel); text-transform:uppercase; letter-spacing:.03em; padding-top:2px;
+  }
+  .spec-val{flex:1; color:var(--ink);}
+  .spec-val b{color:var(--orange);}
+
+  /* steps */
+  .steps{list-style:none; counter-reset:step;}
+  .steps li{
+    counter-increment:step; position:relative; padding:14px 16px 14px 54px;
+    background:var(--panel); border-radius:6px; margin-bottom:10px; font-size:14.5px;
+  }
+  .steps li::before{
+    content:counter(step); position:absolute; left:14px; top:50%; transform:translateY(-50%);
+    width:26px; height:26px; border-radius:50%; background:var(--ink); color:var(--brass);
+    font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:600;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .steps li b{color:var(--ink);}
+
+  /* pricing table */
+  .price-table{border:1px solid var(--line); border-radius:6px; overflow:hidden;}
+  .price-row{
+    display:flex; justify-content:space-between; gap:12px; padding:13px 16px;
+    border-top:1px solid var(--line); font-size:14px; align-items:baseline;
+  }
+  .price-row:first-child{border-top:none; background:var(--ink); color:#fff;}
+  .price-row:first-child .p-name, .price-row:first-child .p-cost{color:#fff;}
+  .p-name{font-family:'Oswald',sans-serif; font-size:15px; text-transform:uppercase; letter-spacing:.02em;}
+  .p-desc{color:var(--muted); font-size:12.5px; margin-top:2px;}
+  .p-cost{font-family:'IBM Plex Mono',monospace; color:var(--orange); font-weight:600; white-space:nowrap;}
+  .price-note{font-size:12px; color:var(--muted); margin-top:8px;}
+
+  /* usecases chips */
+  .chips{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{
+    background:var(--panel); border:1px solid var(--line); border-radius:20px;
+    padding:7px 14px; font-size:13px; font-family:'IBM Plex Mono',monospace;
+  }
+
+  /* verdict tickets */
+  .tickets{display:flex; gap:14px; flex-wrap:wrap;}
+  .ticket{flex:1 1 260px; border-radius:6px; overflow:hidden; border:1px solid var(--line);}
+  .ticket-head{
+    font-family:'Oswald',sans-serif; text-transform:uppercase; font-size:14px;
+    letter-spacing:.03em; padding:9px 14px; color:#fff;
+  }
+  .ticket.pro .ticket-head{background:var(--green);}
+  .ticket.con .ticket-head{background:var(--red);}
+  .ticket ul{list-style:none; padding:12px 14px; background:#fff;}
+  .ticket li{font-size:13.5px; padding:5px 0; padding-left:16px; position:relative;}
+  .ticket li::before{content:"—"; position:absolute; left:0; color:var(--muted);}
+
+  /* cta */
+  .cta{
+    text-align:center; background:var(--ink); color:#fff; border-radius:8px;
+    padding:32px 20px; margin-top:8px;
+  }
+  .cta p{color:#C9C6BC; font-size:14px; margin-bottom:18px; max-width:44ch; margin-left:auto; margin-right:auto;}
+  .cta-btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:118px; height:118px; border-radius:50%; background:var(--orange); color:#fff;
+    font-family:'Oswald',sans-serif; text-transform:uppercase; font-size:14px; letter-spacing:.02em;
+    text-decoration:none; box-shadow:0 6px 0 #a83e08; transition:transform .1s;
+    text-align:center; line-height:1.2;
+  }
+  .cta-btn:active{transform:translateY(4px); box-shadow:0 2px 0 #a83e08;}
+  .cta-btn span{display:block; font-family:'IBM Plex Mono',monospace; font-size:10px; color:#ffd9c2; margin-top:3px;}
+
+  /* lesson nav */
+  .lesson-nav{
+    display:flex; justify-content:space-between; gap:12px; margin-top:22px; flex-wrap:wrap;
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px;
+  }
+  .lesson-nav a{
+    flex:1 1 200px; text-decoration:none; color:var(--ink); background:var(--panel);
+    border-radius:6px; padding:12px 14px; border:1px solid var(--line);
+  }
+  .lesson-nav a:hover{border-color:var(--orange);}
+  .lesson-nav .dir{display:block; color:var(--muted); font-size:10.5px; text-transform:uppercase; margin-bottom:3px;}
+  .lesson-nav .next{text-align:right;}
+
+  @media(max-width:520px){
+    .plate-body{flex-direction:column; align-items:flex-start;}
+    .gauge-box{margin-top:8px;}
+    .price-row{flex-direction:column; gap:2px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="crumb">
+    <a href="index.html">&larr; AI Website Builders Course</a>
+    <span>LESSON 08 / 09</span>
+  </div>
+
+  <header class="plate">
+    <div class="rivet-b1"></div><div class="rivet-b2"></div>
+    <div class="eyebrow">Module 08 &middot; AI Website Builder</div>
+    <h1>Webflow</h1>
+    <p class="tagline">Professional-grade visual builder — code jitna control, bina code ke</p>
+    <div class="plate-body">
+      <p class="intro"><strong>Webflow</strong> un teams ke liye hai jo marketing site ko developer ke bina, lekin developer-level control ke saath banana chahte hain. AI Site Builder ab quick drafts bhi generate kar deta hai.</p>
+      <div class="gauge-box">
+        <div class="gauge">
+          <div class="needle" style="transform:translateX(-50%) rotate(54.0deg);"></div>
+          <div class="gauge-dot"></div>
+        </div>
+        <div class="gauge-label">Skill Level Chahiye</div>
+        <div class="gauge-level">Intermediate–Advanced</div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="h2"><span class="tag">SPECS</span> Khaas Features</div>
+    <div class="spec-row"><div class="spec-key">AI SITE BUILDER</div><div class="spec-val">Prompt se pehla site draft ban jaata hai</div></div>
+    <div class="spec-row"><div class="spec-key">VISUAL CSS CONTROL</div><div class="spec-val">Har element pixel-level customizable hai</div></div>
+    <div class="spec-row"><div class="spec-key">POWERFUL CMS</div><div class="spec-val">20,000+ items, 40 collections tak</div></div>
+    <div class="spec-row"><div class="spec-key">CODE EXPORT</div><div class="spec-val">Chahen to real code nikal sakte hain</div></div>
+    <div class="spec-row"><div class="spec-key">AI CREDITS</div><div class="spec-val">Har Workspace plan mein already included</div></div>
+  </section>
+
+  <section>
+    <div class="h2"><span class="tag">HOW-TO</span> Kaise Use Karein</div>
+    <ol class="steps">
+      <li>Workspace plan choose karo — AI access ke liye Core zaroori</li>
+      <li>AI Site Builder se prompt de kar draft banwao</li>
+      <li>Visual editor mein layout aur styling detail se set karo</li>
+      <li>CMS collections bana kar dynamic content connect karo</li>
+      <li>Site plan (Basic/Premium) lekar custom domain publish karo</li>
+    </ol>
+  </section>
+
+  <section>
+    <div class="h2"><span class="tag">₨/$</span> Pricing Ka Andaza</div>
+    <div class="price-table">
+      <div class="price-row"><div><div class="p-name">Site: Basic</div><div class="p-desc">Custom domain, 300 static pages</div></div><div class="p-cost">~$15/mo</div></div>
+      <div class="price-row"><div><div class="p-name">Site: Premium</div><div class="p-desc">Full CMS, configurable bandwidth</div></div><div class="p-cost">~$25/mo</div></div>
+      <div class="price-row"><div><div class="p-name">Workspace: Core</div><div class="p-desc">AI Site Builder access unlock karta hai</div></div><div class="p-cost">~$19/mo</div></div>
+    </div>
+    <p class="price-note">Note: pricing tools waqt ke sath badalti rehti hai — official site pe latest rate zaroor check karein.</p>
+  </section>
+
+  <section>
+    <div class="h2"><span class="tag">FIT</span> Kis Ke Liye Sahi Hai</div>
+    <div class="chips">
+      <span class="chip">Marketing teams</span>
+      <span class="chip">Content-heavy sites (blogs)</span>
+      <span class="chip">Agencies / freelancers</span>
+      <span class="chip">Developer-level design control</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="h2"><span class="tag">VERDICT</span> Faisla Aapka</div>
+    <div class="tickets">
+      <div class="ticket pro">
+        <div class="ticket-head">Achi Baatein</div>
+        <ul><li>Sabse zyada design + CMS flexibility milti hai</li>
+        <li>Code export ka option available hai</li>
+        <li>AI ab basic drafts jaldi bana deta hai</li>
+        <li>Enterprise-grade infrastructure</li></ul>
+      </div>
+      <div class="ticket con">
+        <div class="ticket-head">Dhyan Rakhain</div>
+        <ul><li>Pricing layers confusing hain — Site + Workspace + seats + add-ons</li>
+        <li>AI Site Builder paid Workspace ke bina nahi milta</li>
+        <li>Beginners ke liye seekhne mein time lagta hai</li>
+        <li>Total cost headline price se zyada aa sakta hai</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta">
+    <p>Full design control chahiye, code likhe bina? Webflow dekh lo.</p>
+    <a class="cta-btn" href="https://www.webflow.com" target="_blank" rel="noopener noreferrer">Try Webflow<span>official site</span></a>
+  </div>
+
+  <div class="lesson-nav">
+    <a href="framer-ai.html"><span class="dir">&larr; Pichla Lesson</span>Framer</a>
+    <a class="next" href="lovable-ai.html"><span class="dir">Agla Lesson &rarr;</span>Lovable</a>
+  </div>
+
+</div>
+</body>
+</html>
