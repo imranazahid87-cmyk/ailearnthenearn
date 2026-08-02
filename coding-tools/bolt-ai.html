@@ -1,1 +1,237 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bolt.ai — A 2-Page Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#faf8f2;
+    --panel:#ffffff;
+    --line:#e7e1d3;
+    --text:#1e1b16;
+    --muted:#7a7266;
+    --bolt:#e8672c;
+    --volt:#ffd23f;
+    --deep:#1f4b3f;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; scroll-behavior:smooth;}
+  ::selection{ background:var(--bolt); color:#fff; }
+  a{color:inherit;}
+
+  .shell{ display:grid; grid-template-columns:220px 1fr; min-height:100vh; }
+
+  .rail{
+    border-right:1px solid var(--line); padding:2.25rem 1.25rem; position:sticky; top:0; height:100vh;
+    display:flex; flex-direction:column; justify-content:space-between; background:var(--panel);
+  }
+  .rail-top .brand{ font-family:'Fraunces',serif; font-weight:700; font-size:1.05rem; }
+  .rail-top .brand span{ color:var(--bolt); }
+  .rail-top .course-label{ margin-top:.35rem; font-size:.7rem; text-transform:uppercase; letter-spacing:.14em; color:var(--muted); }
+  .steps{ margin-top:2.5rem; display:flex; flex-direction:column; gap:1.1rem; }
+  .step{ display:flex; align-items:flex-start; gap:.65rem; cursor:pointer; border:none; background:none; text-align:left; color:var(--muted); padding:0; font-family:'Inter',sans-serif; }
+  .step .dot{ width:1.6rem; height:1.6rem; flex-shrink:0; border-radius:50%; border:1px solid var(--line); display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',monospace; font-size:.72rem; color:var(--muted); transition:all .25s ease; }
+  .step.active .dot{ background:var(--bolt); border-color:var(--bolt); color:#fff; }
+  .step.active .label{ color:var(--text); }
+  .step .label{ font-size:.88rem; line-height:1.3; padding-top:.15rem; }
+  .step .sub{ display:block; font-size:.72rem; color:var(--muted); margin-top:.1rem; }
+  .rail-bottom{ font-size:.72rem; color:var(--muted); line-height:1.5; }
+  .rail-bottom .bar{ height:3px; width:100%; background:var(--line); border-radius:99px; margin-bottom:.6rem; overflow:hidden; }
+  .rail-bottom .bar i{ display:block; height:100%; width:50%; background:linear-gradient(90deg,var(--bolt),var(--volt)); transition:width .4s ease; }
+
+  main{ padding:3.5rem 4rem 6rem; max-width:820px; }
+  @media (max-width:780px){
+    .shell{ grid-template-columns:1fr; }
+    .rail{ position:relative; height:auto; flex-direction:row; align-items:center; gap:1rem; padding:1.25rem; }
+    .rail-top, .rail-bottom{ display:none; }
+    .steps{ margin-top:0; flex-direction:row; gap:.8rem; overflow-x:auto; }
+    .step .label{ display:none; }
+    main{ padding:2rem 1.4rem 4rem; }
+  }
+
+  .eyebrow{ font-family:'JetBrains Mono',monospace; font-size:.75rem; color:var(--deep); letter-spacing:.08em; text-transform:uppercase; }
+  h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(2rem,4vw,2.9rem); line-height:1.08; margin-top:.6rem; letter-spacing:-.01em; }
+  h1 em{ font-style:italic; color:var(--bolt); }
+  .dek{ margin-top:1rem; color:var(--muted); font-size:1.05rem; line-height:1.6; max-width:60ch; }
+
+  h2{ font-family:'Fraunces',serif; font-weight:600; font-size:1.5rem; margin-top:3rem; margin-bottom:1rem; display:flex; align-items:baseline; gap:.6rem; }
+  h2 .n{ font-family:'JetBrains Mono',monospace; font-size:.85rem; color:var(--bolt); }
+
+  p{ color:#40392f; line-height:1.75; margin-bottom:1rem; font-size:.98rem; }
+  strong{ color:var(--text); }
+
+  .grid{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1.25rem; }
+  @media (max-width:600px){ .grid{ grid-template-columns:1fr; } }
+  .card{ background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:1.1rem 1.2rem; box-shadow:0 1px 2px rgba(30,27,22,.04); }
+  .card h3{ font-size:.95rem; color:var(--text); margin-bottom:.4rem; font-weight:600; }
+  .card p{ font-size:.86rem; margin-bottom:0; color:var(--muted); }
+
+  .callout{ border-left:3px solid var(--bolt); background:#fdf0e6; padding:1rem 1.2rem; border-radius:0 8px 8px 0; margin:1.5rem 0; }
+  .callout p{ margin:0; color:#5c3a1e; font-size:.92rem; }
+
+  code, .code{ font-family:'JetBrains Mono',monospace; font-size:.85rem; background:var(--panel); border:1px solid var(--line); padding:.15rem .4rem; border-radius:4px; color:var(--deep); }
+  pre{ background:#211d17; border:1px solid var(--line); border-radius:10px; padding:1rem 1.2rem; overflow-x:auto; margin:1rem 0; }
+  pre code{ background:none; border:none; padding:0; color:#f0ead9; }
+
+  ol.tasks{ list-style:none; margin-top:1rem; }
+  ol.tasks li{ display:flex; gap:.8rem; padding:.7rem 0; border-bottom:1px solid var(--line); color:#40392f; font-size:.94rem; }
+  ol.tasks li .num{ font-family:'JetBrains Mono',monospace; color:var(--bolt); flex-shrink:0; }
+
+  .nav-buttons{ display:flex; justify-content:space-between; margin-top:3.5rem; gap:1rem; }
+  .btn{ font-family:'Inter',sans-serif; font-weight:600; font-size:.88rem; padding:.75rem 1.3rem; border-radius:8px; border:1px solid var(--line); background:var(--panel); color:var(--text); cursor:pointer; transition:border-color .2s ease; }
+  .btn.primary{ background:var(--bolt); border-color:var(--bolt); color:#fff; }
+  .btn:hover{ border-color:var(--bolt); }
+
+  .page{ display:none; animation:fade .35s ease; }
+  .page.visible{ display:block; }
+  @keyframes fade{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+
+  footer.note{ margin-top:3rem; font-size:.78rem; color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <nav class="rail">
+    <div class="rail-top">
+      <div class="brand">bolt<span>.</span>ai</div>
+      <div class="course-label">2-page course</div>
+      <div class="steps">
+        <button class="step active" data-page="1">
+          <span class="dot">1</span>
+          <span class="label">Foundations<span class="sub">What & why</span></span>
+        </button>
+        <button class="step" data-page="2">
+          <span class="dot">2</span>
+          <span class="label">Practice<span class="sub">Workflow & tips</span></span>
+        </button>
+      </div>
+    </div>
+    <div class="rail-bottom">
+      <div class="bar"><i id="progress-bar"></i></div>
+      <span id="progress-text">Lesson 1 of 2</span>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- PAGE 1 -->
+    <section class="page visible" id="page-1">
+      <div class="eyebrow">Lesson 01 — Foundations</div>
+      <h1>Bolt.ai, <em>from idea to running app</em></h1>
+      <p class="dek">Bolt.ai is a browser-based AI app builder: describe what you want, and it scaffolds, writes, and runs a full-stack project in front of you — no local setup required.</p>
+
+      <h2><span class="n">01.1</span> What makes Bolt different</h2>
+      <p>Most AI coding tools assist inside an editor you already have open. Bolt instead gives you the whole environment: a prompt box, a live file tree, and an in-browser terminal, all connected to a real running project via WebContainers technology. You watch the app boot up as it's generated.</p>
+      <p>That makes it especially strong for <strong>starting</strong> something new — a landing page, a prototype, a small tool — rather than for deep work inside a large, established codebase.</p>
+
+      <h2><span class="n">01.2</span> Where it fits in your workflow</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Rapid prototyping</h3>
+          <p>Turn a rough idea into a clickable, working prototype in minutes, without setting up tooling first.</p>
+        </div>
+        <div class="card">
+          <h3>Landing pages & MVPs</h3>
+          <p>Describe layout and copy, get a deployable front end you can iterate on immediately.</p>
+        </div>
+        <div class="card">
+          <h3>Learning by watching</h3>
+          <p>Beginners can see a project's file structure built step by step, in real time.</p>
+        </div>
+        <div class="card">
+          <h3>Client demos</h3>
+          <p>Spin up a shareable, working preview during a conversation instead of promising one later.</p>
+        </div>
+      </div>
+
+      <h2><span class="n">01.3</span> The one mindset shift that matters</h2>
+      <div class="callout">
+        <p>Think in "versions of the app," not "lines of code." Bolt works best when you describe outcomes — what a screen should do — and then course-correct with follow-up prompts, rather than trying to hand-edit its output line by line.</p>
+      </div>
+
+      <p>That's the foundation. Lesson 2 walks through an actual build routine.</p>
+
+      <div class="nav-buttons">
+        <div></div>
+        <button class="btn primary" onclick="goTo(2)">Continue to Lesson 2 →</button>
+      </div>
+    </section>
+
+    <!-- PAGE 2 -->
+    <section class="page" id="page-2">
+      <div class="eyebrow">Lesson 02 — Practice</div>
+      <h1>A working <em>build routine</em></h1>
+      <p class="dek">A repeatable process for going from a blank prompt to something you'd actually ship, plus pitfalls to avoid.</p>
+
+      <h2><span class="n">02.1</span> A five-step routine</h2>
+      <ol class="tasks">
+        <li><span class="num">01</span> Describe the whole app in one paragraph first — purpose, main screens, and who it's for.</li>
+        <li><span class="num">02</span> Let the first generation finish fully before asking for changes; interrupting mid-build causes broken state.</li>
+        <li><span class="num">03</span> Review the live preview like a user would, then request one focused change at a time.</li>
+        <li><span class="num">04</span> Use the built-in terminal to check for errors directly, instead of guessing from the preview alone.</li>
+        <li><span class="num">05</span> Once it's stable, export or connect to GitHub so the project lives outside the browser session too.</li>
+      </ol>
+
+      <h2><span class="n">02.2</span> A small example</h2>
+      <p>A prompt that gives Bolt enough to scaffold something useful on the first try:</p>
+      <pre><code>Build a simple recipe-sharing site: a home page listing
+recipes as cards, a detail page per recipe, and a form to
+add a new one. Use a clean, warm design with a card layout.</code></pre>
+      <p>Notice it states <strong>the pages</strong>, <strong>the core interaction</strong> (adding a recipe), and <strong>a design direction</strong> — enough structure without over-specifying implementation details.</p>
+
+      <h2><span class="n">02.3</span> Mistakes to avoid</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Vague one-liners</h3>
+          <p>"Build me an app" with no detail forces Bolt to guess at scope, layout, and purpose.</p>
+        </div>
+        <div class="card">
+          <h3>Too many asks at once</h3>
+          <p>Bundling five changes into one prompt makes it harder to tell what actually broke, if something does.</p>
+        </div>
+        <div class="card">
+          <h3>Skipping the preview</h3>
+          <p>Always click through the running app before requesting the next change — don't assume it matches the prompt.</p>
+        </div>
+        <div class="card">
+          <h3>No backup of your work</h3>
+          <p>Export or push to a repo regularly; treat the browser session as a workspace, not permanent storage.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        <p>Bolt is fastest when you treat it like pairing with someone who builds quickly but needs clear direction — the clearer the brief, the less cleanup afterward.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="goTo(1)">← Back to Lesson 1</button>
+        <div></div>
+      </div>
+
+      <footer class="note">End of course · 2 lessons · you can revisit either page anytime using the rail on the left.</footer>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  function goTo(n){
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('visible'));
+    document.getElementById('page-' + n).classList.add('visible');
+    document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+    document.querySelector('.step[data-page="' + n + '"]').classList.add('active');
+    document.getElementById('progress-bar').style.width = (n === 1 ? '50%' : '100%');
+    document.getElementById('progress-text').textContent = 'Lesson ' + n + ' of 2';
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  document.querySelectorAll('.step').forEach(btn => {
+    btn.addEventListener('click', () => goTo(btn.dataset.page));
+  });
+</script>
+</body>
+</html>
