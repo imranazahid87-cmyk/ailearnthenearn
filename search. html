@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search - AI Learn Then Earn</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="header">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <img src="images/logo.webp" alt="Logo">
+      <span>AI Learn Then Earn</span>
+    </a>
+  </div>
+</header>
+
+<div style="max-width:800px; margin:40px auto; padding:20px;">
+  <h2 style="margin-bottom:20px; color:#0b1736;">Search Results</h2>
+  <script async src="https://cse.google.com/cse.js?cx=41e06bda5bbeb4cc5"></script>
+  <div class="gcse-searchbox-only" data-autoSearchOnLoad="true" data-queryParameterName="q"></div>
+  <div class="gcse-searchresults-only"></div>
+</div>
+
+<footer>
+  <div class="container footer-content">
+    <div>
+      <h3>AI Learn Then Earn</h3>
+      <p>Learn AI, Build Skills and Start Earning Online.</p>
+    </div>
+  </div>
+  <hr>
+  <p class="copyright">© 2026 AI Learn Then Earn. All Rights Reserved.</p>
+</footer>
+</body>
+</html>
