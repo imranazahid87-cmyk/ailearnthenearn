@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Video Creation Guide 2026 | AI Learn Then Earn</title>
+<meta name="description" content="Learn how to create professional AI videos in 2026. Discover the best AI video generation tools, how to write effective video prompts and how to earn money with AI video content.">
+<link rel="stylesheet" href="../style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  .blog-hero {
+    background: linear-gradient(135deg, #0b1736, #0d4fd8);
+    padding: 60px 0 40px;
+    text-align: center;
+    color: #fff;
+  }
+  .blog-hero h1 { font-size: 36px; font-weight: 700; margin-bottom: 15px; line-height: 1.3; }
+  .blog-hero p { font-size: 17px; color: #dbe7ff; max-width: 650px; margin: 0 auto 20px; }
+  .blog-meta { display: flex; justify-content: center; gap: 20px; font-size: 14px; color: #a0b4ff; flex-wrap: wrap; }
+  .blog-body { max-width: 800px; margin: 50px auto; padding: 0 20px 80px; }
+  .blog-body h2 { font-size: 26px; color: #0b1736; margin: 40px 0 15px; padding-left: 14px; border-left: 4px solid #2f80ff; }
+  .blog-body h3 { font-size: 20px; color: #1a2a6c; margin: 25px 0 10px; }
+  .blog-body p { font-size: 16px; color: #444; line-height: 1.9; margin-bottom: 18px; }
+  .blog-body ul, .blog-body ol { padding-left: 22px; margin-bottom: 20px; }
+  .blog-body li { font-size: 16px; color: #444; line-height: 1.8; margin-bottom: 8px; }
+  .highlight-box { background: #eef4ff; border-left: 5px solid #2f80ff; border-radius: 8px; padding: 20px 24px; margin: 30px 0; }
+  .highlight-box p { margin: 0; color: #1a2a6c; font-weight: 500; }
+  .tip-box { background: #f0fff4; border-left: 5px solid #22c55e; border-radius: 8px; padding: 20px 24px; margin: 30px 0; }
+  .tip-box p { margin: 0; color: #166534; font-weight: 500; }
+  .warning-box { background: #fffbeb; border-left: 5px solid #f59e0b; border-radius: 8px; padding: 20px 24px; margin: 30px 0; }
+  .warning-box p { margin: 0; color: #92400e; font-weight: 500; }
+  .tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin: 25px 0; }
+  .tool-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 22px 18px; text-align: center; box-shadow: 0 4px 14px rgba(0,0,0,0.06); }
+  .tool-card .icon { font-size: 36px; margin-bottom: 10px; }
+  .tool-card h4 { font-size: 17px; color: #0b1736; margin-bottom: 6px; }
+  .tool-card .tag { display: inline-block; background: #eef4ff; color: #2f80ff; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 20px; margin-bottom: 8px; }
+  .tool-card p { font-size: 14px; color: #666; margin: 0; }
+  .prompt-box { background: #0b1736; border-radius: 10px; padding: 20px 24px; margin: 20px 0; }
+  .prompt-box p { color: #a0b4ff; font-size: 13px; margin: 0 0 8px; }
+  .prompt-box code { color: #7dd3fc; font-size: 14px; line-height: 1.8; font-family: monospace; }
+  .earn-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin: 25px 0; }
+  .earn-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 22px 18px; box-shadow: 0 4px 14px rgba(0,0,0,0.06); }
+  .earn-card .num { font-size: 26px; font-weight: 700; color: #2f80ff; margin-bottom: 8px; }
+  .earn-card h4 { font-size: 16px; color: #0b1736; margin-bottom: 6px; }
+  .earn-card p { font-size: 14px; color: #666; margin: 0; }
+  .cta-section { background: linear-gradient(135deg, #0b1736, #0d4fd8); border-radius: 16px; padding: 40px 30px; text-align: center; color: #fff; margin-top: 50px; }
+  .cta-section h3 { font-size: 24px; margin-bottom: 12px; }
+  .cta-section p { color: #dbe7ff; margin-bottom: 25px; font-size: 16px; }
+  .blog-nav { display: flex; justify-content: space-between; margin-top: 50px; gap: 15px; flex-wrap: wrap; }
+  .blog-nav a { flex: 1 1 200px; background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px 18px; text-decoration: none; color: #0b1736; font-size: 14px; font-weight: 500; transition: .3s; }
+  .blog-nav a:hover { border-color: #2f80ff; color: #2f80ff; }
+  .blog-nav a span { display: block; font-size: 12px; color: #999; margin-bottom: 4px; }
+  .blog-nav a.next { text-align: right; }
+  @media(max-width: 600px) {
+    .blog-hero h1 { font-size: 26px; }
+    .blog-body h2 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="container">
+    <a href="../index.html" class="logo">
+      <img src="../images/logo.webp" alt="AI Learn Then Earn Logo">
+      <span>AI Learn Then Earn</span>
+    </a>
+    <nav id="navbar">
+      <a href="../index.html">Home</a>
+      <a href="../ai-assistants/">AI Tools</a>
+      <a href="../courses.html">Courses</a>
+      <a href="../earn.html">Earn</a>
+      <a href="../blog.html" class="active">Blog</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+    <div class="header-right">
+      <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    </div>
+  </div>
+</header>
+
+<!-- BLOG HERO -->
+<div class="blog-hero">
+  <div class="container">
+    <h1>AI Video Creation in 2026 — Make Professional Videos Without a Camera</h1>
+    <p>A complete beginner's guide to AI video generation — the best tools, how to write great video prompts and how to earn money with AI video content.</p>
+    <div class="blog-meta">
+      <span>📅 August 2026</span>
+      <span>⏱ 8 min read</span>
+      <span>🏷 AI Video · Runway · Sora · Video Generation</span>
+    </div>
+  </div>
+</div>
+
+<!-- BLOG CONTENT -->
+<div class="blog-body">
+
+  <p>Video used to be the hardest type of content to create — you needed cameras, actors, editing skills and hours of your time. In 2026, AI video generators can turn a simple text description into a fully animated, cinematic-quality video clip in minutes. This shift has opened up massive opportunities for creators, marketers and freelancers.</p>
+  <p>Whether you want to make short-form content for social media, produce ads for clients, create explainer videos or build an entire YouTube channel powered by AI, this guide covers everything you need to get started.</p>
+
+  <div class="highlight-box">
+    <p>🎬 AI video tools can generate realistic footage, animated scenes, talking avatars and cinematic clips from nothing more than a text prompt or a single image.</p>
+  </div>
+
+  <h2>How Does AI Video Generation Work?</h2>
+  <p>AI video models are trained on huge amounts of video and image data, learning how objects move, how light behaves and how scenes change over time. When you give the model a prompt like "a drone shot flying over a mountain range at sunrise," it predicts and renders each frame so the motion looks natural and consistent.</p>
+  <p>Some tools generate video purely from text, others animate a still image, and some can extend, edit or restyle existing footage. Many newer tools also generate synchronized audio, voiceovers and sound effects alongside the visuals.</p>
+  <p>Just like image generation, the results depend heavily on how you write your prompt — describing the scene, camera movement, lighting and pacing clearly is the key to good output.</p>
+
+  <h2>Best AI Video Generation Tools in 2026</h2>
+
+  <div class="tool-grid">
+    <div class="tool-card">
+      <div class="icon">🎥</div>
+      <h4>Runway</h4>
+      <span class="tag">Best for Filmmakers</span>
+      <p>Industry-favourite tool with powerful editing features, motion control and cinematic quality output.</p>
+    </div>
+    <div class="tool-card">
+      <div class="icon">🌌</div>
+      <h4>Sora</h4>
+      <span class="tag">Best Realism</span>
+      <p>Produces highly realistic, coherent long-form clips from detailed text prompts. Great for cinematic scenes.</p>
+    </div>
+    <div class="tool-card">
+      <div class="icon">⚡</div>
+      <h4>Pika</h4>
+      <span class="tag">Best for Beginners</span>
+      <p>Simple interface, fast generations and easy image-to-video conversion. Great starting point for newcomers.</p>
+    </div>
+    <div class="tool-card">
+      <div class="icon">🗣️</div>
+      <h4>HeyGen</h4>
+      <span class="tag">Best for Avatars</span>
+      <p>Creates realistic AI talking avatars with lip-synced voiceovers — ideal for explainer and training videos.</p>
+    </div>
+    <div class="tool-card">
+      <div class="icon">🎓</div>
+      <h4>Synthesia</h4>
+      <span class="tag">Best for Business</span>
+      <p>Turns scripts into professional presenter-led videos in dozens of languages. Popular for corporate training.</p>
+    </div>
+    <div class="tool-card">
+      <div class="icon">✂️</div>
+      <h4>CapCut AI</h4>
+      <span class="tag">Easiest to Use</span>
+      <p>Built into CapCut's editor. Great for quick social media edits, captions and AI-generated b-roll.</p>
+    </div>
+  </div>
+
+  <h2>How to Write Effective Video Prompts</h2>
+  <p>Writing a video prompt is similar to writing an image prompt, but you also need to describe motion, camera movement and pacing. Here is a simple formula that works consistently:</p>
+
+  <p><strong>Subject + Action + Camera Movement + Setting + Style + Mood</strong></p>
+
+  <p>Here are some real prompt examples from basic to advanced:</p>
+
+  <h3>Basic Prompt (Poor Result)</h3>
+  <div class="prompt-box">
+    <p>❌ Too vague:</p>
+    <code>a car driving on a road</code>
+  </div>
+
+  <h3>Improved Prompt (Much Better Result)</h3>
+  <div class="prompt-box">
+    <p>✅ Detailed and specific:</p>
+    <code>a red sports car driving along a coastal road at sunset, camera tracking from the side, cinematic lighting, smooth motion</code>
+  </div>
+
+  <h3>Advanced Prompt (Professional Result)</h3>
+  <div class="prompt-box">
+    <p>🌟 Full professional prompt:</p>
+    <code>a sleek red sports car speeding along a winding coastal highway at golden hour, slow-motion tracking shot from a low angle, ocean waves in the background, warm cinematic color grade, shallow depth of field, shot on anamorphic lens, film-quality detail</code>
+  </div>
+
+  <div class="tip-box">
+    <p>✅ Pro tip: Always describe the camera movement — words like "slow pan," "tracking shot," "aerial view" or "static shot" give the AI clear direction and produce far more consistent, professional-looking motion.</p>
+  </div>
+
+  <h2>Key Prompt Elements to Master</h2>
+  <ul>
+    <li><strong>Camera movement:</strong> pan, tilt, tracking shot, drone shot, zoom in, static shot, handheld</li>
+    <li><strong>Shot type:</strong> close-up, wide shot, aerial view, over-the-shoulder, low angle</li>
+    <li><strong>Lighting:</strong> golden hour, studio lighting, moody shadows, neon glow, natural daylight</li>
+    <li><strong>Pacing:</strong> slow motion, real-time, time-lapse, fast cuts</li>
+    <li><strong>Style:</strong> cinematic, animated, hyperrealistic, documentary style, anime</li>
+    <li><strong>Quality boosters:</strong> 4K, film-quality, highly detailed, smooth motion, professional color grade</li>
+  </ul>
+
+  <h2>5 Ways to Earn Money With AI Video Creation</h2>
+
+  <div class="earn-grid">
+    <div class="earn-card">
+      <div class="num">01</div>
+      <h4>Faceless YouTube Channels</h4>
+      <p>Create entire videos with AI narration, visuals and editing without ever appearing on camera. Earn through ad revenue.</p>
+    </div>
+    <div class="earn-card">
+      <div class="num">02</div>
+      <h4>Short-Form Content</h4>
+      <p>Produce AI-generated Reels, TikToks and Shorts for brands or your own pages, earning through views, sponsorships or affiliate links.</p>
+    </div>
+    <div class="earn-card">
+      <div class="num">03</div>
+      <h4>Freelance Video Editing</h4>
+      <p>Offer AI-powered video editing, ad creation and explainer videos on Fiverr or Upwork, working faster than traditional editors.</p>
+    </div>
+    <div class="earn-card">
+      <div class="num">04</div>
+      <h4>AI Avatar Presenters</h4>
+      <p>Use tools like HeyGen or Synthesia to create training, marketing or course videos for businesses without hiring actors.</p>
+    </div>
+    <div class="earn-card">
+      <div class="num">05</div>
+      <h4>Stock Video Footage</h4>
+      <p>Sell AI-generated video clips on stock platforms and earn royalties whenever creators license your footage.</p>
+    </div>
+  </div>
+
+  <h2>Important Things to Know Before You Start</h2>
+
+  <h3>Copyright and Commercial Use</h3>
+  <p>Licensing terms vary widely between AI video tools. Always check whether a tool allows commercial use before selling or monetizing your videos, and review any restrictions on likeness, voice or trademarked content.</p>
+
+  <h3>Consistency Takes Practice</h3>
+  <p>Getting smooth, coherent motion that matches your vision takes experimentation. Early clips may look stiff or inconsistent — refining your prompts and trying different tools will steadily improve your results.</p>
+
+  <div class="warning-box">
+    <p>⚠️ Always disclose AI-generated video content when required — especially for advertising, political content or anything involving realistic human likenesses. Many platforms now require this by policy or law.</p>
+  </div>
+
+  <h2>Getting Started Today — Your First Steps</h2>
+  <ol>
+    <li>Create a free account on <strong>Pika</strong> or try <strong>CapCut AI</strong> for quick, easy edits</li>
+    <li>Generate a few short clips using different prompts to see how camera movement and style affect results</li>
+    <li>Experiment with image-to-video features by animating your own photos</li>
+    <li>Save your best clips and start building a short demo reel</li>
+    <li>Pick one earning method — short-form content is a great low-cost starting point</li>
+  </ol>
+
+  <div class="cta-section">
+    <h3>Want to Master AI Video Creation?</h3>
+    <p>Our AI Video Creation course teaches you everything from basic prompts to producing professional videos that get views and clients — step by step.</p>
+    <a href="../AI-Video-Creation-Mastery/index.html" class="btn">🚀 Start Video Creation Course</a>
+  </div>
+
+  <div class="blog-nav">
+    <a href="ai-image-generation.html"><span>← Previous Article</span>AI Image Generation</a>
+    <a class="next" href="blog.html"><span>Back to</span>All Articles</a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container footer-content">
+    <div>
+      <h3>AI Learn Then Earn</h3>
+      <p>Learn AI, Build Skills and Start Earning Online with step-by-step practical courses.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <a href="../index.html">Home</a>
+      <a href="../ai-assistants/">AI Tools</a>
+      <a href="../courses.html">Courses</a>
+      <a href="../earn.html">Earn Online</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../contact.html">Contact</a>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p>📧 info@ailearnthenearn.com</p>
+      <p>📍 Pakistan</p>
+    </div>
+  </div>
+  <hr>
+  <p class="copyright">© 2026 AI Learn Then Earn. All Rights Reserved.</p>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>
