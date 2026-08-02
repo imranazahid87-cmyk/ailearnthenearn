@@ -3,148 +3,159 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Coding Tools | AI Learn Then Earn</title>
-<link rel="stylesheet" href="../style.css">
+<title>AI Coding Tools — A Course Library</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#faf9f6;
+    --panel:#ffffff;
+    --line:#e6e2d8;
+    --text:#171512;
+    --muted:#726c60;
+    --ink:#20211d;
+    --accent:#c76b3f;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; scroll-behavior:smooth;}
+  ::selection{ background:var(--accent); color:#fff; }
+  a{ color:inherit; text-decoration:none; }
+
+  header{
+    padding:5rem 2rem 3rem; max-width:920px; margin:0 auto; text-align:left;
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace; font-size:.75rem; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--accent);
+  }
+  h1{
+    font-family:'Fraunces',serif; font-weight:600; font-size:clamp(2.2rem,5vw,3.4rem);
+    line-height:1.06; margin-top:.7rem; letter-spacing:-.01em; max-width:16ch;
+  }
+  h1 em{ font-style:italic; color:var(--accent); }
+  .dek{ margin-top:1.1rem; color:var(--muted); font-size:1.08rem; line-height:1.65; max-width:56ch; }
+  .meta{ margin-top:1.75rem; display:flex; gap:1.75rem; font-family:'JetBrains Mono',monospace; font-size:.78rem; color:var(--muted); flex-wrap:wrap; }
+  .meta strong{ color:var(--text); }
+
+  main{ max-width:920px; margin:0 auto; padding:2.5rem 2rem 6rem; }
+
+  .section-label{
+    font-family:'JetBrains Mono',monospace; font-size:.72rem; text-transform:uppercase;
+    letter-spacing:.14em; color:var(--muted); margin:2.5rem 0 1.1rem;
+  }
+
+  .grid{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  @media (max-width:680px){ .grid{ grid-template-columns:1fr; } }
+
+  .card{
+    background:var(--panel); border:1px solid var(--line); border-radius:12px;
+    padding:1.4rem 1.5rem; display:flex; flex-direction:column; gap:.5rem;
+    transition:border-color .18s ease, transform .18s ease; position:relative; overflow:hidden;
+  }
+  .card:hover{ border-color:var(--card-color, var(--accent)); transform:translateY(-2px); }
+  .card::before{
+    content:""; position:absolute; top:0; left:0; width:4px; height:100%;
+    background:var(--card-color, var(--accent));
+  }
+  .card .top{ display:flex; align-items:center; justify-content:space-between; }
+  .card .name{ font-family:'Fraunces',serif; font-weight:600; font-size:1.15rem; }
+  .card .tag{
+    font-family:'JetBrains Mono',monospace; font-size:.68rem; color:var(--card-color, var(--accent));
+    border:1px solid var(--line); padding:.15rem .5rem; border-radius:99px; white-space:nowrap;
+  }
+  .card p{ font-size:.88rem; color:var(--muted); line-height:1.55; }
+  .card .go{
+    margin-top:.3rem; font-size:.82rem; font-weight:600; color:var(--card-color, var(--accent));
+    display:flex; align-items:center; gap:.3rem;
+  }
+
+  footer{
+    max-width:920px; margin:0 auto; padding:2.5rem 2rem 4rem; color:var(--muted);
+    font-size:.85rem; border-top:1px solid var(--line); margin-top:2rem;
+  }
+</style>
 </head>
 <body>
 
-<header class="header">
-  <div class="container">
-    <a href="../index.html" class="logo">
-      <img src="../images/logo.webp" alt="AI Learn Then Earn">
-      <span>AI Learn Then Earn</span>
-    </a>
-    <nav id="navbar">
-      <a href="../index.html">Home</a>
-      <a href="../tools.html">AI Tools</a>
-      <a href="../courses.html">Courses</a>
-      <a href="../earn.html">Earn</a>
-      <a href="../blog.html">Blog</a>
-      <a href="../contact.html">Contact</a>
-    </nav>
-    <div class="header-right">
-      <div class="search-box">
-        <input type="text" placeholder="Search AI Coding Tools...">
-        <button>🔍</button>
-      </div>
-      <div class="menu-btn" onclick="toggleMenu()">☰</div>
-    </div>
+<header>
+  <div class="eyebrow">Coding Tools · Course Library</div>
+  <h1>Learn to code <em>with</em> AI, tool by tool</h1>
+  <p class="dek">Ten short, practical two-lesson courses — one per tool — covering what each one is actually good at, where it fits your workflow, and the habits that get reliable results out of it.</p>
+  <div class="meta">
+    <span><strong>10</strong> courses</span>
+    <span><strong>2</strong> lessons each</span>
+    <span><strong>~10 min</strong> per course</span>
   </div>
 </header>
 
-<section class="hero" style="padding:60px 0;">
-  <div class="container" style="text-align:center;">
-    <h1 style="font-size:46px;color:#fff;margin-bottom:15px;">💻 Top 10 AI Coding Tools</h1>
-    <p style="font-size:18px;color:#dbe7ff;max-width:700px;margin:auto;">
-      Discover the most powerful AI tools for coding, debugging, code generation and software development.
-    </p>
+<main>
+  <div class="section-label">Agentic editors & IDEs</div>
+  <div class="grid">
+    <a class="card" style="--card-color:#7c5cfc" href="claude-for-coding.html">
+      <div class="top"><span class="name">Claude for Coding</span><span class="tag">General</span></div>
+      <p>A collaborator you can reason with — context in, reasoning out.</p>
+      <span class="go">Start course →</span>
+    </a>
+    <a class="card" style="--card-color:#0e8f7f" href="cursor-ai.html">
+      <div class="top"><span class="name">Cursor</span><span class="tag">Editor</span></div>
+      <p>A VS Code fork with codebase-aware chat and multi-file edits.</p>
+      <span class="go">Start course →</span>
+    </a>
+    <a class="card" style="--card-color:#0f9db8" href="windsurf-ai.html">
+      <div class="top"><span class="name">Windsurf</span><span class="tag">Editor</span></div>
+      <p>An agentic IDE built around staying in flow with Cascade.</p>
+      <span class="go">Start course →</span>
+    </a>
+    <a class="card" style="--card-color:#6e40c9" href="github-copilot.html">
+      <div class="top"><span class="name">GitHub Copilot</span><span class="tag">Platform</span></div>
+      <p>The industry-default assistant, now agentic at the PR level.</p>
+      <span class="go">Start course →</span>
+    </a>
   </div>
-</section>
 
-<section class="ai-page">
-  <div class="container">
-    <h2 style="text-align:center;font-size:36px;color:#0f172a;margin-bottom:10px;">Choose Your AI Coding Tool</h2>
-    <p class="section-title">Select any AI Coding tool below and explore its features.</p>
-
-    <div class="ai-grid">
-
-      <div class="ai-card">
-        <h3>🐙 GitHub Copilot</h3>
-        <p>World's most popular AI coding assistant — autocomplete code, fix bugs and write functions instantly.</p>
-        <a href="github-copilot.html" class="ai-btn">Learn More</a>
-      </div>
-
-      <div class="ai-card">
-        <h3>🖱️ Cursor AI</h3>
-        <p>AI-powered code editor that understands your entire codebase and helps you build projects faster.</p>
-        <a href="cursor-ai.html" class="ai-btn">Learn More</a>
-      </div>
-
-      <div class="ai-card">
-        <h3>⚡ Bolt AI</h3>
-        <p>Build full-stack web apps from text prompts in seconds — no coding experience required.</p>
-        <a href="bolt-ai.html" class="ai-btn">Learn More</a>
-      </div>
-
-      <div class="ai-card">
-        <h3>🧩 Replit AI</h3>
-        <p>Online AI coding platform for building, running and deploying apps directly in your browser.</p>
-        <a href="replit-ai.html" class="ai-btn">Learn More</a>
-      </div>
-
-      <div class="ai-card">
-        <h3>🤖 Claude for Coding</h3>
-        <p>Anthropic's Claude excels at code generation, debugging, code review and explaining complex code.</p>
-        <a href="claude-coding.html" class="ai-btn">Learn More</a>
-      </div>
-
-      <div class="ai-card">
-        <h3>🌊 Windsurf AI</h3>
-        <p>AI code editor by Codeium with deep codebase understanding and powerful autocomplete features.</p>
-        <a href="windsurf-ai.html" class="ai-btn">Learn More</a>
-      </div>
-
-      <div class="ai-card">
-        <h3>📑 Tabnine</h3>
-        <p>AI code completion tool that learns your coding style and suggests whole lines and functions.</p>
-        <a href="tabnine.html" class="ai-btn">Learn More</a>
-      </div>
-
-      <div class="ai-card">
-        <h3>🆓 Codeium</h3>
-        <p>Free AI coding assistant with autocomplete, chat and search features for 70+ programming languages.</p>
-        <a href="codeium.html" class="ai-btn">Learn More</a>
-      </div>
-
-      <div class="ai-card">
-        <h3>💜 Lovable AI</h3>
-        <p>Build complete web applications from simple text descriptions — design, code and deploy with AI.</p>
-        <a href="lovable-ai.html" class="ai-btn">Learn More</a>
-      </div>
-
-      <div class="ai-card">
-        <h3>▲ v0 by Vercel</h3>
-        <p>Generate beautiful UI components and frontend code from text prompts using AI instantly.</p>
-        <a href="v0-vercel.html" class="ai-btn">Learn More</a>
-      </div>
-
-    </div>
+  <div class="section-label">App & UI builders</div>
+  <div class="grid">
+    <a class="card" style="--card-color:#e8672c" href="bolt-ai.html">
+      <div class="top"><span class="name">Bolt.ai</span><span class="tag">Builder</span></div>
+      <p>Browser-based full-stack apps, built and run live in front of you.</p>
+      <span class="go">Start course →</span>
+    </a>
+    <a class="card" style="--card-color:#e14b7a" href="lovable-ai.html">
+      <div class="top"><span class="name">Lovable</span><span class="tag">Builder</span></div>
+      <p>Full products from a prompt, aimed at founders and non-engineers.</p>
+      <span class="go">Start course →</span>
+    </a>
+    <a class="card" style="--card-color:#1a7fb8" href="replit-ai.html">
+      <div class="top"><span class="name">Replit</span><span class="tag">Builder</span></div>
+      <p>Build, run, and host in one browser tab with a real runtime.</p>
+      <span class="go">Start course →</span>
+    </a>
+    <a class="card" style="--card-color:#3b82f6" href="v0-vercel.html">
+      <div class="top"><span class="name">v0 by Vercel</span><span class="tag">UI Gen</span></div>
+      <p>Production-quality React and Tailwind components from a prompt.</p>
+      <span class="go">Start course →</span>
+    </a>
   </div>
-</section>
+
+  <div class="section-label">Autocomplete & inline assistants</div>
+  <div class="grid">
+    <a class="card" style="--card-color:#4a5cf0" href="codeium.html">
+      <div class="top"><span class="name">Codeium</span><span class="tag">Free tier</span></div>
+      <p>Fast inline completions with a genuinely full-featured free plan.</p>
+      <span class="go">Start course →</span>
+    </a>
+    <a class="card" style="--card-color:#3c7a3e" href="tabnine.html">
+      <div class="top"><span class="name">Tabnine</span><span class="tag">Privacy</span></div>
+      <p>Completion built for regulated teams — on-prem and air-gapped.</p>
+      <span class="go">Start course →</span>
+    </a>
+  </div>
+</main>
 
 <footer>
-  <div class="container footer-content">
-    <div>
-      <h3>AI Learn Then Earn</h3>
-      <p>Master AI Skills and Start Earning Online. Learn ChatGPT, Gemini, Claude, Copilot, SEO, AI Tools and much more.</p>
-    </div>
-    <div>
-      <h4>Quick Links</h4>
-      <a href="../index.html">Home</a>
-      <a href="../tools.html">AI Tools</a>
-      <a href="../courses.html">Courses</a>
-      <a href="../earn.html">Earn Online</a>
-      <a href="../blog.html">Blog</a>
-      <a href="../contact.html">Contact</a>
-    </div>
-    <div>
-      <h4>Top Coding Tools</h4>
-      <a href="github-copilot.html">GitHub Copilot</a>
-      <a href="cursor-ai.html">Cursor AI</a>
-      <a href="bolt-ai.html">Bolt AI</a>
-      <a href="replit-ai.html">Replit AI</a>
-      <a href="windsurf-ai.html">Windsurf AI</a>
-    </div>
-  </div>
-  <hr>
-  <p class="copyright">© 2026 AI Learn Then Earn. All Rights Reserved.</p>
+  Each course is two short lessons: foundations, then a practical routine. Pick the tool that matches how you already work, not the one with the most features.
 </footer>
-
-<button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-<script src="../script.js"></script>
 
 </body>
 </html>
