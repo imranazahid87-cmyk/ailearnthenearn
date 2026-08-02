@@ -1,240 +1,314 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elicit AI Mastery Course | AI Learn Then Earn</title>
+<title>Elicit AI — Poora Course</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#F7F6F1;
-    --paper:#FFFFFF;
-    --ink:#1C2333;
-    --muted:#5E6272;
-    --accent:#1D4ED8;
-    --accent-soft:#E9EEFC;
-    --highlight:#FFE58A;
-    --highlight-soft:#FFF7DD;
-    --line:#E7E4D9;
+    --bg: #F7F6F2;
+    --panel: #FFFFFF;
+    --ink: #1E2321;
+    --ink-soft: #5C6B64;
+    --forest: #2F5744;
+    --rust: #B5562F;
+    --sand: #D9C9A3;
+    --line: #E2DCCB;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{
-    margin:0;background:var(--bg);color:var(--ink);
-    font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;line-height:1.6;}
+  h1,h2,h3,.display{font-family:'Source Serif 4',serif;letter-spacing:-0.005em;}
+  code,.mono{font-family:'JetBrains Mono',monospace;}
+
+  .topbar{
+    background:var(--panel);
+    border-bottom:1px solid var(--line);
+    padding:14px 24px;
+    display:flex;
+    gap:22px;
+    overflow-x:auto;
+    position:sticky; top:0; z-index:50;
   }
-  h1,h2,h3{font-family:'Source Serif 4',serif;font-weight:600;letter-spacing:-0.01em;margin:0;}
-  .mono{font-family:'JetBrains Mono',monospace;letter-spacing:0.02em;}
-  a{color:inherit;text-decoration:none;}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .topbar a{ font-size:13.5px; color:var(--ink-soft); text-decoration:none; white-space:nowrap; font-weight:500; cursor:pointer; }
+  .topbar a:hover{ color:var(--forest); }
 
-  nav{display:flex;align-items:center;justify-content:space-between;padding:22px 24px;max-width:1080px;margin:0 auto;}
-  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px;}
-  .brand-mark{width:28px;height:28px;border-radius:8px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;}
-  .crumb{font-size:13px;color:var(--muted);}
-  .crumb a{color:var(--accent);font-weight:600;}
+  main{max-width:920px; margin:0 auto; padding:0 24px;}
 
-  .hero{padding:40px 24px 70px;}
-  .hero-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1.05fr 0.95fr;gap:48px;align-items:center;}
-  .eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--accent-soft);color:var(--accent);
-    padding:6px 14px;border-radius:100px;font-size:13px;font-weight:600;margin-bottom:20px;}
-  .hero h1{font-size:clamp(30px,4.4vw,46px);line-height:1.1;}
-  .hero h1 span{background:linear-gradient(to top, var(--highlight) 38%, transparent 38%);padding:0 2px;}
-  .hero p.sub{margin-top:18px;font-size:16.5px;color:var(--muted);max-width:480px;}
-  .hero-actions{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap;}
-  .btn-primary{background:var(--accent);color:#fff;border:none;padding:14px 26px;border-radius:10px;
-    font-size:15px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;}
-  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line);padding:14px 26px;
-    border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;}
-
-  /* SIGNATURE: highlighted paper mockup */
-  .paper-mock{background:var(--paper);border:1px solid var(--line);border-radius:14px;
-    box-shadow:0 24px 60px -24px rgba(29,78,216,0.22);padding:32px 30px;position:relative;}
-  .paper-mock .doc-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);
-    text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px;display:flex;justify-content:space-between;}
-  .paper-mock h3{font-size:17px;margin-bottom:14px;}
-  .paper-mock p{font-size:14.5px;color:#3A3F52;margin:0 0 12px;}
-  .hl{background:var(--highlight);border-radius:3px;padding:1px 3px;box-shadow:0 0 0 3px var(--highlight);
-    animation:sweep 2.6s ease-in-out infinite;}
-  .paper-mock .extract-box{margin-top:20px;background:var(--highlight-soft);border:1px dashed #E3C25A;
-    border-radius:10px;padding:14px 16px;}
-  .paper-mock .extract-box .k{font-size:11px;font-family:'JetBrains Mono',monospace;color:#8A6D1A;
-    text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;}
-  .paper-mock .extract-box .v{font-size:14px;font-weight:600;}
-  @keyframes sweep{
-    0%,100%{filter:brightness(1);}
-    50%{filter:brightness(1.15);}
+  .hero{ padding:70px 0 50px; border-bottom:1px solid var(--line); }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:13px; font-weight:600; color:var(--rust);
+    background:#F7EAE3; padding:6px 12px; border-radius:100px; margin-bottom:20px;
   }
+  .hero h1{ font-size:clamp(32px,5.6vw,50px); font-weight:700; margin:0 0 18px; max-width:16ch; }
+  .hero h1 em{ color:var(--forest); font-style:italic; }
+  .hero p{ font-size:18px; color:var(--ink-soft); max-width:60ch; margin:0 0 32px; }
 
-  .section{padding:70px 24px;}
-  .section-head{max-width:600px;margin:0 auto 44px;text-align:center;}
-  .section-head .eyebrow{margin-bottom:14px;}
-  .section-head h2{font-size:clamp(24px,3.2vw,32px);}
-  .section-head p{color:var(--muted);margin-top:12px;font-size:15.5px;}
+  /* Signature: a "stack of papers being distilled into a table row" motif */
+  .distill{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:22px;
+  }
+  .paper-stack{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    min-width:140px;
+  }
+  .paper{
+    height:14px;
+    border-radius:3px;
+    background:var(--sand);
+    opacity:.6;
+  }
+  .paper:nth-child(1){width:100%;}
+  .paper:nth-child(2){width:88%;}
+  .paper:nth-child(3){width:95%;}
+  .paper:nth-child(4){width:70%;}
+  .distill-arrow{ font-size:22px; color:var(--ink-soft); }
+  .distill-result{
+    flex:1;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;
+  }
+  .distill-result table{ width:100%; border-collapse:collapse; }
+  .distill-result th, .distill-result td{
+    text-align:left; padding:6px 8px; border-bottom:1px solid var(--line); font-size:12px;
+  }
+  .distill-result th{ color:var(--forest); }
 
-  .value-grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-  .value-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:26px;}
-  .value-card .ico{font-size:22px;margin-bottom:12px;display:block;}
-  .value-card h3{font-size:17.5px;margin-bottom:8px;}
-  .value-card p{color:var(--muted);font-size:14px;margin:0;}
+  section{ padding:56px 0; border-bottom:1px solid var(--line); }
+  section.no-border{ border-bottom:none; }
+  .section-label{
+    font-size:13px; font-weight:600; color:var(--rust);
+    text-transform:uppercase; letter-spacing:.08em; margin-bottom:10px;
+  }
+  section h2{ font-size:clamp(24px,3.4vw,32px); margin:0 0 24px; }
 
-  /* PROGRESS CARD - matches site's course-page pattern */
-  .progress-card{max-width:1080px;margin:0 auto 50px;background:var(--paper);border:1px solid var(--line);
-    border-radius:16px;padding:26px 30px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
-  .progress-meta{font-size:13.5px;color:var(--muted);}
-  .progress-meta strong{color:var(--ink);}
-  .bar-track{flex:1;min-width:180px;height:8px;background:var(--accent-soft);border-radius:100px;overflow:hidden;}
-  .bar-fill{height:100%;width:0%;background:var(--accent);border-radius:100px;}
+  .grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px; }
+  .card{ background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:20px; }
+  .card h3{ font-size:17px; margin:0 0 8px; display:flex; align-items:center; gap:8px; }
+  .card p{ font-size:14.5px; color:var(--ink-soft); margin:0; }
+  .tag-dot{ width:10px; height:10px; border-radius:3px; flex-shrink:0; }
 
-  .modules{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
-  .module{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 24px;
-    display:flex;flex-direction:column;gap:6px;}
-  .module .m-num{font-family:'JetBrains Mono',monospace;color:var(--accent);font-size:12.5px;font-weight:600;}
-  .module h3{font-size:17px;}
-  .module p{color:var(--muted);font-size:13.8px;margin:0 0 10px;}
-  .module .open{font-size:13.5px;font-weight:600;color:var(--accent);}
+  .steps{ counter-reset:step; list-style:none; margin:0; padding:0; }
+  .steps li{ counter-increment:step; display:flex; gap:16px; padding:16px 0; border-top:1px solid var(--line); }
+  .steps li:first-child{ border-top:none; }
+  .steps li::before{
+    content:counter(step); font-family:'Source Serif 4',serif; font-weight:700; font-size:14px;
+    color:var(--forest); background:#E8F0EC; width:30px; height:30px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .steps h4{ margin:0 0 4px; font-size:15.5px; }
+  .steps p{ margin:0; font-size:14px; color:var(--ink-soft); }
 
-  .cta-section{background:var(--ink);border-radius:22px;max-width:1080px;margin:0 auto;
-    padding:56px 40px;text-align:center;color:#fff;}
-  .cta-section h2{color:#fff;font-size:clamp(24px,3.2vw,32px);}
-  .cta-section p{color:#B7BBD1;margin-top:12px;font-size:15px;}
-  .cta-section .btn-primary{margin-top:24px;background:var(--highlight);color:#3A2E00;}
+  .app-tabs{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px; }
+  .app-tab-btn{
+    font-size:14px; font-weight:500; padding:9px 16px; border-radius:8px;
+    border:1px solid var(--line); background:var(--panel); cursor:pointer; color:var(--ink-soft);
+  }
+  .app-tab-btn.active{ background:var(--ink); color:#fff; border-color:var(--ink); }
+  .app-panel{ display:none; }
+  .app-panel.active{ display:block; }
+  .prompt-box{
+    background:var(--forest); color:#EAF3EC; border-radius:10px; padding:16px 18px;
+    font-family:'JetBrains Mono',monospace; font-size:13.5px; margin-bottom:12px; line-height:1.7;
+  }
+  .prompt-box .lbl{ color:#D9C9A3; font-weight:600; }
+  .app-result{ font-size:14.5px; color:var(--ink-soft); padding-left:2px; }
 
-  footer{padding:36px 24px;text-align:center;color:var(--muted);font-size:12.5px;}
+  .accordion-item{ border:1px solid var(--line); border-radius:10px; margin-bottom:10px; background:var(--panel); overflow:hidden; }
+  .accordion-q{ padding:16px 18px; display:flex; justify-content:space-between; align-items:center; cursor:pointer; font-weight:500; font-size:15px; }
+  .accordion-arrow{ transition:.25s; color:var(--ink-soft); }
+  .accordion-item.open .accordion-arrow{ transform:rotate(180deg); }
+  .accordion-a{ max-height:0; overflow:hidden; transition:max-height .3s ease; font-size:14.5px; color:var(--ink-soft); padding:0 18px; }
+  .accordion-item.open .accordion-a{ padding:0 18px 16px; }
 
-  @media(max-width:860px){
-    .hero-inner{grid-template-columns:1fr;}
-    .value-grid{grid-template-columns:1fr;}
-    .modules{grid-template-columns:1fr;}
-    .paper-mock{order:-1;}
+  .quiz-box{ background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:24px; }
+  .quiz-q{ font-weight:600; margin-bottom:14px; }
+  .quiz-opt{ display:block; width:100%; text-align:left; padding:12px 14px; margin-bottom:8px; border:1px solid var(--line); border-radius:8px; background:#fff; cursor:pointer; font-size:14.5px; font-family:inherit; }
+  .quiz-opt:hover{ border-color:var(--forest); }
+  .quiz-opt.correct{ background:#E8F0EC; border-color:var(--forest); color:var(--forest); font-weight:600; }
+  .quiz-opt.wrong{ background:#F7EAE3; border-color:var(--rust); color:var(--rust); }
+  .quiz-feedback{ margin-top:12px; font-size:14px; color:var(--ink-soft); min-height:20px; }
+
+  footer{ padding:40px 0 60px; text-align:center; color:var(--ink-soft); font-size:13.5px; }
+
+  @media (max-width:600px){
+    .hero{padding:48px 0 36px;}
+    .distill{flex-direction:column; align-items:stretch;}
+    .distill-arrow{ transform:rotate(90deg); text-align:center; }
   }
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="brand"><span class="brand-mark">AI</span>AI Learn Then Earn</div>
-  <div class="crumb"><a href="../courses.html">← All Courses</a></div>
+<nav class="topbar">
+  <a onclick="jump('kya-hai')">Kya Hai</a>
+  <a onclick="jump('workflow')">Kaam Kaise Karta Hai</a>
+  <a onclick="jump('extract')">Data Extraction</a>
+  <a onclick="jump('usecases')">Use-Cases</a>
+  <a onclick="jump('faq')">Do's & Don'ts</a>
+  <a onclick="jump('quiz')">Quiz</a>
 </nav>
 
-<section class="hero">
-  <div class="hero-inner">
-    <div>
-      <span class="eyebrow">📚 Productivity AI · Beginner to Advanced</span>
-      <h1>Master <span>Elicit AI</span> for Research That Doesn't Take Weeks</h1>
-      <p class="sub">Elicit is the AI research assistant that reads hundreds of papers so you don't have to. Learn to search, extract, and summarize academic research in minutes — perfect for students, writers, and research freelancers.</p>
-      <div class="hero-actions">
-        <button class="btn-primary">🚀 Start Learning</button>
-        <button class="btn-ghost">View Modules</button>
+<main>
+
+  <section class="hero no-border">
+    <div class="eyebrow">● Research AI Course</div>
+    <h1>Elicit se <em>research papers</em> padhna, ghanto nahi, minutes ka kaam</h1>
+    <p>Elicit ek AI research assistant hai jo lakhon academic papers mein se relevant paper dhoondta hai, unka summary deta hai, aur unse data extract karke ek table bana deta hai — jaise ek research assistant kaam karta hai.</p>
+
+    <div class="distill">
+      <div class="paper-stack">
+        <div class="paper"></div>
+        <div class="paper"></div>
+        <div class="paper"></div>
+        <div class="paper"></div>
+      </div>
+      <div class="distill-arrow">→</div>
+      <div class="distill-result">
+        <table>
+          <tr><th>Paper</th><th>Sample Size</th><th>Finding</th></tr>
+          <tr><td>Study A</td><td>240</td><td>Positive effect</td></tr>
+          <tr><td>Study B</td><td>512</td><td>No effect</td></tr>
+          <tr><td>Study C</td><td>88</td><td>Mixed</td></tr>
+        </table>
       </div>
     </div>
-    <div class="paper-mock">
-      <div class="doc-label"><span>research_paper.pdf</span><span>Extracted by Elicit</span></div>
-      <h3>Effects of Sleep on Memory Consolidation</h3>
-      <p>Participants who slept <span class="hl">8 hours showed 34% better recall</span> compared to the sleep-deprived group across all test conditions.</p>
-      <p>The study followed <span class="hl">240 adults over 6 weeks</span> using controlled lab conditions.</p>
-      <div class="extract-box">
-        <div class="k">Key Finding</div>
-        <div class="v">Sleep duration directly improves memory recall by up to 34%</div>
+  </section>
+
+  <section id="kya-hai">
+    <div class="section-label">Shuruaat</div>
+    <h2>Elicit hai kya cheez?</h2>
+    <p style="color:var(--ink-soft); max-width:65ch; margin-bottom:24px;">Jab aap literature review ke liye 50 papers padhna chahte ho, toh Elicit un papers ko scan karke unke findings, methodology aur sample size jaisi cheezein nikal kar ek clean table mein daal deta hai. Ye Google Scholar jaisa search engine nahi — ye ek research analyst hai.</p>
+    <div class="grid">
+      <div class="card">
+        <h3><span class="tag-dot" style="background:var(--forest);"></span>Semantic Search</h3>
+        <p>Keyword match nahi, meaning match karta hai — apni research question plain language mein poochho.</p>
+      </div>
+      <div class="card">
+        <h3><span class="tag-dot" style="background:var(--rust);"></span>Data Extraction</h3>
+        <p>Har paper se specific columns (sample size, method, outcome) nikal kar comparison table banata hai.</p>
+      </div>
+      <div class="card">
+        <h3><span class="tag-dot" style="background:var(--sand);"></span>Citations Included</h3>
+        <p>Har claim ke saath source paper linked rehta hai — verify karna aasan hai.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section">
-  <div class="section-head">
-    <span class="eyebrow">Why Elicit</span>
-    <h2>Research used to take weeks. Now it takes minutes.</h2>
-    <p>Elicit reads papers, pulls out the data that matters, and organizes it into tables — so you spend your time thinking, not skimming.</p>
-  </div>
-  <div class="value-grid">
-    <div class="value-card">
-      <span class="ico">🔎</span>
-      <h3>Ask, Don't Search</h3>
-      <p>Type a research question in plain English and Elicit finds the most relevant papers — no keyword guessing.</p>
-    </div>
-    <div class="value-card">
-      <span class="ico">📊</span>
-      <h3>Auto-Extracted Data</h3>
-      <p>Sample sizes, methods, outcomes — Elicit pulls key data points into a table automatically for every paper.</p>
-    </div>
-    <div class="value-card">
-      <span class="ico">💼</span>
-      <h3>A Real Freelance Skill</h3>
-      <p>Literature reviews and research summaries are in demand on Fiverr and Upwork — this course turns Elicit into an income skill.</p>
-    </div>
-  </div>
-</section>
+  <section id="workflow">
+    <div class="section-label">Hands-On</div>
+    <h2>Ek literature review karne ka tarika</h2>
+    <ol class="steps">
+      <li><div><h4>Research question likho</h4><p>"Kya remote work productivity par positive effect dalta hai?" jaisa sawaal type karo.</p></div></li>
+      <li><div><h4>Relevant papers dekho</h4><p>Elicit ranked list deta hai — har paper ke saath ek quick summary aur relevance score.</p></div></li>
+      <li><div><h4>Papers shortlist karo</h4><p>Jo papers useful lagein unhe select karke apni working list mein add karo.</p></div></li>
+      <li><div><h4>Columns add karo</h4><p>"Sample size", "Country", "Main finding" jaise columns add karo — AI har paper se ye nikal kar table banata hai.</p></div></li>
+      <li><div><h4>Export karo</h4><p>Table ko CSV ya doc mein export karke apne review mein use karo.</p></div></li>
+    </ol>
+  </section>
 
-<section class="section" id="modules">
-  <div class="section-head">
-    <span class="eyebrow">Course Modules</span>
-    <h2>7 Modules · Practical Projects</h2>
-  </div>
+  <section id="extract">
+    <div class="section-label">Core Feature</div>
+    <h2>Data Extraction — asli power</h2>
+    <div class="app-tabs">
+      <button class="app-tab-btn active" onclick="showApp('search', this)">Search</button>
+      <button class="app-tab-btn" onclick="showApp('table', this)">Table Builder</button>
+      <button class="app-tab-btn" onclick="showApp('chat', this)">Chat with Paper</button>
+    </div>
+    <div class="app-panel active" id="app-search">
+      <div class="prompt-box"><span class="lbl">Query:</span> "Kya intermittent fasting weight loss mein effective hai?"</div>
+      <p class="app-result">Elicit sirf relevant peer-reviewed studies dikhata hai, ranked by relevance — har ek ka ek-line summary bhi.</p>
+    </div>
+    <div class="app-panel" id="app-table">
+      <div class="prompt-box"><span class="lbl">Column add karo:</span> "Study duration" + "Participant age group"</div>
+      <p class="app-result">Selected papers se ye do columns automatically extract hoke table mein aa jaate hain — manually padhne ki zaroorat nahi.</p>
+    </div>
+    <div class="app-panel" id="app-chat">
+      <div class="prompt-box"><span class="lbl">Poocho:</span> "Is paper ki limitations kya hain?"</div>
+      <p class="app-result">Ek single paper ke andar deep dive karke specific sawaalon ke jawab milte hain, page reference ke saath.</p>
+    </div>
+  </section>
 
-  <div class="progress-card">
-    <div class="progress-meta"><strong>7 Modules</strong> · Beginner to Advanced · Practical Projects</div>
-    <div class="bar-track"><div class="bar-fill"></div></div>
-    <div class="progress-meta">Progress: <strong>0%</strong> Completed</div>
-  </div>
+  <section id="usecases">
+    <div class="section-label">Practical</div>
+    <h2>Kaam aane wale use-cases</h2>
+    <div class="grid">
+      <div class="card"><h3>🎓 Thesis literature review</h3><p>Students apne research topic par existing studies jaldi map kar sakte hain.</p></div>
+      <div class="card"><h3>🧪 Product research</h3><p>Companies apne domain ki academic research se insights nikal sakti hain.</p></div>
+      <div class="card"><h3>📋 Policy research</h3><p>Kisi policy decision ke liye evidence-based studies compare karna.</p></div>
+      <div class="card"><h3>✍️ Grant proposal</h3><p>Existing research gaps identify karke apna proposal stronger banana.</p></div>
+    </div>
+  </section>
 
-  <div class="modules">
-    <div class="module">
-      <span class="m-num">MODULE 01</span>
-      <h3>Introduction to Elicit AI</h3>
-      <p>What Elicit is, who it's for, and how it fits into a research workflow.</p>
-      <a class="open" href="module1.html">Open Module →</a>
+  <section id="faq">
+    <div class="section-label">Zaroori</div>
+    <h2>Do's aur Don'ts</h2>
+    <div class="accordion-item" onclick="toggleAcc(this)">
+      <div class="accordion-q">Kya Elicit ke extracted data 100% accurate hote hain? <span class="accordion-arrow">▾</span></div>
+      <div class="accordion-a">Nahi, hamesha original paper se cross-check karo — especially numbers aur statistical claims, kyunki AI extraction mein galti ho sakti hai.</div>
     </div>
-    <div class="module">
-      <span class="m-num">MODULE 02</span>
-      <h3>Getting Started</h3>
-      <p>Account setup, the interface, and running your first research question.</p>
-      <a class="open" href="module2.html">Open Module →</a>
+    <div class="accordion-item" onclick="toggleAcc(this)">
+      <div class="accordion-q">Kya ye sirf academic papers ke liye hai? <span class="accordion-arrow">▾</span></div>
+      <div class="accordion-a">Haan, iska database mainly peer-reviewed academic literature par based hai — general web content ke liye ye tool nahi hai.</div>
     </div>
-    <div class="module">
-      <span class="m-num">MODULE 03</span>
-      <h3>Smart Literature Search</h3>
-      <p>Writing research questions that return the most relevant, high-quality papers.</p>
-      <a class="open" href="module3.html">Open Module →</a>
+    <div class="accordion-item" onclick="toggleAcc(this)">
+      <div class="accordion-q">Kya main free mein use kar sakta hoon? <span class="accordion-arrow">▾</span></div>
+      <div class="accordion-a">Ek free tier available hai limited searches/extractions ke saath; heavy research ke liye paid plan chahiye hota hai.</div>
     </div>
-    <div class="module">
-      <span class="m-num">MODULE 04</span>
-      <h3>Extracting Data from Papers</h3>
-      <p>Using Elicit's extraction tables to pull findings, methods, and sample sizes.</p>
-      <a class="open" href="module4.html">Open Module →</a>
-    </div>
-    <div class="module">
-      <span class="m-num">MODULE 05</span>
-      <h3>Chat With Papers</h3>
-      <p>Asking Elicit direct questions about a specific PDF and verifying its answers.</p>
-      <a class="open" href="module5.html">Open Module →</a>
-    </div>
-    <div class="module">
-      <span class="m-num">MODULE 06</span>
-      <h3>Systematic Reviews, Simplified</h3>
-      <p>Screening, organizing, and summarizing dozens of papers for a full literature review.</p>
-      <a class="open" href="module6.html">Open Module →</a>
-    </div>
-    <div class="module">
-      <span class="m-num">MODULE 07</span>
-      <h3>Earn With Research Skills</h3>
-      <p>Turning literature-review and research-summary skills into freelance income.</p>
-      <a class="open" href="module7.html">Open Module →</a>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section class="section">
-  <div class="cta-section">
-    <h2>Stop skimming papers. Start extracting answers.</h2>
-    <p>Join the course and finish your first AI-assisted literature review this week.</p>
-    <button class="btn-primary">🚀 Start Learning</button>
-  </div>
-</section>
+  <section id="quiz" class="no-border">
+    <div class="section-label">Test Yourself</div>
+    <h2>Ek quick quiz</h2>
+    <div class="quiz-box">
+      <div class="quiz-q">Elicit ka sabse powerful feature kya hai?</div>
+      <button class="quiz-opt" onclick="checkAns(this,false)">Ye sirf papers ko PDF mein download karta hai</button>
+      <button class="quiz-opt" onclick="checkAns(this,true)">Multiple papers se data extract karke ek comparison table banana</button>
+      <button class="quiz-opt" onclick="checkAns(this,false)">Ye news articles summarize karta hai</button>
+      <div class="quiz-feedback" id="feedback"></div>
+    </div>
+  </section>
 
-<footer>© 2026 AI Learn Then Earn. All Rights Reserved.</footer>
+</main>
+
+<footer>Elicit AI Course — research ko table bana do, guesswork nahi.</footer>
+
+<script>
+function jump(id){ document.getElementById(id).scrollIntoView({behavior:'smooth'}); }
+
+function showApp(name, btn){
+  document.querySelectorAll('.app-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.app-tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('app-'+name).classList.add('active');
+  btn.classList.add('active');
+}
+
+function toggleAcc(el){ el.classList.toggle('open'); }
+
+function checkAns(btn, isCorrect){
+  const opts = btn.parentElement.querySelectorAll('.quiz-opt');
+  opts.forEach(o=>o.disabled=true);
+  if(isCorrect){
+    btn.classList.add('correct');
+    document.getElementById('feedback').textContent = "Sahi jawab! Table-building hi Elicit ko alag banata hai.";
+  } else {
+    btn.classList.add('wrong');
+    document.getElementById('feedback').textContent = "Thoda aur socho — sahi jawab highlight ho gaya hai.";
+    opts.forEach(o=>{ if(o.onclick.toString().includes('true')) o.classList.add('correct'); });
+  }
+}
+</script>
 
 </body>
 </html>
