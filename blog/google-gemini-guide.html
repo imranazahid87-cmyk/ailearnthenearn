@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Gemini Guide 2026 - Complete Beginner's Guide | AI Learn Then Earn</title>
+<meta name="description" content="What is Google Gemini? Learn how to use it, what makes it different from ChatGPT, and how beginners can get the most out of it in 2026.">
+<link rel="stylesheet" href="../style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  .blog-hero {
+    background: linear-gradient(135deg, #0b1736, #0d4fd8);
+    padding: 60px 0 40px;
+    text-align: center;
+    color: #fff;
+  }
+  .blog-hero h1 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    line-height: 1.3;
+  }
+  .blog-hero p {
+    font-size: 17px;
+    color: #dbe7ff;
+    max-width: 650px;
+    margin: 0 auto 20px;
+  }
+  .blog-meta {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 14px;
+    color: #a0b4ff;
+    flex-wrap: wrap;
+  }
+  .blog-body {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 0 20px 80px;
+  }
+  .blog-body h2 {
+    font-size: 26px;
+    color: #0b1736;
+    margin: 40px 0 15px;
+    padding-left: 14px;
+    border-left: 4px solid #2f80ff;
+  }
+  .blog-body h3 {
+    font-size: 20px;
+    color: #1a2a6c;
+    margin: 25px 0 10px;
+  }
+  .blog-body p {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.9;
+    margin-bottom: 18px;
+  }
+  .blog-body ul, .blog-body ol {
+    padding-left: 22px;
+    margin-bottom: 20px;
+  }
+  .blog-body li {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.8;
+    margin-bottom: 8px;
+  }
+  .highlight-box {
+    background: #eef4ff;
+    border-left: 5px solid #2f80ff;
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 30px 0;
+  }
+  .highlight-box p { margin: 0; color: #1a2a6c; font-weight: 500; }
+  .tip-box {
+    background: #f0fff4;
+    border-left: 5px solid #22c55e;
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 30px 0;
+  }
+  .tip-box p { margin: 0; color: #166534; font-weight: 500; }
+  .warning-box {
+    background: #fffbeb;
+    border-left: 5px solid #f59e0b;
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 30px 0;
+  }
+  .warning-box p { margin: 0; color: #92400e; font-weight: 500; }
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 15px;
+  }
+  .compare-table th {
+    background: #0b1736;
+    color: #fff;
+    padding: 14px 16px;
+    text-align: left;
+  }
+  .compare-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #e5e7eb;
+    color: #444;
+  }
+  .compare-table tr:nth-child(even) td { background: #f7f9fc; }
+  .compare-table .yes { color: #16a34a; font-weight: 600; }
+  .compare-table .no { color: #dc2626; font-weight: 600; }
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+    margin: 25px 0;
+  }
+  .feature-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+  }
+  .feature-card .icon { font-size: 32px; margin-bottom: 10px; }
+  .feature-card h4 { font-size: 16px; color: #0b1736; margin-bottom: 8px; }
+  .feature-card p { font-size: 14px; color: #666; margin: 0; }
+  .cta-section {
+    background: linear-gradient(135deg, #0b1736, #0d4fd8);
+    border-radius: 16px;
+    padding: 40px 30px;
+    text-align: center;
+    color: #fff;
+    margin-top: 50px;
+  }
+  .cta-section h3 { font-size: 24px; margin-bottom: 12px; }
+  .cta-section p { color: #dbe7ff; margin-bottom: 25px; font-size: 16px; }
+  .blog-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  .blog-nav a {
+    flex: 1 1 200px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 14px 18px;
+    text-decoration: none;
+    color: #0b1736;
+    font-size: 14px;
+    font-weight: 500;
+    transition: .3s;
+  }
+  .blog-nav a:hover { border-color: #2f80ff; color: #2f80ff; }
+  .blog-nav a span { display: block; font-size: 12px; color: #999; margin-bottom: 4px; }
+  .blog-nav a.next { text-align: right; }
+  @media(max-width: 600px) {
+    .blog-hero h1 { font-size: 26px; }
+    .blog-body h2 { font-size: 22px; }
+    .compare-table { font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="container">
+    <a href="../index.html" class="logo">
+      <img src="../images/logo.webp" alt="AI Learn Then Earn Logo">
+      <span>AI Learn Then Earn</span>
+    </a>
+    <nav id="navbar">
+      <a href="../index.html">Home</a>
+      <a href="../ai-assistants/">AI Tools</a>
+      <a href="../courses.html">Courses</a>
+      <a href="../earn.html">Earn</a>
+      <a href="../blog.html" class="active">Blog</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+    <div class="header-right">
+      <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    </div>
+  </div>
+</header>
+
+<!-- BLOG HERO -->
+<div class="blog-hero">
+  <div class="container">
+    <h1>Google Gemini Guide 2026 — What It Is and How to Use It</h1>
+    <p>A complete beginner's guide to Google Gemini — Google's most powerful AI assistant built for research, productivity and everyday tasks.</p>
+    <div class="blog-meta">
+      <span>📅 August 2026</span>
+      <span>⏱ 7 min read</span>
+      <span>🏷 Google Gemini · AI Tools · Beginners</span>
+    </div>
+  </div>
+</div>
+
+<!-- BLOG CONTENT -->
+<div class="blog-body">
+
+  <p>Google has been in the AI game for a long time, but with <strong>Google Gemini</strong>, they have created something that goes far beyond a simple search assistant. Whether you want to research a topic, analyse a document, generate ideas or get help with everyday tasks — Gemini is built to do all of it, and it connects directly with Google's entire ecosystem of apps.</p>
+
+  <div class="highlight-box">
+    <p>💡 Google Gemini is more than just a chatbot. It is a multimodal AI — meaning it can understand and work with text, images, audio, video and code all at once.</p>
+  </div>
+
+  <h2>What is Google Gemini?</h2>
+  <p>Google Gemini is Google's flagship AI model and assistant, launched in 2023 and significantly upgraded through 2024 and 2025. It replaced the earlier Google Bard and has become one of the most capable AI tools available today.</p>
+  <p>The name "Gemini" refers to both the underlying AI model and the user-facing assistant app. You can access it at <strong>gemini.google.com</strong> or directly inside Gmail, Google Docs, Google Sheets and other Google Workspace apps.</p>
+  <p>What makes Gemini stand out is that it was built from the ground up to be <strong>multimodal</strong> — it does not just read text, it can look at images, listen to audio, watch videos and write code, often all within the same conversation.</p>
+
+  <h2>Key Features of Google Gemini</h2>
+
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="icon">🔍</div>
+      <h4>Real-Time Web Search</h4>
+      <p>Gemini can search the web and give you up-to-date answers with sources included.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">🖼️</div>
+      <h4>Image Understanding</h4>
+      <p>Upload a photo and ask questions about it — Gemini can read, describe and analyse images.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">📄</div>
+      <h4>Document Analysis</h4>
+      <p>Upload PDFs or documents and get summaries, answers and insights instantly.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">✉️</div>
+      <h4>Gmail Integration</h4>
+      <p>Summarise emails, draft replies and manage your inbox using natural language.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">📊</div>
+      <h4>Google Sheets Help</h4>
+      <p>Ask Gemini to create formulas, analyse data or build charts in your spreadsheets.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">🎙️</div>
+      <h4>Voice Conversations</h4>
+      <p>Talk to Gemini using your voice and have natural back-and-forth conversations.</p>
+    </div>
+  </div>
+
+  <h2>Gemini vs ChatGPT — What is the Difference?</h2>
+  <p>Both tools are excellent, but they have different strengths. Here is a clear comparison to help you decide which one to use:</p>
+
+  <table class="compare-table">
+    <tr>
+      <th>Feature</th>
+      <th>Google Gemini</th>
+      <th>ChatGPT</th>
+    </tr>
+    <tr>
+      <td>Real-time web search</td>
+      <td class="yes">✅ Yes (free)</td>
+      <td class="no">⚠️ Paid only</td>
+    </tr>
+    <tr>
+      <td>Google apps integration</td>
+      <td class="yes">✅ Gmail, Docs, Sheets</td>
+      <td class="no">❌ No</td>
+    </tr>
+    <tr>
+      <td>Image understanding</td>
+      <td class="yes">✅ Yes</td>
+      <td class="yes">✅ Yes (GPT-4o)</td>
+    </tr>
+    <tr>
+      <td>Free plan quality</td>
+      <td class="yes">✅ Very good</td>
+      <td class="yes">✅ Good</td>
+    </tr>
+    <tr>
+      <td>Coding assistance</td>
+      <td class="yes">✅ Strong</td>
+      <td class="yes">✅ Very strong</td>
+    </tr>
+    <tr>
+      <td>Creative writing</td>
+      <td class="yes">✅ Good</td>
+      <td class="yes">✅ Excellent</td>
+    </tr>
+  </table>
+
+  <div class="tip-box">
+    <p>✅ Best advice: Use Gemini when you need real-time information or work with Google apps. Use ChatGPT for deep creative writing and complex reasoning tasks.</p>
+  </div>
+
+  <h2>How to Start Using Google Gemini</h2>
+  <p>Getting started with Gemini is simple and takes less than a minute:</p>
+  <ol>
+    <li>Go to <strong>gemini.google.com</strong></li>
+    <li>Sign in with your Google account (it's free)</li>
+    <li>Type your first message in the chat box</li>
+    <li>Explore the sidebar to connect Gmail, Docs and other apps</li>
+  </ol>
+  <p>No downloads, no complicated setup — just sign in and start exploring.</p>
+
+  <h2>5 Powerful Ways to Use Gemini as a Beginner</h2>
+
+  <h3>1. Research Any Topic Instantly</h3>
+  <p>Ask Gemini to explain any topic and it will search the web, pull together the most relevant information and give you a clear, organised answer with sources. This is much faster than reading multiple articles yourself.</p>
+
+  <h3>2. Summarise Long Documents</h3>
+  <p>Upload a PDF, research paper or long article and ask Gemini to summarise the key points. It can also answer specific questions about the document, saving you hours of reading time.</p>
+
+  <h3>3. Write and Edit Emails</h3>
+  <p>Inside Gmail, you can ask Gemini to write an email for you based on a quick description. You can also ask it to make an existing email shorter, more professional or more friendly.</p>
+
+  <h3>4. Get Help With Google Sheets</h3>
+  <p>If you struggle with Excel or Google Sheets formulas, Gemini can write them for you. Just describe what you want to calculate and it will give you the exact formula to use.</p>
+
+  <h3>5. Plan Your Day or Projects</h3>
+  <p>Tell Gemini what you need to accomplish and ask it to create a structured daily plan, project timeline or to-do list. It is surprisingly good at organising complex tasks into manageable steps.</p>
+
+  <h2>Gemini Free vs Gemini Advanced</h2>
+
+  <h3>Gemini Free</h3>
+  <p>The free version of Gemini is genuinely useful for most people. It includes real-time web search, image understanding, basic Google app integration and solid responses for everyday tasks. It is a great starting point.</p>
+
+  <h3>Gemini Advanced ($19.99/month via Google One)</h3>
+  <p>The paid version unlocks Google's most powerful models, deeper integration across all Google Workspace apps, the ability to analyse larger documents, and more advanced reasoning for complex tasks. It also includes extra Google One storage as part of the plan.</p>
+
+  <div class="warning-box">
+    <p>⚠️ Note: Gemini's free plan already includes real-time web search, which gives it a significant advantage over other free AI tools that only have a knowledge cutoff date.</p>
+  </div>
+
+  <h2>Tips to Get Better Results From Gemini</h2>
+  <ul>
+    <li><strong>Be specific:</strong> Instead of "tell me about SEO," try "explain the top 5 SEO strategies for a beginner blogger in 2026."</li>
+    <li><strong>Use follow-up questions:</strong> If the answer is not quite right, ask Gemini to go deeper, simplify or change the format.</li>
+    <li><strong>Try image uploads:</strong> Take a photo of something confusing — a form, a diagram, a product — and ask Gemini to explain it.</li>
+    <li><strong>Connect your Google apps:</strong> The real power of Gemini comes when it is connected to your Gmail and Drive.</li>
+    <li><strong>Ask for sources:</strong> Always ask Gemini to include sources when researching important topics so you can verify the information.</li>
+  </ul>
+
+  <h2>Final Thoughts</h2>
+  <p>Google Gemini is one of the most capable and accessible AI tools available in 2026. Its deep integration with Google's apps, real-time search ability and multimodal features make it genuinely useful for students, professionals, freelancers and everyday users alike.</p>
+  <p>If you already use Google products regularly — Gmail, Docs, Drive, Sheets — then Gemini is a natural and powerful addition to your workflow. Start with the free version, explore its features and see how much time it saves you every day.</p>
+
+  <div class="cta-section">
+    <h3>Want to Master Google Gemini?</h3>
+    <p>Take our step-by-step Google Gemini course and learn how to use it for learning, productivity and earning online.</p>
+    <a href="../gemini/index.html" class="btn">🚀 Start Gemini Course</a>
+  </div>
+
+  <div class="blog-nav">
+    <a href="chatgpt-guide.html"><span>← Previous Article</span>What is ChatGPT?</a>
+    <a class="next" href="seo-2026.html"><span>Next Article →</span>SEO in 2026</a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container footer-content">
+    <div>
+      <h3>AI Learn Then Earn</h3>
+      <p>Learn AI, Build Skills and Start Earning Online with step-by-step practical courses.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <a href="../index.html">Home</a>
+      <a href="../ai-assistants/">AI Tools</a>
+      <a href="../courses.html">Courses</a>
+      <a href="../earn.html">Earn Online</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../contact.html">Contact</a>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p>📧 info@ailearnthenearn.com</p>
+      <p>📍 Pakistan</p>
+    </div>
+  </div>
+  <hr>
+  <p class="copyright">© 2026 AI Learn Then Earn. All Rights Reserved.</p>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>
