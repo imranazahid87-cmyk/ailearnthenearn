@@ -272,7 +272,23 @@ body{
     background:#fff;
     color:#2563eb;
 }
+.btn-secondary {
+    display: inline-block;
+    padding: 14px 28px;
+    background: #ffffff;
+    color: #0b1736;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: .3s;
+    border: 2px solid #ffffff;
+}
 
+.btn-secondary:hover {
+    background: transparent;
+    color: #ffffff;
+    transform: translateY(-3px);
+}
 /* ===== FEATURES ===== */
 .features{
     padding:80px 0;
