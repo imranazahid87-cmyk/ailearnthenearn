@@ -1,1 +1,121 @@
 
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Murf AI — Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --bg: #FAF8F3; --panel: #FFFFFF; --ink: #201F2B; --ink-soft: #5E5C6E;
+    --plum: #5B3FA0; --coral: #DD6B48; --teal: #227868; --amber: #D68A2E;
+    --navy: #2E4570; --olive: #6D8248; --line: #E8E2D3;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;line-height:1.65;}
+  h1,h2,h3,.display{font-family:'Fraunces',serif;letter-spacing:-0.01em;}
+  code,.mono{font-family:'JetBrains Mono',monospace;}
+  main{max-width:760px; margin:0 auto; padding:0 24px 80px;}
+  .backlink{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:600;color:var(--ink-soft);text-decoration:none;padding:20px 0 0;}
+  .hero{padding:20px 0 28px;border-bottom:1px solid var(--line);}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;padding:6px 12px;border-radius:100px;margin-bottom:16px;}
+  .hero h1{font-size:clamp(28px,6vw,40px);font-weight:700;margin:0 0 12px;}
+  .hero p{font-size:16.5px;color:var(--ink-soft);margin:0;max-width:60ch;}
+  .tabs{display:flex;gap:8px;margin-top:28px;border-bottom:1px solid var(--line);}
+  .tab{border:none;background:none;font-family:'Inter',sans-serif;font-size:14.5px;font-weight:600;color:var(--ink-soft);padding:12px 4px;cursor:pointer;border-bottom:3px solid transparent;margin-right:20px;}
+  .tab.active{color:var(--ink);border-bottom-color:#5B3FA0;}
+  .page{display:none;padding:32px 0;}
+  .page.active{display:block;animation:fade .25s ease;}
+  @keyframes fade{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
+  .page h2{font-size:23px;margin:0 0 14px;}
+  .page h3{font-size:17px;margin:26px 0 10px;}
+  .page p{font-size:15.5px;color:var(--ink);margin:0 0 14px;}
+  .page ul,.page ol{padding-left:20px;margin:0 0 16px;}
+  .page li{font-size:15.5px;margin-bottom:9px;}
+  .callout{background:var(--panel);border:1px solid var(--line);border-left:4px solid #5B3FA0;border-radius:10px;padding:16px 18px;margin:18px 0;font-size:14.5px;}
+  .callout b{color:#5B3FA0;}
+  .pillbar{display:flex;justify-content:space-between;align-items:center;margin-top:36px;padding-top:20px;border-top:1px solid var(--line);}
+  .navbtn{font-size:13.5px;font-weight:600;color:#5B3FA0;text-decoration:none;}
+  footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:13px;border-top:1px solid var(--line);margin-top:20px;}
+
+</style>
+</head>
+<body>
+<main>
+  <a class="backlink" href="index.html">← Sab Voice AI Tools</a>
+  <section class="hero">
+    <div class="eyebrow" style="background:#F0EAFB;color:#5B3FA0;">🎧 AI Voiceover Studio</div>
+    <h1>Murf AI</h1>
+    <p>Presentations aur e-learning ke liye professional voiceover — timing ke saath perfect sync.</p>
+  </section>
+
+  <div class="tabs">
+    <button class="tab active" data-page="1" onclick="showPage(1)">01 — Ye Hai Kya</button>
+    <button class="tab" data-page="2" onclick="showPage(2)">02 — Kaise Use Karein</button>
+    <button class="tab" data-page="3" onclick="showPage(3)">03 — Tips &amp; Use Cases</button>
+  </div>
+
+  <div class="page active" id="page-1">
+
+  <h2>Murf AI Hai Kya?</h2>
+  <p>Murf AI ek text-to-speech / voiceover generation tool hai jo khaas taur par business use — presentations, training videos, aur marketing — ke liye banaya gaya hai.</p>
+  <h3>Key Features</h3>
+  <ul>
+    <li>120+ voices, kai languages aur accents mein</li>
+    <li>Timeline-style editor — voice ko video ya slides ke timing se sync karna</li>
+    <li>Voice Changer — apni khud ki recorded voice ko AI voice mein convert karna</li>
+    <li>Team collaboration features (agencies ke liye useful)</li>
+  </ul>
+  <div class="callout"><b>Kis ke liye best:</b> Corporate teams, sales presentations, aur product demo voiceovers banane waale.</div>
+  
+  </div>
+
+  <div class="page" id="page-2">
+
+  <h2>Step-by-Step: Kaise Use Karein</h2>
+  <ol>
+    <li><b>murf.ai</b> par account banayein.</li>
+    <li>Naya project banayein — template ya blank canvas choose karein.</li>
+    <li>Script likhein aur voice select karein.</li>
+    <li>Timeline mein pause, pitch, aur speed adjust karein.</li>
+    <li>Agar video ya slides hain, unhe timeline mein import karke voice se sync karein.</li>
+    <li>Preview sunkar final changes karein.</li>
+    <li>Audio ya video export karein.</li>
+  </ol>
+  
+  </div>
+
+  <div class="page" id="page-3">
+
+  <h2>Pro Tips &amp; Real Use Cases</h2>
+  <ul>
+    <li>Pronunciation dictionary use karke brand names ya technical terms sahi tarah bulwayein.</li>
+    <li>Slides ke saath voice ko exactly sync karne ke liye timeline editor use karein — isse video professional lagta hai.</li>
+    <li>Free plan mein limited minutes per month milte hain.</li>
+  </ul>
+  <div class="callout"><b>Real use case:</b> Ek sales team apni product demo PowerPoint ko Murf se voiceover deke self-explanatory video bana leti hai, jo clients ko email kiya ja sakta hai.</div>
+  
+  </div>
+
+  <div class="pillbar">
+    <a class="navbtn" href="index.html">← Voice AI Tools list</a>
+    <span class="navbtn" style="color:var(--ink-soft);">Murf AI course • 3 pages</span>
+  </div>
+</main>
+<footer>AI Learn Then Earn — Voice &amp; Audio AI Course Library</footer>
+
+<script>
+function showPage(n){{
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelector('.tab[data-page="'+n+'"]').classList.add('active');
+  document.getElementById('page-'+n).classList.add('active');
+  window.scrollTo({{top:0,behavior:'smooth'}});
+}}
+</script>
+</body>
+</html>
