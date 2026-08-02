@@ -1,244 +1,470 @@
-
 <!DOCTYPE html>
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Microsoft 365 Copilot Course — Apps ke Andar Apka AI</title>
+<title>Microsoft 365 Copilot — Poora Course</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#F5F5F7;
-    --card:#FFFFFF;
-    --ink:#1B1A19;
-    --ink-soft:#605E5C;
-    --border:#E1DFDD;
-    --copilot:#0F6CBD;
-    --word:#2B579A;
-    --excel:#217346;
-    --ppt:#D24726;
-    --outlook:#0072C6;
-    --teams:#6264A7;
+    --bg: #FAF8F3;
+    --panel: #FFFFFF;
+    --ink: #1A1A2E;
+    --ink-soft: #56566B;
+    --indigo: #2B2A4C;
+    --gold: #E0982F;
+    --teal: #1F7A6C;
+    --line: #E5E1D6;
+    --ribbon: #F1EEE3;
   }
-  *{box-sizing:border-box; margin:0; padding:0;}
+  *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
+    margin:0;
     background:var(--bg);
     color:var(--ink);
-    font-family:'Inter', sans-serif;
-    line-height:1.65;
-    -webkit-font-smoothing:antialiased;
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
   }
-  ::selection{background:#CFE7FA; color:var(--ink);}
-  .wrap{max-width:940px; margin:0 auto; padding:0 26px;}
+  h1,h2,h3,.display{
+    font-family:'Space Grotesk',sans-serif;
+    letter-spacing:-0.01em;
+  }
+  code, .mono{
+    font-family:'JetBrains Mono',monospace;
+  }
 
-  /* ---------- Hero ---------- */
-  header.hero{padding:54px 0 28px;}
-  .kicker{
-    display:inline-flex; align-items:center; gap:8px;
-    font-size:12.5px; font-weight:700; letter-spacing:0.06em;
-    text-transform:uppercase; color:var(--copilot); margin-bottom:20px;
+  /* ---- Ribbon top bar, echoes Office ribbon ---- */
+  .ribbon{
+    background:var(--ribbon);
+    border-bottom:1px solid var(--line);
+    padding:10px 24px;
+    display:flex;
+    gap:6px;
+    overflow-x:auto;
+    position:sticky;
+    top:0;
+    z-index:50;
   }
-  .kicker .diamond{
-    width:14px; height:14px;
-    background:linear-gradient(135deg, #0F6CBD, #8B5CF6);
-    transform:rotate(45deg); display:inline-block; border-radius:3px;
+  .ribbon-tab{
+    font-size:13px;
+    padding:8px 14px;
+    border-radius:6px;
+    color:var(--ink-soft);
+    white-space:nowrap;
+    cursor:pointer;
+    border:1px solid transparent;
+    transition:.2s;
   }
-  h1{
-    font-family:'Manrope', sans-serif; font-weight:800;
-    font-size:clamp(32px, 5.6vw, 52px); line-height:1.15; letter-spacing:-0.015em; max-width:800px;
-  }
-  h1 span{color:var(--copilot);}
-  .hero-sub{margin-top:18px; font-size:17px; color:var(--ink-soft); max-width:600px;}
-  .hero-meta{display:flex; gap:24px; margin-top:26px; flex-wrap:wrap;}
-  .meta-item{font-size:13px; color:var(--ink-soft); font-weight:500;}
-  .meta-item b{color:var(--ink); font-weight:700;}
+  .ribbon-tab:hover{ background:#fff; border-color:var(--line); color:var(--ink);}
+  .ribbon-tab.active{ background:var(--indigo); color:#fff; }
 
-  /* ---------- App-launcher grid nav (signature) ---------- */
-  .grid-section{padding:38px 0 8px;}
-  .grid-label{
-    font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase;
-    color:var(--ink-soft); margin-bottom:14px;
+  main{max-width:920px; margin:0 auto; padding:0 24px;}
+
+  /* ---- Hero ---- */
+  .hero{
+    padding:72px 0 56px;
+    border-bottom:1px solid var(--line);
   }
-  .app-grid{
-    display:grid; grid-template-columns:repeat(4, 1fr); gap:10px;
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:13px;
+    font-weight:600;
+    color:var(--teal);
+    background:#EAF4F1;
+    padding:6px 12px;
+    border-radius:100px;
+    margin-bottom:20px;
   }
-  .app-tile{
-    text-decoration:none; color:var(--ink);
-    background:var(--card);
-    border:1px solid var(--border);
+  .hero h1{
+    font-size:clamp(34px,6vw,54px);
+    font-weight:700;
+    margin:0 0 18px;
+    max-width:14ch;
+  }
+  .hero h1 span{ color:var(--gold); }
+  .hero p{
+    font-size:18px;
+    color:var(--ink-soft);
+    max-width:60ch;
+    margin:0 0 32px;
+  }
+
+  /* live prompt console mockup - signature element */
+  .console{
+    background:var(--indigo);
+    border-radius:16px;
+    padding:22px 22px 26px;
+    color:#fff;
+    box-shadow:0 20px 40px -20px rgba(43,42,76,.5);
+  }
+  .console-top{
+    display:flex;
+    gap:6px;
+    margin-bottom:16px;
+  }
+  .dot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.3);}
+  .console-line{
+    font-family:'JetBrains Mono',monospace;
+    font-size:14px;
+    margin-bottom:10px;
+    opacity:0;
+    animation: reveal .5s forwards;
+  }
+  .console-line.you{color:#F5C77E;}
+  .console-line.ai{color:#8FD9C4;}
+  .console-line:nth-child(2){animation-delay:.2s;}
+  .console-line:nth-child(3){animation-delay:1s;}
+  .console-line:nth-child(4){animation-delay:1.6s;}
+  @keyframes reveal{ to{opacity:1;} }
+
+  /* ---- Sections ---- */
+  section{ padding:56px 0; border-bottom:1px solid var(--line); }
+  section.no-border{border-bottom:none;}
+  .section-label{
+    font-size:13px;
+    font-weight:600;
+    color:var(--gold);
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    margin-bottom:10px;
+  }
+  section h2{
+    font-size:clamp(24px,3.4vw,32px);
+    margin:0 0 24px;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:16px;
+  }
+  .card{
+    background:var(--panel);
+    border:1px solid var(--line);
     border-radius:12px;
-    padding:16px 10px 12px;
-    text-align:center;
-    transition:transform .15s ease, box-shadow .15s ease;
+    padding:20px;
   }
-  .app-tile:hover{transform:translateY(-3px); box-shadow:0 8px 18px rgba(0,0,0,0.08);}
-  .app-tile .sq{
-    width:34px; height:34px; border-radius:8px; margin:0 auto 8px;
+  .card h3{ font-size:17px; margin:0 0 8px; display:flex; align-items:center; gap:8px;}
+  .card p{ font-size:14.5px; color:var(--ink-soft); margin:0; }
+  .tag-dot{
+    width:10px;height:10px;border-radius:3px; flex-shrink:0;
   }
-  .app-tile .lbl{font-size:11.5px; font-weight:600; line-height:1.3;}
-  .app-tile .n{display:block; font-size:10px; color:var(--ink-soft); font-weight:700; margin-top:3px;}
 
-  /* ---------- Modules ---------- */
-  main{padding:34px 0 40px;}
-  .module{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:12px;
-    padding:34px 36px;
-    margin:20px 0;
-    scroll-margin-top:22px;
-    border-top:4px solid var(--copilot);
+  /* App tabs (Word/Excel/PPT/Outlook/Teams) */
+  .app-tabs{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px; }
+  .app-tab-btn{
+    font-size:14px; font-weight:500;
+    padding:9px 16px;
+    border-radius:8px;
+    border:1px solid var(--line);
+    background:var(--panel);
+    cursor:pointer;
+    color:var(--ink-soft);
   }
-  .module-head{display:flex; align-items:center; gap:12px; margin-bottom:6px;}
-  .module-head .dot{width:12px; height:12px; border-radius:3px;}
-  .module h2{font-family:'Manrope', sans-serif; font-weight:700; font-size:24px;}
-  .tag{
-    font-size:11px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase;
-    color:var(--copilot); background:#EAF4FC; padding:4px 11px; border-radius:5px;
-    margin-bottom:16px; display:inline-block;
+  .app-tab-btn.active{
+    background:var(--ink);
+    color:#fff;
+    border-color:var(--ink);
   }
-  .module p{color:#323130; font-size:15.5px; margin-bottom:13px; max-width:760px;}
-  .module ul{margin:12px 0 4px 20px;}
-  .module li{margin-bottom:9px; font-size:15px; color:#323130;}
-  .module li b{color:var(--ink);}
-  .callout{
-    margin-top:18px;
-    background:#F3F9FD;
-    border-left:3px solid var(--copilot);
-    padding:13px 17px;
-    border-radius:0 8px 8px 0;
+  .app-panel{ display:none; }
+  .app-panel.active{ display:block; }
+  .prompt-box{
+    background:var(--indigo);
+    color:#EFEDF7;
+    border-radius:10px;
+    padding:16px 18px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:13.5px;
+    margin-bottom:12px;
+    line-height:1.7;
+  }
+  .prompt-box .lbl{ color:#F5C77E; font-weight:600;}
+  .app-result{
     font-size:14.5px;
-    color:#0A3D5C;
+    color:var(--ink-soft);
+    padding-left:2px;
   }
-  .callout b{color:#062A40;}
+
+  /* formula / steps */
+  .steps{ counter-reset:step; list-style:none; margin:0; padding:0; }
+  .steps li{
+    counter-increment:step;
+    display:flex;
+    gap:16px;
+    padding:16px 0;
+    border-top:1px solid var(--line);
+  }
+  .steps li:first-child{border-top:none;}
+  .steps li::before{
+    content:counter(step);
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:14px;
+    color:var(--teal);
+    background:#EAF4F1;
+    width:30px;height:30px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .steps h4{ margin:0 0 4px; font-size:15.5px; }
+  .steps p{ margin:0; font-size:14px; color:var(--ink-soft); }
+
+  /* accordion for FAQ / do-dont */
+  .accordion-item{
+    border:1px solid var(--line);
+    border-radius:10px;
+    margin-bottom:10px;
+    background:var(--panel);
+    overflow:hidden;
+  }
+  .accordion-q{
+    padding:16px 18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    cursor:pointer;
+    font-weight:500;
+    font-size:15px;
+  }
+  .accordion-arrow{ transition:.25s; color:var(--ink-soft); }
+  .accordion-item.open .accordion-arrow{ transform:rotate(180deg); }
+  .accordion-a{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .3s ease;
+    font-size:14.5px;
+    color:var(--ink-soft);
+    padding:0 18px;
+  }
+  .accordion-item.open .accordion-a{
+    padding:0 18px 16px;
+  }
+
+  .quiz-box{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:24px;
+  }
+  .quiz-q{ font-weight:600; margin-bottom:14px; }
+  .quiz-opt{
+    display:block;
+    width:100%;
+    text-align:left;
+    padding:12px 14px;
+    margin-bottom:8px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:#fff;
+    cursor:pointer;
+    font-size:14.5px;
+    font-family:inherit;
+  }
+  .quiz-opt:hover{ border-color:var(--indigo); }
+  .quiz-opt.correct{ background:#EAF4F1; border-color:var(--teal); color:var(--teal); font-weight:600; }
+  .quiz-opt.wrong{ background:#FBEAE8; border-color:#C75A4E; color:#C75A4E; }
+  .quiz-feedback{ margin-top:12px; font-size:14px; color:var(--ink-soft); min-height:20px; }
 
   footer{
-    border-top:1px solid var(--border);
-    padding:32px 0 60px;
+    padding:40px 0 60px;
     text-align:center;
     color:var(--ink-soft);
-    font-size:13px;
-    font-weight:500;
+    font-size:13.5px;
   }
 
-  @media (max-width:640px){
-    .module{padding:24px 20px;}
-    .wrap{padding:0 16px;}
-    .app-grid{grid-template-columns:repeat(2, 1fr);}
+  @media (max-width:600px){
+    .hero{padding:48px 0 40px;}
   }
 </style>
 </head>
 <body>
 
-<div class="wrap">
-  <header class="hero">
-    <div class="kicker"><span class="diamond"></span> M365 · MINI COURSE</div>
-    <h1>Word, Excel, PowerPoint aur Outlook ke andar apna <span>AI colleague</span> laao.</h1>
-    <p class="hero-sub">Yeh course sikhayega har Microsoft 365 app mein Copilot kaise use karein — drafting se le kar Agent Mode tak, jo aapke liye multi-step kaam khud kar deta hai.</p>
-    <div class="hero-meta">
-      <div class="meta-item"><b>8</b> modules</div>
-      <div class="meta-item"><b>~22</b> min read</div>
-      <div class="meta-item">Work/enterprise tier</div>
-    </div>
-  </header>
+<nav class="ribbon">
+  <div class="ribbon-tab" onclick="jump('kya-hai')">Kya Hai</div>
+  <div class="ribbon-tab" onclick="jump('apps')">Apps Mein Use</div>
+  <div class="ribbon-tab" onclick="jump('prompting')">Prompt Likhna</div>
+  <div class="ribbon-tab" onclick="jump('usecases')">Real Use-Cases</div>
+  <div class="ribbon-tab" onclick="jump('faq')">Do's & Don'ts</div>
+  <div class="ribbon-tab" onclick="jump('quiz')">Quiz</div>
+</nav>
 
-  <section class="grid-section">
-    <div class="grid-label">▸ App Launcher</div>
-    <div class="app-grid">
-      <a href="#m1" class="app-tile"><div class="sq" style="background:linear-gradient(135deg,#0F6CBD,#8B5CF6);"></div><div class="lbl">Copilot kya hai</div><span class="n">01</span></a>
-      <a href="#m2" class="app-tile"><div class="sq" style="background:var(--word);"></div><div class="lbl">Word</div><span class="n">02</span></a>
-      <a href="#m3" class="app-tile"><div class="sq" style="background:var(--excel);"></div><div class="lbl">Excel</div><span class="n">03</span></a>
-      <a href="#m4" class="app-tile"><div class="sq" style="background:var(--ppt);"></div><div class="lbl">PowerPoint</div><span class="n">04</span></a>
-      <a href="#m5" class="app-tile"><div class="sq" style="background:var(--outlook);"></div><div class="lbl">Outlook</div><span class="n">05</span></a>
-      <a href="#m6" class="app-tile"><div class="sq" style="background:var(--teams);"></div><div class="lbl">Teams</div><span class="n">06</span></a>
-      <a href="#m7" class="app-tile"><div class="sq" style="background:linear-gradient(135deg,#0F6CBD,#217346);"></div><div class="lbl">Agent Mode</div><span class="n">07</span></a>
-      <a href="#m8" class="app-tile"><div class="sq" style="background:#605E5C;"></div><div class="lbl">Pro tips</div><span class="n">08</span></a>
+<main>
+
+  <section class="hero no-border">
+    <div class="eyebrow">● Productivity AI Course</div>
+    <h1>Microsoft 365 <span>Copilot</span> seekho, kaam <span>aadha</span> karo</h1>
+    <p>Word, Excel, PowerPoint, Outlook aur Teams ke andar baitha hua ek AI assistant — jo aapke liye likhta hai, banata hai, summarize karta hai. Is course mein samjhenge kaise ise use karein jaise ek pro karta hai.</p>
+
+    <div class="console">
+      <div class="console-top"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+      <div class="console-line you">You (Word mein): "Is 5-page report ka 200 words ka summary bana do, bullet points mein"</div>
+      <div class="console-line ai">Copilot: ✓ Summary ready — 6 bullet points, key numbers highlighted</div>
+      <div class="console-line you">You (Excel mein): "Q2 ka sabse zyada sales wala region highlight karo"</div>
+      <div class="console-line ai">Copilot: ✓ North region highlighted — ₹12.4L, formula bhi add kar diya</div>
     </div>
   </section>
 
-  <main>
+  <section id="kya-hai">
+    <div class="section-label">Shuruaat</div>
+    <h2>Copilot hai kya cheez?</h2>
+    <p style="color:var(--ink-soft); max-width:65ch; margin-bottom:24px;">Microsoft 365 Copilot ek AI hai jo seedha aapke Office apps ke andar kaam karta hai — koi alag se tab ya website nahi. Ye aapki files, emails aur meetings ka context samajhta hai (agar company ne access diya ho), aur us context ke saath jawab deta hai.</p>
+    <div class="grid">
+      <div class="card">
+        <h3><span class="tag-dot" style="background:var(--indigo);"></span>Context-aware</h3>
+        <p>Aapke document, spreadsheet ya inbox ka data padh kar jawab deta hai — generic AI jaisa nahi.</p>
+      </div>
+      <div class="card">
+        <h3><span class="tag-dot" style="background:var(--gold);"></span>Har app mein</h3>
+        <p>Word, Excel, PowerPoint, Outlook, Teams — sabme same Copilot, alag-alag kaam ke liye.</p>
+      </div>
+      <div class="card">
+        <h3><span class="tag-dot" style="background:var(--teal);"></span>Chat + Sidebar</h3>
+        <p>Ek chat window side mein khulti hai jahan aap normal Hinglish/English mein instruction dete ho.</p>
+      </div>
+    </div>
+  </section>
 
-    <section class="module" id="m1">
-      <div class="module-head"><span class="dot" style="background:var(--copilot);"></span><h2>Microsoft 365 Copilot kya hai?</h2></div>
-      <span class="tag">FOUNDATION</span>
-      <p>Microsoft 365 Copilot ek paid, work-tier AI assistant hai jo Word, Excel, PowerPoint, Outlook, aur Teams ke andar built-in hai — aur woh content padh sakta hai jispar aapki pehle se permission hai.</p>
-      <p>Yeh Microsoft Graph se connect hota hai, matlab aapke emails, chats, aur documents ke basis par personalized jawab deta hai — aur yeh public ChatGPT jaisa nahi hai: <b>aapka data aapke tenant ke andar hi rehta hai</b>, Microsoft usse public models train karne ke liye use nahi karta.</p>
-    </section>
+  <section id="apps">
+    <div class="section-label">Hands-On</div>
+    <h2>Har app mein Copilot alag kaam karta hai</h2>
+    <div class="app-tabs">
+      <button class="app-tab-btn active" onclick="showApp('word', this)">Word</button>
+      <button class="app-tab-btn" onclick="showApp('excel', this)">Excel</button>
+      <button class="app-tab-btn" onclick="showApp('ppt', this)">PowerPoint</button>
+      <button class="app-tab-btn" onclick="showApp('outlook', this)">Outlook</button>
+      <button class="app-tab-btn" onclick="showApp('teams', this)">Teams</button>
+    </div>
 
-    <section class="module" id="m2">
-      <div class="module-head"><span class="dot" style="background:var(--word);"></span><h2>Copilot in Word</h2></div>
-      <span class="tag">DRAFTING</span>
-      <p>Word mein Copilot documents draft, rewrite, aur summarize karta hai. 2026 ke naye updates ke saath ab aap:</p>
-      <ul>
-        <li>Alag-alag <b>AI models</b> ke beech switch kar sakte ho.</li>
-        <li>Document ke andar hi seedha <b>images generate</b> kar sakte ho.</li>
-        <li>Purani Copilot conversations continue kar sakte ho, aur badle hue documents ke liye <b>Catchup summaries</b> paa sakte ho.</li>
-        <li>Comment-based edits automatically apply karwa sakte ho — bina manually har suggestion check kiye.</li>
-      </ul>
-    </section>
+    <div class="app-panel active" id="app-word">
+      <div class="prompt-box"><span class="lbl">Prompt:</span> "Is draft ko professional tone mein rewrite karo, 300 words se zyada na ho"</div>
+      <p class="app-result">Copilot poora doc ka structure rakhte hue tone badal deta hai — headings, formatting sab intact rehta hai.</p>
+    </div>
+    <div class="app-panel" id="app-excel">
+      <div class="prompt-box"><span class="lbl">Prompt:</span> "Monthly expense sheet mein sabse zyada kharcha wali category dikhao chart ke saath"</div>
+      <p class="app-result">Bina formula yaad kiye, plain language mein pooch kar analysis aur chart dono mil jaate hain.</p>
+    </div>
+    <div class="app-panel" id="app-ppt">
+      <div class="prompt-box"><span class="lbl">Prompt:</span> "Is Word document se 8-slide pitch deck bana do, company ke brand colors mein"</div>
+      <p class="app-result">Copilot content ko slides mein todta hai aur design bhi khud choose karta hai — aap sirf refine karte ho.</p>
+    </div>
+    <div class="app-panel" id="app-outlook">
+      <div class="prompt-box"><span class="lbl">Prompt:</span> "Is 20-email thread ka summary do — kaunse decisions liye gaye"</div>
+      <p class="app-result">Lambi email chain padhne ki zaroorat nahi, seedha decisions aur action items mil jaate hain.</p>
+    </div>
+    <div class="app-panel" id="app-teams">
+      <div class="prompt-box"><span class="lbl">Prompt:</span> "Aaj ki meeting mein mujhe assign hue action items list karo"</div>
+      <p class="app-result">Live transcript se aapke naam wale action points nikal kar deta hai — meeting miss ho jaaye tab bhi kaam nahi rukta.</p>
+    </div>
+  </section>
 
-    <section class="module" id="m3">
-      <div class="module-head"><span class="dot" style="background:var(--excel);"></span><h2>Copilot in Excel</h2></div>
-      <span class="tag">DATA ANALYSIS</span>
-      <p>Excel mein Copilot data analyze karta hai, formulas banata hai, aur trends surface karta hai. Naye features:</p>
-      <ul>
-        <li><b>Skills:</b> repeatable workflows ko reusable instructions ke roop mein save kar sakte ho — common analysis ya reporting tasks ke liye.</li>
-        <li><b>Personalization:</b> ek baar apni preferences set karo (formatting, naming, formulas, PivotTables) — Copilot har workbook mein consistently follow karega.</li>
-        <li><b>Rules sheets:</b> spreadsheet-specific instructions jo Copilot automatically follow karta hai.</li>
-      </ul>
-    </section>
+  <section id="prompting">
+    <div class="section-label">Skill</div>
+    <h2>Achha prompt kaise likhein</h2>
+    <ol class="steps">
+      <li>
+        <div>
+          <h4>Role aur goal batao</h4>
+          <p>"Ek HR manager ki tarah likho" — Copilot ko pata chalta hai kis tone mein jawab dena hai.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h4>Source specify karo</h4>
+          <p>"Is attached PDF se" ya "is sheet ke column C se" — bina batayenge Copilot guess karega.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h4>Format maango</h4>
+          <p>"Bullet points mein", "table banao", "3 lines mein" — output shape define karta hai.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h4>Refine karo, restart mat karo</h4>
+          <p>Pehla jawab perfect nahi? "Isse thoda short karo" bolo — Copilot pichle jawab ko hi edit karega.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
 
-    <section class="module" id="m4">
-      <div class="module-head"><span class="dot" style="background:var(--ppt);"></span><h2>Copilot in PowerPoint</h2></div>
-      <span class="tag">PRESENTATIONS</span>
-      <p>PowerPoint ribbon mein Copilot button dabao aur type karo, jaise "Create a 10-slide presentation on our Q1 2026 business review." Pehla draft keynote-quality nahi hoga, lekin ek minute ke andar 70% kaam ho jaata hai.</p>
-      <ul>
-        <li><b>Brand Kit Picker</b> se company-approved templates use kar sakte ho.</li>
-        <li>Reusable presentation <b>Skills</b> ek click mein deck par actions le sakte hain.</li>
-        <li>Seedha <b>SharePoint libraries aur OneDrive</b> folders se presentation build kar sakte ho — Copilot organization ke existing content se deck ko ground karta hai.</li>
-      </ul>
-    </section>
+  <section id="usecases">
+    <div class="section-label">Practical</div>
+    <h2>Roz kaam aane wale use-cases</h2>
+    <div class="grid">
+      <div class="card"><h3>📊 Weekly report</h3><p>Excel data se seedha ek Word summary report generate karna, bina manually copy-paste kiye.</p></div>
+      <div class="card"><h3>✉️ Inbox zero</h3><p>Din bhar ki 50+ emails ka ek summary padh kar priority decide karna.</p></div>
+      <div class="card"><h3>🗣️ Meeting notes</h3><p>Teams meeting khatam hote hi automatic minutes aur next-steps mil jaana.</p></div>
+      <div class="card"><h3>🎯 Client pitch</h3><p>Ek rough idea se poori branded PowerPoint deck 10 minute mein taiyaar karna.</p></div>
+    </div>
+  </section>
 
-    <section class="module" id="m5">
-      <div class="module-head"><span class="dot" style="background:var(--outlook);"></span><h2>Copilot in Outlook</h2></div>
-      <span class="tag">EMAIL</span>
-      <p>Outlook mein Copilot emails draft karta hai, lambi threads summarize karta hai, aur inbox prioritize karta hai. Naya update: ab aap poora draft regenerate karne ke bajaye, email ka <b>sirf selected portion rewrite</b> kar sakte ho.</p>
-      <div class="callout"><b>Note:</b> Copilot Chat ab poore inbox, calendar, aur meetings ke context mein reason kar sakta hai — matlab "what did I miss?" jaisa sawaal bhi pooch sakte ho.</div>
-    </section>
+  <section id="faq">
+    <div class="section-label">Zaroori</div>
+    <h2>Do's aur Don'ts</h2>
 
-    <section class="module" id="m6">
-      <div class="module-head"><span class="dot" style="background:var(--teams);"></span><h2>Copilot in Teams</h2></div>
-      <span class="tag">MEETINGS</span>
-      <p>Teams mein Copilot meetings aur long chats recap karta hai, action items aur decisions nikalta hai, aur "what did I miss?" jaise sawaalon ka jawab deta hai. 2026 mein yeh Teams chats, channels, calling, aur meetings — sab tak reach karta hai.</p>
-      <p>Meeting recap kaam karne ke liye <b>live transcription enable</b> hona zaroori hai — organizer ko "Record and transcribe → Start transcription" se shuru karna hota hai.</p>
-    </section>
+    <div class="accordion-item" onclick="toggleAcc(this)">
+      <div class="accordion-q">Kya Copilot confidential company data safe rakhta hai? <span class="accordion-arrow">▾</span></div>
+      <div class="accordion-a">Haan, Microsoft 365 Copilot aapke organization ke data ko training ke liye use nahi karta — lekin phir bhi sensitive data share karte waqt company ki policy follow karo.</div>
+    </div>
+    <div class="accordion-item" onclick="toggleAcc(this)">
+      <div class="accordion-q">Kya har output ko blindly trust karna chahiye? <span class="accordion-arrow">▾</span></div>
+      <div class="accordion-a">Nahi. Numbers, facts aur quotes hamesha manually verify karo — especially financial ya legal documents mein.</div>
+    </div>
+    <div class="accordion-item" onclick="toggleAcc(this)">
+      <div class="accordion-q">Kya Copilot ke liye alag subscription chahiye? <span class="accordion-arrow">▾</span></div>
+      <div class="accordion-a">Haan, ye Microsoft 365 ke normal plans se alag ek add-on license hai jo organization enable karti hai.</div>
+    </div>
+  </section>
 
-    <section class="module" id="m7">
-      <div class="module-head"><span class="dot" style="background:linear-gradient(135deg,#0F6CBD,#217346);"></span><h2>Agent Mode aur Deep Citations</h2></div>
-      <span class="tag">ADVANCED</span>
-      <p><b>Agent Mode</b> Word, Excel, aur PowerPoint mein generally available hai — yeh ek conversation ke through multi-step actions le sakta hai aur poore documents, workbooks, ya decks bana sakta hai jab aap review karte ho.</p>
-      <p><b>Deep citations</b> aapko Copilot ke jawab verify karne dete hain — poori file ki jagah, seedha us specific hisse ka link milta hai jahan se jawab aaya.</p>
-    </section>
+  <section id="quiz" class="no-border">
+    <div class="section-label">Test Yourself</div>
+    <h2>Ek quick quiz</h2>
+    <div class="quiz-box">
+      <div class="quiz-q">Copilot ka sabse bada fayda kya hai?</div>
+      <button class="quiz-opt" onclick="checkAns(this,false)">Ye sirf ek chatbot website hai</button>
+      <button class="quiz-opt" onclick="checkAns(this,true)">Ye directly Office apps ke andar, aapke data ke context ke saath kaam karta hai</button>
+      <button class="quiz-opt" onclick="checkAns(this,false)">Ye sirf images banata hai</button>
+      <div class="quiz-feedback" id="feedback"></div>
+    </div>
+  </section>
 
-    <section class="module" id="m8">
-      <div class="module-head"><span class="dot" style="background:#605E5C;"></span><h2>Prompting ke pro tips</h2></div>
-      <span class="tag">SHORTCUTS</span>
-      <ul>
-        <li>Prompt mein source, goal, aur format teeno specify karo — jitna specific, utna acha result.</li>
-        <li>Agar Copilot irrelevant context pull kare, toh source specify karo — warna woh aapke poore account se data khींchta hai.</li>
-        <li>Excel mein poori sheet ke bajaye pehle relevant data filter kar lo, phir prompt do — bade datasets timeout kar sakte hain.</li>
-        <li>Word mein bahut chhote (200 words se kam) ya newly created documents par summary kabhi unrelated aa sakti hai — pehle OneDrive par save karo, phir try karo.</li>
-      </ul>
-    </section>
+</main>
 
-  </main>
+<footer>Microsoft 365 Copilot Course — apne kaam ko smart banao, effort ko kam.</footer>
 
-  <footer>
-    ▸ END OF LAUNCHER — apna app kholo, Copilot button dabao, kaam shuru karo.
-  </footer>
-</div>
+<script>
+function jump(id){ document.getElementById(id).scrollIntoView({behavior:'smooth'}); }
+
+function showApp(name, btn){
+  document.querySelectorAll('.app-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.app-tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('app-'+name).classList.add('active');
+  btn.classList.add('active');
+}
+
+function toggleAcc(el){
+  el.classList.toggle('open');
+}
+
+function checkAns(btn, isCorrect){
+  const opts = btn.parentElement.querySelectorAll('.quiz-opt');
+  opts.forEach(o=>o.disabled=true);
+  if(isCorrect){
+    btn.classList.add('correct');
+    document.getElementById('feedback').textContent = "Sahi jawab! Copilot ki taakat hai context + integration.";
+  } else {
+    btn.classList.add('wrong');
+    document.getElementById('feedback').textContent = "Thoda aur socho — sahi jawab highlight ho gaya hai.";
+    opts.forEach(o=>{ if(o.onclick.toString().includes('true')) o.classList.add('correct'); });
+  }
+}
+</script>
 
 </body>
 </html>
