@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Tools - AI Learn Then Earn</title>
+<meta name="description" content="Explore 50+ AI tools across chat assistants, design, video, voice, coding, and productivity categories.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fafaf9;
+    --card:#ffffff;
+    --ink:#1e2330;
+    --muted:#657085;
+    --accent:#4f46e5;
+    --accent-soft:#eef0fd;
+    --border:#e7e6f5;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+  }
+  h1,h2,h3{font-family:'Poppins',sans-serif;margin:0;}
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+
+  header{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 32px;background:#fff;border-bottom:1px solid var(--border);
+    position:sticky;top:0;z-index:10;
+  }
+  .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.1rem;}
+  .logo img{height:32px;width:auto;}
+  nav{display:flex;gap:28px;font-weight:500;color:var(--muted);}
+  nav a.active,nav a:hover{color:var(--accent);}
+
+  .hero{
+    text-align:center;padding:64px 20px 40px;
+  }
+  .hero h1{font-size:2.2rem;font-weight:800;}
+  .hero p{color:var(--muted);max-width:560px;margin:14px auto 0;font-size:1.05rem;}
+  .hero .stat{
+    display:inline-block;margin-top:24px;background:var(--accent-soft);
+    color:var(--accent);font-weight:600;padding:8px 18px;border-radius:999px;font-size:.9rem;
+  }
+
+  .grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:22px;max-width:1100px;margin:0 auto;padding:20px 24px 80px;
+  }
+  .card{
+    background:var(--card);border:1px solid var(--border);border-radius:16px;
+    padding:26px;transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(79,70,229,.08);}
+  .card .icon{font-size:1.8rem;margin-bottom:14px;}
+  .card h3{font-size:1.1rem;margin-bottom:8px;}
+  .card p{color:var(--muted);font-size:.92rem;line-height:1.5;margin:0 0 16px;}
+  .card .more{color:var(--accent);font-weight:600;font-size:.9rem;}
+
+  footer{
+    background:#fff;border-top:1px solid var(--border);
+    padding:36px 24px;text-align:center;color:var(--muted);font-size:.9rem;
+  }
+  footer .links{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:14px;}
+  footer .links a:hover{color:var(--accent);}
+
+  @media (max-width:640px){
+    nav{display:none;}
+    .hero h1{font-size:1.6rem;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">
+    <img src="images/logo.webp" alt="AI Learn Then Earn Logo">
+    AI Learn Then Earn
+  </a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="tools.html" class="active">AI Tools</a>
+    <a href="courses.html">Courses</a>
+    <a href="earn.html">Earn</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Explore AI Tools</h1>
+  <p>Discover the best AI tools for chatting, designing, editing, coding and earning — organized by category so you can find the right one fast.</p>
+  <span class="stat">50+ Tools Across 8 Categories</span>
+</section>
+
+<div class="grid">
+
+  <div class="card">
+    <div class="icon">🤖</div>
+    <h3>AI Chat & Assistants</h3>
+    <p>ChatGPT, Gemini, Claude, Grok, Copilot and more conversational AI tools.</p>
+    <a class="more" href="ai-assistants/">Explore category →</a>
+  </div>
+
+  <div class="card">
+    <div class="icon">🎨</div>
+    <h3>AI Design & Images</h3>
+    <p>Canva AI, Midjourney, Leonardo AI, Firefly and more image generation tools.</p>
+    <a class="more" href="design-tools/">Explore category →</a>
+  </div>
+
+  <div class="card">
+    <div class="icon">🎥</div>
+    <h3>AI Video Tools</h3>
+    <p>Runway, Google Flow, Kling, Pika, InVideo and more AI video generators.</p>
+    <a class="more" href="video-tools/">Explore category →</a>
+  </div>
+
+  <div class="card">
+    <div class="icon">🎬</div>
+    <h3>AI Filmmaking</h3>
+    <p>Synthesia, HeyGen, Runway, Google Flow and more filmmaking tools.</p>
+    <a class="more" href="filmmaking-tools/">Explore category →</a>
+  </div>
+
+  <div class="card">
+    <div class="icon">🎤</div>
+    <h3>AI Voice & Audio</h3>
+    <p>ElevenLabs, Suno, Udio, Murf AI and more voice and music tools.</p>
+    <a class="more" href="voice-tools/">Explore category →</a>
+  </div>
+
+  <div class="card">
+    <div class="icon">📚</div>
+    <h3>AI Productivity</h3>
+    <p>NotebookLM, Gamma, Notion AI, Elicit and more productivity boosters.</p>
+    <a class="more" href="productivity-tools/">Explore category →</a>
+  </div>
+
+  <div class="card">
+    <div class="icon">💻</div>
+    <h3>AI Coding</h3>
+    <p>GitHub Copilot, Cursor AI, Bolt, Replit AI and more coding assistants.</p>
+    <a class="more" href="coding-tools/">Explore category →</a>
+  </div>
+
+  <div class="card">
+    <div class="icon">🌐</div>
+    <h3>AI Websites</h3>
+    <p>Hugging Face, Futurepedia, OpenRouter and more AI directories and platforms.</p>
+    <a class="more" href="ai-websites/">Explore category →</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="links">
+    <a href="index.html">Home</a>
+    <a href="tools.html">AI Tools</a>
+    <a href="courses.html">Courses</a>
+    <a href="earn.html">Earn Online</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div>📧 info@ailearnthenearn.com &nbsp; | &nbsp; 📍 Pakistan</div>
+</footer>
+
+</body>
+</html>
