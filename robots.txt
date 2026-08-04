@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://imranazahid87-cmyk.github.io/ailearnthenearn/sitemap.xml
+Sitemap: Sitemap: https://ailearnthenearn.vercel.app/sitemap.xml
