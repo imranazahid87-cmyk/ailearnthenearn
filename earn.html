@@ -6,14 +6,58 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Earn Online with AI - Freelancing & Money-Making Guides</title>
+<!-- Primary SEO Meta Tags -->
+<title>Earn Online with AI - Freelancing & Money-Making Guides | AI Learn Then Earn</title>
 <meta name="description" content="Learn how to earn online using AI skills — freelancing tips, AI-powered side hustles, and step-by-step earning guides.">
+<meta name="keywords" content="earn with AI, AI freelancing, Fiverr, Upwork, YouTube automation, blogging, affiliate marketing">
+<meta name="author" content="AI Learn Then Earn">
+<meta name="robots" content="index, follow">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://ailearnthenearn.vercel.app/earn.html">
+
+<!-- Favicon -->
+<link rel="icon" type="image/webp" href="images/logo.webp">
+<link rel="apple-touch-icon" href="images/logo.webp">
+
+<!-- Open Graph / Facebook / WhatsApp -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ailearnthenearn.vercel.app/earn.html">
+<meta property="og:title" content="Earn Online with AI - Freelancing & Money-Making Guides | AI Learn Then Earn">
+<meta property="og:description" content="Learn how to earn online using AI skills — freelancing tips, AI-powered side hustles, and step-by-step earning guides.">
+<meta property="og:image" content="https://ailearnthenearn.vercel.app/images/og-image.jpg">
+<meta property="og:site_name" content="AI Learn Then Earn">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://ailearnthenearn.vercel.app/earn.html">
+<meta name="twitter:title" content="Earn Online with AI - Freelancing & Money-Making Guides | AI Learn Then Earn">
+<meta name="twitter:description" content="Learn how to earn online using AI skills — freelancing tips, AI-powered side hustles, and step-by-step earning guides.">
+<meta name="twitter:image" content="https://ailearnthenearn.vercel.app/images/og-image.jpg">
+
 <link rel="stylesheet" href="style.css">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Structured Data: ItemList of Earning Methods -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Fiverr", "url": "https://ailearnthenearn.vercel.app/earn/fiverr-guide.html" },
+    { "@type": "ListItem", "position": 2, "name": "Upwork", "url": "https://ailearnthenearn.vercel.app/earn/upwork-guide.html" },
+    { "@type": "ListItem", "position": 3, "name": "YouTube Automation", "url": "https://ailearnthenearn.vercel.app/earn/youtube-automation-guide.html" },
+    { "@type": "ListItem", "position": 4, "name": "Blogging", "url": "https://ailearnthenearn.vercel.app/earn/blogging-guide.html" },
+    { "@type": "ListItem", "position": 5, "name": "Affiliate Marketing", "url": "https://ailearnthenearn.vercel.app/earn/affiliate-marketing-guide.html" },
+    { "@type": "ListItem", "position": 6, "name": "AI Services", "url": "https://ailearnthenearn.vercel.app/earn/ai-services-guide.html" },
+    { "@type": "ListItem", "position": 7, "name": "Sell AI Designs", "url": "https://ailearnthenearn.vercel.app/earn/sell-ai-designs-guide.html" },
+    { "@type": "ListItem", "position": 8, "name": "Digital Products", "url": "https://ailearnthenearn.vercel.app/earn/digital-products-guide.html" }
+  ]
+}
+</script>
 
 </head>
 
@@ -27,7 +71,7 @@
 
 <a href="index.html" class="logo">
 
-<img src="images/logo.webp" alt="Logo">
+<img src="images/logo.webp" alt="AI Learn Then Earn Logo" width="40" height="40">
 
 <span>AI Learn Then Earn</span>
 
@@ -36,9 +80,9 @@
 <nav id="navbar">
 
 <a href="index.html">Home</a>
-<a href="tools.html">AI Tools</a>
+<a href="ai-assistants/">AI Tools</a>
 <a href="courses.html">Courses</a>
-<a href="earn.html">Earn</a>
+<a href="earn.html" class="active">Earn</a>
 <a href="blog.html">Blog</a>
 <a href="contact.html">Contact</a>
 
@@ -50,11 +94,11 @@
 
 <input type="text" placeholder="Search Earning Ideas...">
 
-<button onclick="searchWebsite()">🔍</button>
+<button onclick="searchWebsite()" aria-label="Search">🔍</button>
 
 </div>
 
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
+<div class="menu-btn" onclick="toggleMenu()" aria-label="Menu">☰</div>
 
 </div>
 
@@ -66,13 +110,16 @@
 
 <div class="container">
 
+<h1>Earn Online with AI - Freelancing & Money-Making Guides</h1>
 <h2>Earn Money Online with AI</h2>
 
 <p class="section-title">
 Learn modern online earning methods using AI tools and digital skills.
 </p>
 
-<div class="course-grid"><div class="course-card">
+<div class="course-grid">
+
+<div class="course-card">
 
 <h3>💼 Fiverr</h3>
 
@@ -172,7 +219,9 @@ Sell eBooks, templates, prompts and online courses to generate passive income.
 
 </div>
 
-</section><!-- FOOTER -->
+</section>
+
+<!-- FOOTER -->
 
 <footer>
 
@@ -193,7 +242,7 @@ Learn AI, Build Skills & Earn Online with practical courses, AI tools and freela
 <h4>Quick Links</h4>
 
 <a href="index.html">Home</a>
-<a href="tools.html">AI Tools</a>
+<a href="ai-assistants/">AI Tools</a>
 <a href="courses.html">Courses</a>
 <a href="earn.html">Earn</a>
 <a href="blog.html">Blog</a>
