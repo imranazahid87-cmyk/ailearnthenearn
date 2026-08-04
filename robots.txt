@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: Sitemap: https://ailearnthenearn.vercel.app/sitemap.xml
+Sitemap: https://ailearnthenearn.vercel.app/sitemap.xml
