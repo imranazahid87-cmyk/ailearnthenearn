@@ -6,15 +6,65 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AI Blog - Tips, Tutorials & Updates on AI Tools</title>
+<!-- Primary SEO Meta Tags -->
+<title>AI Blog - Tips, Tutorials & Updates on AI Tools | AI Learn Then Earn</title>
 <meta name="description" content="Read the latest AI tips, tool comparisons, and tutorials to help you learn and earn with artificial intelligence.">
+<meta name="keywords" content="AI blog, ChatGPT tutorial, Gemini guide, SEO tips, prompt engineering, AI news">
+<meta name="author" content="AI Learn Then Earn">
+<meta name="robots" content="index, follow">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://ailearnthenearn.vercel.app/blog.html">
+
+<!-- Favicon -->
+<link rel="icon" type="image/webp" href="images/logo.webp">
+<link rel="apple-touch-icon" href="images/logo.webp">
+
+<!-- Open Graph / Facebook / WhatsApp -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ailearnthenearn.vercel.app/blog.html">
+<meta property="og:title" content="AI Blog - Tips, Tutorials & Updates on AI Tools | AI Learn Then Earn">
+<meta property="og:description" content="Read the latest AI tips, tool comparisons, and tutorials to help you learn and earn with artificial intelligence.">
+<meta property="og:image" content="https://ailearnthenearn.vercel.app/images/og-image.jpg">
+<meta property="og:site_name" content="AI Learn Then Earn">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://ailearnthenearn.vercel.app/blog.html">
+<meta name="twitter:title" content="AI Blog - Tips, Tutorials & Updates on AI Tools | AI Learn Then Earn">
+<meta name="twitter:description" content="Read the latest AI tips, tool comparisons, and tutorials to help you learn and earn with artificial intelligence.">
+<meta name="twitter:image" content="https://ailearnthenearn.vercel.app/images/og-image.jpg">
 
 <link rel="stylesheet" href="style.css">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Structured Data: Blog -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "AI Learn Then Earn Blog",
+  "url": "https://ailearnthenearn.vercel.app/blog.html",
+  "publisher": {
+    "@type": "Organization",
+    "name": "AI Learn Then Earn",
+    "logo": "https://ailearnthenearn.vercel.app/images/logo.webp"
+  },
+  "blogPost": [
+    { "@type": "BlogPosting", "headline": "What is ChatGPT?", "url": "https://ailearnthenearn.vercel.app/blog/chatgpt-guide.html" },
+    { "@type": "BlogPosting", "headline": "Google Gemini Guide", "url": "https://ailearnthenearn.vercel.app/blog/google-gemini-guide.html" },
+    { "@type": "BlogPosting", "headline": "SEO in 2026", "url": "https://ailearnthenearn.vercel.app/blog/seo-2026.html" },
+    { "@type": "BlogPosting", "headline": "Freelancing Tips", "url": "https://ailearnthenearn.vercel.app/blog/freelancing-tips.html" },
+    { "@type": "BlogPosting", "headline": "AI Image Generation", "url": "https://ailearnthenearn.vercel.app/blog/ai-image-generation.html" },
+    { "@type": "BlogPosting", "headline": "AI Video Creation", "url": "https://ailearnthenearn.vercel.app/blog/ai-video-creation.html" },
+    { "@type": "BlogPosting", "headline": "Prompt Engineering", "url": "https://ailearnthenearn.vercel.app/blog/prompt-engineering.html" },
+    { "@type": "BlogPosting", "headline": "Earn Money with AI", "url": "https://ailearnthenearn.vercel.app/blog/earn-with-ai.html" }
+  ]
+}
+</script>
 
 </head>
 
@@ -27,7 +77,7 @@
 <div class="container">
 
 <a href="index.html" class="logo">
-<img src="images/logo.webp" alt="Logo">
+<img src="images/logo.webp" alt="AI Learn Then Earn Logo" width="40" height="40">
 <span>AI Learn Then Earn</span>
 </a>
 
@@ -44,10 +94,10 @@
 
 <div class="search-box">
 <input type="text" id="searchInput" placeholder="Search Articles..." onkeydown="if(event.key==='Enter'){window.location.href='search.html?q='+this.value}">
-<button onclick="window.location.href='search.html?q='+document.getElementById('searchInput').value">🔍</button>
+<button onclick="window.location.href='search.html?q='+document.getElementById('searchInput').value" aria-label="Search">🔍</button>
 </div>
 
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
+<div class="menu-btn" onclick="toggleMenu()" aria-label="Menu">☰</div>
 
 </div>
 
@@ -59,6 +109,7 @@
 
 <div class="container">
 
+<h1>AI Blog - Tips, Tutorials & Updates on AI Tools</h1>
 <h2>Latest AI Blog Articles</h2>
 
 <p class="section-title">
