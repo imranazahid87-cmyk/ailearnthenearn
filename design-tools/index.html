@@ -8,6 +8,30 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  .ai-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ai-icon svg { width: 40px; height: 40px; }
+  .icon-midjourney { background: #0b0b0b; }
+  .icon-canva { background: linear-gradient(135deg, #00c4cc, #7d2ae8); }
+  .icon-dalle { background: #10a37f; }
+  .icon-firefly { background: #ff0f0f; }
+  .icon-leonardo { background: #6f2cf5; }
+  .icon-stable { background: #7c3aed; }
+  .icon-ideogram { background: #000000; }
+  .icon-playground { background: #4f46e5; }
+  .icon-clipdrop { background: #6366f1; }
+  .icon-krea { background: #ec4899; }
+</style>
+
 </head>
 <body>
 
@@ -52,70 +76,113 @@
     <div class="ai-grid">
 
       <div class="ai-card">
-        <img src="../images/ai-tools/midjourney.png" alt="Midjourney">
+        <div class="ai-icon icon-midjourney">
+          <svg viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/>
+          </svg>
+        </div>
         <h3>Midjourney</h3>
         <p>World's most popular AI image generator for stunning artwork, illustrations and creative designs.</p>
         <a href="midjourney-ai.html" class="ai-btn">Learn More</a>
       </div>
 
       <div class="ai-card">
-        <img src="../images/ai-tools/canva-ai.png" alt="Canva AI">
+        <div class="ai-icon icon-canva">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M8 12a4 4 0 0 1 4-4M12 16a4 4 0 0 0 4-4" stroke-linecap="round"/>
+          </svg>
+        </div>
         <h3>Canva AI</h3>
         <p>Create professional graphics, social media posts, presentations and designs with AI assistance.</p>
         <a href="canva-ai.html" class="ai-btn">Learn More</a>
       </div>
 
       <div class="ai-card">
-        <img src="../images/ai-tools/dalle.png" alt="DALL-E 3">
+        <div class="ai-icon icon-dalle">
+          <svg viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.28 9.82a5.99 5.99 0 0 0-.52-4.91 6.05 6.05 0 0 0-6.52-2.9A6 6 0 0 0 4.98 4.18a5.99 5.99 0 0 0-4 2.9 6.05 6.05 0 0 0 .74 7.09 5.99 5.99 0 0 0 .51 4.91 6.05 6.05 0 0 0 6.53 2.9A6 6 0 0 0 13.32 24a6.06 6.06 0 0 0 5.77-4.21 5.99 5.99 0 0 0 4-2.9 6.06 6.06 0 0 0-.74-7.07M13.32 22.5a4.48 4.48 0 0 1-2.88-1.04l.14-.08 4.78-2.76a.79.79 0 0 0 .4-.68v-6.74l2.02 1.17a.07.07 0 0 1 .04.06v5.58a4.5 4.5 0 0 1-4.5 4.49M3.6 18.36a4.47 4.47 0 0 1-.54-3.02l.14.08 4.78 2.76a.78.78 0 0 0 .78 0l5.84-3.37v2.34a.07.07 0 0 1-.03.06l-4.83 2.79a4.5 4.5 0 0 1-6.14-1.64M2.36 7.7a4.48 4.48 0 0 1 2.35-1.97v5.68a.78.78 0 0 0 .39.68l5.84 3.37-2.02 1.17a.08.08 0 0 1-.07 0L3.9 13.84a4.5 4.5 0 0 1-1.54-6.14m16.6 3.86-5.84-3.37 2.02-1.16a.08.08 0 0 1 .07 0l4.95 2.86a4.5 4.5 0 0 1-.68 8.11v-5.68a.79.79 0 0 0-.39-.69M21.29 9.4l-.14-.09-4.78-2.76a.78.78 0 0 0-.78 0l-5.84 3.37V7.58a.07.07 0 0 1 .03-.06l4.83-2.78a4.5 4.5 0 0 1 6.68 4.66M9.34 12.84l-2.02-1.16a.08.08 0 0 1-.04-.06V6.04a4.5 4.5 0 0 1 7.38-3.46l-.14.08-4.78 2.76a.79.79 0 0 0-.4.68zm1.1-2.37 2.6-1.5 2.6 1.5v3l-2.6 1.5-2.6-1.5z"/>
+          </svg>
+        </div>
         <h3>DALL-E 3</h3>
         <p>OpenAI's powerful image generator that creates realistic images and art from text descriptions.</p>
         <a href="dall-e-3.html" class="ai-btn">Learn More</a>
       </div>
 
       <div class="ai-card">
-        <img src="../images/ai-tools/adobe-firefly.png" alt="Adobe Firefly">
+        <div class="ai-icon icon-firefly">
+          <svg viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2c-1.5 4-4.5 6-4.5 10a4.5 4.5 0 0 0 9 0c0-4-3-6-4.5-10z"/>
+          </svg>
+        </div>
         <h3>Adobe Firefly</h3>
         <p>Adobe's AI image generator for professional photo editing, generative fill and creative design.</p>
         <a href="adobe-firefly.html" class="ai-btn">Learn More</a>
       </div>
 
       <div class="ai-card">
-        <img src="../images/ai-tools/leonardo-ai.png" alt="Leonardo AI">
+        <div class="ai-icon icon-leonardo">
+          <svg viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/>
+          </svg>
+        </div>
         <h3>Leonardo AI</h3>
         <p>Advanced AI art generator for game assets, concept art, illustrations and creative projects.</p>
         <a href="leonardo-ai.html" class="ai-btn">Learn More</a>
       </div>
 
       <div class="ai-card">
-        <img src="../images/ai-tools/stable-diffusion.png" alt="Stable Diffusion">
+        <div class="ai-icon icon-stable">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="12" cy="12" r="9" stroke-dasharray="3 3"/>
+          </svg>
+        </div>
         <h3>Stable Diffusion</h3>
         <p>Open-source AI image generator with unlimited customization for designers and developers.</p>
         <a href="stable-diffusion.html" class="ai-btn">Learn More</a>
       </div>
 
       <div class="ai-card">
-        <img src="../images/ai-tools/ideogram.png" alt="Ideogram AI">
+        <div class="ai-icon icon-ideogram">
+          <svg viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+            <text x="12" y="17" font-size="14" text-anchor="middle" font-family="Georgia, serif" font-weight="bold">Aa</text>
+          </svg>
+        </div>
         <h3>Ideogram AI</h3>
         <p>Best AI tool for generating images with accurate text, logos, posters and typography designs.</p>
         <a href="ideogram-ai.html" class="ai-btn">Learn More</a>
       </div>
 
       <div class="ai-card">
-        <img src="../images/ai-tools/playground-ai.png" alt="Playground AI">
+        <div class="ai-icon icon-playground">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="5 3 19 12 5 21 5 3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
         <h3>Playground AI</h3>
         <p>Free AI image generator and photo editor for creating beautiful designs and digital artwork.</p>
         <a href="playground-ai.html" class="ai-btn">Learn More</a>
       </div>
 
       <div class="ai-card">
-        <img src="../images/ai-tools/clipdrop.png" alt="Clipdrop">
+        <div class="ai-icon icon-clipdrop">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2v14M8 12l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5 20h14" stroke-linecap="round"/>
+          </svg>
+        </div>
         <h3>Clipdrop</h3>
         <p>AI-powered image editing tool for background removal, upscaling and professional photo enhancement.</p>
         <a href="clipdrop.html" class="ai-btn">Learn More</a>
       </div>
 
       <div class="ai-card">
-        <img src="../images/ai-tools/krea-ai.png" alt="Krea AI">
+        <div class="ai-icon icon-krea">
+          <svg viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/>
+          </svg>
+        </div>
         <h3>Krea AI</h3>
         <p>Real-time AI image generation and enhancement tool for designers, artists and content creators.</p>
         <a href="krea-ai.html" class="ai-btn">Learn More</a>
