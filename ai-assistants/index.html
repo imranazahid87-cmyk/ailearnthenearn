@@ -58,6 +58,29 @@
 }
 </script>
 
+<style>
+  .ai-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ai-icon svg { width: 40px; height: 40px; }
+  .icon-chatgpt { background: #10a37f; }
+  .icon-gemini { background: linear-gradient(135deg, #4285f4, #9b72cb, #d96570); }
+  .icon-claude { background: #d97757; }
+  .icon-copilot { background: #0078d4; }
+  .icon-perplexity { background: #20808d; }
+  .icon-grok { background: #0b0b0b; }
+  .icon-deepseek { background: #4d6bfe; }
+  .icon-meta { background: #0081fb; }
+  .icon-mistral { background: #ff7000; }
+  .icon-pi { background: #6c5ce7; }
+</style>
+
 </head>
 <body>
 
@@ -102,70 +125,113 @@
     <div class="ai-grid">
 
       <div class="ai-card">
-        <img src="../images/ai-tools/chatgpt.png" alt="ChatGPT AI assistant icon" width="80" height="80">
+        <div class="ai-icon icon-chatgpt">
+          <svg viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.28 9.82a5.99 5.99 0 0 0-.52-4.91 6.05 6.05 0 0 0-6.52-2.9A6 6 0 0 0 4.98 4.18a5.99 5.99 0 0 0-4 2.9 6.05 6.05 0 0 0 .74 7.09 5.99 5.99 0 0 0 .51 4.91 6.05 6.05 0 0 0 6.53 2.9A6 6 0 0 0 13.32 24a6.06 6.06 0 0 0 5.77-4.21 5.99 5.99 0 0 0 4-2.9 6.06 6.06 0 0 0-.74-7.07M13.32 22.5a4.48 4.48 0 0 1-2.88-1.04l.14-.08 4.78-2.76a.79.79 0 0 0 .4-.68v-6.74l2.02 1.17a.07.07 0 0 1 .04.06v5.58a4.5 4.5 0 0 1-4.5 4.49M3.6 18.36a4.47 4.47 0 0 1-.54-3.02l.14.08 4.78 2.76a.78.78 0 0 0 .78 0l5.84-3.37v2.34a.07.07 0 0 1-.03.06l-4.83 2.79a4.5 4.5 0 0 1-6.14-1.64M2.36 7.7a4.48 4.48 0 0 1 2.35-1.97v5.68a.78.78 0 0 0 .39.68l5.84 3.37-2.02 1.17a.08.08 0 0 1-.07 0L3.9 13.84a4.5 4.5 0 0 1-1.54-6.14m16.6 3.86-5.84-3.37 2.02-1.16a.08.08 0 0 1 .07 0l4.95 2.86a4.5 4.5 0 0 1-.68 8.11v-5.68a.79.79 0 0 0-.39-.69M21.29 9.4l-.14-.09-4.78-2.76a.78.78 0 0 0-.78 0l-5.84 3.37V7.58a.07.07 0 0 1 .03-.06l4.83-2.78a4.5 4.5 0 0 1 6.68 4.66M9.34 12.84l-2.02-1.16a.08.08 0 0 1-.04-.06V6.04a4.5 4.5 0 0 1 7.38-3.46l-.14.08-4.78 2.76a.79.79 0 0 0-.4.68zm1.1-2.37 2.6-1.5 2.6 1.5v3l-2.6 1.5-2.6-1.5z"/>
+          </svg>
+        </div>
         <h3>ChatGPT</h3>
         <p>The world's most popular AI assistant for writing, coding, research, freelancing and productivity.</p>
         <a href="../Chatgpt/index.html" class="ai-btn">Learn More</a>
       </div>
 
       <div class="ai-card">
-        <img src="../images/ai-tools/gemini.png" alt="Google Gemini AI assistant icon" width="80" height="80">
+        <div class="ai-icon icon-gemini">
+          <svg viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2c.6 4.8 2.2 7.9 5 10 2.8 2.1 5.2 2.4 5.2 2.4S19.8 14.8 17 12.7C14.2 10.6 12.6 7.5 12 2.7 11.4 7.5 9.8 10.6 7 12.7 4.2 14.8 1.8 14.4 1.8 14.4S4.2 14.1 7 12C9.8 9.9 11.4 6.8 12 2z"/>
+          </svg>
+        </div>
         <h3>Google Gemini</h3>
         <p>Google's powerful AI assistant for research, Google Workspace, coding and professional productivity.</p>
         <a href="../gemini/index.html" class="ai-btn">Learn More</a>
       </div>
 
       <div class="ai-card">
-        <img src="../images/ai-tools/claude.png" alt="Claude AI assistant icon" width="80" height="80">
+        <div class="ai-icon icon-claude">
+          <svg viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 3l2.4 6.6L21 12l-6.6 2.4L12 21l-2.4-6.6L3 12l6.6-2.4z"/>
+          </svg>
+        </div>
         <h3>Claude</h3>
         <p>Excellent for long-form writing, document analysis, PDF understanding and business reports.</p>
         <a href="Claude-ai/index.html" class="ai-btn">Learn More</a>
       </div>
 
       <div class="ai-card">
-        <img src="../images/ai-tools/copilot.png" alt="Microsoft Copilot AI assistant icon" width="80" height="80">
+        <div class="ai-icon icon-copilot">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 19l7-7 3 3-7 7-3-3z" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
         <h3>Microsoft Copilot</h3>
         <p>Boost your productivity in Word, Excel, PowerPoint and Microsoft 365.</p>
         <a href="microsoft-copilot.html" class="ai-btn">Learn More</a>
       </div>
 
       <div class="ai-card">
-        <img src="../images/ai-tools/perplexity.png" alt="Perplexity AI assistant icon" width="80" height="80">
+        <div class="ai-icon icon-perplexity">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="11" cy="11" r="7"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65" stroke-linecap="round"/>
+          </svg>
+        </div>
         <h3>Perplexity AI</h3>
         <p>AI-powered search engine with accurate answers, research support and reliable citations.</p>
         <a href="perplexity-ai.html" class="ai-btn">Learn More</a>
       </div>
 
       <div class="ai-card">
-        <img src="../images/ai-tools/grok.png" alt="Grok AI assistant icon" width="80" height="80">
+        <div class="ai-icon icon-grok">
+          <svg viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/>
+          </svg>
+        </div>
         <h3>Grok</h3>
         <p>Real-time AI assistant designed for fast answers, creative thinking and coding support.</p>
         <a href="grok.html" class="ai-btn">Learn More</a>
       </div>
 
       <div class="ai-card">
-        <img src="../images/ai-tools/deepseek.png" alt="DeepSeek AI assistant icon" width="80" height="80">
+        <div class="ai-icon icon-deepseek">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="4" width="16" height="16" rx="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 9h6v6H9z" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
         <h3>DeepSeek AI</h3>
         <p>Powerful AI for programming, mathematics, reasoning and technical problem solving.</p>
         <a href="deepseek.html" class="ai-btn">Learn More</a>
       </div>
 
       <div class="ai-card">
-        <img src="../images/ai-tools/meta.png" alt="Meta AI assistant icon" width="80" height="80">
+        <div class="ai-icon icon-meta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 12c0-3 2-6 4.5-6S13 9 13 12s2 6 4.5 6S18 15 18 12" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
         <h3>Meta AI</h3>
         <p>Use AI inside WhatsApp, Facebook, Instagram and Messenger for daily tasks.</p>
         <a href="meta-ai.html" class="ai-btn">Learn More</a>
       </div>
 
       <div class="ai-card">
-        <img src="../images/ai-tools/mistral.png" alt="Mistral AI assistant icon" width="80" height="80">
+        <div class="ai-icon icon-mistral">
+          <svg viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 6h16M4 12h10M4 18h13" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
         <h3>Mistral AI</h3>
         <p>Fast and efficient AI assistant for writing, coding, learning and productivity.</p>
         <a href="mistral-ai.html" class="ai-btn">Learn More</a>
       </div>
 
       <div class="ai-card">
-        <img src="../images/ai-tools/pi.png" alt="Pi AI assistant icon" width="80" height="80">
+        <div class="ai-icon icon-pi">
+          <svg viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+            <text x="12" y="18" font-size="18" text-anchor="middle" font-family="Georgia, serif">π</text>
+          </svg>
+        </div>
         <h3>Pi AI</h3>
         <p>A friendly AI companion for conversations, brainstorming, learning and everyday support.</p>
         <a href="pi-ai.html" class="ai-btn">Learn More</a>
