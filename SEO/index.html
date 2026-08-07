@@ -16,6 +16,56 @@ content="Learn SEO from Beginner to Advanced with AI Learn Then Earn. Master Key
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
+<style>
+  .try-tool-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 22px;
+    justify-content: center;
+  }
+  .try-tool-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    border: 2px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 10px 16px;
+    text-decoration: none;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .try-tool-chip:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.14);
+  }
+  .try-tool-chip .ttc-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .try-tool-chip .ttc-icon svg {
+    width: 17px;
+    height: 17px;
+  }
+  .try-tool-chip .ttc-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #0b1736;
+  }
+  .chip-console { border-color: #4285f4; }
+  .chip-console .ttc-icon { background: #4285f4; }
+  .chip-analytics { border-color: #f9ab00; }
+  .chip-analytics .ttc-icon { background: #f9ab00; }
+  .chip-speed { border-color: #0cce6b; }
+  .chip-speed .ttc-icon { background: #0cce6b; }
+</style>
+
 </head>
 
 <body>
@@ -125,6 +175,38 @@ Start Learning
 
 All Courses
 
+</a>
+
+</div>
+
+<div class="try-tool-row">
+
+<a href="https://search.google.com/search-console" target="_blank" rel="noopener" class="try-tool-chip chip-console">
+<span class="ttc-icon">
+<svg viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+</svg>
+</span>
+<span class="ttc-title">Search Console</span>
+</a>
+
+<a href="https://analytics.google.com" target="_blank" rel="noopener" class="try-tool-chip chip-analytics">
+<span class="ttc-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 3v18h18M7 15l4-4 3 3 5-6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</span>
+<span class="ttc-title">Google Analytics</span>
+</a>
+
+<a href="https://pagespeed.web.dev" target="_blank" rel="noopener" class="try-tool-chip chip-speed">
+<span class="ttc-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
+<circle cx="12" cy="12" r="9"/>
+<path d="M12 12l4-4" stroke-linecap="round"/>
+</svg>
+</span>
+<span class="ttc-title">PageSpeed Insights</span>
 </a>
 
 </div>
