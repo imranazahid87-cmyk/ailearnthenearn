@@ -70,6 +70,55 @@
 }
 </script>
 
+<style>
+  .try-tool-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #fff;
+    border: 2px solid #10a37f;
+    border-radius: 16px;
+    padding: 14px 22px;
+    margin-top: 18px;
+    text-decoration: none;
+    max-width: 340px;
+    box-shadow: 0 8px 20px rgba(16,163,127,0.25);
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .try-tool-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 26px rgba(16,163,127,0.35);
+  }
+  .try-tool-card img {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    flex-shrink: 0;
+  }
+  .try-tool-card .ttc-text {
+    display: flex;
+    flex-direction: column;
+  }
+  .try-tool-card .ttc-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    color: #10a37f;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .try-tool-card .ttc-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #0b1736;
+  }
+  .try-tool-card .ttc-arrow {
+    margin-left: auto;
+    font-size: 20px;
+    color: #10a37f;
+  }
+</style>
+
 </head>
 
 <body>
@@ -93,8 +142,13 @@ Freelancing and much more.
 🚀 Start Learning
 </a>
 
-<a href="https://chatgpt.com" target="_blank" rel="noopener" class="btn btn-outline">
-🔗 Try ChatGPT
+<a href="https://chatgpt.com" target="_blank" rel="noopener" class="try-tool-card">
+<img src="../images/chatgpt.webp" alt="ChatGPT logo">
+<span class="ttc-text">
+<span class="ttc-label">Official Tool</span>
+<span class="ttc-title">Try ChatGPT Now</span>
+</span>
+<span class="ttc-arrow">↗</span>
 </a>
 
 </div>
