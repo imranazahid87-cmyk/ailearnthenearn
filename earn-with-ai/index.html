@@ -12,6 +12,55 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
+<style>
+  .try-tool-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  .try-tool-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    border: 2px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 10px 16px;
+    text-decoration: none;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .try-tool-chip:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.14);
+  }
+  .try-tool-chip .ttc-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .try-tool-chip .ttc-icon svg {
+    width: 17px;
+    height: 17px;
+  }
+  .try-tool-chip .ttc-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #0b1736;
+  }
+  .chip-chatgpt { border-color: #10a37f; }
+  .chip-chatgpt .ttc-icon { background: #10a37f; }
+  .chip-gemini { border-color: #4285f4; }
+  .chip-gemini .ttc-icon { background: linear-gradient(135deg, #4285f4, #9b72cb, #d96570); }
+  .chip-claude { border-color: #d97757; }
+  .chip-claude .ttc-icon { background: #d97757; }
+</style>
+
 </head>
 
 <body>
@@ -35,6 +84,37 @@ Artificial Intelligence is transforming the way people work and earn online. Thi
 Start Your AI Journey →
 
 </a>
+
+<div class="try-tool-row">
+
+<a href="https://chatgpt.com" target="_blank" rel="noopener" class="try-tool-chip chip-chatgpt">
+<span class="ttc-icon">
+<svg viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+<path d="M22.28 9.82a5.99 5.99 0 0 0-.52-4.91 6.05 6.05 0 0 0-6.52-2.9A6 6 0 0 0 4.98 4.18a5.99 5.99 0 0 0-4 2.9 6.05 6.05 0 0 0 .74 7.09 5.99 5.99 0 0 0 .51 4.91 6.05 6.05 0 0 0 6.53 2.9A6 6 0 0 0 13.32 24a6.06 6.06 0 0 0 5.77-4.21 5.99 5.99 0 0 0 4-2.9 6.06 6.06 0 0 0-.74-7.07M13.32 22.5a4.48 4.48 0 0 1-2.88-1.04l.14-.08 4.78-2.76a.79.79 0 0 0 .4-.68v-6.74l2.02 1.17a.07.07 0 0 1 .04.06v5.58a4.5 4.5 0 0 1-4.5 4.49M3.6 18.36a4.47 4.47 0 0 1-.54-3.02l.14.08 4.78 2.76a.78.78 0 0 0 .78 0l5.84-3.37v2.34a.07.07 0 0 1-.03.06l-4.83 2.79a4.5 4.5 0 0 1-6.14-1.64M2.36 7.7a4.48 4.48 0 0 1 2.35-1.97v5.68a.78.78 0 0 0 .39.68l5.84 3.37-2.02 1.17a.08.08 0 0 1-.07 0L3.9 13.84a4.5 4.5 0 0 1-1.54-6.14m16.6 3.86-5.84-3.37 2.02-1.16a.08.08 0 0 1 .07 0l4.95 2.86a4.5 4.5 0 0 1-.68 8.11v-5.68a.79.79 0 0 0-.39-.69M21.29 9.4l-.14-.09-4.78-2.76a.78.78 0 0 0-.78 0l-5.84 3.37V7.58a.07.07 0 0 1 .03-.06l4.83-2.78a4.5 4.5 0 0 1 6.68 4.66M9.34 12.84l-2.02-1.16a.08.08 0 0 1-.04-.06V6.04a4.5 4.5 0 0 1 7.38-3.46l-.14.08-4.78 2.76a.79.79 0 0 0-.4.68zm1.1-2.37 2.6-1.5 2.6 1.5v3l-2.6 1.5-2.6-1.5z"/>
+</svg>
+</span>
+<span class="ttc-title">Try ChatGPT</span>
+</a>
+
+<a href="https://gemini.google.com" target="_blank" rel="noopener" class="try-tool-chip chip-gemini">
+<span class="ttc-icon">
+<svg viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 2c.6 4.8 2.2 7.9 5 10 2.8 2.1 5.2 2.4 5.2 2.4S19.8 14.8 17 12.7C14.2 10.6 12.6 7.5 12 2.7 11.4 7.5 9.8 10.6 7 12.7 4.2 14.8 1.8 14.4 1.8 14.4S4.2 14.1 7 12C9.8 9.9 11.4 6.8 12 2z"/>
+</svg>
+</span>
+<span class="ttc-title">Try Gemini</span>
+</a>
+
+<a href="https://claude.ai" target="_blank" rel="noopener" class="try-tool-chip chip-claude">
+<span class="ttc-icon">
+<svg viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3l2.4 6.6L21 12l-6.6 2.4L12 21l-2.4-6.6L3 12l6.6-2.4z"/>
+</svg>
+</span>
+<span class="ttc-title">Try Claude</span>
+</a>
+
+</div>
 
 </div>
 
@@ -74,7 +154,9 @@ Whether you want to become a freelancer, content creator, digital marketer or bu
 
 </div>
 
-</section><section class="lesson-container" id="roadmap">
+</section>
+
+<section class="lesson-container" id="roadmap">
 
 <div class="lesson-card">
 
@@ -201,7 +283,9 @@ Follow these courses in order to build strong AI skills and prepare yourself for
 
 </div>
 
-</section><section class="lesson-container">
+</section>
+
+<section class="lesson-container">
 
 <div class="lesson-card">
 
@@ -291,40 +375,6 @@ Every successful AI professional starts by learning the basics and gradually bui
 
 <section class="lesson-container">
 
-<div class="lesson-card" style="text-align:center;">
-
-<h2>🚀 Ready to Start Your AI Journey?</h2>
-
-<p>
-
-The future belongs to people who continuously learn and adapt. Complete each course in this roadmap, practice consistently, build your portfolio, and apply your skills to real projects. With dedication and continuous improvement, you can create valuable opportunities in the growing AI ecosystem.
-
-</p>
-
-<a href="../courses.html" class="start-btn">
-
-Browse All Courses →
-
-</a>
-
-</div>
-
-</section>
-
-<footer style="text-align:center;padding:40px 20px;">
-
-<p>
-
-© 2026 AI Learn Then Earn. All Rights Reserved.
-
-</p>
-
-</footer>
-
-</body>
-
-</html><section class="lesson-container">
-
 <div class="lesson-card">
 
 <h2>🏆 Career Paths After Learning AI</h2>
@@ -365,6 +415,142 @@ After completing the recommended courses, you can choose one or more AI career p
 <p>Design high-quality prompts for businesses, developers and AI workflows.</p>
 </div>
 
+</div>
+
+</div>
+
+</section>
+
+<section class="lesson-container">
+
+<div class="lesson-card">
+
+<h2>💸 AI Income Sources</h2>
+
+<p>
+Artificial Intelligence offers many ways to generate income. You can choose one method or combine multiple skills to build different income streams over time.
+</p>
+
+<div class="course-grid">
+
+<div class="card">
+<h3>💼 Freelancing</h3>
+<p>Offer AI writing, design, coding, SEO and automation services on Fiverr, Upwork and Freelancer.</p>
+</div>
+
+<div class="card">
+<h3>📝 Content Writing</h3>
+<p>Create blog posts, website content, product descriptions and articles using AI.</p>
+</div>
+
+<div class="card">
+<h3>🎨 Graphic Design</h3>
+<p>Sell AI-generated logos, social media posts, thumbnails and branding designs.</p>
+</div>
+
+<div class="card">
+<h3>🎬 YouTube Automation</h3>
+<p>Create AI-generated scripts, voiceovers, thumbnails and videos for YouTube channels.</p>
+</div>
+
+<div class="card">
+<h3>📈 SEO Services</h3>
+<p>Help businesses rank higher on search engines with AI-assisted SEO strategies.</p>
+</div>
+
+<div class="card">
+<h3>🌐 Website Development</h3>
+<p>Build websites faster using AI coding assistants and modern web technologies.</p>
+</div>
+
+<div class="card">
+<h3>📚 Sell Digital Products</h3>
+<p>Create eBooks, templates, prompt packs, planners and online courses.</p>
+</div>
+
+<div class="card">
+<h3>🤝 AI Consulting</h3>
+<p>Help businesses integrate AI into their daily workflows and improve productivity.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="lesson-container">
+
+<div class="lesson-card">
+
+<h2>🎁 Bonus Resources</h2>
+
+<p>
+Along with the courses, use these resources to improve your AI skills faster and prepare for real-world work.
+</p>
+
+<div class="course-grid">
+
+<div class="card">
+<h3>📚 AI Prompt Library</h3>
+<p>Ready-to-use prompts for ChatGPT, Gemini and other AI tools.</p>
+</div>
+
+<div class="card">
+<h3>🛠 AI Tools Directory</h3>
+<p>Explore the best AI tools for writing, coding, design, marketing and productivity.</p>
+</div>
+
+<div class="card">
+<h3>📋 Project Ideas</h3>
+<p>Practice with real-world projects to strengthen your portfolio.</p>
+</div>
+
+<div class="card">
+<h3>📄 Portfolio Templates</h3>
+<p>Professional portfolio layouts to showcase your AI skills and completed projects.</p>
+</div>
+
+<div class="card">
+<h3>💼 Freelancing Checklist</h3>
+<p>A complete checklist to prepare your Fiverr and Upwork profiles before applying for jobs.</p>
+</div>
+
+<div class="card">
+<h3>🚀 Productivity Tips</h3>
+<p>Learn how professionals use AI to save time and work more efficiently.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="lesson-container">
+
+<div class="lesson-card">
+
+<h2>❓ Frequently Asked Questions</h2>
+
+<div class="faq-item">
+<h3>Do I need coding skills to learn AI?</h3>
+<p>No. Most courses start from the beginner level and explain everything step by step.</p>
+</div>
+
+<div class="faq-item">
+<h3>Can I start freelancing after completing these courses?</h3>
+<p>Yes. If you practice consistently, build a portfolio and complete the Freelancing Mastery course, you will be ready to apply for projects.</p>
+</div>
+
+<div class="faq-item">
+<h3>Which course should I start first?</h3>
+<p>Start with ChatGPT Mastery, then follow the roadmap in order.</p>
+</div>
+
+<div class="faq-item">
+<h3>Will I become an AI expert after these courses?</h3>
+<p>These courses provide a strong foundation and practical skills. Continued practice and real projects will help you become more advanced over time.</p>
 </div>
 
 </div>
@@ -443,134 +629,40 @@ You now have a complete roadmap to learn Artificial Intelligence, master modern 
 
 </div>
 
-</section><section class="lesson-container">
+</section>
 
-<div class="lesson-card">
-
-<h2>💸 AI Income Sources</h2>
-
-<p>
-Artificial Intelligence offers many ways to generate income. You can choose one method or combine multiple skills to build different income streams over time.
-</p>
-
-<div class="course-grid">
-
-<div class="card">
-<h3>💼 Freelancing</h3>
-<p>Offer AI writing, design, coding, SEO and automation services on Fiverr, Upwork and Freelancer.</p>
-</div>
-
-<div class="card">
-<h3>📝 Content Writing</h3>
-<p>Create blog posts, website content, product descriptions and articles using AI.</p>
-</div>
-
-<div class="card">
-<h3>🎨 Graphic Design</h3>
-<p>Sell AI-generated logos, social media posts, thumbnails and branding designs.</p>
-</div>
-
-<div class="card">
-<h3>🎬 YouTube Automation</h3>
-<p>Create AI-generated scripts, voiceovers, thumbnails and videos for YouTube channels.</p>
-</div>
-
-<div class="card">
-<h3>📈 SEO Services</h3>
-<p>Help businesses rank higher on search engines with AI-assisted SEO strategies.</p>
-</div>
-
-<div class="card">
-<h3>🌐 Website Development</h3>
-<p>Build websites faster using AI coding assistants and modern web technologies.</p>
-</div>
-
-<div class="card">
-<h3>📚 Sell Digital Products</h3>
-<p>Create eBooks, templates, prompt packs, planners and online courses.</p>
-</div>
-
-<div class="card">
-<h3>🤝 AI Consulting</h3>
-<p>Help businesses integrate AI into their daily workflows and improve productivity.</p>
-</div>
-
-</div>
-
-</div>
 <section class="lesson-container">
 
-<div class="lesson-card">
+<div class="lesson-card" style="text-align:center;">
 
-<h2>🎁 Bonus Resources</h2>
+<h2>🚀 Ready to Start Your AI Journey?</h2>
 
 <p>
-Along with the courses, use these resources to improve your AI skills faster and prepare for real-world work.
+
+The future belongs to people who continuously learn and adapt. Complete each course in this roadmap, practice consistently, build your portfolio, and apply your skills to real projects. With dedication and continuous improvement, you can create valuable opportunities in the growing AI ecosystem.
+
 </p>
 
-<div class="course-grid">
+<a href="../courses.html" class="start-btn">
 
-<div class="card">
-<h3>📚 AI Prompt Library</h3>
-<p>Ready-to-use prompts for ChatGPT, Gemini and other AI tools.</p>
-</div>
+Browse All Courses →
 
-<div class="card">
-<h3>🛠 AI Tools Directory</h3>
-<p>Explore the best AI tools for writing, coding, design, marketing and productivity.</p>
-</div>
-
-<div class="card">
-<h3>📋 Project Ideas</h3>
-<p>Practice with real-world projects to strengthen your portfolio.</p>
-</div>
-
-<div class="card">
-<h3>📄 Portfolio Templates</h3>
-<p>Professional portfolio layouts to showcase your AI skills and completed projects.</p>
-</div>
-
-<div class="card">
-<h3>💼 Freelancing Checklist</h3>
-<p>A complete checklist to prepare your Fiverr and Upwork profiles before applying for jobs.</p>
-</div>
-
-<div class="card">
-<h3>🚀 Productivity Tips</h3>
-<p>Learn how professionals use AI to save time and work more efficiently.</p>
-</div>
-
-</div>
-
-</div>
-
-</section><section class="lesson-container">
-
-<div class="lesson-card">
-
-<h2>❓ Frequently Asked Questions</h2>
-
-<div class="faq-item">
-<h3>Do I need coding skills to learn AI?</h3>
-<p>No. Most courses start from the beginner level and explain everything step by step.</p>
-</div>
-
-<div class="faq-item">
-<h3>Can I start freelancing after completing these courses?</h3>
-<p>Yes. If you practice consistently, build a portfolio and complete the Freelancing Mastery course, you will be ready to apply for projects.</p>
-</div>
-
-<div class="faq-item">
-<h3>Which course should I start first?</h3>
-<p>Start with ChatGPT Mastery, then follow the roadmap in order.</p>
-</div>
-
-<div class="faq-item">
-<h3>Will I become an AI expert after these courses?</h3>
-<p>These courses provide a strong foundation and practical skills. Continued practice and real projects will help you become more advanced over time.</p>
-</div>
+</a>
 
 </div>
 
 </section>
-</section>
+
+<footer style="text-align:center;padding:40px 20px;">
+
+<p>
+
+© 2026 AI Learn Then Earn. All Rights Reserved.
+
+</p>
+
+</footer>
+
+</body>
+
+</html>
