@@ -91,15 +91,26 @@
     padding:4px 10px;
     border-radius:12px;
   }
-  .card img{
+  .card-icon{
     width:56px;
     height:56px;
     border-radius:12px;
-    margin-bottom:14px;
-    background:var(--lightbg);
-    object-fit:contain;
-    padding:8px;
+    margin:0 auto 14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
   }
+  .card-icon svg{ width:28px; height:28px; }
+  .icon-wix{ background:#000000; }
+  .icon-v0{ background:#000000; }
+  .icon-lovable{ background:#ec4899; }
+  .icon-framer{ background:#0055ff; }
+  .icon-webflow{ background:#4353ff; }
+  .icon-hostinger{ background:#673de6; }
+  .icon-10web{ background:#21759b; }
+  .icon-durable{ background:#0b0b0b; }
+  .icon-codedesign{ background:#14b8a6; }
+  .icon-squarespace{ background:#000000; }
   .card h3{
     color:var(--navy);
     font-size:1.15em;
@@ -156,7 +167,11 @@
 
   <div class="card">
     <span class="badge">Most Popular</span>
-    <img src="https://via.placeholder.com/56/2f6bff/ffffff?text=Wix" alt="Wix AI">
+    <div class="card-icon icon-wix">
+      <svg viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 5l3 12 3-9 3 9 3-12h2L13 19h-2l-2.5-7L6 19H4L1 5z"/>
+      </svg>
+    </div>
     <h3>Wix AI</h3>
     <p>Build a full website in minutes just by answering a few questions — Wix's AI designs and sets it up for you.</p>
     <a class="btn" href="wix-ai.html">Learn More</a>
@@ -164,7 +179,11 @@
 
   <div class="card">
     <span class="badge">Trending</span>
-    <img src="https://via.placeholder.com/56/2f6bff/ffffff?text=v0" alt="v0 by Vercel">
+    <div class="card-icon icon-v0">
+      <svg viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2l10 18H2z"/>
+      </svg>
+    </div>
     <h3>v0 by Vercel</h3>
     <p>Generate working website and app UI code from simple text prompts, built by the team behind Vercel.</p>
     <a class="btn" href="../coding-tools/v0-vercel.html">Learn More</a>
@@ -172,56 +191,94 @@
 
   <div class="card">
     <span class="badge">Trending</span>
-    <img src="https://via.placeholder.com/56/2f6bff/ffffff?text=LV" alt="Lovable">
+    <div class="card-icon icon-lovable">
+      <svg viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 21s-7-4.6-9.5-9C.7 8.4 2.2 5 5.5 5c2 0 3.4 1.2 4.5 2.8C11.1 6.2 12.5 5 14.5 5 17.8 5 19.3 8.4 21.5 12c-2.5 4.4-9.5 9-9.5 9z"/>
+      </svg>
+    </div>
     <h3>Lovable</h3>
     <p>Describe your idea in plain text and Lovable's AI builds a full working website or web app for you.</p>
     <a class="btn" href="../coding-tools/lovable-ai.html">Learn More</a>
   </div>
 
   <div class="card">
-    <img src="https://via.placeholder.com/56/2f6bff/ffffff?text=FR" alt="Framer AI">
+    <div class="card-icon icon-framer">
+      <svg viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 2h14v7h-7l7 7h-7v6l-7-7v6l-7-6h7l-7-7h7z" transform="scale(0.6) translate(7,7)"/>
+        <path d="M6 3h12v6h-6l6 6h-6v6l-6-6z"/>
+      </svg>
+    </div>
     <h3>Framer AI</h3>
     <p>Generate stunning, responsive websites with AI and customize them visually without writing code.</p>
     <a class="btn" href="framer-ai.html">Learn More</a>
   </div>
 
   <div class="card">
-    <img src="https://via.placeholder.com/56/2f6bff/ffffff?text=WF" alt="Webflow AI">
+    <div class="card-icon icon-webflow">
+      <svg viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 5h3l2 8 3-8h2l3 8 2-8h3l-5 14h-3l-2.5-7L8 19H5z"/>
+      </svg>
+    </div>
     <h3>Webflow AI</h3>
     <p>Professional-grade AI website builder with advanced design control and clean code output.</p>
     <a class="btn" href="webflow-ai.html">Learn More</a>
   </div>
 
   <div class="card">
-    <img src="https://via.placeholder.com/56/2f6bff/ffffff?text=HP" alt="Hostinger AI">
+    <div class="card-icon icon-hostinger">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2l7 4v6c0 5-3 8-7 10-4-2-7-5-7-10V6z" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
     <h3>Hostinger AI</h3>
     <p>Create and host a complete website using AI, with hosting, domain and design handled in one place.</p>
     <a class="btn" href="hostinger-ai.html">Learn More</a>
   </div>
 
   <div class="card">
-    <img src="https://via.placeholder.com/56/2f6bff/ffffff?text=10W" alt="10Web AI">
+    <div class="card-icon icon-10web">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="9"/>
+        <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" stroke-linecap="round"/>
+      </svg>
+    </div>
     <h3>10Web AI (WordPress)</h3>
     <p>Automatically generate a full WordPress website with AI, including content, images and layout.</p>
     <a class="btn" href="10web-ai.html">Learn More</a>
   </div>
 
   <div class="card">
-    <img src="https://via.placeholder.com/56/2f6bff/ffffff?text=DR" alt="Durable AI">
+    <div class="card-icon icon-durable">
+      <svg viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/>
+      </svg>
+    </div>
     <h3>Durable AI</h3>
     <p>Builds a complete business website with text, images and a CRM in under a minute using AI.</p>
     <a class="btn" href="durable-ai.html">Learn More</a>
   </div>
 
   <div class="card">
-    <img src="https://via.placeholder.com/56/2f6bff/ffffff?text=CD" alt="CodeDesign AI">
+    <div class="card-icon icon-codedesign">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
+        <polyline points="8 6 2 12 8 18" stroke-linecap="round" stroke-linejoin="round"/>
+        <polyline points="16 6 22 12 16 18" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
     <h3>CodeDesign AI</h3>
     <p>AI website builder that generates clean, editable code, ideal for freelancers and small businesses.</p>
     <a class="btn" href="codedesigng-ai.html">Learn More</a>
   </div>
 
   <div class="card">
-    <img src="https://via.placeholder.com/56/2f6bff/ffffff?text=SQ" alt="Squarespace AI">
+    <div class="card-icon icon-squarespace">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="4" width="7" height="7" rx="1"/>
+        <rect x="13" y="4" width="7" height="7" rx="1"/>
+        <rect x="4" y="13" width="7" height="7" rx="1"/>
+        <rect x="13" y="13" width="7" height="7" rx="1"/>
+      </svg>
+    </div>
     <h3>Squarespace AI</h3>
     <p>Design elegant, professional websites with AI-assisted layouts, content and styling suggestions.</p>
     <a class="btn" href="squarespace-ai.html">Learn More</a>
