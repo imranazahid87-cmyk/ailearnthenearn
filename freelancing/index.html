@@ -10,6 +10,54 @@
 
 <link rel="stylesheet" href="style.css">
 
+<style>
+  .try-tool-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+    justify-content: center;
+  }
+  .try-tool-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    border: 2px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 10px 16px;
+    text-decoration: none;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .try-tool-chip:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.14);
+  }
+  .try-tool-chip .ttc-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .try-tool-chip .ttc-icon svg {
+    width: 17px;
+    height: 17px;
+  }
+  .try-tool-chip .ttc-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #0b1736;
+  }
+  .chip-fiverr { border-color: #1dbf73; }
+  .chip-fiverr .ttc-icon { background: #1dbf73; }
+  .chip-upwork { border-color: #14a800; }
+  .chip-upwork .ttc-icon { background: #14a800; }
+</style>
+
 </head>
 
 <body>
@@ -31,6 +79,30 @@ Client Communication and AI Tools Step by Step.
 <a href="module1.html" class="btn">
 🚀 Start Learning
 </a>
+
+<div class="try-tool-row">
+
+<a href="https://www.fiverr.com" target="_blank" rel="noopener" class="try-tool-chip chip-fiverr">
+<span class="ttc-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
+<rect x="2" y="7" width="20" height="14" rx="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</span>
+<span class="ttc-title">Try Fiverr</span>
+</a>
+
+<a href="https://www.upwork.com" target="_blank" rel="noopener" class="try-tool-chip chip-upwork">
+<span class="ttc-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
+<rect x="2" y="7" width="20" height="14" rx="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</span>
+<span class="ttc-title">Try Upwork</span>
+</a>
+
+</div>
 
 </section>
 
